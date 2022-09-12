@@ -1,11 +1,16 @@
-import { Page } from "@shopify/polaris";
+import { Button } from "@shopify/polaris";
 import Grid from "@mui/material/Grid";
 
 import classes from "./builder/Builder.module.scss";
 import { usePageButtons } from "../hooks";
 
 export default function Builder() {
-  const buttonContent = <div>YES</div>;
+  const buttonContent = (
+    <>
+      <Button>Preview on store</Button>
+      <Button primary>Save</Button>
+    </>
+  );
 
   usePageButtons({ content: buttonContent });
 
@@ -29,6 +34,15 @@ export default function Builder() {
             <p className={classes.customH1}>Add a Test T-shirt to your order</p>
             <p className={classes.h2}>Exclusive offer expires in: 05:05</p>
           </div>
+          <div
+            className={classes.imageZone}
+            style={{
+              backgroundImage: false
+                ? false
+                : 'url("/image/empty-image-dark.svg")',
+              backgroundSize: false ? "cover" : "unset",
+            }}
+          ></div>
         </Grid>
       </Grid>
     </main>
