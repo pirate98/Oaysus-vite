@@ -33,7 +33,7 @@ export default function Upsells() {
                   icon={<Icon source={MobilePlusMajor} color="base" />}
                   primary
                 ></Button>
-                <p className={classes.p}>Add Upsells</p>
+                <p className={classes.p}>Add Upsell</p>
               </PlainCard>
             </Grid.Cell>
           </Grid>
