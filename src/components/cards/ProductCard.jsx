@@ -14,7 +14,7 @@ export function ProductCard({ imageSource }) {
   return (
     <Card
       footerActionAlignment="left"
-      secondaryFooterActions={[{ content: "View Upsell" }]}
+      secondaryFooterActions={[{ content: "View Upsells" }]}
     >
       <div
         className={styles.imageDiv}

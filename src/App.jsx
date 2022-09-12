@@ -1,7 +1,7 @@
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./components";
 import "./css/app.scss";
-import Upsell from "./pages/Upsell";
+import Upsells from "./pages/upsells";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -18,7 +18,7 @@ export default function App() {
               },
             ]}
           /> */}
-      <Routes pages={pages} mainPage={"/upsell"}></Routes>
+      <Routes pages={pages} mainPage={"/upsells"}></Routes>
     </QueryProvider>
   );
 }
