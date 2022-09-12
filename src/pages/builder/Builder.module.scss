@@ -1,7 +1,53 @@
 @import "../../css/global";
 
 .leftSection {
-  background-color: yellow; // #f9f7fa;
+  background-color: #f9f7fa;
+
+  .leftMenu {
+    height: 52px;
+    display: flex;
+
+    div {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      p {
+        @extend .h3;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        color: rgba(109, 113, 117, 1);
+      }
+
+      span {
+        height: 3px;
+        width: 100%;
+        /* Action Primary/Default */
+        border-bottom: 1px solid #dbdada;
+      }
+
+      &:hover {
+        @extend .divActive;
+      }
+    }
+
+    .divActive {
+      p {
+        color: black;
+      }
+
+      span {
+        border-bottom: none;
+        background: #008060;
+        border-radius: 4px 4px 0px 0px;
+      }
+    }
+  }
 }
 
 .rightSection {
@@ -30,4 +76,24 @@
   @extend .h1;
   font-weight: 600;
   color: white;
+}
+
+.headline {
+  @extend .h1;
+  margin-bottom: 21px;
+}
+
+.buyBox {
+  padding: 0 80px;
+  padding-top: 40px;
+}
+
+.image1 {
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
