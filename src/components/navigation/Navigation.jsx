@@ -14,13 +14,13 @@ const Navigation = () => {
       <Image className={classes.logo} source={logo} alt="Oaysus" />
       <div className={classes.navLinks}>
         <NavLink
-          to="/"
+          to="/upsells"
           className={({ isActive }) =>
             isActive ? classes.navLinkActive : classes.navLink
           }
         >
           <Image source={upsells} alt="Upsells" width={11} />
-          <p>View Upsell</p>
+          <p>View Upsells</p>
         </NavLink>
         <NavLink
           to="/performance"
