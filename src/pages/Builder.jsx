@@ -2,10 +2,15 @@ import { Page } from "@shopify/polaris";
 import Grid from "@mui/material/Grid";
 
 import classes from "./builder/Builder.module.scss";
+import { usePageButtons } from "../hooks";
 
 export default function Builder() {
+  const buttonContent = <div>YES</div>;
+
+  usePageButtons({ content: buttonContent });
+
   return (
-    <main class={classes.pageFull}>
+    <main className={classes.pageFull}>
       <Grid
         container
         spacing={2}
