@@ -10,7 +10,7 @@ export function Header() {
       <h1 className={styles.h1}>Upsell Funnels</h1>
       <div className={styles.infoContainer}>
         <div className={styles.badgeContainer}>
-          <Badge dotHalf={true}>4 Cards Total</Badge>
+          <Badge dotHalf={true}>4 Total</Badge>
           <Badge variant="green">3 Active</Badge>
           <Badge variant="gray">1 Inactive</Badge>
         </div>
@@ -24,7 +24,7 @@ export function Header() {
             <StyledOption value={20}>Last 20 Days</StyledOption>
             <StyledOption value={30}>Last 10 Days</StyledOption>
           </CustomSelect>
-          <AddButton>button</AddButton>
+          <AddButton>Add Upsell</AddButton>
         </div>
       </div>
     </section>

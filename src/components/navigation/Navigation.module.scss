@@ -56,9 +56,14 @@
   }
 }
 
-.settings {
+.buttonGroup {
   flex-grow: 1;
   text-align: end;
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
 
   img {
     vertical-align: middle;

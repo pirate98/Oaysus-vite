@@ -1,14 +1,17 @@
 import { createElement } from "react";
 
 import { Image, Button, Icon } from "@shopify/polaris";
-// import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { logo, upsells, performance, svgSettings } from "../../assets/svg";
-
 import classes from "./Navigation.module.scss";
 
 const Navigation = () => {
+  const {
+    navigation: { pageButtons },
+  } = useSelector((state) => state);
+
   return (
     <section className={classes.container}>
       <Image className={classes.logo} source={logo} alt="Oaysus" />
@@ -37,7 +40,8 @@ const Navigation = () => {
           <p>Performance</p>
         </NavLink>
       </div>
-      <span className={classes.settings}>
+      <span className={classes.buttonGroup}>
+        {pageButtons}
         <Button
           icon={
             <Icon

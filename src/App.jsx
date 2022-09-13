@@ -1,7 +1,11 @@
+import { Provider } from "react-redux";
+
+import { store } from "./app/store";
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./components";
 import "./css/app.scss";
 import Upsells from "./pages/upsells";
+import Navigation from "./components/navigation/Navigation";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -18,7 +22,10 @@ export default function App() {
               },
             ]}
           /> */}
-      <Routes pages={pages} mainPage={"/upsells"}></Routes>
+      <Provider store={store}>
+        <Navigation />
+        <Routes pages={pages} mainPage={"/upsells"}></Routes>
+      </Provider>
     </QueryProvider>
   );
 }

@@ -2,12 +2,14 @@ import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 
 const StyledButton = styled(Button)({
+  whiteSpace: "nowrap",
+  textTransform: "none",
   boxShadow: "none",
   background: "#008060",
   borderRadius: "6px",
   color: "white",
   "&:hover": {
-    // background: "#0f5140",
+    background: "rgba(0, 110, 82, 1)",
   },
   "&::before": {
     content: "url(/svg/add.svg)",
