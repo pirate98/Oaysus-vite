@@ -3,6 +3,7 @@ import { Button } from "@shopify/polaris";
 import classes from "./builder/Builder.module.scss";
 import { usePageButtons } from "../hooks";
 import { Content } from "./builder/Content";
+import { Components } from "./builder/Components";
 
 export default function Builder() {
   const buttonContent = (
@@ -27,6 +28,7 @@ export default function Builder() {
             <span></span>
           </div>
         </div>
+        <Components />
       </section>
       <section className={classes.rightSection}>
         <div className={classes.titleContainer}>
