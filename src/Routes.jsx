@@ -56,7 +56,7 @@ function useRoutes(pages) {
       }
 
       if (!pages[key].default) {
-        console.warn(`${key} doesn't export a default React component`);
+        // console.warn(`${key} doesn't export a default React component`);
       }
 
       return {
@@ -65,6 +65,6 @@ function useRoutes(pages) {
       };
     })
     .filter((route) => route.component);
-  console.log({ routes });
+  // console.log({ routes });
   return routes;
 }

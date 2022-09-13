@@ -29,7 +29,7 @@ export function Product({
         width="30"
         height="5"
         rx="1"
-        fill={hover ? secondaryHover : secondary}
+        fill={hover ? primaryHover : secondary}
       />
       <rect
         x="43"
@@ -37,7 +37,7 @@ export function Product({
         width="24"
         height="5"
         rx="1"
-        fill={hover ? secondaryHover : secondary}
+        fill={hover ? primaryHover : secondary}
       />
       <rect
         x="43"
@@ -45,9 +45,16 @@ export function Product({
         width="15"
         height="5"
         rx="1"
-        fill={hover ? secondaryHover : secondary}
+        fill={hover ? primaryHover : secondary}
       />
-      <rect x="43" y="22" width="15" height="5" rx="1" fill={secondaryHover} />
+      <rect
+        x="43"
+        y="22"
+        width="15"
+        height="5"
+        rx="1"
+        fill={hover ? primaryHover : secondary}
+      />
     </svg>
   );
 }

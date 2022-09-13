@@ -1,66 +1,65 @@
 import Grid from "@mui/material/Grid";
+import { useDispatch, useSelector } from "react-redux";
 
-import {
-  Banner,
-  CallToAction,
-  Content1,
-  Content2,
-  Content3,
-  Incentive1,
-  Incentive2,
-  Product,
-  Video,
-} from "../../components/builder";
+import * as builderComponents from "../../components/builder";
+import { setHoveredComponent } from "./builderSlice";
 import { Card } from "./Card";
+import constants from "../../app/constants";
 
 export function Components() {
+  const dispatch = useDispatch();
+  const {
+    builder: { hoveredComponent },
+  } = useSelector((state) => state);
+
+  const components = [
+    "Incentive1",
+    "Banner",
+    "Content1",
+    "Content2",
+    "Product",
+    "Incentive2",
+    "Video",
+    "Content3",
+    "CallToAction",
+  ];
+
   return (
-    <Grid container spacing={"10px"} sx={{ padding: "10px" }}>
-      <Grid item xs={6}>
-        <Card title={{ text: "Incentive 1", color: undefined }}>
-          <Incentive1 />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Banner", color: undefined }}>
-          <Banner />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Content1", color: undefined }}>
-          <Content1 />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Content2", color: undefined }}>
-          <Content2 />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Product", color: undefined }}>
-          <Product />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Incentive2", color: undefined }}>
-          <Incentive2 />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Video", color: undefined }}>
-          <Video />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Content3", color: undefined }}>
-          <Content3 />
-        </Card>
-      </Grid>
-      <Grid item xs={6}>
-        <Card title={{ text: "Call To Action", color: undefined }}>
-          <CallToAction />
-        </Card>
-      </Grid>
+    <Grid
+      container
+      spacing={"10px"}
+      sx={{ padding: "10px", cursor: "pointer" }}
+    >
+      {components.map((component, idx) => {
+        const DynamicComponent = builderComponents[component];
+        return (
+          <Grid
+            key={`component-${idx}`}
+            item
+            xs={6}
+            onMouseOver={() => {
+              dispatch(setHoveredComponent(component));
+            }}
+            onMouseOut={() => dispatch(setHoveredComponent(undefined))}
+          >
+            <Card
+              title={{
+                text: component,
+                color: hoveredComponent === component ? "white" : undefined,
+              }}
+              background={
+                hoveredComponent === component
+                  ? constants.SHOPIFY_GREEN
+                  : undefined
+              }
+            >
+              <DynamicComponent
+                hover={hoveredComponent === component ? true : false}
+              />
+            </Card>
+          </Grid>
+        );
+      })}
     </Grid>
   );
 }

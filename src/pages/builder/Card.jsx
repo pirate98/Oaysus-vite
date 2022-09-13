@@ -1,8 +1,12 @@
 import classes from "./Card.module.scss";
 
-export function Card({ children, title = { text: "", color: "inherit" } }) {
+export function Card({
+  children,
+  background,
+  title = { text: "", color: "inherit" },
+}) {
   return (
-    <div className={classes.componentCard}>
+    <div className={classes.componentCard} style={{ background }}>
       {children}
       <p style={{ color: title.color }} className={classes.h4}>
         {title.text}

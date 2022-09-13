@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { setPageButtons } from "../components/navigation/navigationSlice";
+import { setPageButtons } from "../pages/navigation/navigationSlice";
 
 export function usePageButtons({ content }) {
   const dispatch = useDispatch();

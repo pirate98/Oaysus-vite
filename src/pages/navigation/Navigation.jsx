@@ -45,7 +45,7 @@ const Navigation = () => {
         <Button
           icon={
             <Icon
-              source={() => createElement("src", { src: svgSettings })}
+              source={() => createElement("img", { src: svgSettings })}
               color="base"
             />
           }
