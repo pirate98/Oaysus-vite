@@ -45,17 +45,12 @@ export function Components() {
             <Card
               title={{
                 text: component,
-                color: hoveredComponent === component ? "white" : undefined,
+                hoverColor: "white",
               }}
-              background={
-                hoveredComponent === component
-                  ? constants.SHOPIFY_GREEN
-                  : undefined
-              }
+              background={{ hoverColor: constants.SHOPIFY_GREEN }}
+              hover={hoveredComponent === component}
             >
-              <DynamicComponent
-                hover={hoveredComponent === component ? true : false}
-              />
+              <DynamicComponent hover={hoveredComponent === component} />
             </Card>
           </Grid>
         );
