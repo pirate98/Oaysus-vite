@@ -1,4 +1,10 @@
+@import "./global";
+
 :root {
   --p-interactive: black !important;
   --p-interactive-hovered: black !important;
+}
+
+body {
+  @extend .defaultFont;
 }

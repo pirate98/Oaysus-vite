@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 
 import classes from "./builder/Builder.module.scss";
 import { usePageButtons } from "../hooks";
-import { BuyBox } from "./builder/BuyBox";
+import { Content } from "./builder/Content";
 
 export default function Builder() {
   const buttonContent = (
@@ -41,7 +41,9 @@ export default function Builder() {
       </Grid>
       <Grid item xs={8} className={classes.rightSection}>
         <div className={classes.titleContainer}>
-          <p className={classes.customH1}>Add a Test T-shirt to your order</p>
+          <p className={classes.headlineWhite}>
+            Add a Test T-shirt to your order
+          </p>
           <p className={classes.h2}>Exclusive offer expires in: 05:05</p>
         </div>
         <div
@@ -53,7 +55,7 @@ export default function Builder() {
             backgroundSize: false ? "cover" : "unset",
           }}
         ></div>
-        <BuyBox />
+        <Content />
       </Grid>
     </Grid>
   );

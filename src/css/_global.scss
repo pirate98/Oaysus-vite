@@ -1,3 +1,9 @@
+$shopifyGreen: rgba(0, 128, 96, 1);
+
+.textGreen {
+  color: $shopifyGreen;
+}
+
 .pageFull {
   padding-top: 16px;
   flex-grow: 1;
@@ -5,25 +11,22 @@
   flex-direction: column;
 }
 
+.defaultFont {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
+    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 .borderStyle {
   border: 1px solid rgba(201, 204, 207, 1) !important;
   border-radius: 4px !important;
   padding: 8px 12px 8px 12px;
 
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0px;
-  text-align: left;
+  @extend .defaultFont;
 }
 
 .h1 {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  @extend .defaultFont;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -33,9 +36,7 @@
 }
 
 .h2 {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  @extend .defaultFont;
   font-size: 18px;
   font-weight: 600;
   line-height: 20px;
@@ -44,14 +45,19 @@
 }
 
 .h3 {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 15px;
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0px;
   text-align: center;
+}
+
+.h4 {
+  @extend .defaultFont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
 }
 
 .btnClean {
@@ -64,6 +70,4 @@
 }
 
 @media screen and (min-width: 490px) {
-  .page {
-  }
 }
