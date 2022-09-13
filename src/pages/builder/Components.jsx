@@ -12,6 +12,7 @@ export function Components() {
     builder: { hoveredComponent },
   } = useSelector((state) => state);
 
+  // Array content must be same with the function names of the components
   const components = [
     "Incentive1",
     "Banner",
@@ -32,6 +33,7 @@ export function Components() {
     >
       {components.map((component, idx) => {
         const DynamicComponent = builderComponents[component];
+
         return (
           <Grid
             key={`component-${idx}`}
