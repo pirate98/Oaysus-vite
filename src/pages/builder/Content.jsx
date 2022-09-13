@@ -19,7 +19,7 @@ export function Content() {
           <Grid item xs={6}>
             <img className={classes.image1} src={"/image/guy_1.jpg"} />
           </Grid>
-          <Grid item xs={6} container spacing={2}>
+          <Grid item xs={6} container spacing={2} alignContent="baseline">
             <Grid item sx={{ marginBottom: "2px" }}>
               <TextContainer spacing="loose">
                 <Text variant="headingXl" as="h3">

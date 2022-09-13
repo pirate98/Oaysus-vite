@@ -1,6 +1,4 @@
 import { Button } from "@shopify/polaris";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 
 import classes from "./builder/Builder.module.scss";
 import { usePageButtons } from "../hooks";
@@ -17,17 +15,8 @@ export default function Builder() {
   usePageButtons({ content: buttonContent });
 
   return (
-    <Grid
-      container
-      spacing={0}
-      sx={{
-        flexGrow: 1,
-        ".MuiGrid-item": {
-          padding: 0,
-        },
-      }}
-    >
-      <Grid item xs={4} className={classes.leftSection}>
+    <main className={classes.main}>
+      <section className={classes.leftSection}>
         <div className={classes.leftMenu}>
           <div>
             <p>Templates</p>
@@ -38,8 +27,8 @@ export default function Builder() {
             <span></span>
           </div>
         </div>
-      </Grid>
-      <Grid item xs={8} className={classes.rightSection}>
+      </section>
+      <section className={classes.rightSection}>
         <div className={classes.titleContainer}>
           <p className={classes.headlineWhite}>
             Add a Test T-shirt to your order
@@ -56,7 +45,7 @@ export default function Builder() {
           }}
         ></div>
         <Content />
-      </Grid>
-    </Grid>
+      </section>
+    </main>
   );
 }
