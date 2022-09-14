@@ -19,6 +19,9 @@
   .leftMenu {
     height: 52px;
     display: flex;
+    position: relative;
+    background: #f9f7fa;
+    z-index: 1;
 
     div {
       flex-grow: 1;
