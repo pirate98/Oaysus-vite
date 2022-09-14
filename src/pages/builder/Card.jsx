@@ -19,7 +19,7 @@ export function Card({
     // what type of item this to determine if a drop target accepts it
     type: "div",
     // data of the item to be available to the drop methods
-    item: title.text,
+    item: { title: title.text },
     // method to collect additional data for drop handling like whether is currently being dragged
     collect: (monitor) => {
       return {
