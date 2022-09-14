@@ -13,6 +13,9 @@
   background-color: #f9f7fa;
   width: $leftMenuWidth;
 
+  flex-direction: column;
+  display: flex;
+
   .leftMenu {
     height: 52px;
     display: flex;

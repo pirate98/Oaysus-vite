@@ -30,24 +30,24 @@ export default function Builder() {
 
   return (
     <DndProvider backend={HTML5Backend}>
+      <section className={classes.leftSection}>
+        <div className={classes.leftMenu}>
+          {leftMenu.map((menu, idx) => (
+            <div
+              key={`left-menu-${idx}`}
+              onClick={() => {
+                dispatch(setActiveMenu(idx));
+              }}
+              className={activeMenu === idx ? classes.divActive : ""}
+            >
+              <p>{menu.title}</p>
+              <span></span>
+            </div>
+          ))}
+        </div>
+        {activeMenu === 0 ? <Templates /> : <Components />}
+      </section>
       <main className={classes.main}>
-        <section className={classes.leftSection}>
-          <div className={classes.leftMenu}>
-            {leftMenu.map((menu, idx) => (
-              <div
-                key={`left-menu-${idx}`}
-                onClick={() => {
-                  dispatch(setActiveMenu(idx));
-                }}
-                className={activeMenu === idx ? classes.divActive : ""}
-              >
-                <p>{menu.title}</p>
-                <span></span>
-              </div>
-            ))}
-          </div>
-          {activeMenu === 0 ? <Templates /> : <Components />}
-        </section>
         <section className={classes.rightSection}>
           <div className={classes.titleContainer}>
             <p className={classes.headlineWhite}>
