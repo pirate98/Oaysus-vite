@@ -7,7 +7,7 @@ import { usePageButtons } from "../hooks";
 import { Content } from "./builder/Content";
 import { Components } from "./builder/Components";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveMenu } from "./builder/builderSlice";
+import { setActiveComponent, setActiveMenu } from "./builder/builderSlice";
 import { Templates } from "./builder/Templates";
 
 export default function Builder() {
@@ -37,6 +37,7 @@ export default function Builder() {
               key={`left-menu-${idx}`}
               onClick={() => {
                 dispatch(setActiveMenu(idx));
+                dispatch(setActiveComponent(undefined));
               }}
               className={activeMenu === idx ? classes.divActive : ""}
             >

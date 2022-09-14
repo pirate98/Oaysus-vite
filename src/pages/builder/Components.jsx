@@ -2,17 +2,22 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as builderComponents from "../../components/builder";
-import { setHoveredComponent } from "./builderSlice";
+import * as componentMenus from "./componentMenus";
+import { setActiveComponent, setHoveredComponent } from "./builderSlice";
 import { Card } from "./Card";
 import constants from "../../app/constants";
+import { EditBox } from "./componentMenus/EditBox";
 
 export function Components() {
   const dispatch = useDispatch();
   const {
-    builder: { hoveredComponent },
+    builder: { hoveredComponent, activeComponent },
   } = useSelector((state) => state);
 
-  // Array content must be same with the function names of the components
+  const DynamicComponentMenu =
+    componentMenus[activeComponent] || activeComponent;
+
+  // Array content must be same with the names of the components
   const components = [
     "Incentive1",
     "Banner",
@@ -25,7 +30,12 @@ export function Components() {
     "CallToAction",
   ];
 
-  return (
+  return activeComponent ? (
+    <>
+      <EditBox title={activeComponent} />
+      <DynamicComponentMenu />
+    </>
+  ) : (
     <Grid
       container
       spacing={"10px"}
@@ -36,6 +46,7 @@ export function Components() {
 
         return (
           <Grid
+            onClick={() => dispatch(setActiveComponent(component))}
             key={`component-${idx}`}
             item
             xs={6}

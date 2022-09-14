@@ -1,6 +1,9 @@
 $shopifyGreen: rgba(0, 128, 96, 1);
 $navHeight: 56px;
 $leftMenuWidth: 320px;
+$fontFamily: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
+  "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
 
 .textGreen {
   color: $shopifyGreen;
@@ -14,9 +17,7 @@ $leftMenuWidth: 320px;
 }
 
 .defaultFont {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: $fontFamily;
 }
 
 .borderStyle {

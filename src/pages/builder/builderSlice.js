@@ -12,10 +12,14 @@ export const builderSlice = createSlice({
     setHoveredComponent: (state, action) => {
       state.hoveredComponent = action.payload;
     },
+    setActiveComponent: (state, action) => {
+      state.activeComponent = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setHoveredComponent, setActiveMenu } = builderSlice.actions;
+export const { setHoveredComponent, setActiveMenu, setActiveComponent } =
+  builderSlice.actions;
 
 export default builderSlice.reducer;
