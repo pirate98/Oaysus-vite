@@ -1,10 +1,10 @@
 .title {
+  color: rgba(130, 130, 130, 1);
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0px;
   text-align: left;
-  padding-bottom: 12px;
 }
 
 .container {
@@ -16,7 +16,14 @@
   letter-spacing: 0px;
   text-align: left;
 
-  > {
-    padding-bottom: 12px;
+  > * {
+    margin-bottom: 12px;
+  }
+
+  .singleAttribute {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
 }
