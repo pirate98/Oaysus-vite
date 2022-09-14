@@ -1,7 +1,12 @@
 @import "../../css/global";
 
+.main {
+  display: flex;
+}
+
 .leftSection {
   background-color: #f9f7fa;
+  min-width: 320px;
 
   .leftMenu {
     height: 52px;
