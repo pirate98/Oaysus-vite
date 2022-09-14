@@ -39,7 +39,13 @@ export function Components() {
     <Grid
       container
       spacing={"10px"}
-      sx={{ padding: "10px", cursor: "pointer", overflow: "auto" }}
+      sx={{
+        padding: "10px",
+        cursor: "pointer",
+        overflow: "auto",
+        marginTop: "0",
+        paddingTop: "0",
+      }}
     >
       {components.map((component, idx) => {
         const DynamicComponent = builderComponents[component];
