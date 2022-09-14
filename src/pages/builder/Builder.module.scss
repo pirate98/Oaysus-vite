@@ -19,6 +19,9 @@
   .leftMenu {
     height: 52px;
     display: flex;
+    position: relative;
+    background: #f9f7fa;
+    z-index: 1;
 
     z-index: 5;
     background: rgb(249 247 250);
