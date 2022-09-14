@@ -6,6 +6,9 @@ import classes from "./builder/Builder.module.scss";
 import { usePageButtons } from "../hooks";
 import { Content } from "./builder/Content";
 import { Components } from "./builder/Components";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveMenu } from "./builder/builderSlice";
+import { Templates } from "./builder/Templates";
 
 export default function Builder() {
   const buttonContent = (
@@ -17,21 +20,33 @@ export default function Builder() {
 
   usePageButtons({ content: buttonContent });
 
+  const dispatch = useDispatch();
+
+  const {
+    builder: { activeMenu },
+  } = useSelector((state) => state);
+
+  const leftMenu = [{ title: "Templates" }, { title: "Components" }];
+
   return (
     <DndProvider backend={HTML5Backend}>
       <main className={classes.main}>
         <section className={classes.leftSection}>
           <div className={classes.leftMenu}>
-            <div>
-              <p>Templates</p>
-              <span></span>
-            </div>
-            <div className={classes.divActive}>
-              <p>Components</p>
-              <span></span>
-            </div>
+            {leftMenu.map((menu, idx) => (
+              <div
+                key={`left-menu-${idx}`}
+                onClick={() => {
+                  dispatch(setActiveMenu(idx));
+                }}
+                className={activeMenu === idx ? classes.divActive : ""}
+              >
+                <p>{menu.title}</p>
+                <span></span>
+              </div>
+            ))}
           </div>
-          <Components />
+          {activeMenu === 0 ? <Templates /> : <Components />}
         </section>
         <section className={classes.rightSection}>
           <div className={classes.titleContainer}>

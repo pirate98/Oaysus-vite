@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = { activeMenu: 0 };
 
 export const builderSlice = createSlice({
   name: "builder",
   initialState,
   reducers: {
+    setActiveMenu: (state, action) => {
+      state.activeMenu = action.payload;
+    },
     setHoveredComponent: (state, action) => {
       state.hoveredComponent = action.payload;
     },
@@ -13,6 +16,6 @@ export const builderSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setHoveredComponent } = builderSlice.actions;
+export const { setHoveredComponent, setActiveMenu } = builderSlice.actions;
 
 export default builderSlice.reducer;

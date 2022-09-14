@@ -2,11 +2,16 @@
 
 .main {
   display: flex;
+  justify-content: end;
 }
 
 .leftSection {
+  position: fixed;
+  top: $navHeight;
+  bottom: 0;
+  left: 0;
   background-color: #f9f7fa;
-  min-width: 320px;
+  width: $leftMenuWidth;
 
   .leftMenu {
     height: 52px;
@@ -56,6 +61,7 @@
 }
 
 .rightSection {
+  width: calc(100vw - $leftMenuWidth);
   background-color: rgb(255, 255, 255); // white;
 
   .titleContainer {

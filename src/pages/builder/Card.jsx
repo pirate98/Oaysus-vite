@@ -12,7 +12,8 @@ export function Card({
     filter: "drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.33))",
     background: background.hoverColor,
     border: background.hoverColor,
-    translate: "12px 12px",
+    scale: "110%",
+    transition: "all 0.2s ease 0s",
   };
 
   const [{ isDragging }, drag] = useDrag(() => ({
