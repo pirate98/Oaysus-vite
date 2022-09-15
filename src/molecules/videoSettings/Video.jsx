@@ -1,4 +1,4 @@
-import { Margin, Style } from "../builderSettings";
+import { Margin, Style } from "../settings";
 import { SettingSectionContainer } from "../settingSectionContainer/SettingSectionContainer";
 import { SettingSection } from "../settingSection/SettingSection";
 

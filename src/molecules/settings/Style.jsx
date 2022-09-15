@@ -1,4 +1,4 @@
-import CustomAutocomplete from "../../../atoms/customAutocomplete/CustomAutocomplete";
+import { CustomAutocomplete } from "../../atoms";
 import classes from "./styles.module.scss";
 
 export function Style() {

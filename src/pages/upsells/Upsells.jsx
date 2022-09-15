@@ -3,7 +3,7 @@ import { MobilePlusMajor } from "@shopify/polaris-icons";
 import { TitleBar } from "@shopify/app-bridge-react";
 
 import { ProductCard, PlainCard } from "../../atoms";
-import { Header } from "../../organisms/upsells/header/Header";
+import { Header } from "../../organisms/upsellHeader/Header";
 import classes from "./Upsells.module.scss";
 
 export default function Upsells() {

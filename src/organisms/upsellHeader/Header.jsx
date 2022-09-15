@@ -1,6 +1,6 @@
-import { Badge, CustomSelect, StyledOption, AddButton } from "../../../atoms";
+import { Badge, CustomSelect, StyledOption, AddButton } from "../../atoms";
 import styles from "./Header.module.scss";
-import svgSearch from "../../../assets/svg/search.svg";
+import svgSearch from "../../assets/svg/search.svg";
 
 export function Header() {
   return (

@@ -18,7 +18,7 @@ export const Autocomplete = styled(MuiAutocomplete)({
     top: 0,
     bottom: 0,
     padding: "1.7px",
-    backgroundColor: "red",
+    // backgroundColor: "red",
     "& .MuiSvgIcon-root": {
       margin: "3px",
     },

@@ -11,7 +11,7 @@ import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg
 
 const options = ["Option 1", "Option 2"];
 
-export default function CustomAutocomplete({ defaultValue }) {
+export function CustomAutocomplete({ defaultValue }) {
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
 

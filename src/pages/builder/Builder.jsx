@@ -4,11 +4,11 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
-import { Content } from "../../organisms/builder/content/Content";
-import { Components } from "../../organisms/builder/components/Components";
+import { Content } from "../../organisms/builderContent/Content";
+import { Components } from "../../organisms/builderComponents/Components";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveComponent, setActiveMenu } from "./builderSlice";
-import { Templates } from "../../organisms/builder/templates/Templates";
+import { Templates } from "../../organisms/builderTemplates/Templates";
 
 export default function Builder() {
   const buttonContent = (
