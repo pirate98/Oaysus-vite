@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import navigationReducer from "../pages/navigation/navigationSlice";
+import navigationReducer from "../pages/organisms/navigation/navigationSlice";
 import builderReducer from "../pages/builder/builderSlice";
 
 export const store = configureStore({

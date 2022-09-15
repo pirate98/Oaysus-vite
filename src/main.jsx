@@ -22,7 +22,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { NavigationMenu } from "@shopify/app-bridge-react";
 
-import { PolarisProvider } from "./components";
+import { PolarisProvider } from "./services/providers";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

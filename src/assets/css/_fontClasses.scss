@@ -1,0 +1,44 @@
+@import "variables";
+
+.textGreen {
+  color: $shopifyGreen;
+}
+
+.defaultFont {
+  font-family: $fontFamily;
+}
+
+.h1 {
+  @extend .defaultFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #1f2123;
+}
+
+.h2 {
+  @extend .defaultFont;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.h3 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.h4 {
+  @extend .defaultFont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+}

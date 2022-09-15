@@ -2,10 +2,10 @@ import { Provider } from "react-redux";
 
 import { store } from "./data/store";
 import Routes from "./Routes";
-import { AppBridgeProvider, QueryProvider } from "./components";
-import "./css/app.scss";
+import { AppBridgeProvider, QueryProvider } from "./services/providers";
+import "./assets/css/app.scss";
 import Upsells from "./pages/upsells/Upsells";
-import Navigation from "./pages/navigation/Navigation";
+import Navigation from "./pages/organisms/navigation/Navigation";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
