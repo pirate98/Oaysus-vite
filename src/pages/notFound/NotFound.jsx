@@ -1,5 +1,5 @@
 import { Card, EmptyState, Page } from "@shopify/polaris";
-import { notFoundImage } from "../assets/svg";
+import { notFoundImage } from "../../assets/svg";
 
 export default function NotFound() {
   return (

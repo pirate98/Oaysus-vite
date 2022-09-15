@@ -6,7 +6,7 @@ import * as componentMenus from "../../../molecules/builder";
 import {
   setActiveComponent,
   setHoveredComponent,
-} from "../../../pages/builderSlice";
+} from "../../../pages/builder/builderSlice";
 import { Card } from "../../../molecules/builder/card/Card";
 import constants from "../../../data/constants";
 import { EditBox } from "../../../molecules/builder/editBox/EditBox";
