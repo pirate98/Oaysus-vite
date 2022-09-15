@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import navigationReducer from "../organisms/navigation/navigationSlice";
-import builderReducer from "../pages/builder/builderSlice";
+import builderReducer from "../pages/builderSlice";
 
 export const store = configureStore({
   reducer: {
