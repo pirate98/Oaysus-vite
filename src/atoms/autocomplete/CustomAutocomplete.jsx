@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Box } from "@mui/material";
 
-import { ReactComponent as SelectIcon } from "../../assets/svg/select-list-btn.svg";
+import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
 
 const options = ["Option 1", "Option 2"];
 

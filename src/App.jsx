@@ -5,7 +5,7 @@ import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./services/providers";
 import "./assets/css/app.scss";
 import Upsells from "./pages/upsells/Upsells";
-import Navigation from "./pages/organisms/navigation/Navigation";
+import Navigation from "./organisms/navigation/Navigation";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route

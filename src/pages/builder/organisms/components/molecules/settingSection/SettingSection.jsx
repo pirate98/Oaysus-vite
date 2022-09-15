@@ -1,5 +1,5 @@
 import classes from "./SettingSection.module.scss";
-import { ReactComponent as ArrowUp } from "../../../../../../assets/svg/arrow-up.svg";
+import { ReactComponent as ArrowUp } from "../../../../../../assets/svg/arrowUp.svg";
 
 export function SettingSection({ title, children }) {
   return (

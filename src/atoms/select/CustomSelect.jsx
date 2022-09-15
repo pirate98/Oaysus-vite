@@ -63,13 +63,13 @@ const StyledButton = styled("button")(
 
   &.${selectUnstyledClasses.expanded} {
     &::after {
-      content: url("/svg/select-list-btn.svg");
+      content: url("/svg/selectListBtn.svg");
       margin-left: 1.5rem;
     }
   }
 
   &::after {
-    content: url("/svg/select-list-btn.svg");
+    content: url("/svg/selectListBtn.svg");
     float: right;
     margin-left: 1.5rem;
   }

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 
 import classes from "./EditBox.module.scss";
-import { ReactComponent as EditIcon } from "../../../../../../assets/svg/edit-icon.svg";
+import { ReactComponent as EditIcon } from "../../../../../../assets/svg/editIcon.svg";
 
 export function EditBox({ title, subTitle = "Editing" }) {
   const {

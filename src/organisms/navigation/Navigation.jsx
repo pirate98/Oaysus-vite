@@ -4,7 +4,7 @@ import { Image, Button, Icon } from "@shopify/polaris";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { logo, upsells, performance, svgSettings } from "../../../assets/svg";
+import { logo, upsells, performance, svgSettings } from "../../assets/svg";
 import classes from "./Navigation.module.scss";
 
 const Navigation = () => {
