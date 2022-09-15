@@ -1,8 +1,8 @@
-import { Badge } from "../../components";
+import { Badge } from "../../../components";
 import styles from "./Header.module.scss";
-import svgSearch from "../../assets/svg/search.svg";
-import { CustomSelect, StyledOption } from "../../components";
-import { AddButton } from "../../components";
+import svgSearch from "../../../assets/svg/search.svg";
+import { CustomSelect, StyledOption } from "../../../components";
+import { AddButton } from "../../../components";
 
 export function Header() {
   return (

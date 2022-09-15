@@ -4,7 +4,7 @@ import { store } from "./app/store";
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./components";
 import "./css/app.scss";
-import Upsells from "./pages/upsells";
+import Upsells from "./pages/upsells/Upsells";
 import Navigation from "./pages/navigation/Navigation";
 
 export default function App() {

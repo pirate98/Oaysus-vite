@@ -1,12 +1,12 @@
 import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
-import * as builderComponents from "../../components/builder";
-import * as componentMenus from "./componentMenus";
-import { setActiveComponent, setHoveredComponent } from "./builderSlice";
-import { Card } from "./Card";
-import constants from "../../app/constants";
-import { EditBox } from "./componentMenus/EditBox";
+import * as builderComponents from "../../../components/builder";
+import * as componentMenus from "./molecules";
+import { setActiveComponent, setHoveredComponent } from "../builderSlice";
+import { Card } from "./molecules/Card";
+import constants from "../../../app/constants";
+import { EditBox } from "./molecules/EditBox";
 
 export function Components() {
   const dispatch = useDispatch();

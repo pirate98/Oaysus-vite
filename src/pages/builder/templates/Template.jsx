@@ -1,6 +1,6 @@
 import classes from "./Templates.module.scss";
-import { Badge } from "../../components";
-import constants from "../../app/constants";
+import { Badge } from "../../../components";
+import constants from "../../../app/constants";
 
 export function Template({
   image = "/image/empty-image.svg",

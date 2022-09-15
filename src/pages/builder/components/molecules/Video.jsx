@@ -1,6 +1,6 @@
-import { Margin, Style } from "../../../components/settings";
-import { SettingBox } from "../../../components/settings/SettingBox";
-import { SettingSection } from "../../../components/settings/SettingSection";
+import { Margin, Style } from "../../../../components/settings";
+import { SettingBox } from "../../../../components/settings/SettingBox";
+import { SettingSection } from "../../../../components/settings/SettingSection";
 
 export function Video() {
   return (

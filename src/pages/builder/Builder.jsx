@@ -2,13 +2,13 @@ import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import classes from "./builder/Builder.module.scss";
-import { usePageButtons } from "../hooks";
-import { Content } from "./builder/Content";
-import { Components } from "./builder/Components";
+import classes from "./Builder.module.scss";
+import { usePageButtons } from "../../hooks";
+import { Content } from "./content/Content";
+import { Components } from "./components/Components";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveComponent, setActiveMenu } from "./builder/builderSlice";
-import { Templates } from "./builder/Templates";
+import { setActiveComponent, setActiveMenu } from "./builderSlice";
+import { Templates } from "./templates/Templates";
 
 export default function Builder() {
   const buttonContent = (

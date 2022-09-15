@@ -2,9 +2,9 @@ import { Icon, Text, Page, Layout, Grid, Button } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
 import { TitleBar } from "@shopify/app-bridge-react";
 
-import { ProductCard, PlainCard } from "../components";
-import { Header } from "./upsells/Header";
-import classes from "./upsells/Upsells.module.scss";
+import { ProductCard, PlainCard } from "../../components";
+import { Header } from "./header/Header";
+import classes from "./Upsells.module.scss";
 
 export default function Upsells() {
   return (
