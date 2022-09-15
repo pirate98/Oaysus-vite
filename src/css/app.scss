@@ -8,3 +8,15 @@
 body {
   @extend .defaultFont;
 }
+
+// for autocomplete popper
+.MuiPopper-root.MuiAutocomplete-popper,
+.MuiAutocomplete-popper {
+  * {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+}

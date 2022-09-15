@@ -5,7 +5,7 @@ import * as builderComponents from "../../../components/builder";
 import * as componentMenus from "./molecules";
 import { setActiveComponent, setHoveredComponent } from "../builderSlice";
 import { Card } from "./molecules/Card";
-import constants from "../../../app/constants";
+import constants from "../../../data/constants";
 import { EditBox } from "./molecules/EditBox";
 
 export function Components() {

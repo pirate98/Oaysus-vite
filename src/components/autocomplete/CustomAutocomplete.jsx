@@ -13,7 +13,7 @@ export default function CustomAutocomplete({ defaultValue }) {
   const [inputValue, setInputValue] = React.useState("");
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{}}>
       {/* <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
       <div>{`inputValue: '${inputValue}'`}</div>
       <br /> */}
@@ -31,7 +31,8 @@ export default function CustomAutocomplete({ defaultValue }) {
         id="controllable-states-demo"
         options={options}
         sx={{
-          flexGrow: 1,
+          width: "190px",
+          // flexGrow: 1,
           // border: "1px solid rgba(186, 191, 195, 1)",
           boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
           borderRadius: "4px",
@@ -41,17 +42,17 @@ export default function CustomAutocomplete({ defaultValue }) {
             },
           },
           svg: {
-            margin: "5px",
+            margin: "6px",
           },
           "& .MuiAutocomplete-endAdornment": {
             top: 0,
-            padding: "2px 0",
+            // padding: "2px 0",
             "& .MuiSvgIcon-root": {
-              margin: "3px",
+              margin: "1px",
             },
           },
           "button.MuiAutocomplete-popupIndicator": {
-            margin: "5px 0",
+            margin: "4.5px 0",
           },
         }}
         renderInput={(params) => (
@@ -61,10 +62,11 @@ export default function CustomAutocomplete({ defaultValue }) {
             placeholder={defaultValue}
             sx={{
               "& .MuiInputBase-input.MuiOutlinedInput-input": {
-                padding: "6.5px 4px 6.5px 6px",
+                padding: "6.5px 4px 6.5px 12px",
+                fontSize: "14px",
               },
               "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "green",
+                borderColor: "green !important",
               },
             }}
           />

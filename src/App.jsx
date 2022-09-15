@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 
-import { store } from "./app/store";
+import { store } from "./data/store";
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./components";
 import "./css/app.scss";
