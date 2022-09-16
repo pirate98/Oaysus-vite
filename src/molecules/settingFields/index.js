@@ -4,3 +4,4 @@ export * from "./Style";
 export * from "./VideoURL";
 export * from "./Visibility";
 export * from "./CountDown";
+export * from "./Background";

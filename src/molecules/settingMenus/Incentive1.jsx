@@ -5,6 +5,7 @@ import {
   Visibility,
   VideoURL,
   CountDown,
+  Background,
 } from "../settingFields";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
@@ -28,7 +29,9 @@ export function Incentive1() {
         <CountDown />
         <Visibility />
       </SettingSection>
-      <SettingSection title={"Background"}></SettingSection>
+      <SettingSection title={"Background"}>
+        <Background />
+      </SettingSection>
       <SettingSection title={"Layout & Spacing"}>
         <Margin />
         <Padding />

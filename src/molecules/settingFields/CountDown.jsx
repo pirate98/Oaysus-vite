@@ -1,4 +1,4 @@
-import { Input, SettingFieldContainer } from "../../atoms";
+import { MinInput, SettingFieldContainer } from "../../atoms";
 import classes from "./.module.scss";
 
 export function CountDown() {
@@ -6,7 +6,7 @@ export function CountDown() {
     <SettingFieldContainer title={""}>
       <div className={classes.singleAttribute}>
         <p>Duration</p>
-        <Input />
+        <MinInput />
       </div>
     </SettingFieldContainer>
   );
