@@ -18,9 +18,11 @@ export const ButtonGroup = styled((props) => (
         key={idx}
         sx={{
           color: "black",
-          borderColor: " #BABFC3",
+          borderColor: "#BABFC3",
           "&:hover": {
-            borderRightColor: "green !important",
+            borderRightColor:
+              idx === props.buttons.length - 1 ? "inherit" : "white !important",
+            borderColor: "#BABFC3",
           },
         }}
       >
@@ -31,4 +33,5 @@ export const ButtonGroup = styled((props) => (
 ))({
   width: inputWidth,
   border: "none",
+  boxShadow: "none",
 });

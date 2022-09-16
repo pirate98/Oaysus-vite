@@ -2,7 +2,7 @@ import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 
 export const PlainButton = styled((props) => (
-  <Button {...props} variant="outlined" />
+  <Button variant="outlined" {...props} />
 ))({
   height: "36px",
   boxShadow: "none",

@@ -3,6 +3,7 @@ export * from "./badge/Badge";
 export * from "./select/CustomSelect";
 export * from "./button/AddButton";
 export * from "./button/PlainButton";
+export * from "./button/CleanButton";
 export * from "./buttonGroup/ButtonGroup";
 export * from "./cards/ProductCard";
 export * from "./cards/PlainCard";

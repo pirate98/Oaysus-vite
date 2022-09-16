@@ -23,7 +23,7 @@ export default function Builder() {
   const dispatch = useDispatch();
 
   const {
-    builder: { activeMenu },
+    builder: { activeMenu, activeComponent },
   } = useSelector((state) => state);
 
   const leftMenu = [{ title: "Templates" }, { title: "Components" }];
@@ -31,21 +31,23 @@ export default function Builder() {
   return (
     <DndProvider backend={HTML5Backend}>
       <section className={classes.leftSection}>
-        <div className={classes.leftMenu}>
-          {leftMenu.map((menu, idx) => (
-            <div
-              key={`left-menu-${idx}`}
-              onClick={() => {
-                dispatch(setActiveMenu(idx));
-                dispatch(setActiveComponent(undefined));
-              }}
-              className={activeMenu === idx ? classes.divActive : ""}
-            >
-              <p>{menu.title}</p>
-              <span></span>
-            </div>
-          ))}
-        </div>
+        {!activeComponent && (
+          <div className={classes.leftMenu}>
+            {leftMenu.map((menu, idx) => (
+              <div
+                key={`left-menu-${idx}`}
+                onClick={() => {
+                  dispatch(setActiveMenu(idx));
+                  dispatch(setActiveComponent(undefined));
+                }}
+                className={activeMenu === idx ? classes.divActive : ""}
+              >
+                <p>{menu.title}</p>
+                <span></span>
+              </div>
+            ))}
+          </div>
+        )}
         {activeMenu === 0 ? <Templates /> : <Components />}
       </section>
       <main className={classes.main}>
