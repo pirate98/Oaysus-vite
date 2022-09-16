@@ -4,3 +4,15 @@ $leftMenuWidth: 320px;
 $fontFamily: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
   "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol";
+
+$inputWidth: 190px;
+$inputPadding: 7.5px 4px 7.5px 12px;
+$inputFontSize: 14px;
+$inputBorderFocused: green;
+
+:export {
+  inputWidth: $inputWidth;
+  inputPadding: $inputPadding;
+  inputFontSize: $inputFontSize;
+  inputBorderFocused: $inputBorderFocused;
+}

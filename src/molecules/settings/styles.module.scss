@@ -1,3 +1,5 @@
+@import "../../assets/css/classes", "../../assets/css/variables.module";
+
 .title {
   color: rgba(130, 130, 130, 1);
   font-size: 12px;
@@ -25,5 +27,46 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+  }
+}
+
+.px {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #828282;
+}
+
+.inputContainer {
+  @extend .border1;
+  padding: $inputPadding;
+  padding-right: 14px;
+  width: $inputWidth;
+  display: flex;
+  position: relative;
+
+  .input {
+    border: none;
+    outline: none;
+    background: inherit;
+    margin-left: 35px;
+    overflow: auto;
+  }
+
+  .colorPicker {
+    background-color: red;
+    width: 35px;
+    border-radius: 4px 0 0 4px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+  }
+
+  .inputColor {
+    opacity: 0;
+    position: absolute;
+    left: 0;
   }
 }

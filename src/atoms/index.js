@@ -8,3 +8,4 @@ export * from "./cards/PlainCard";
 export * from "./switch/Switch";
 export * from "./actionList/ActionList";
 export * from "./customAutocomplete/CustomAutocomplete";
+export * from "./input/Input";

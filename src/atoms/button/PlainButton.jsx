@@ -23,11 +23,7 @@ export const StyledButton = styled(Button)({
 
 export function PlainButton({ children, color }) {
   return (
-    <StyledButton
-      className={styles.borderStyle}
-      color={color}
-      variant="contained"
-    >
+    <StyledButton className={styles.border1} color={color} variant="contained">
       {children}
     </StyledButton>
   );
