@@ -5,3 +5,6 @@ export { default as upsells } from "./upsells.svg";
 export { default as performance } from "./performance.svg";
 // export { default as emptyImage } from "./empty-image.svg";
 export { default as svgSettings } from "./settings.svg";
+export { default as fontStyleBold } from "./fontStyleBold.svg";
+export { default as fontStyleItalic } from "./fontStyleItalic.svg";
+export { default as fontStyleUnderline } from "./fontStyleUnderline.svg";
