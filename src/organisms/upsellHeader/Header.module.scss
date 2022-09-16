@@ -1,0 +1,43 @@
+@import "../../assets/css/type", "../../assets/css/classes";
+
+.infoContainer {
+  display: flex;
+  align-items: end;
+}
+
+.badgeContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.searchContainer {
+  @extend .borderStyle;
+
+  display: flex;
+  gap: 0.5rem;
+
+  height: 36px;
+  width: 520px;
+  left: 310px;
+  top: 95px;
+
+  margin-right: 1rem;
+  background: white;
+}
+
+.input {
+  border: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  flex-grow: 1;
+  text-align: end;
+}
