@@ -3,9 +3,9 @@ import classes from "./.module.scss";
 
 export function VideoURL() {
   return (
-    <SettingFieldContainer title={"Video URL"}>
+    <SettingFieldContainer title={""}>
       <p className={classes.p}>YouTube URL</p>
-      <Input />
+      <Input fullWidth />
     </SettingFieldContainer>
   );
 }

@@ -5,6 +5,7 @@ import { inputWidth } from "../../assets/css/_variables.module.scss";
 
 export const Autocomplete = styled(MuiAutocomplete)({
   width: inputWidth,
+  background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
   borderRadius: "4px",
   "&.MuiAutocomplete-root": {

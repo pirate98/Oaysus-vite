@@ -34,6 +34,7 @@
 
 .offer {
   @extend .border1;
+  border: none !important;
   background: rgba(0, 128, 96, 1);
   border-color: rgba(0, 128, 96, 1);
   height: 104px;

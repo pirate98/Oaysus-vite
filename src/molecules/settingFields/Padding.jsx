@@ -1,5 +1,5 @@
 import classes from "./.module.scss";
-import { Distances } from "../settingFieldMolecules/Distances";
+import { Distances } from "../settingField/Distances";
 import { SettingFieldContainer } from "../../atoms";
 
 export function Padding() {
