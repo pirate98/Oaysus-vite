@@ -1,6 +1,6 @@
 $shopifyGreen: rgba(0, 128, 96, 1);
 $navHeight: 56px;
-$leftMenuWidth: 320px;
+$leftMenuWidth: 340px;
 $fontFamily: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
   "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol";
@@ -8,7 +8,7 @@ $fontFamily: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
 $inputWidth: 190px;
 $inputPadding: 7.5px 4px 7.5px 12px;
 $inputFontSize: 14px;
-$inputBorderFocused: green;
+$inputBorderFocused: $shopifyGreen;
 
 :export {
   inputWidth: $inputWidth;

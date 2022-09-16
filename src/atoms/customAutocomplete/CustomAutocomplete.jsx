@@ -44,7 +44,7 @@ export function CustomAutocomplete({ placeholder }) {
               fontSize: inputFontSize,
             },
             "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: inputBorderFocused,
+              borderColor: `${inputBorderFocused} !important`,
             },
           }}
         />

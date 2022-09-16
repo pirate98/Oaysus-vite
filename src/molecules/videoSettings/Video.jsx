@@ -1,4 +1,4 @@
-import { Margin, Style } from "../settings";
+import { Margin, Style, Padding } from "../settings";
 import { SettingSectionContainer } from "../settingSectionContainer/SettingSectionContainer";
 import { SettingSection } from "../settingSection/SettingSection";
 
@@ -8,6 +8,7 @@ export function Video() {
       <SettingSection title={"Title text"}>
         <Style />
         <Margin />
+        <Padding />
       </SettingSection>
       <SettingSection title={"Video URL"}></SettingSection>
     </SettingSectionContainer>

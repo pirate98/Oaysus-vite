@@ -21,21 +21,6 @@
   > * {
     margin-bottom: 12px;
   }
-
-  .singleAttribute {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-}
-
-.px {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  color: #828282;
 }
 
 .inputContainer {
@@ -52,6 +37,7 @@
     background: inherit;
     margin-left: 35px;
     overflow: auto;
+    padding: 1.5px 2px;
   }
 
   .colorPicker {
@@ -62,6 +48,8 @@
     left: -1px;
     top: -1px;
     bottom: -1px;
+    cursor: pointer;
+    z-index: 1;
   }
 
   .inputColor {
