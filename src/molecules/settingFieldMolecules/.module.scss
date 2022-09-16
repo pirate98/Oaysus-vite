@@ -1,0 +1,27 @@
+.singleAttribute {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.doubleAttribute {
+  @extend .singleAttribute;
+  justify-content: start;
+  gap: 12px;
+
+  > * {
+    // flex-grow: 1;
+    width: 50%;
+  }
+}
+
+.innerDoubleAttribute {
+  @extend .singleAttribute;
+  gap: 0;
+
+  .p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

@@ -1,7 +1,7 @@
 @import "../../assets/css/type", "../../assets/css/classes";
 
 .ul {
-  @extend .borderStyle;
+  @extend .border1;
 
   margin: 0;
   border-radius: 8px !important;

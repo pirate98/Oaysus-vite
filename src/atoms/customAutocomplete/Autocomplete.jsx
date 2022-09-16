@@ -1,9 +1,10 @@
 import { default as MuiAutocomplete } from "@mui/material/Autocomplete";
 import { styled } from "@mui/system";
 
+import { inputWidth } from "../../assets/css/_variables.module.scss";
+
 export const Autocomplete = styled(MuiAutocomplete)({
-  flexGrow: 1,
-  // border: "1px solid rgba(186, 191, 195, 1)",
+  width: inputWidth,
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
   borderRadius: "4px",
   "&.MuiAutocomplete-root": {
@@ -17,16 +18,19 @@ export const Autocomplete = styled(MuiAutocomplete)({
   "& .MuiAutocomplete-endAdornment": {
     top: 0,
     bottom: 0,
-    padding: "1.7px",
-    // backgroundColor: "red",
+    padding: "0",
+    display: "flex",
+    alignItems: "center",
     "& .MuiSvgIcon-root": {
       margin: "3px",
     },
-    // button: {
-    //   margin: "4px 0",
-    // },
+    ".MuiAutocomplete-clearIndicator": {
+      margin: "2px",
+      padding: "0px",
+    },
   },
   "button.MuiAutocomplete-popupIndicator": {
-    margin: "5px 0",
+    margin: "3px 0",
+    padding: "3px",
   },
 });

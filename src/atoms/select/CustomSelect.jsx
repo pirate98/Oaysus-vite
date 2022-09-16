@@ -150,7 +150,7 @@ export const CustomSelect = forwardRef(function CustomSelect(props, ref) {
       {...props}
       ref={ref}
       components={components}
-      className={styles.borderStyle}
+      className={styles.border1}
     />
   );
 });

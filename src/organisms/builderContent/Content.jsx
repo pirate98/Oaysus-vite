@@ -10,6 +10,7 @@ import {
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./Content.module.scss";
+import builderClasses from "../../pages/builder/Builder.module.scss";
 
 export function Content() {
   return (
@@ -146,7 +147,7 @@ export function Content() {
           </Grid>
         </Grid>
       </section>
-      <div className={classes.callToAction + " " + classes.headline}>
+      <div className={classes.callToAction + " " + builderClasses.headline}>
         Buy This T-Shirt Right Now{" "}
         <span className={classes.textGreen}>&nbsp;for $20.00</span>
         <Box sx={{ width: "208px", marginLeft: "30px" }}>

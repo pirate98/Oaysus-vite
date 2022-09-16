@@ -1,12 +1,8 @@
-@import "./variables";
+@import "variables.module";
 
 :root {
   --p-interactive: black !important;
   --p-interactive-hovered: black !important;
-}
-
-body {
-  @extend .defaultFont;
 }
 
 // for autocomplete popper
