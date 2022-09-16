@@ -1,11 +1,14 @@
-import { CustomAutocomplete, PxInput } from "../../atoms";
+import {
+  CustomAutocomplete,
+  PxInput,
+  SettingFieldContainer,
+} from "../../atoms";
 import classes from "./.module.scss";
-import fieldClasses from "../settingFields/.module.scss";
+import fieldClasses from "../settingFieldMolecules/.module.scss";
 
 export function Style() {
   return (
-    <div className={classes.container}>
-      <p className={classes.title}>STYLE</p>
+    <SettingFieldContainer title={"STYLE"}>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Family</p>
         <CustomAutocomplete placeholder="Choose a font" />
@@ -28,6 +31,6 @@ export function Style() {
           <input id="input-color" type="color" className={classes.inputColor} />
         </div>
       </div>
-    </div>
+    </SettingFieldContainer>
   );
 }

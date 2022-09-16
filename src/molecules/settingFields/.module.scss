@@ -1,27 +1,42 @@
-.singleAttribute {
+@import "../../assets/css/classes", "../../assets/css/variables.module";
+
+.inputContainer {
+  @extend .border1;
+  padding: $inputPadding;
+  padding-right: 14px;
+  width: $inputWidth;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
+  position: relative;
 
-.doubleAttribute {
-  @extend .singleAttribute;
-  justify-content: start;
-  gap: 12px;
+  .input {
+    border: none;
+    outline: none;
+    background: inherit;
+    margin-left: 35px;
+    overflow: auto;
+    padding: 1.5px 2px;
+  }
 
-  > * {
-    // flex-grow: 1;
-    width: 50%;
+  .colorPicker {
+    background-color: red;
+    width: 35px;
+    border-radius: 4px 0 0 4px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .inputColor {
+    opacity: 0;
+    position: absolute;
+    left: 0;
   }
 }
 
-.innerDoubleAttribute {
-  @extend .singleAttribute;
-  gap: 0;
-
-  .p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+.flexRow {
+  display: flex;
+  gap: 7px;
 }

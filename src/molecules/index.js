@@ -1,1 +1,1 @@
-export * from "./videoSettings/Video";
+export * from "./settingMenus/Video";

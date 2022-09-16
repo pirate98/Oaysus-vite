@@ -1,4 +1,5 @@
 $shopifyGreen: rgba(0, 128, 96, 1);
+$disabledColor: rgb(224 224 224);
 $navHeight: 56px;
 $leftMenuWidth: 340px;
 $fontFamily: "SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto,
@@ -15,4 +16,6 @@ $inputBorderFocused: $shopifyGreen;
   inputPadding: $inputPadding;
   inputFontSize: $inputFontSize;
   inputBorderFocused: $inputBorderFocused;
+  disabledColor: $disabledColor;
+  shopifyGreen: $shopifyGreen;
 }
