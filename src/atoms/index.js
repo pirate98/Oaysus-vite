@@ -17,3 +17,4 @@ export * from "./inputs/PxInput";
 export * from "./settingSection/SettingFieldContainer";
 export * from "./settingSection/SettingSection";
 export * from "./settingSection/SettingSectionContainer";
+export * from "./slider/Slider";

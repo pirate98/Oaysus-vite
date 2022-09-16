@@ -1,4 +1,5 @@
-@import "../settingFields/.module.scss";
+@import "../settingFields/.module.scss", "../../assets/css/variables.module",
+  "../../assets/css/classes.module";
 
 .doubleAttribute {
   @extend .singleAttribute;
@@ -55,5 +56,25 @@
     opacity: 0;
     position: absolute;
     left: 0;
+  }
+}
+
+.sliderBox {
+  @extend .border1;
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $inputWidth;
+  background-color: white;
+  height: 36px;
+
+  span {
+    display: flex;
+    gap: 2px;
+  }
+
+  .pGray {
+    color: rgba(130, 130, 130, 1);
   }
 }

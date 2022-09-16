@@ -1,6 +1,6 @@
 import classes from "./.module.scss";
-import { ButtonGroup, PlainButton, SettingFieldContainer } from "../../atoms";
-import { ColorSelector } from "../settingField/ColorSelector";
+import { ButtonGroup, SettingFieldContainer } from "../../atoms";
+import { ColorSelector, ImageUpload } from "../settingField";
 
 export function Background() {
   const buttons = [
@@ -12,15 +12,7 @@ export function Background() {
   return (
     <SettingFieldContainer title={""}>
       <ColorSelector title={"Color"} />
-      <div className={classes.singleAttribute}>
-        <p>Image</p>
-        <div className={classes.setting}>
-          <div className={classes.imagePreview}></div>
-          <PlainButton fullWidth color="success">
-            Upload Image
-          </PlainButton>
-        </div>
-      </div>
+      <ImageUpload />
       <div className={classes.singleAttribute}>
         <p>Position</p>
         <ButtonGroup buttons={buttons} />
