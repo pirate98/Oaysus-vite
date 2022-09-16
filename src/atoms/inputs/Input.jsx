@@ -8,8 +8,17 @@ import {
   inputBorderFocused,
 } from "../../assets/css/_variables.module.scss";
 
-export const Input = styled(MuiInput)({
-  width: inputWidth,
+export const Input = styled((props) => {
+  return (
+    <MuiInput
+      {...props}
+      sx={{
+        width: props.fullWidth ? "100%" : inputWidth,
+      }}
+    />
+  );
+})({
+  background: "white",
   input: {
     padding: inputPadding,
     fontSize: inputFontSize,

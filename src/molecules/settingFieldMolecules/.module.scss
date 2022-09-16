@@ -1,9 +1,4 @@
-.singleAttribute {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
+@import "../settingFields/.module.scss";
 
 .doubleAttribute {
   @extend .singleAttribute;

@@ -1,11 +1,13 @@
 import { Input, SettingFieldContainer } from "../../atoms";
 import classes from "./.module.scss";
 
-export function VideoURL() {
+export function CountDown() {
   return (
     <SettingFieldContainer title={""}>
-      <p className={classes.p}>YouTube URL</p>
-      <Input fullWidth />
+      <div className={classes.singleAttribute}>
+        <p>Duration</p>
+        <Input />
+      </div>
     </SettingFieldContainer>
   );
 }

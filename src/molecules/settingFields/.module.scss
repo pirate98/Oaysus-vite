@@ -1,7 +1,15 @@
 @import "../../assets/css/classes", "../../assets/css/variables.module";
 
+.singleAttribute {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .inputContainer {
   @extend .border1;
+  background: white;
   padding: $inputPadding;
   padding-right: 14px;
   width: $inputWidth;
