@@ -5,3 +5,4 @@ export * from "./Slider";
 export * from "./Position";
 export * from "./ButtonGroupTemplate";
 export * from "./FontStyles";
+export * from "./Alignment";

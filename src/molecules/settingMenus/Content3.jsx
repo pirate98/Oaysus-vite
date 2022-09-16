@@ -1,23 +1,31 @@
-import { Margin, Style, Padding, Background } from "../settingFields";
+import { Margin, Style, Padding, Background, Border } from "../settingFields";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Position } from "../settingField";
+import { Position, Slider } from "../settingField";
 
-export function Content1() {
+export function Content3() {
   return (
     <SettingSectionContainer>
       <SettingSection title={"Title text"}>
-        <Style weight />
+        <Style weight alignment />
         <Margin />
         <Padding />
       </SettingSection>
       <SettingSection title={"Description"}>
-        <Style styling />
+        <Style styling alignment />
         <Margin />
         <Padding />
       </SettingSection>
-      <SettingSection title={"Background"}>
-        <Position />
+      <SettingSection title={"Buy Button"}>
+        <Style weight background />
+        <Margin />
+        <Padding />
+      </SettingSection>
+      <SettingSection title={"Size"}>
+        <Slider title={"Width"} />
+      </SettingSection>
+      <SettingSection title={"Border"}>
+        <Border />
       </SettingSection>
       <SettingSection title={"Layout & Spacing"}>
         <Margin />

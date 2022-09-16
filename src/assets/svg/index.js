@@ -8,3 +8,6 @@ export { default as svgSettings } from "./settings.svg";
 export { default as fontStyleBold } from "./fontStyleBold.svg";
 export { default as fontStyleItalic } from "./fontStyleItalic.svg";
 export { default as fontStyleUnderline } from "./fontStyleUnderline.svg";
+export { default as alignCenter } from "./alignCenter.svg";
+export { default as alignLeft } from "./alignLeft.svg";
+export { default as alignRight } from "./alignRight.svg";
