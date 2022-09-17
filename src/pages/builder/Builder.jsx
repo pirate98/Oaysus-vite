@@ -4,7 +4,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
-import { Content } from "../../organisms/builderContent/Content";
+import { Page } from "../../organisms/builderPage/Page";
 import { Components } from "../../organisms/builderComponents/Components";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveComponent, setActiveMenu } from "./builderSlice";
@@ -52,22 +52,7 @@ export default function Builder() {
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
-          <div className={classes.titleContainer}>
-            <p className={classes.headlineWhite}>
-              Add a Test T-shirt to your order
-            </p>
-            <p className={classes.h2}>Exclusive offer expires in: 05:05</p>
-          </div>
-          <div
-            className={classes.imageZone}
-            style={{
-              backgroundImage: false
-                ? false
-                : 'url("/image/empty-image-dark.svg")',
-              backgroundSize: false ? "cover" : "unset",
-            }}
-          ></div>
-          <Content />
+          <Page />
         </section>
       </main>
     </DndProvider>

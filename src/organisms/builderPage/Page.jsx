@@ -9,12 +9,30 @@ import {
 } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
-import classes from "./Content.module.scss";
-import builderClasses from "../../pages/builder/Builder.module.scss";
+import classes from "./Page.module.scss";
 
-export function Content() {
+const mockData = [
+  {
+    incentive: {},
+  },
+];
+
+export function Page() {
   return (
     <>
+      <div className={classes.titleContainer}>
+        <p className={classes.headlineWhite}>
+          Add a Test T-shirt to your order
+        </p>
+        <p className={classes.h2}>Exclusive offer expires in: 05:05</p>
+      </div>
+      <div
+        className={classes.imageZone}
+        style={{
+          backgroundImage: false ? false : 'url("/image/empty-image-dark.svg")',
+          backgroundSize: false ? "cover" : "unset",
+        }}
+      ></div>
       <section className={classes.buyBox}>
         <Grid container spacing={5} columnSpacing={4}>
           <Grid item xs={6}>
@@ -147,7 +165,7 @@ export function Content() {
           </Grid>
         </Grid>
       </section>
-      <div className={classes.callToAction + " " + builderClasses.headline}>
+      <div className={classes.callToAction + " " + classes.headline}>
         Buy This T-Shirt Right Now{" "}
         <span className={classes.textGreen}>&nbsp;for $20.00</span>
         <Box sx={{ width: "208px", marginLeft: "30px" }}>
