@@ -8,12 +8,12 @@ export function SettingSection({ title, children }) {
 
   return (
     <section className={classes.section}>
-      <div className={classes.header}>
-        <p className={classes.title}>{title}</p>
-        <CleanButton>
-          <ArrowUp onClick={() => setSectionOpen(!sectionOpen)} />
-        </CleanButton>
-      </div>
+      <CleanButton onClick={() => setSectionOpen(!sectionOpen)}>
+        <div className={classes.header}>
+          <p className={classes.title}>{title}</p>
+          <ArrowUp />
+        </div>
+      </CleanButton>
       {sectionOpen ? children : ""}
     </section>
   );
