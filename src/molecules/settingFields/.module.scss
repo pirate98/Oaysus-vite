@@ -30,3 +30,13 @@
     border-radius: 2px;
   }
 }
+
+.layout {
+  justify-content: space-around;
+  align-content: center;
+  display: flex;
+
+  p {
+    text-align: center;
+  }
+}

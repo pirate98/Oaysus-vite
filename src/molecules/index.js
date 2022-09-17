@@ -5,4 +5,5 @@ export * from "./settingMenus/Banner";
 export * from "./settingMenus/Content1";
 export * from "./settingMenus/Content2";
 export * from "./settingMenus/Content3";
+export * from "./settingMenus/Product";
 export * from "./settingMenus/CallToAction";
