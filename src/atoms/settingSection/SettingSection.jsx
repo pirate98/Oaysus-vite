@@ -8,7 +8,7 @@ export function SettingSection({ title, children }) {
 
   return (
     <section className={classes.section}>
-      <CleanButton onClick={() => setSectionOpen(!sectionOpen)}>
+      <CleanButton fullWidth onClick={() => setSectionOpen(!sectionOpen)}>
         <div className={classes.header}>
           <p className={classes.title}>{title}</p>
           <ArrowUp />
