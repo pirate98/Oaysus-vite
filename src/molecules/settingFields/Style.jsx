@@ -3,9 +3,13 @@ import {
   PxInput,
   SettingFieldContainer,
 } from "../../atoms";
-import classes from "./.module.scss";
 import fieldClasses from "../settingField/.module.scss";
-import { ColorSelector, FontStyles, Alignment } from "../settingField";
+import {
+  ColorSelector,
+  FontStyles,
+  Alignment,
+  FontFamily,
+} from "../settingField";
 
 export function Style({
   background = false,
@@ -17,10 +21,7 @@ export function Style({
     <SettingFieldContainer title={"STYLE"}>
       {background && <ColorSelector title={"Background"} />}
       {styling && <FontStyles />}
-      <div className={fieldClasses.singleAttribute}>
-        <p>Font Family</p>
-        <CustomAutocomplete placeholder="Choose a font" />
-      </div>
+      <FontFamily />
       {weight && (
         <div className={fieldClasses.singleAttribute}>
           <p>Font Weight</p>

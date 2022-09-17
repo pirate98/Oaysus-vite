@@ -1,10 +1,38 @@
 import { default as MuiAutocomplete } from "@mui/material/Autocomplete";
 import { styled } from "@mui/system";
+import TextField from "@mui/material/TextField";
 
 import { inputWidth } from "../../assets/css/_variables.module.scss";
+import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
+import {
+  inputPadding,
+  inputFontSize,
+  inputBorderFocused,
+} from "../../assets/css/_variables.module.scss";
 
-export const Autocomplete = styled(MuiAutocomplete)({
-  width: inputWidth,
+export const Autocomplete = styled((props) => (
+  <MuiAutocomplete
+    {...props}
+    popupIcon={<SelectIcon />}
+    renderInput={(params) => (
+      <TextField
+        {...params}
+        label=""
+        placeholder={props.placeholder}
+        sx={{
+          "& .MuiInputBase-input.MuiOutlinedInput-input": {
+            padding: inputPadding,
+            fontSize: inputFontSize,
+          },
+          "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: `${inputBorderFocused} !important`,
+          },
+        }}
+      />
+    )}
+  />
+))({
+  "&": { width: inputWidth },
   background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
   borderRadius: "4px",
