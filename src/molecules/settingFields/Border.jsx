@@ -1,9 +1,9 @@
 import { SettingFieldContainer } from "../../atoms";
 import { ColorSelector, Slider } from "../settingField";
 
-export function Border() {
+export function Border({ title = "MARGIN" }) {
   return (
-    <SettingFieldContainer title={"MARGIN"}>
+    <SettingFieldContainer title={title}>
       <Slider title={"Width"} />
       <Slider title={"Radius"} />
       <ColorSelector title={"Color"} />
