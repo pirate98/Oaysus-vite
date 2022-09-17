@@ -17,6 +17,8 @@ export const ButtonGroup = styled((props) => (
         color="success"
         key={idx}
         sx={{
+          flexGrow: 1,
+          background: "white",
           color: "black",
           borderColor: "#BABFC3",
           "&:hover": {

@@ -1,6 +1,7 @@
 @import "../../assets/css/classes.module", "../../assets/css/variables.module";
 
 .singleAttribute {
+  font-family: $fontFamily;
   display: flex;
   align-items: center;
   justify-content: space-between;
