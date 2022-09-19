@@ -42,6 +42,7 @@ export default [
     //   }
     // },
     content1: {
+      imagePositon: "left",
       image: [
         {
           url: "http://127.0.0.1:5173/image/guy_1.jpg",
@@ -73,6 +74,7 @@ export default [
       },
     },
     content2: {
+      imagePositon: "right",
       title: {
         text: "Headline Content 1",
         fontFamily:
