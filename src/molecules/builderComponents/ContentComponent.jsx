@@ -9,7 +9,22 @@ export function ContentComponent({ content }) {
   const userSubTitleStyle = styleFilter(content.subTitle);
 
   const imageSection = (
-    <img className={classes.image1} src={"/image/guy_1.jpg"} />
+    // <img
+    //   className={classes.image1}
+    //   src={
+    //     content.images ? content.images[0].url : "/image/empty-image-dark.svg"
+    //   }
+    // />
+
+    <div
+      className={classes.image1}
+      style={{
+        backgroundImage: content.images
+          ? `url(${content.images[0].url})`
+          : 'url("/image/empty-image-dark.svg")',
+        backgroundSize: content.images ? "cover" : "unset",
+      }}
+    ></div>
   );
 
   const textSection = (
