@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveComponent, setActiveMenu } from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
+import mockPage from "../../mockData/page1";
+
 export default function Builder() {
   const buttonContent = (
     <>
@@ -52,7 +54,7 @@ export default function Builder() {
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
-          <Page pageContent={[]} />
+          <Page pageContent={mockPage} />
         </section>
       </main>
     </DndProvider>
