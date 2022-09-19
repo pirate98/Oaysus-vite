@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { useDrag, useDrop } from "react-dnd";
 
 import classes from "./Card.module.scss";
@@ -22,7 +24,7 @@ export function Card({
     // what type of item this to determine if a drop target accepts it
     type: dragDrop.types.PAGE_COMPONENT,
     // data of the item to be available to the drop methods
-    item: { title: title.text },
+    item: { name: title.text },
     // method to collect additional data for drop handling like whether is currently being dragged
     collect: (monitor) => {
       return {
@@ -31,11 +33,17 @@ export function Card({
     },
   }));
 
+  useEffect(() => {
+    // console.log({ isDragging });
+  }, [isDragging]);
+
   return (
     <div
       ref={drag}
       className={classes.componentCard}
-      style={hover ? hoverStyle : {}}
+      style={
+        isDragging ? { ...hoverStyle, opacity: 0.5 } : hover ? hoverStyle : {}
+      }
     >
       {children}
       <p

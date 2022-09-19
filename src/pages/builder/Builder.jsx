@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -7,7 +9,7 @@ import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
 import { Components } from "../../organisms/builderComponents/Components";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveComponent, setActiveMenu } from "./builderSlice";
+import { setActiveComponent, setActiveMenu, setPage } from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
 import mockPage from "../../mockData/page1";
@@ -26,10 +28,15 @@ export default function Builder() {
   const dispatch = useDispatch();
 
   const {
-    builder: { activeMenu, activeComponent },
+    builder: { activeMenu, activeComponent, page },
   } = useSelector((state) => state);
 
   const leftMenu = [{ title: "Components" }, { title: "Templates" }];
+
+  // set mockdata for page
+  useEffect(() => {
+    dispatch(setPage(mockPage));
+  }, [mockPage]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -55,7 +62,7 @@ export default function Builder() {
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
-          <Page pageContent={mockPage} />
+          <Page pageContent={page} />
           {/* <PageDemo /> */}
         </section>
       </main>

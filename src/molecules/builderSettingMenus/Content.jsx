@@ -3,7 +3,7 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { Position } from "../settingField";
 
-export function Content1() {
+export function Content() {
   return (
     <SettingSectionContainer>
       <SettingSection title={"Title text"}>

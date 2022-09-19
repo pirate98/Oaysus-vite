@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as builderButtons from "../../molecules/builderButtons";
-import * as componentMenus from "../../molecules";
+import * as builderSettingMenus from "../../molecules/builderSettingMenus";
 import {
   setActiveComponent,
   setHoveredComponent,
@@ -18,18 +18,18 @@ export function Components() {
   } = useSelector((state) => state);
 
   const DynamicComponentMenu =
-    componentMenus[activeComponent] || activeComponent;
+    builderSettingMenus[activeComponent] || activeComponent;
 
   // Array content must be same with the names of the components
   const components = [
-    "Incentive1",
+    "Incentive",
     "Banner",
-    "Content1",
-    "Content2",
+    "Content",
+    // "Content2",
     "Product",
-    "Incentive2",
+    // "Incentive2",
     "Video",
-    "Content3",
+    // "Content3",
     "CallToAction",
   ];
 
