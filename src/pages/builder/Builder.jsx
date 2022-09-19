@@ -11,6 +11,7 @@ import { setActiveComponent, setActiveMenu } from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
 import mockPage from "../../mockData/page1";
+import { PageDemo } from "../../organisms/builderPage/pageDemo";
 
 export default function Builder() {
   const buttonContent = (
@@ -55,6 +56,7 @@ export default function Builder() {
       <main className={classes.main}>
         <section className={classes.rightSection}>
           <Page pageContent={mockPage} />
+          <PageDemo />
         </section>
       </main>
     </DndProvider>

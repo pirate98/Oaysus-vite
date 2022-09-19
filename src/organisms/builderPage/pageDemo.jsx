@@ -9,7 +9,7 @@ import {
 } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
-// import classes from "./Page.module.scss";
+import classes from "./Page.module.scss";
 
 export function PageDemo() {
   return (
