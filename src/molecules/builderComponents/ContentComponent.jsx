@@ -1,5 +1,7 @@
 import Grid from "@mui/material/Grid";
+import { TextContainer, Text } from "@shopify/polaris";
 
+import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
 export function ContentComponent({ content }) {
@@ -33,13 +35,15 @@ export function ContentComponent({ content }) {
   );
 
   return (
-    <Grid container spacing={5} columnSpacing={4}>
-      <Grid item xs={6}>
-        {content.imagePosition === "left" ? imageSection : textSection}
+    content && (
+      <Grid container spacing={5} columnSpacing={4}>
+        <Grid item xs={6}>
+          {content.imagePosition === "left" ? imageSection : textSection}
+        </Grid>
+        <Grid item xs={6}>
+          {content.imagePosition === "left" ? textSection : imageSection}
+        </Grid>
       </Grid>
-      <Grid item xs={6}>
-        {content.imagePosition === "left" ? textSection : imageSection}
-      </Grid>
-    </Grid>
+    )
   );
 }

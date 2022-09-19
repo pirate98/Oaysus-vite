@@ -43,7 +43,7 @@ export default [
   // },
   {
     name: "content1",
-    imagePositon: "left",
+    imagePosition: "left",
     images: [
       {
         url: "/image/guy_1.jpg",
@@ -75,7 +75,7 @@ export default [
   },
   {
     name: "content2",
-    imagePositon: "right",
+    imagePosition: "right",
     title: {
       text: "Headline Content 1",
       fontFamily:

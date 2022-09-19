@@ -1,7 +1,7 @@
 import {
   ContentComponent,
   IncentiveComponent,
-} from "../../molecules/builderComponents/ContentComponent";
+} from "../../molecules/builderComponents";
 
 export function Page({ pageContent }) {
   console.log({ pageContent });
@@ -10,11 +10,11 @@ export function Page({ pageContent }) {
     <>
       {pageContent &&
         pageContent.length &&
-        pageContent.map((element) => {
+        pageContent.map((element, idx) => {
           if (element.name.includes("incentive")) {
-            return <IncentiveComponent content={element.content} />;
+            return <IncentiveComponent key={idx} content={element} />;
           } else if (element.name.includes("content")) {
-            return <ContentComponent content={element.content} />;
+            return <ContentComponent key={idx} content={element} />;
           }
         })}
     </>

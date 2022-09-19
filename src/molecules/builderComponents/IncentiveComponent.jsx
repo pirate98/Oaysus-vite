@@ -7,11 +7,13 @@ export function IncentiveComponent({ content }) {
   const userSubTitleStyle = styleFilter(content.subTitle);
 
   return (
-    <div className={classes.titleContainer}>
-      <p style={{ ...userTitleStyle }}>{content.title.text}</p>
-      <p style={{ ...userSubTitleStyle }}>
-        {content.subTitle.text} <span>{content.countdown.duration}</span>
-      </p>
-    </div>
+    content && (
+      <div className={classes.titleContainer}>
+        <p style={{ ...userTitleStyle }}>{content.title.text}</p>
+        <p style={{ ...userSubTitleStyle }}>
+          {content.subTitle.text} <span>{content.countdown.duration}</span>
+        </p>
+      </div>
+    )
   );
 }

@@ -55,7 +55,7 @@ export default function Builder() {
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
-          {/* <Page pageContent={mockPage} /> */}
+          <Page pageContent={mockPage} />
           {/* <PageDemo /> */}
         </section>
       </main>
