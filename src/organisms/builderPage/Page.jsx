@@ -12,6 +12,8 @@ import ReactStars from "react-rating-stars-component";
 import classes from "./Page.module.scss";
 
 export function Page({ pageContent }) {
+  console.log({ pageContent });
+
   return (
     <>
       {pageContent &&
