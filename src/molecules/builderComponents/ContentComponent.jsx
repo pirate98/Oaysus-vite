@@ -1,10 +1,12 @@
+import { forwardRef } from "react";
+
 import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
-export function ContentComponent({ content }) {
+export const ContentComponent = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
 
@@ -51,7 +53,7 @@ export function ContentComponent({ content }) {
 
   return (
     content && (
-      <Grid container spacing={5} columnSpacing={4}>
+      <Grid container spacing={5} columnSpacing={4} ref={ref}>
         <Grid item xs={6}>
           {content.imagePosition === "left" ? imageSection : textSection}
         </Grid>
@@ -61,4 +63,4 @@ export function ContentComponent({ content }) {
       </Grid>
     )
   );
-}
+});

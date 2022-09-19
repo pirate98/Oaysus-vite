@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useDrag, useDrop } from "react-dnd";
+import { useDrag } from "react-dnd";
 
 import classes from "./Card.module.scss";
 import dragDrop from "../../data/dragDrop";
@@ -10,7 +10,6 @@ export function Card({
   background,
   title = { text: "", hoverColor: "inherit" },
   hover = false,
-  ref,
 }) {
   const hoverStyle = {
     filter: "drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.33))",
@@ -39,7 +38,9 @@ export function Card({
 
   return (
     <div
-      ref={drag}
+      ref={(el) => {
+        drag(el);
+      }}
       className={classes.componentCard}
       style={
         isDragging ? { ...hoverStyle, opacity: 0.5 } : hover ? hoverStyle : {}
