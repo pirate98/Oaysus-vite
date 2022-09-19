@@ -1,5 +1,5 @@
 import { useDrop } from "react-dnd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   ContentComponent,
@@ -7,7 +7,12 @@ import {
 } from "../../molecules/builderComponents";
 import dragDrop from "../../data/dragDrop";
 
+import * as builderComponents from "../../molecules/builderComponents";
+import { setPage } from "../../pages/builder/builderSlice";
+
 export function Page() {
+  const dispatch = useDispatch();
+
   const {
     builder: { page },
   } = useSelector((state) => state);
@@ -16,6 +21,12 @@ export function Page() {
 
   const [{ isOver }, drop] = useDrop({
     accept: dragDrop.types.BUILDER_COMPONENT,
+    drop: (item, monitor) => {
+      console.log({ item, monitor });
+      const componentName = item.name;
+
+      dispatch(setPage([...page, { name: componentName }]));
+    },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
