@@ -29,7 +29,7 @@ export default function Builder() {
     builder: { activeMenu, activeComponent },
   } = useSelector((state) => state);
 
-  const leftMenu = [{ title: "Templates" }, { title: "Components" }];
+  const leftMenu = [{ title: "Components" }, { title: "Templates" }];
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -51,7 +51,7 @@ export default function Builder() {
             ))}
           </div>
         )}
-        {activeMenu === 0 ? <Templates /> : <Components />}
+        {activeMenu === 0 ? <Components /> : <Templates />}
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
