@@ -46,7 +46,7 @@ export default [
     imagePositon: "left",
     images: [
       {
-        url: "http://127.0.0.1:5173/image/guy_1.jpg",
+        url: "/image/guy_1.jpg",
       },
     ],
     title: {

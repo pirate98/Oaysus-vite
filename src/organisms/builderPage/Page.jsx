@@ -1,15 +1,7 @@
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
-import ReactStars from "react-rating-stars-component";
-
-import classes from "./Page.module.scss";
+  ContentComponent,
+  IncentiveComponent,
+} from "../../molecules/builderComponents/ContentComponent";
 
 export function Page({ pageContent }) {
   console.log({ pageContent });
@@ -18,8 +10,12 @@ export function Page({ pageContent }) {
     <>
       {pageContent &&
         pageContent.length &&
-        pageContent.map((partial) => {
-          // return <section>{partial.title}</section>;
+        pageContent.map((element) => {
+          if (element.name.includes("incentive")) {
+            return <IncentiveComponent content={element.content} />;
+          } else if (element.name.includes("content")) {
+            return <ContentComponent content={element.content} />;
+          }
         })}
     </>
   );

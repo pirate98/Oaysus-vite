@@ -34,7 +34,7 @@ export function PageDemo() {
           </Grid>
           <Grid item xs={6} container spacing={2} alignContent="baseline">
             <Grid item sx={{ marginBottom: "2px" }}>
-              <TextContainer spacing="loose">
+              <TextContainer>
                 <Text variant="headingXl" as="h3">
                   Test T-shirt
                 </Text>
