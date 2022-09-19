@@ -9,9 +9,12 @@ export function IncentiveComponent({ content }) {
   return (
     content && (
       <div className={classes.titleContainer}>
-        <p style={{ ...userTitleStyle }}>{content.title.text}</p>
+        <p style={{ ...userTitleStyle }}>
+          {content.title ? content.title.text : ""}
+        </p>
         <p style={{ ...userSubTitleStyle }}>
-          {content.subTitle.text} <span>{content.countdown.duration}</span>
+          {content.subTitle ? content.subTitle.text : ""}{" "}
+          <span>{content.countdown && content.countdown.duration}</span>
         </p>
       </div>
     )

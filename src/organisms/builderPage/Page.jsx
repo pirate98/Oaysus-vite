@@ -23,7 +23,7 @@ export function Page() {
     accept: dragDrop.types.BUILDER_COMPONENT,
     drop: (item, monitor) => {
       console.log({ item, monitor });
-      const componentName = item.name;
+      const componentName = item.name.toLowerCase();
 
       dispatch(setPage([...page, { name: componentName }]));
     },
