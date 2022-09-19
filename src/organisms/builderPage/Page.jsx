@@ -19,7 +19,7 @@ export function Page({ pageContent }) {
       {pageContent &&
         pageContent.length &&
         pageContent.map((partial) => {
-          return <section>{partial.title}</section>;
+          // return <section>{partial.title}</section>;
         })}
     </>
   );
