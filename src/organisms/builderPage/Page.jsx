@@ -1,8 +1,11 @@
+import { useDrop } from "react-dnd";
 import { useSelector } from "react-redux";
+
 import {
   ContentComponent,
   IncentiveComponent,
 } from "../../molecules/builderComponents";
+import dragDrop from "../../data/dragDrop";
 
 export function Page() {
   const {
@@ -11,8 +14,18 @@ export function Page() {
 
   console.log({ page });
 
+  const [{ isOver }, drop] = useDrop({
+    accept: dragDrop.types.BUILDER_COMPONENT,
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
   return (
-    <>
+    <section
+      ref={drop}
+      style={{ border: isOver ? "2px solid yellow" : "inherit" }}
+    >
       {page &&
         page.length &&
         page.map((element, idx) => {
@@ -22,6 +35,6 @@ export function Page() {
             return <ContentComponent key={idx} content={element} />;
           }
         })}
-    </>
+    </section>
   );
 }

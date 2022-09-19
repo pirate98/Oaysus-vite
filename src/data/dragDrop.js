@@ -1,5 +1,5 @@
 export default {
   types: {
-    PAGE_COMPONENT: "pageComponent",
+    BUILDER_COMPONENT: "pageComponent",
   },
 };

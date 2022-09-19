@@ -22,7 +22,7 @@ export function Card({
 
   const [{ isDragging, extraProps }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
-    type: dragDrop.types.PAGE_COMPONENT,
+    type: dragDrop.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods
     item: { name: title.text },
     // method to collect additional data for drop handling like whether is currently being dragged
