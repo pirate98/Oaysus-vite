@@ -61,8 +61,8 @@ export function DropZoneWrapper({ moduleContent }) {
       let dropPosition =
         hoveredComponentIndex + (blankComponentIndex === undefined ? 1 : 0);
 
-      if (canDropTop) dropPosition--;
-      // console.log({dropPosition });
+      if (canDropTop) dropPosition = Math.max(dropPosition - 1, 0);
+      console.log({ dropPosition });
 
       newPage.splice(dropPosition, 0, {
         name: BLANK_COMPONENT_NAME,
