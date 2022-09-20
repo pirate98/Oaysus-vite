@@ -29,7 +29,8 @@ export function DropZoneWrapper({ moduleContent }) {
       // REFACTOR THIS LATER
       if (refForInnerAccess.current.className.includes("blank")) return;
 
-      const elTop = refForInnerAccess.current.offsetTop;
+      let elTop = refForInnerAccess.current.getClientRects();
+      elTop = elTop[0].top;
       const elHeight = refForInnerAccess.current.offsetHeight;
 
       const pointerY = monitor.getClientOffset().y;

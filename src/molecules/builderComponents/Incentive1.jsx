@@ -14,11 +14,13 @@ export const Incentive1 = forwardRef(({ content }, ref) => {
     content && (
       <Grid ref={ref}>
         <div className={classes.titleContainer}>
-          <p style={{ ...userTitleStyle }}>
-            {content.title ? content.title.text : ""}
+          <p style={{ ...userTitleStyle }} name="title">
+            {content.title
+              ? content.title.text
+              : "Add a Test T-shirt to your order"}
           </p>
-          <p style={{ ...userSubTitleStyle }}>
-            {content.subTitle ? content.subTitle.text : ""}{" "}
+          <p style={{ ...userSubTitleStyle }} name="subtitle">
+            {content.subTitle ? content.subTitle.text : "Exclusive offer"}
             <span>{content.countdown && content.countdown.duration}</span>
           </p>
         </div>
