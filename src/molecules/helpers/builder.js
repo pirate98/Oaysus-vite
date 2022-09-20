@@ -54,10 +54,7 @@ export const getIndexes = (
 };
 
 // Returns Incentive from Incentive_2123
-export const removeDigitsAndReturnComponentName = (
-  name,
-  nameSuffix = "Component"
-) => {
+export const removeDigitsAndReturnComponentName = (name, nameSuffix = "") => {
   const underScoreIndex = name.indexOf("_");
 
   let nameBase = name;

@@ -101,7 +101,7 @@ export function DropZoneWrapper({ moduleContent }) {
       };
   }, [isOver]);
 
-  console.log(removeDigitsAndReturnComponentName(moduleContent.name));
+  // console.log(removeDigitsAndReturnComponentName(moduleContent.name));
   const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
   // console.log({ DynamicComponent });

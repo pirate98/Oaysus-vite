@@ -6,7 +6,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
-export const Content1Component = forwardRef(({ content }, ref) => {
+export const Content1 = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
 
@@ -33,7 +33,7 @@ export const Content1Component = forwardRef(({ content }, ref) => {
     <Grid item sx={{ marginBottom: "2px" }}>
       <TextContainer>
         <Text style={{ ...userTitleStyle }} variant="headingXl" as="h3">
-          {content.title.text}
+          {content.title && content.title.text}
         </Text>
         {/* <Grid container alignItems="">
           <ReactStars
@@ -45,7 +45,7 @@ export const Content1Component = forwardRef(({ content }, ref) => {
           <p className={classes.starText}>5.0 Best Seller</p>
         </Grid> */}
         <Text variant="bodyLg" as="p" style={{ ...userSubTitleStyle }}>
-          {content.subTitle.text}
+          {content.subTitle && content.subTitle.text}
         </Text>
       </TextContainer>
     </Grid>
