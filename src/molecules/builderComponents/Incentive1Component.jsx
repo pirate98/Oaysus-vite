@@ -6,7 +6,7 @@ import classes from "./.module.scss";
 
 import { styleFilter } from "../helpers/builder";
 
-export const IncentiveComponent = forwardRef(({ content }, ref) => {
+export const Incentive1Component = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
 

@@ -1,4 +1,4 @@
-export function Incentive({
+export function Incentive1({
   primary = "#008060",
   secondary = "white",
   hover = false,

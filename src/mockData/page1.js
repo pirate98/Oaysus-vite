@@ -1,6 +1,6 @@
 export default [
   {
-    name: "incentive1",
+    name: "Incentive1_1",
     title: {
       text: "Add a Test T-shirt to your order",
       fontFamily:
@@ -42,7 +42,7 @@ export default [
   //   }
   // },
   {
-    name: "content1",
+    name: "Content1_1",
     imagePosition: "left",
     images: [
       {
@@ -75,7 +75,7 @@ export default [
     },
   },
   {
-    name: "content2",
+    name: "Content1_2",
     imagePosition: "right",
     title: {
       text: "Headline Content 1",

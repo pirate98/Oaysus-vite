@@ -53,21 +53,28 @@ export const getIndexes = (
   return { hoveredComponentIndex, blankComponentIndex };
 };
 
+// Returns Incentive from Incentive_2123
 export const removeDigitsAndReturnComponentName = (
   name,
   nameSuffix = "Component"
 ) => {
-  let digitIndex = name.length;
+  const underScoreIndex = name.indexOf("_");
 
-  if (name.match(/[0-9]/i)) {
-    digitIndex = name.match(/[0-9]/i).index;
-  }
-
-  const nameWithoutDigits = name.substring(0, digitIndex);
+  const nameWithoutDigits = name.substring(0, underScoreIndex);
 
   const nameUpperCased =
     nameWithoutDigits[0].toUpperCase() +
     nameWithoutDigits.substring(1, nameWithoutDigits.length);
 
   return nameUpperCased + nameSuffix;
+};
+
+export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
+  const lastNameWithGivenString = pageComponents.reduce((prev, cur) => {
+    return cur.name.includes(name) ? cur.name : prev;
+  }, name);
+
+  const numIndex = lastNameWithGivenString.match(/[0-9]/i);
+  console.log({ numIndex });
+  return name + (numIndex + 1);
 };

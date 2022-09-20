@@ -6,7 +6,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
-export const ContentComponent = forwardRef(({ content }, ref) => {
+export const Content1Component = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
 

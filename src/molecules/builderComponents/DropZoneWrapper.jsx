@@ -11,6 +11,7 @@ import dragDrop from "../../data/dragDrop";
 import * as builderComponents from "../../molecules/builderComponents";
 import {
   getIndexes,
+  numerateTheName,
   removeDigitsAndReturnComponentName,
 } from "../helpers/builder";
 
@@ -22,7 +23,7 @@ export function DropZoneWrapper({ moduleContent }) {
     builder: { pageComponents },
   } = useSelector((state) => state);
 
-  const [{ isOver, clientOffset, difference }, drop] = useDrop({
+  const [{ isOver }, drop] = useDrop({
     accept: dragDrop.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
       // REFACTOR THIS LATER
@@ -70,8 +71,6 @@ export function DropZoneWrapper({ moduleContent }) {
     drop: (item, monitor) => {
       console.log({ item, monitor }, moduleContent.name);
 
-      const componentName = item.name.toLowerCase();
-
       const { undefined, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent,
@@ -79,6 +78,9 @@ export function DropZoneWrapper({ moduleContent }) {
       );
 
       let newPage = [...pageComponents];
+
+      const componentName = item.name.toLowerCase();
+      // const numerizedName = numerateTheName(newPage, componentName);
 
       newPage.splice(blankComponentIndex, 1, {
         name: componentName,
@@ -88,8 +90,6 @@ export function DropZoneWrapper({ moduleContent }) {
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
-      clientOffset: !!monitor.getClientOffset(),
-      difference: monitor.getDifferenceFromInitialOffset(),
     }),
   });
 
@@ -97,16 +97,18 @@ export function DropZoneWrapper({ moduleContent }) {
   useEffect(() => {
     if (isOver)
       return () => {
-        console.log("removing");
+        // console.log("removing");
         // dispatch(removeComponentFromPage(BLANK_COMPONENT_NAME));
       };
   }, [isOver]);
 
-  const DynamicComponentName =
+  console.log(removeDigitsAndReturnComponentName(moduleContent.name));
+  const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
+  console.log({ DynamicComponent });
 
   return (
-    <DynamicComponentName
+    <DynamicComponent
       content={moduleContent}
       ref={(el) => {
         drop(el);

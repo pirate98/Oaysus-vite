@@ -22,12 +22,12 @@ export function Components() {
 
   // Array content must be same with the names of the components
   const components = [
-    "Incentive",
+    "Incentive1",
     "Banner",
-    "Content",
-    // "Content2",
+    "Content1",
+    "Content2",
     "Product",
-    // "Incentive2",
+    "Incentive2",
     "Video",
     // "Content3",
     "CallToAction",

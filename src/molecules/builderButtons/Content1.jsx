@@ -1,4 +1,4 @@
-export function Content({
+export function Content1({
   primary = "#F2F2F2",
   secondary = "#BDBDBD",
   primaryHover = "white",
