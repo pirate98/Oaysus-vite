@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { activeMenu: 0, page: [] };
+const initialState = { activeMenu: 0, pageComponents: [] };
 
 export const builderSlice = createSlice({
   name: "builder",
@@ -15,8 +15,8 @@ export const builderSlice = createSlice({
     setActiveComponent: (state, action) => {
       state.activeComponent = action.payload;
     },
-    setPage: (state, action) => {
-      state.page = action.payload;
+    setPageComponents: (state, action) => {
+      state.pageComponents = action.payload;
     },
   },
 });
@@ -26,7 +26,7 @@ export const {
   setHoveredComponent,
   setActiveMenu,
   setActiveComponent,
-  setPage,
+  setPageComponents,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

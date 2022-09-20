@@ -53,7 +53,7 @@ export const ContentComponent = forwardRef(({ content }, ref) => {
 
   return (
     content && (
-      <Grid container spacing={5} columnSpacing={4} ref={ref}>
+      <Grid item container ref={ref}>
         <Grid item xs={6}>
           {content.imagePosition === "left" ? imageSection : textSection}
         </Grid>

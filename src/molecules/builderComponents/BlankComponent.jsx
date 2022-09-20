@@ -1,5 +1,7 @@
+import { forwardRef } from "react";
+
 import classes from "./.module.scss";
 
-export function BlankComponent() {
-  return <div className={classes.blankElement}></div>;
-}
+export const BlankComponent = forwardRef((props, ref) => {
+  return <div ref={ref} {...props} className={classes.blankElement}></div>;
+});

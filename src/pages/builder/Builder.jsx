@@ -9,7 +9,11 @@ import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
 import { Components } from "../../organisms/builderComponents/Components";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveComponent, setActiveMenu, setPage } from "./builderSlice";
+import {
+  setActiveComponent,
+  setActiveMenu,
+  setPageComponents,
+} from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
 import mockPage from "../../mockData/page1";
@@ -35,7 +39,7 @@ export default function Builder() {
 
   // set mockdata for page
   useEffect(() => {
-    dispatch(setPage(mockPage));
+    dispatch(setPageComponents(mockPage));
   }, [mockPage]);
 
   return (

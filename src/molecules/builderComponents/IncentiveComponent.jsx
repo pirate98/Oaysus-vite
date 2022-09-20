@@ -12,7 +12,7 @@ export const IncentiveComponent = forwardRef(({ content }, ref) => {
 
   return (
     content && (
-      <Grid item xs={12} ref={ref}>
+      <Grid ref={ref}>
         <div className={classes.titleContainer}>
           <p style={{ ...userTitleStyle }}>
             {content.title ? content.title.text : ""}

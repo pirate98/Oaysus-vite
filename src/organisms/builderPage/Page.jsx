@@ -6,20 +6,20 @@ import { DropZoneWrapper } from "../../molecules/builderComponents";
 
 export function Page() {
   const {
-    builder: { page },
+    builder: { pageComponents },
   } = useSelector((state) => state);
 
-  console.log({ page });
+  console.log({ pageComponents });
 
   return (
     <section>
-      <Grid container spacing={5} columnSpacing={4}>
-        {page &&
-          page.length &&
-          page.map((element, idx) => {
-            return <DropZoneWrapper key={idx} content={element} />;
-          })}
-      </Grid>
+      {/* <Grid container spacing={2} columnSpacing={4}> */}
+      {pageComponents &&
+        pageComponents.length &&
+        pageComponents.map((component, idx) => {
+          return <DropZoneWrapper key={idx} moduleContent={component} />;
+        })}
+      {/* </Grid> */}
     </section>
   );
 }
