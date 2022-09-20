@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 
 import {
-  removeComponentWithGivenName,
+  removeComponentFromPage,
   setPageComponents,
 } from "../../pages/builder/builderSlice";
 import dragDrop from "../../data/dragDrop";
@@ -18,44 +18,61 @@ const BLANK_COMPONENT_NAME = "blank";
 
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
+  const refForInnerAccess = useRef();
 
   const {
     builder: { pageComponents },
   } = useSelector((state) => state);
 
-  const [{ isOver }, drop] = useDrop({
+  const [{ isOver, clientOffset, difference }, drop] = useDrop({
     accept: dragDrop.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
-      // console.log({ item, monitor });
+      // REFACTOR THIS LATER
+      if (refForInnerAccess.current.className.includes(BLANK_COMPONENT_NAME))
+        return;
+
+      const elTop = refForInnerAccess.current.offsetTop;
+      const elHeight = refForInnerAccess.current.offsetHeight;
+
+      const pointerY = monitor.getClientOffset().y;
+      console.log(elTop, elHeight, pointerY);
+      const canDropTop = pointerY <= elTop + elHeight / 2;
 
       const { hoveredComponentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent,
         BLANK_COMPONENT_NAME
       );
-      console.log({ blankComponentIndex, hoveredComponentIndex });
+      console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
-      if (blankComponentIndex === hoveredComponentIndex + 1) return;
+      if (
+        (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
+        (!canDropTop && blankComponentIndex === hoveredComponentIndex + 1)
+      )
+        return;
 
       let newPage = [...pageComponents];
 
+      // Remove empty component
       if (blankComponentIndex !== undefined) {
         newPage.splice(blankComponentIndex, 1);
       }
 
-      newPage.splice(
-        hoveredComponentIndex + (blankComponentIndex === undefined ? 1 : 0),
-        0,
-        {
-          name: BLANK_COMPONENT_NAME,
-        }
-      );
+      let dropPosition =
+        hoveredComponentIndex + (blankComponentIndex === undefined ? 1 : 0);
+
+      if (canDropTop) dropPosition--;
+      // console.log({dropPosition });
+
+      newPage.splice(dropPosition, 0, {
+        name: BLANK_COMPONENT_NAME,
+      });
 
       dispatch(setPageComponents(newPage));
     },
     drop: (item, monitor) => {
-      console.log({ item, monitor });
-      console.log(moduleContent.name);
+      console.log({ item, monitor }, moduleContent.name);
+
       const componentName = item.name.toLowerCase();
 
       const { undefined, blankComponentIndex } = getIndexes(
@@ -66,10 +83,6 @@ export function DropZoneWrapper({ moduleContent }) {
 
       let newPage = [...pageComponents];
 
-      // if (blankComponentIndex !== undefined) {
-      //   newPage.splice(blankComponentIndex, 1);
-      // }
-
       newPage.splice(blankComponentIndex, 1, {
         name: componentName,
       });
@@ -78,6 +91,8 @@ export function DropZoneWrapper({ moduleContent }) {
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
+      clientOffset: !!monitor.getClientOffset(),
+      difference: monitor.getDifferenceFromInitialOffset(),
     }),
   });
 
@@ -85,12 +100,21 @@ export function DropZoneWrapper({ moduleContent }) {
   useEffect(() => {
     if (isOver)
       return () => {
-        dispatch(removeComponentWithGivenName(BLANK_COMPONENT_NAME));
+        console.log("removing");
+        // dispatch(removeComponentFromPage(BLANK_COMPONENT_NAME));
       };
   }, [isOver]);
 
   const DynamicComponentName =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
 
-  return <DynamicComponentName content={moduleContent} ref={drop} />;
+  return (
+    <DynamicComponentName
+      content={moduleContent}
+      ref={(el) => {
+        drop(el);
+        refForInnerAccess.current = el;
+      }}
+    />
+  );
 }
