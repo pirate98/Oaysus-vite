@@ -60,21 +60,23 @@ export const removeDigitsAndReturnComponentName = (
 ) => {
   const underScoreIndex = name.indexOf("_");
 
-  const nameWithoutDigits = name.substring(0, underScoreIndex);
+  let nameBase = name;
+  if (underScoreIndex > 0) nameBase = name.substring(0, underScoreIndex);
 
   const nameUpperCased =
-    nameWithoutDigits[0].toUpperCase() +
-    nameWithoutDigits.substring(1, nameWithoutDigits.length);
+    nameBase[0].toUpperCase() + nameBase.substring(1, nameBase.length);
 
   return nameUpperCased + nameSuffix;
 };
 
+// Return Incentive1_xx from Incentive1
 export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
-  const lastNameWithGivenString = pageComponents.reduce((prev, cur) => {
-    return cur.name.includes(name) ? cur.name : prev;
-  }, name);
+  const biggestNumeratorFromNames = pageComponents.reduce((prev, cur) => {
+    if (!cur.name.includes(name)) return prev;
+    const nameNumerator = parseInt(cur.name.split("_")[1]);
+    return nameNumerator > prev ? nameNumerator : prev;
+  }, 0);
 
-  const numIndex = lastNameWithGivenString.match(/[0-9]/i);
-  console.log({ numIndex });
-  return name + (numIndex + 1);
+  console.log({ biggestNumeratorFromNames });
+  return name + "_" + (biggestNumeratorFromNames + 1);
 };

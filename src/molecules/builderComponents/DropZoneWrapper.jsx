@@ -79,11 +79,10 @@ export function DropZoneWrapper({ moduleContent }) {
 
       let newPage = [...pageComponents];
 
-      const componentName = item.name.toLowerCase();
-      // const numerizedName = numerateTheName(newPage, componentName);
+      const numerizedName = numerateTheName(newPage, item.name);
 
       newPage.splice(blankComponentIndex, 1, {
-        name: componentName,
+        name: numerizedName,
       });
       // console.log({ newPage });
       dispatch(setPageComponents(newPage));
@@ -105,7 +104,7 @@ export function DropZoneWrapper({ moduleContent }) {
   console.log(removeDigitsAndReturnComponentName(moduleContent.name));
   const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
-  console.log({ DynamicComponent });
+  // console.log({ DynamicComponent });
 
   return (
     <DynamicComponent
