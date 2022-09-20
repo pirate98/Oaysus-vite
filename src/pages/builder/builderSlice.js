@@ -18,6 +18,13 @@ export const builderSlice = createSlice({
     setPageComponents: (state, action) => {
       state.pageComponents = action.payload;
     },
+    removeComponentWithGivenName: (state, action) => {
+      const pageComponentsWithoutGivenName = state.pageComponents.filter(
+        (comp) => comp.name !== action.payload
+      );
+
+      state.pageComponents = pageComponentsWithoutGivenName;
+    },
   },
 });
 
@@ -27,6 +34,7 @@ export const {
   setActiveMenu,
   setActiveComponent,
   setPageComponents,
+  removeComponentWithGivenName,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

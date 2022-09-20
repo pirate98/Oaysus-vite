@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 
-import { setPageComponents } from "../../pages/builder/builderSlice";
+import {
+  removeComponentWithGivenName,
+  setPageComponents,
+} from "../../pages/builder/builderSlice";
 import dragDrop from "../../data/dragDrop";
 import * as builderComponents from "../../molecules/builderComponents";
 import {
@@ -80,13 +83,10 @@ export function DropZoneWrapper({ moduleContent }) {
 
   // Remove blank component when mouse pointer leaves drop zone
   useEffect(() => {
-    const pageComponentsWithoutBlankComponent = pageComponents.filter(
-      (comp) => comp.name !== BLANK_COMPONENT_NAME
-    );
-
     if (isOver)
-      return () =>
-        dispatch(setPageComponents(pageComponentsWithoutBlankComponent));
+      return () => {
+        dispatch(removeComponentWithGivenName(BLANK_COMPONENT_NAME));
+      };
   }, [isOver]);
 
   const DynamicComponentName =
