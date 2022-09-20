@@ -14,8 +14,6 @@ import {
   removeDigitsAndReturnComponentName,
 } from "../helpers/builder";
 
-const BLANK_COMPONENT_NAME = "blank";
-
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
   const refForInnerAccess = useRef();
@@ -28,8 +26,7 @@ export function DropZoneWrapper({ moduleContent }) {
     accept: dragDrop.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
       // REFACTOR THIS LATER
-      if (refForInnerAccess.current.className.includes(BLANK_COMPONENT_NAME))
-        return;
+      if (refForInnerAccess.current.className.includes("blank")) return;
 
       const elTop = refForInnerAccess.current.offsetTop;
       const elHeight = refForInnerAccess.current.offsetHeight;
@@ -41,7 +38,7 @@ export function DropZoneWrapper({ moduleContent }) {
       const { hoveredComponentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent,
-        BLANK_COMPONENT_NAME
+        dragDrop.BLANK_COMPONENT_NAME
       );
       console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
@@ -65,7 +62,7 @@ export function DropZoneWrapper({ moduleContent }) {
       console.log({ dropPosition });
 
       newPage.splice(dropPosition, 0, {
-        name: BLANK_COMPONENT_NAME,
+        name: dragDrop.BLANK_COMPONENT_NAME,
       });
 
       dispatch(setPageComponents(newPage));
@@ -78,7 +75,7 @@ export function DropZoneWrapper({ moduleContent }) {
       const { undefined, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent,
-        BLANK_COMPONENT_NAME
+        dragDrop.BLANK_COMPONENT_NAME
       );
 
       let newPage = [...pageComponents];

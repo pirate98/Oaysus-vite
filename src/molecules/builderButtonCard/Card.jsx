@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 
 import { useDrag } from "react-dnd";
+import { useDispatch } from "react-redux";
 
 import classes from "./Card.module.scss";
 import dragDrop from "../../data/dragDrop";
+import { removeComponentFromPage } from "../../pages/builder/builderSlice";
 
 export function Card({
   children,
@@ -11,6 +13,8 @@ export function Card({
   title = { text: "", hoverColor: "inherit" },
   hover = false,
 }) {
+  const dispatch = useDispatch();
+
   const hoverStyle = {
     filter: "drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.33))",
     background: background.hoverColor,
@@ -29,6 +33,10 @@ export function Card({
       return {
         isDragging: !!monitor.isDragging(),
       };
+    },
+    end: (monitor) => {
+      // console.log({ monitor });
+      dispatch(removeComponentFromPage(dragDrop.BLANK_COMPONENT_NAME));
     },
   }));
 
