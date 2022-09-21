@@ -1,9 +1,14 @@
 import { useState } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import classes from "./.module.scss";
 
 export function ColorSelector({ name, title, defaultValue = "#000000" }) {
   const [value, setValue] = useState(defaultValue);
+
+  const randomId = uuidv4();
+  const colorInputId = `input-color-${randomId}`;
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -13,7 +18,7 @@ export function ColorSelector({ name, title, defaultValue = "#000000" }) {
     <div className={classes.singleAttribute}>
       <p>{title}</p>
       <div className={classes.colorInputContainer}>
-        <label htmlFor="input-color">
+        <label htmlFor={colorInputId}>
           <span
             className={classes.colorPicker}
             style={{ backgroundColor: value }}
@@ -26,7 +31,7 @@ export function ColorSelector({ name, title, defaultValue = "#000000" }) {
         />
         <input
           name={name}
-          id="input-color"
+          id={colorInputId}
           type="color"
           value={value}
           onChange={handleChange}

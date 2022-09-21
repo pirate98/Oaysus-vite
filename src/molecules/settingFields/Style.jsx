@@ -23,7 +23,9 @@ export function Style({
 
   return (
     <SettingFieldContainer title={"STYLE"}>
-      {background && <ColorSelector name={"background"} title={"Background"} />}
+      {background && (
+        <ColorSelector name={"backgroundColor"} title={"Background"} />
+      )}
       {styling && <FontStyles />}
       <FontFamily />
       {weight && (
