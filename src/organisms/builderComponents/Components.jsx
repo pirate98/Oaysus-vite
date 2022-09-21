@@ -37,7 +37,7 @@ export function Components() {
 
   return activeComponent ? (
     <>
-      <EditBox title={activeComponent} />
+      <EditBox title={_activeComponent} />
       <DynamicComponentMenu />
     </>
   ) : (
