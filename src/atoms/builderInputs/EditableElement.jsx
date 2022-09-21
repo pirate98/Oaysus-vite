@@ -5,15 +5,18 @@ export function EditableElement(props) {
   const propsCopy = { ...props };
   delete propsCopy.children;
 
+  const Type = props.type;
+
   return (
     // <input {...propsCopy} className={classes.clean} defaultValue={children} />
-    <p
+    <Type
       {...propsCopy}
       className={classes.clean}
       defaultValue={children}
       contentEditable={true}
+      suppressContentEditableWarning={true}
     >
       {children}
-    </p>
+    </Type>
   );
 }

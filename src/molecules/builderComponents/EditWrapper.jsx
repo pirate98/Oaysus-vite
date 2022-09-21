@@ -10,8 +10,9 @@ export function EditWrapper({ children, componentName }) {
     // console.log({ name });
     console.log(e.target);
 
-    const { value, textContent } = e.target;
     const { oaName: module, oaType: type } = e.target.dataset;
+    const { value, textContent } = e.target;
+
     console.log({ textContent });
 
     dispatch(

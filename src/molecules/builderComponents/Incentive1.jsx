@@ -17,6 +17,7 @@ export const Incentive1 = forwardRef(({ content }, ref) => {
           name="title"
           data-oa-name="title"
           data-oa-type="text"
+          type="p"
         >
           {content.title
             ? content.title.text
@@ -27,6 +28,7 @@ export const Incentive1 = forwardRef(({ content }, ref) => {
           name="subTitle"
           data-oa-name="subTitle"
           data-oa-type="text"
+          type="p"
         >
           {content.subTitle ? content.subTitle.text : "Exclusive offer"}
           {/* <span>{content.countdown && content.countdown.duration}</span> */}
