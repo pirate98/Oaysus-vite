@@ -11,10 +11,7 @@ export function Distances({ type, module }) {
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
           <PxInput
-            defaultValue={activeComponent[module][`${type}Top`].replace(
-              "px",
-              ""
-            )}
+            value={activeComponent[module][`${type}Top`].replace("px", "")}
             small
             name={`${type}Top_px`}
           />
@@ -24,10 +21,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Right_px`}
-            defaultValue={activeComponent[module][`${type}Right`].replace(
-              "px",
-              ""
-            )}
+            value={activeComponent[module][`${type}Right`].replace("px", "")}
           />
         </div>
       </div>
@@ -37,10 +31,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Bottom_px`}
-            defaultValue={activeComponent[module][`${type}Bottom`].replace(
-              "px",
-              ""
-            )}
+            value={activeComponent[module][`${type}Bottom`].replace("px", "")}
           />
         </div>
         <div className={classes.innerDoubleAttribute}>
@@ -48,10 +39,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Left_px`}
-            defaultValue={activeComponent[module][`${type}Left`].replace(
-              "px",
-              ""
-            )}
+            value={activeComponent[module][`${type}Left`].replace("px", "")}
           />
         </div>
       </div>

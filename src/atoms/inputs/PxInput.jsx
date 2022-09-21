@@ -1,8 +1,31 @@
 import { Input } from "./Input";
 import classes from "./.module.scss";
 import { inputWidth } from "../../assets/css/_variables.module.scss";
+import { useState } from "react";
 
 export function PxInput({ placeholder, small = false, ...args }) {
+  const [value, setValue] = useState(args.value);
+
+  const keyUpHandler = (e) => {
+    // 38 up 40 down
+    console.log({ e: e.keyCode });
+    const { keyCode } = e;
+
+    let _value = parseInt(value);
+
+    if (keyCode === 38) {
+      _value++;
+    } else if (keyCode === 40) {
+      _value--;
+    }
+
+    setValue(_value.toString());
+  };
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <Input
       sx={{
@@ -11,7 +34,10 @@ export function PxInput({ placeholder, small = false, ...args }) {
       }}
       {...args}
       endAdornment={<p className={classes.px}>px</p>}
-      placeholder={placeholder || (!args.defaultValue.length ? "0" : "")}
+      placeholder={placeholder || (!args.value.length ? "0" : "")}
+      onKeyUp={keyUpHandler}
+      value={value}
+      onChange={handleChange}
     />
   );
 }

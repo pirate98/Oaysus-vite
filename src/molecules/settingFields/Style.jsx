@@ -36,7 +36,7 @@ export function Style({
         <p>Line Height</p>
         <PxInput
           placeholder="Enter size"
-          defaultValue={activeComponent[module]["lineHeight"].replace("px", "")}
+          value={activeComponent[module]["lineHeight"].replace("px", "")}
           name={"lineHeight_px"}
         />
       </div>
@@ -45,7 +45,7 @@ export function Style({
         <PxInput
           placeholder="Enter size"
           name={"fontSize_px"}
-          defaultValue={activeComponent[module]["fontSize"].replace("px", "")}
+          value={activeComponent[module]["fontSize"].replace("px", "")}
         />
       </div>
       {alignment && <Alignment />}
