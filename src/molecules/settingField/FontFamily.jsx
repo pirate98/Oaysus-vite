@@ -7,13 +7,16 @@ import classes from "../settingField/.module.scss";
 
 const options = ["Option 1", "Option 2"];
 
-export function FontFamily() {
+export function FontFamily({ defaultValue }) {
   const { data, error } = useGetFontsQuery();
   const textFieldRef = useRef();
   console.log({ data, error });
 
   const [value, setValue] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+
+  const _defaultValue =
+    defaultValue && defaultValue.split(",") && defaultValue.split(",")[0];
+  const [inputValue, setInputValue] = useState(_defaultValue || "");
 
   // This enables handlers in wrapper to catch the changes
   useEffect(() => {

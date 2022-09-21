@@ -4,7 +4,7 @@ export default [
     title: {
       text: "Add a Test T-shirt to your order",
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontSize: "24px",
       color: "#ffffff",
@@ -21,7 +21,7 @@ export default [
     subTitle: {
       text: "Exclusive offer expires in:",
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontSize: "18px",
       color: "#ffffff",
@@ -55,7 +55,7 @@ export default [
   //   layout:'right',
   //   productDescription:{
   //     style:{
-  //       fontFamily:'"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  //       fontFamily:'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 
   //     }
   //   }
@@ -71,7 +71,7 @@ export default [
     title: {
       text: "Test T-shirt",
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontSize: "24px",
       fontWeight: 600,
@@ -83,7 +83,7 @@ export default [
       text: "Include a short, benefit-driven description of what your product does and how it can improve your customer's life.",
       price: 20,
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontWeight: 400,
       fontSize: "16px",
@@ -99,7 +99,7 @@ export default [
     title: {
       text: "Headline Content 1",
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontSize: "24px",
       fontWeight: 600,
@@ -110,7 +110,7 @@ export default [
     subTitle: {
       text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
       fontFamily:
-        '"SF Pro Display", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       lineHeight: "20px",
       fontWeight: 400,
       fontSize: "16px",

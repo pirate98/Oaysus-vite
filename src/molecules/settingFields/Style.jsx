@@ -31,7 +31,7 @@ export function Style({
         />
       )}
       {styling && <FontStyles />}
-      <FontFamily />
+      <FontFamily defaultValue={activeComponent[module]["fontFamily"]} />
       {weight && (
         <div className={fieldClasses.singleAttribute}>
           <p>Font Weight</p>
