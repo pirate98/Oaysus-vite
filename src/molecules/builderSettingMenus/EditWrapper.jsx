@@ -8,7 +8,7 @@ export function EditWrapper({ children, ...props }) {
     builder: { activeComponent },
   } = useSelector((state) => state);
 
-  const handleBlur = (e) => {
+  const handleChange = (e) => {
     const { module } = props;
     let { name: key, value } = e.target;
 
@@ -25,7 +25,7 @@ export function EditWrapper({ children, ...props }) {
   };
 
   return (
-    <div {...props} onBlur={handleBlur}>
+    <div {...props} onChange={handleChange}>
       {children}
     </div>
   );
