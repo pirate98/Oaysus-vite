@@ -41,7 +41,7 @@ export function Incentive1() {
           <Background />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper>
+      <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
           <Margin />
           <Padding />

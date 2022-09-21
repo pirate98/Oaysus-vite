@@ -7,21 +7,21 @@ export function Distances({ type }) {
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
-          <PxInput small name={`${type}Top`} />
+          <PxInput small name={`${type}Top_px`} />
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Right</p>
-          <PxInput small name={`${type}Right`} />
+          <PxInput small name={`${type}Right_px`} />
         </div>
       </div>
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Bottom</p>
-          <PxInput small name={`${type}Bottom`} />
+          <PxInput small name={`${type}Bottom_px`} />
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Left</p>
-          <PxInput small name={`${type}Left`} />
+          <PxInput small name={`${type}Left_px`} />
         </div>
       </div>
     </>

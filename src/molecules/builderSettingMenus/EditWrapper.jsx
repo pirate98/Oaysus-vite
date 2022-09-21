@@ -12,8 +12,9 @@ export function EditWrapper({ children, ...props }) {
     const { module } = props;
     let { name: key, value } = e.target;
 
-    if (key === "margin" || "padding") {
+    if (key.includes("px")) {
       value += "px";
+      key = key.split("_")[0];
     }
 
     console.log({ activeComponent, module, key, value });

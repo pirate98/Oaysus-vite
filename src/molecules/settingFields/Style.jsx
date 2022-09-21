@@ -30,11 +30,11 @@ export function Style({
       )}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
-        <PxInput placeholder="Enter size" />
+        <PxInput placeholder="Enter size" name={"lineHeight_px"} />
       </div>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Size</p>
-        <PxInput placeholder="Enter size" />
+        <PxInput placeholder="Enter size" name={"fontSize_px"} />
       </div>
       {alignment && <Alignment />}
       <ColorSelector title={"Font Color"} />
