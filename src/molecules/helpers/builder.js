@@ -10,8 +10,14 @@ export const styleFilter = (elementData) => {
     "fontColor",
     "fontWeight",
     "lineHeight",
-    "padding",
-    "margin",
+    "paddingLeft",
+    "paddingTop",
+    "paddingBottom",
+    "paddingRight",
+    "marginTop",
+    "marginBottom",
+    "marginLeft",
+    "marginRight",
   ];
 
   const styleFields = {};

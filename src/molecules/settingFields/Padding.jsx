@@ -5,7 +5,7 @@ import { SettingFieldContainer } from "../../atoms";
 export function Padding() {
   return (
     <SettingFieldContainer title={"PADDING"}>
-      <Distances />
+      <Distances type={"padding"} />
     </SettingFieldContainer>
   );
 }

@@ -14,7 +14,7 @@ export function EditWrapper({ children, componentName }) {
     // console.log({ name });
     console.log(e.target);
 
-    const { oaName: module, oaType: type } = e.target.dataset;
+    const { oaName: module, oaType: key } = e.target.dataset;
     const { value, textContent } = e.target;
 
     console.log({ textContent });
@@ -23,7 +23,7 @@ export function EditWrapper({ children, componentName }) {
       updatePageComponents({
         component: componentName,
         module,
-        type,
+        key,
         value: value || textContent,
       })
     );

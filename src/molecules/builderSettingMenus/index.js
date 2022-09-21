@@ -7,3 +7,4 @@ export * from "./Content";
 // export * from "./Content3";
 export * from "./Product";
 export * from "./CallToAction";
+export * from "./EditWrapper";

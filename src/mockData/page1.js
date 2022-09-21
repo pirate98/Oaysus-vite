@@ -9,7 +9,7 @@ export default [
       fontSize: "24px",
       fontColor: "white",
       padding: "16px 0 18px 0",
-      margin: 0,
+      // margin: 0,
       visibility: true,
     },
     subTitle: {
