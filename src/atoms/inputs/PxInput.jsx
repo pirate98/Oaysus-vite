@@ -11,7 +11,7 @@ export function PxInput({ placeholder, small = false, ...args }) {
       }}
       {...args}
       endAdornment={<p className={classes.px}>px</p>}
-      placeholder={placeholder}
+      placeholder={placeholder || (!args.defaultValue.length ? "0" : "")}
     />
   );
 }

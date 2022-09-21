@@ -42,7 +42,11 @@ export function Style({
       </div>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Size</p>
-        <PxInput placeholder="Enter size" name={"fontSize_px"} />
+        <PxInput
+          placeholder="Enter size"
+          name={"fontSize_px"}
+          defaultValue={activeComponent[module]["fontSize"].replace("px", "")}
+        />
       </div>
       {alignment && <Alignment />}
       <ColorSelector title={"Font Color"} />
