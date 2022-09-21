@@ -15,9 +15,10 @@ export function FontFamily() {
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState("");
 
+  // This enables handlers in wrapper to catch the changes
   useEffect(() => {
     textFieldRef.current.blur();
-  }, [inputValue]);
+  }, [value]);
 
   return (
     <div className={classes.singleAttribute}>
