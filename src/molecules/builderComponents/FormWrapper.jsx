@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 
-export function FormWrapper({ children, name }) {
+export function FormWrapper({ children, componentName }) {
   const dispatch = useDispatch();
   const {
     builder: { pageComponents },
@@ -15,7 +15,9 @@ export function FormWrapper({ children, name }) {
 
     const { name: module, value, type } = e.target;
 
-    dispatch(updatePageComponents({ component: name, module, type, value }));
+    dispatch(
+      updatePageComponents({ component: componentName, module, type, value })
+    );
   };
 
   return (

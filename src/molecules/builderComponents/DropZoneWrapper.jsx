@@ -115,7 +115,7 @@ export function DropZoneWrapper({ moduleContent }) {
   // console.log({ DynamicComponent });
 
   return (
-    <FormWrapper name={moduleContent.name}>
+    <FormWrapper componentName={moduleContent.name}>
       <DynamicComponent
         content={moduleContent}
         ref={(el) => {
