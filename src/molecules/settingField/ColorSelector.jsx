@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import classes from "./.module.scss";
 
-export function ColorSelector({ title, defaultValue = "#000000" }) {
+export function ColorSelector({ name, title, defaultValue = "#000000" }) {
   const [value, setValue] = useState(defaultValue);
 
   const handleChange = (e) => {
@@ -25,6 +25,7 @@ export function ColorSelector({ title, defaultValue = "#000000" }) {
           onChange={handleChange}
         />
         <input
+          name={name}
           id="input-color"
           type="color"
           value={value}

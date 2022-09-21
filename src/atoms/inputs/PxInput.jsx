@@ -2,13 +2,15 @@ import { Input } from "./Input";
 import classes from "./.module.scss";
 import { inputWidth } from "../../assets/css/_variables.module.scss";
 import { useState } from "react";
+import { errorTextID } from "@shopify/polaris";
 
 export function PxInput({ placeholder, small = false, ...args }) {
   const [value, setValue] = useState(args.value);
 
+  const handleKeyDown = (e) => e.preventDefault();
+
   const keyUpHandler = (e) => {
     // 38 up 40 down
-
     const { keyCode } = e;
 
     let _value = parseInt(value) || 0;
@@ -23,6 +25,7 @@ export function PxInput({ placeholder, small = false, ...args }) {
   };
 
   const handleChange = (e) => {
+    // e.preventDefault();
     setValue(e.target.value);
   };
 
@@ -35,6 +38,7 @@ export function PxInput({ placeholder, small = false, ...args }) {
       {...args}
       endAdornment={<p className={classes.px}>px</p>}
       placeholder={placeholder || (!args.value.length ? "0" : "")}
+      onKeyDown={handleKeyDown}
       onKeyUp={keyUpHandler}
       value={value}
       onChange={handleChange}

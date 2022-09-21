@@ -4,7 +4,7 @@ import classes from "./.module.scss";
 
 export function Distances({ type, module }) {
   const activeComponent = useGetActiveComponent();
-  console.log({ module });
+  // console.log({ module });
   return (
     <>
       <div className={classes.doubleAttribute}>

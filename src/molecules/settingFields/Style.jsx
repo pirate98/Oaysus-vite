@@ -23,7 +23,7 @@ export function Style({
 
   return (
     <SettingFieldContainer title={"STYLE"}>
-      {background && <ColorSelector title={"Background"} />}
+      {background && <ColorSelector name={"background"} title={"Background"} />}
       {styling && <FontStyles />}
       <FontFamily />
       {weight && (
@@ -49,7 +49,7 @@ export function Style({
         />
       </div>
       {alignment && <Alignment />}
-      <ColorSelector title={"Font Color"} />
+      <ColorSelector name={"backgroundColor"} title={"Font Color"} />
     </SettingFieldContainer>
   );
 }

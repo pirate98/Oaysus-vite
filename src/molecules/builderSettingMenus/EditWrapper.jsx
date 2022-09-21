@@ -9,6 +9,8 @@ export function EditWrapper({ children, ...props }) {
   } = useSelector((state) => state);
 
   const handleChange = (e) => {
+    // e.preventDefault();
+    // console.log(e.target);
     const { module } = props;
     let { name: key, value } = e.target;
 
