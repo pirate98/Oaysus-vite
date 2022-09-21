@@ -25,6 +25,18 @@ export const builderSlice = createSlice({
 
       state.pageComponents = pageComponentsWithoutGivenName;
     },
+    updatePageComponents: (state, action) => {
+      const { component, module, type, value } = action.payload;
+      console.log({ component, module });
+
+      const _pageComponents = [...state.pageComponents];
+
+      const componentToUpdate = _pageComponents.find(
+        (comp) => comp.name === component
+      );
+
+      componentToUpdate[module][type] = value;
+    },
   },
 });
 
@@ -35,6 +47,7 @@ export const {
   setActiveComponent,
   setPageComponents,
   removeComponentFromPage,
+  updatePageComponents,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

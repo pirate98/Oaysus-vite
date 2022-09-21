@@ -8,3 +8,4 @@ export * from "./CallToAction";
 export * from "./Content2";
 export * from "./Incentive2";
 export * from "./Video";
+export * from "./FormWrapper";

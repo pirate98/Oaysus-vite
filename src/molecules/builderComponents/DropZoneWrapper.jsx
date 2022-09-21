@@ -9,6 +9,7 @@ import {
 } from "../../pages/builder/builderSlice";
 import dragDrop from "../../data/dragDrop";
 import * as builderComponents from "../../molecules/builderComponents";
+import { FormWrapper } from "../../molecules/builderComponents";
 import {
   getIndexes,
   numerateTheName,
@@ -26,15 +27,20 @@ export function DropZoneWrapper({ moduleContent }) {
   const [{ isOver }, drop] = useDrop({
     accept: dragDrop.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
-      // REFACTOR THIS LATER
-      if (refForInnerAccess.current.className.includes("blank")) return;
+      if (
+        refForInnerAccess.current.className.includes(
+          dragDrop.BLANK_COMPONENT_NAME
+        )
+      )
+        return;
 
-      let elTop = refForInnerAccess.current.getClientRects();
-      elTop = elTop[0].top;
+      const clientRects = refForInnerAccess.current.getClientRects();
+      const elTop = clientRects[0].top;
+
       const elHeight = refForInnerAccess.current.offsetHeight;
 
       const pointerY = monitor.getClientOffset().y;
-      console.log(elTop, elHeight, pointerY);
+      // console.log(elTop, elHeight, pointerY);
       const canDropTop = pointerY <= elTop + elHeight / 2;
 
       const { hoveredComponentIndex, blankComponentIndex } = getIndexes(
@@ -42,7 +48,7 @@ export function DropZoneWrapper({ moduleContent }) {
         moduleContent,
         dragDrop.BLANK_COMPONENT_NAME
       );
-      console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
+      // console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
       if (
         (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
@@ -51,19 +57,20 @@ export function DropZoneWrapper({ moduleContent }) {
         return;
 
       let newPage = [...pageComponents];
+      let dropIndex = hoveredComponentIndex;
 
-      // Remove empty component
-      if (blankComponentIndex !== undefined) {
+      if (blankComponentIndex === undefined) {
+        dropIndex++;
+      } else {
+        // Remove empty component.
+        // dropIndex automatically targets the emptied position
         newPage.splice(blankComponentIndex, 1);
       }
 
-      let dropPosition =
-        hoveredComponentIndex + (blankComponentIndex === undefined ? 1 : 0);
+      if (canDropTop) dropIndex = Math.max(dropIndex - 1, 0);
+      // console.log({ dropIndex });
 
-      if (canDropTop) dropPosition = Math.max(dropPosition - 1, 0);
-      console.log({ dropPosition });
-
-      newPage.splice(dropPosition, 0, {
+      newPage.splice(dropIndex, 0, {
         name: dragDrop.BLANK_COMPONENT_NAME,
       });
 
@@ -108,12 +115,14 @@ export function DropZoneWrapper({ moduleContent }) {
   // console.log({ DynamicComponent });
 
   return (
-    <DynamicComponent
-      content={moduleContent}
-      ref={(el) => {
-        drop(el);
-        refForInnerAccess.current = el;
-      }}
-    />
+    <FormWrapper name={moduleContent.name}>
+      <DynamicComponent
+        content={moduleContent}
+        ref={(el) => {
+          drop(el);
+          refForInnerAccess.current = el;
+        }}
+      />
+    </FormWrapper>
   );
 }
