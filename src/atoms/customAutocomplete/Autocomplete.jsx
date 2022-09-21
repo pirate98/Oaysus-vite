@@ -16,6 +16,7 @@ export const Autocomplete = styled((props) => (
     popupIcon={<SelectIcon />}
     renderInput={(params) => (
       <TextField
+        name={props.name}
         {...params}
         label=""
         placeholder={props.placeholder}

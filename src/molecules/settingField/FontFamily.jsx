@@ -19,15 +19,16 @@ export function FontFamily() {
       <p>Font Family</p>
       <Autocomplete
         placeholder="Choose a font"
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
-          if (!event) return; //  prevent update on page load
-          setInputValue(newInputValue);
-        }}
+        // value={value}
+        // onChange={(event, newValue) => {
+        //   setValue(newValue);
+        // }}
+        // inputValue={inputValue}
+        // onInputChange={(event, newInputValue) => {
+        //   if (!event) return; //  prevent update on page load
+        //   setInputValue(newInputValue);
+        // }}
+        name={"fontFamily"}
         id="controllable-states-demo"
         options={data ? data.items : []}
         getOptionLabel={(option) => option.family}
