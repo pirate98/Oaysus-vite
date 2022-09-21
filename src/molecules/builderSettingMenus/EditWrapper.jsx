@@ -25,7 +25,7 @@ export function EditWrapper({ children, ...props }) {
   };
 
   return (
-    <div {...props} onChange={handleChange}>
+    <div {...props} onChange={handleChange} onKeyUp={handleChange}>
       {children}
     </div>
   );

@@ -8,10 +8,10 @@ export function PxInput({ placeholder, small = false, ...args }) {
 
   const keyUpHandler = (e) => {
     // 38 up 40 down
-    console.log({ e: e.keyCode });
+
     const { keyCode } = e;
 
-    let _value = parseInt(value);
+    let _value = parseInt(value) || 0;
 
     if (keyCode === 38) {
       _value++;
