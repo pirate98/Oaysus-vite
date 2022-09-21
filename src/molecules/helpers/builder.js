@@ -5,6 +5,7 @@
  */
 export const styleFilter = (elementData) => {
   const allowedFields = [
+    "color",
     "backgroundColor",
     "fontFamily",
     "fontSize",

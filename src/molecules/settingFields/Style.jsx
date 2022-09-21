@@ -24,7 +24,11 @@ export function Style({
   return (
     <SettingFieldContainer title={"STYLE"}>
       {background && (
-        <ColorSelector name={"backgroundColor"} title={"Background"} />
+        <ColorSelector
+          defaultValue={activeComponent[module]["backgroundColor"]}
+          name={"backgroundColor"}
+          title={"Background"}
+        />
       )}
       {styling && <FontStyles />}
       <FontFamily />
@@ -51,7 +55,11 @@ export function Style({
         />
       </div>
       {alignment && <Alignment />}
-      <ColorSelector name={"backgroundColor"} title={"Font Color"} />
+      <ColorSelector
+        defaultValue={activeComponent[module]["color"]}
+        name={"color"}
+        title={"Font Color"}
+      />
     </SettingFieldContainer>
   );
 }
