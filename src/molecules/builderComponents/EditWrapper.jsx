@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updatePageComponents } from "../../pages/builder/builderSlice";
+import {
+  setActiveComponent,
+  updatePageComponents,
+} from "../../pages/builder/builderSlice";
+import { removeDigitsAndReturnComponentName } from "../helpers/builder";
 
 export function EditWrapper({ children, componentName }) {
   const dispatch = useDispatch();
@@ -25,5 +29,13 @@ export function EditWrapper({ children, componentName }) {
     );
   };
 
-  return <div onBlur={handleBlur}>{children}</div>;
+  const clickHandler = (e) => {
+    dispatch(setActiveComponent(componentName));
+  };
+
+  return (
+    <div onClick={clickHandler} onBlur={handleBlur}>
+      {children}
+    </div>
+  );
 }

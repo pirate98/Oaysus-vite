@@ -10,6 +10,7 @@ import {
 import { Card } from "../../molecules/builderButtonCard/Card";
 import constants from "../../data/constants";
 import { EditBox } from "../../molecules/editBox/EditBox";
+import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
 
 export function Components() {
   const dispatch = useDispatch();
@@ -17,8 +18,9 @@ export function Components() {
     builder: { hoveredComponent, activeComponent },
   } = useSelector((state) => state);
 
+  const _activeComponent = removeDigitsAndReturnComponentName(activeComponent);
   const DynamicComponentMenu =
-    builderSettingMenus[activeComponent] || activeComponent;
+    builderSettingMenus[_activeComponent] || _activeComponent;
 
   // Array content must be same with the names of the components
   const components = [

@@ -10,7 +10,7 @@ import {
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 
-export function Incentive() {
+export function Incentive1() {
   return (
     <SettingSectionContainer>
       <SettingSection title={"Title text"}>

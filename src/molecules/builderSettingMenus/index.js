@@ -1,5 +1,5 @@
 export * from "./Video";
-export * from "./Incentive";
+export * from "./Incentive1";
 // export * from "./Incentive2";
 export * from "./Banner";
 export * from "./Content";
