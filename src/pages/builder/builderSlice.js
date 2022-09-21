@@ -27,7 +27,7 @@ export const builderSlice = createSlice({
     },
     updatePageComponents: (state, action) => {
       const { component, module, type, value } = action.payload;
-      console.log({ component, module });
+      console.log({ component, module, type, value });
 
       const _pageComponents = [...state.pageComponents];
 

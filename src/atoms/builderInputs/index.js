@@ -1,1 +1,1 @@
-export * from "./CleanInput";
+export * from "./EditableElement";
