@@ -13,11 +13,13 @@ import {
 export const Autocomplete = styled((props) => (
   <MuiAutocomplete
     {...props}
+    // blurOnSelect
     popupIcon={<SelectIcon />}
     renderInput={(params) => (
       <TextField
         name={props.name}
         {...params}
+        inputRef={props.referance}
         label=""
         placeholder={props.placeholder}
         sx={{

@@ -15,10 +15,14 @@ export function EditWrapper({ children, ...props }) {
   } = useSelector((state) => state);
 
   const handleChange = (e) => {
+    console.warn("wrapper");
+    console.log(e.target);
     // e.preventDefault();
     // console.log(e.target);
     const { module } = props;
     let { name: key, value } = e.target;
+    console.log({ key, value });
+    if (!key) return;
 
     if (key.includes("px")) {
       value += "px";
@@ -27,7 +31,7 @@ export function EditWrapper({ children, ...props }) {
 
     if (key === "fontFamily") setFontFamily(value);
 
-    console.log({ activeComponent, module, key, value });
+    // console.log({ activeComponent, module, key, value });
 
     dispatch(
       updatePageComponents({ component: activeComponent, module, key, value })
@@ -36,7 +40,12 @@ export function EditWrapper({ children, ...props }) {
 
   return (
     <>
-      <div {...props} onChange={handleChange} onKeyUp={handleChange}>
+      <div
+        {...props}
+        onChange={handleChange}
+        onKeyUp={handleChange}
+        onBlur={handleChange}
+      >
         {children}
       </div>
       <Helmet>
