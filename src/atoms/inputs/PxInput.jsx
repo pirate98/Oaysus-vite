@@ -7,21 +7,19 @@ import { errorTextID } from "@shopify/polaris";
 export function PxInput({ placeholder, small = false, ...args }) {
   const [value, setValue] = useState(args.value);
 
-  const handleKeyDown = (e) => e.preventDefault();
+  const handleKeyDown = (e) =>
+    e.keyCode === 38 || e.keyCode === 40 ? e.preventDefault() : "";
 
   const keyUpHandler = (e) => {
     // 38 up 40 down
     const { keyCode } = e;
 
-    let _value = parseInt(value) || 0;
+    if (keyCode === 38 || keyCode === 40) {
+      let _value = parseInt(value) || 0;
+      _value = keyCode === 38 ? _value + 1 : _value - 1;
 
-    if (keyCode === 38) {
-      _value++;
-    } else if (keyCode === 40) {
-      _value--;
+      setValue(_value.toString());
     }
-
-    setValue(_value.toString());
   };
 
   const handleChange = (e) => {
