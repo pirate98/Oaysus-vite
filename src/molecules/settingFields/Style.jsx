@@ -10,13 +10,17 @@ import {
   Alignment,
   FontFamily,
 } from "../settingField";
+import { useGetActiveComponent } from "../../hooks";
 
 export function Style({
   background = false,
   styling = false,
   weight = false,
   alignment = false,
+  module,
 }) {
+  const activeComponent = useGetActiveComponent();
+
   return (
     <SettingFieldContainer title={"STYLE"}>
       {background && <ColorSelector title={"Background"} />}
@@ -30,7 +34,11 @@ export function Style({
       )}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
-        <PxInput placeholder="Enter size" name={"lineHeight_px"} />
+        <PxInput
+          placeholder="Enter size"
+          defaultValue={activeComponent[module]["lineHeight"].replace("px", "")}
+          name={"lineHeight_px"}
+        />
       </div>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Size</p>

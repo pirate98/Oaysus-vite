@@ -1,10 +1,10 @@
 import { Distances } from "../settingField/Distances";
 import { SettingFieldContainer } from "../../atoms";
 
-export function Margin() {
+export function Margin({ module }) {
   return (
     <SettingFieldContainer title={"MARGIN"}>
-      <Distances type={"margin"} />
+      <Distances module={module} type={"margin"} />
     </SettingFieldContainer>
   );
 }

@@ -16,18 +16,18 @@ export function Incentive1() {
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style />
-          <Margin />
-          <Padding />
-          <Visibility />
+          <Style module={"title"} />
+          <Margin module={"title"} />
+          <Padding module={"title"} />
+          <Visibility module={"title"} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"subTitle"}>
         <SettingSection title={"Sub Title"}>
-          <Style />
-          <Margin />
-          <Padding />
-          <Visibility />
+          <Style module={"subTitle"} />
+          <Margin module={"subTitle"} />
+          <Padding module={"subTitle"} />
+          <Visibility module={"subTitle"} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper>
@@ -43,8 +43,8 @@ export function Incentive1() {
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin />
-          <Padding />
+          <Margin module={"layout"} />
+          <Padding module={"layout"} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
