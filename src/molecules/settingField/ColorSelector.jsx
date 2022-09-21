@@ -27,14 +27,12 @@ export function ColorSelector({ name, title, defaultValue = "#000000" }) {
         <input
           className={classes.input}
           value={value}
-          defaultValue={defaultValue}
           onChange={handleChange}
         />
         <input
           name={name}
           id={colorInputId}
           type="color"
-          defaultValue={defaultValue}
           value={value}
           onChange={handleChange}
           className={classes.inputColor}
