@@ -20,7 +20,8 @@ export const ButtonGroup = styled((props) => (
         key={idx}
         sx={{
           flexGrow: 1,
-          background: "white",
+          background:
+            button.value === props.selectedValue ? "#BABFC3" : "white",
           color: "black",
           borderColor: "#BABFC3",
           "&:hover": {

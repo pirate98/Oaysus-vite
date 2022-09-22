@@ -10,7 +10,7 @@ export function Background({ data }) {
         defaultValue={data.color || data.backgroundColor}
       />
       <ImageUpload name={"backgroundImage"} />
-      <Position />
+      <Position data={data} />
     </SettingFieldContainer>
   );
 }

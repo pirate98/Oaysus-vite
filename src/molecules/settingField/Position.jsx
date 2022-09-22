@@ -11,15 +11,21 @@ const buttons2 = [
   { title: "Bottom", value: "bottom" },
 ];
 
-export function Position() {
+export function Position({ data }) {
+  // console.log({ data });
   return (
     <>
       <ButtonGroupTemplate
         title={"Position"}
         name={"backgroundPositionX"}
         buttons={buttons}
+        selectedValue={data.backgroundPositionX}
       />
-      <ButtonGroupTemplate name={"backgroundPositionY"} buttons={buttons2} />
+      <ButtonGroupTemplate
+        name={"backgroundPositionY"}
+        buttons={buttons2}
+        selectedValue={data.backgroundPositionY}
+      />
     </>
   );
 }
