@@ -13,7 +13,7 @@ export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
   "& .MuiSwitch-switchBase": {
     // padding: 0,
     bottom: 0,
-    padding: "2px 1.7px",
+    padding: "2px 2px",
     // marginLeft: 1,
     transitionDuration: "300ms",
     "&.Mui-checked": {
@@ -38,11 +38,11 @@ export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
   "& .MuiSwitch-thumb": {
     boxSizing: "border-box",
     width: 20,
-    height: 20.5,
+    height: 20,
     boxShadow: "none",
   },
   "& .MuiSwitch-track": {
-    width: "39.2px",
+    width: "39.4px",
     height: "24px",
     borderRadius: 26 / 2,
     backgroundColor: disabledColor,
