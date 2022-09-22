@@ -9,6 +9,7 @@ import {
   FontStyles,
   Alignment,
   FontFamily,
+  FontWeight,
 } from "../settingField";
 import { removePx } from "../helpers/builder";
 
@@ -30,12 +31,7 @@ export function Style({
       )}
       {styling && <FontStyles />}
       <FontFamily defaultValue={data["fontFamily"]} />
-      {weight && (
-        <div className={fieldClasses.singleAttribute}>
-          <p>Font Weight</p>
-          <CustomAutocomplete placeholder="Choose font weight" />
-        </div>
-      )}
+      {weight && <FontWeight defaultValue={data["fontWeight"]} />}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
         <PxInput

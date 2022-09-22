@@ -5,10 +5,12 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
+import { EditableElement } from "../../atoms/builderInputs";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
+  const layoutStyle = styleFilter(content.layout);
 
   const imageSection = (
     // <img
@@ -32,19 +34,38 @@ const fn = forwardRef(({ content }, ref) => {
   const textSection = (
     <Grid item sx={{ marginBottom: "2px" }}>
       <TextContainer>
-        <Text style={{ ...userTitleStyle }} variant="headingXl" as="h3">
+        <EditableElement
+          type="h3"
+          style={{ ...userTitleStyle }}
+          // name="title"
+          data-oa-name="title"
+          data-oa-type="text"
+        >
           {content.title && content.title.text}
-        </Text>
-        <Text variant="bodyLg" as="p" style={{ ...userSubTitleStyle }}>
+        </EditableElement>
+        <EditableElement
+          type="p"
+          style={{ ...userSubTitleStyle }}
+          // name="title"
+          data-oa-name="subTitle"
+          data-oa-type="text"
+        >
           {content.subTitle && content.subTitle.text}
-        </Text>
+        </EditableElement>
       </TextContainer>
     </Grid>
   );
 
   return (
     content && (
-      <Grid item container ref={ref} className={classes.componentContainer}>
+      <Grid
+        item
+        container
+        ref={ref}
+        columnSpacing={2}
+        className={classes.componentContainer}
+        sx={{ ...layoutStyle }}
+      >
         <Grid item xs={6}>
           {content.imagePosition === "left" ? imageSection : textSection}
         </Grid>
@@ -61,16 +82,16 @@ const json = {
   title: {
     text: "Headline Content 1",
     fontFamily: "Roboto",
-    fontWeight: "",
+    fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "#ffffff",
-    paddingTop: "16px",
+    color: "black",
+    paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "",
     marginTop: "",
-    marginBottom: "",
+    marginBottom: "21px",
     marginLeft: "",
     marginRight: "",
     visibility: true,
@@ -78,15 +99,15 @@ const json = {
   subTitle: {
     text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
     fontFamily: "Roboto",
-    fontWeight: "",
-    lineHeight: "20px",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "24px",
     fontStyle: "",
-    fontSize: "24px",
-    color: "#ffffff",
-    paddingTop: "16px",
+    color: "black",
+    paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
@@ -100,10 +121,10 @@ const json = {
     backgroundRepeat: "no-repeat",
   },
   layout: {
-    paddingTop: "22px",
-    paddingRight: "10px",
-    paddingBottom: "2px",
-    paddingLeft: "10px",
+    paddingTop: "10px",
+    paddingBottom: "10px",
+    paddingRight: "",
+    paddingLeft: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
