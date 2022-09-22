@@ -10,13 +10,14 @@ import {
   Alignment,
   FontFamily,
 } from "../settingField";
+import { removePx } from "../helpers/builder";
 
 export function Style({
   background = false,
   styling = false,
   weight = false,
   alignment = false,
-  data,
+  data = {},
 }) {
   return (
     <SettingFieldContainer title={"STYLE"}>
@@ -39,7 +40,7 @@ export function Style({
         <p>Line Height</p>
         <PxInput
           placeholder="Enter size"
-          value={data["lineHeight"].replace("px", "")}
+          value={removePx(data["lineHeight"])}
           name={"lineHeight_px"}
         />
       </div>
@@ -48,7 +49,7 @@ export function Style({
         <PxInput
           placeholder="Enter size"
           name={"fontSize_px"}
-          value={data["fontSize"].replace("px", "")}
+          value={removePx(data["fontSize"])}
         />
       </div>
       {alignment && <Alignment />}

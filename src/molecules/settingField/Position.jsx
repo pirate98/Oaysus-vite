@@ -1,31 +1,26 @@
 import { ButtonGroupTemplate } from "./ButtonGroupTemplate";
 
-const buttons = [
-  { title: "Left", value: "left" },
-  { title: "Center", value: "center" },
-  { title: "Right", value: "right" },
-];
-const buttons2 = [
-  { title: "Top", value: "top" },
-  { title: "Center", value: "center" },
-  { title: "Bottom", value: "bottom" },
-];
-
-export function Position({ data }) {
+export function Position({ data = {} }) {
   // console.log({ data });
+  const buttons = [
+    { title: "Left", value: "left", selected: data.backgroundPositionX },
+    { title: "Center", value: "center", selected: data.backgroundPositionX },
+    { title: "Right", value: "right", selected: data.backgroundPositionX },
+  ];
+  const buttons2 = [
+    { title: "Top", value: "top", selected: data.backgroundPositionY },
+    { title: "Center", value: "center", selected: data.backgroundPositionY },
+    { title: "Bottom", value: "bottom", selected: data.backgroundPositionY },
+  ];
+
   return (
     <>
       <ButtonGroupTemplate
         title={"Position"}
         name={"backgroundPositionX"}
         buttons={buttons}
-        selectedValue={data.backgroundPositionX}
       />
-      <ButtonGroupTemplate
-        name={"backgroundPositionY"}
-        buttons={buttons2}
-        selectedValue={data.backgroundPositionY}
-      />
+      <ButtonGroupTemplate name={"backgroundPositionY"} buttons={buttons2} />
     </>
   );
 }

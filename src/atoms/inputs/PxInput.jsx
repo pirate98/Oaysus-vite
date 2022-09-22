@@ -5,7 +5,7 @@ import { useState } from "react";
 import { errorTextID } from "@shopify/polaris";
 
 export function PxInput({ placeholder, small = false, ...args }) {
-  const [value, setValue] = useState(args.value);
+  const [value, setValue] = useState(args.value || "");
 
   const handleKeyDown = (e) =>
     e.keyCode === 38 || e.keyCode === 40 ? e.preventDefault() : "";
@@ -35,7 +35,7 @@ export function PxInput({ placeholder, small = false, ...args }) {
       }}
       {...args}
       endAdornment={<p className={classes.px}>px</p>}
-      placeholder={placeholder || (!args.value.length ? "0" : "")}
+      placeholder={placeholder || (!value.length ? "0" : "")}
       onKeyDown={handleKeyDown}
       onKeyUp={keyUpHandler}
       value={value}

@@ -7,6 +7,8 @@ import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
 const fn = forwardRef(({ content }, ref) => {
+  const sizingStyle = styleFilter(content.sizing);
+
   return (
     <div
       ref={ref}
@@ -14,13 +16,14 @@ const fn = forwardRef(({ content }, ref) => {
       style={{
         backgroundImage: false ? false : 'url("/image/empty-image-dark.svg")',
         backgroundSize: false ? "cover" : "unset",
+        ...sizingStyle,
       }}
     ></div>
   );
 });
 
 const json = {
-  sizing: {},
+  sizing: { height: "240px" },
   background: {
     backgroundColor: "rgb(0, 128, 96)",
     backgroundImage: "url(/mockData/flowers.jpg)",

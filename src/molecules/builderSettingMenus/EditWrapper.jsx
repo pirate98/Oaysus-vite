@@ -16,11 +16,13 @@ export function EditWrapper({ children, ...props }) {
 
   const handleChange = (e) => {
     console.warn("wrapper");
-    // console.log(e.target);
-    // e.preventDefault();
-    // console.log(e.target);
+
+    let { target } = e;
+
+    if (!target) return;
+
     const { module } = props;
-    let { name: key, value } = e.target;
+    let { name: key, value } = target;
     console.log({ key, value });
     if (!key) return;
 
@@ -51,7 +53,7 @@ export function EditWrapper({ children, ...props }) {
         onChange={handleChange}
         onKeyUp={handleChange}
         onBlur={handleChange}
-        onMouseUp={handleChange}
+        // onMouseDownCapture={handleChange}
       >
         {children}
       </div>

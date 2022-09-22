@@ -5,7 +5,7 @@ import { Position, Slider } from "../settingField";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 
-export function Content3() {
+export function Content2() {
   const activeComponent = useGetActiveComponent();
 
   return (

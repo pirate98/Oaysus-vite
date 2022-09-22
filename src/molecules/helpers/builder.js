@@ -17,6 +17,7 @@ export const styleFilter = (elementData) => {
     "fontSize",
     "fontColor",
     "fontWeight",
+    "height",
     "lineHeight",
     "paddingLeft",
     "paddingTop",
@@ -91,4 +92,11 @@ export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
 
   console.log({ biggestNumeratorFromNames });
   return name + "_" + (biggestNumeratorFromNames + 1);
+};
+
+export const removePx = (value) => {
+  console.log({ value });
+  if (typeof value !== "string" || !value || !value.includes("px"))
+    return value;
+  return value.replace("px", "");
 };
