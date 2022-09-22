@@ -1,11 +1,16 @@
 import classes from "./.module.scss";
 import { ButtonGroup } from "../../atoms";
 
-export function ButtonGroupTemplate({ title, buttons }) {
+export function ButtonGroupTemplate({ title, buttons, name }) {
   return (
     <div className={classes.singleAttribute}>
       <p>{title}</p>
-      <ButtonGroup buttons={buttons} />
+      <ButtonGroup
+        onClick={(e) => e.target.blur()}
+        name={name}
+        buttons={buttons}
+        sx={{ borderRadius: 0 }}
+      />
     </div>
   );
 }

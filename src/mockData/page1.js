@@ -37,7 +37,12 @@ export default [
       duration: "5",
       visibility: true,
     },
-    background: { backgroundColor: "rgb(0, 128, 96)" },
+    background: {
+      backgroundColor: "rgb(0, 128, 96)",
+      backgroundImage: "url(/mockData/flowers.jpg)",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+    },
     layout: {
       paddingTop: "22px",
       paddingRight: "10px",

@@ -7,6 +7,12 @@ export const styleFilter = (elementData) => {
   const allowedFields = [
     "color",
     "backgroundColor",
+    "background",
+    "backgroundSize",
+    "backgroundRepeat",
+    "backgroundImage",
+    "backgroundPositionX",
+    "backgroundPositionY",
     "fontFamily",
     "fontSize",
     "fontColor",

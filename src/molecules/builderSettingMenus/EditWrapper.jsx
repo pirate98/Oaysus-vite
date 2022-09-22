@@ -35,6 +35,8 @@ export function EditWrapper({ children, ...props }) {
 
     if (key === "fontFamily") setFontFamily(value);
 
+    // if (key==='upload')
+
     // console.log({ activeComponent, module, key, value });
 
     dispatch(

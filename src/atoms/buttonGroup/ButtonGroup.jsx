@@ -14,6 +14,8 @@ export const ButtonGroup = styled((props) => (
   <MuiButtonGroup {...props} variant="outlined">
     {props.buttons.map((button, idx) => (
       <PlainButton
+        name={props.name}
+        value={button.value}
         color="success"
         key={idx}
         sx={{

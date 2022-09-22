@@ -5,9 +5,11 @@ export function CleanButton({
   onClick,
   className = "",
   fullWidth = false,
+  ...args
 }) {
   return (
     <button
+      {...args}
       onClick={onClick}
       className={
         classes.btnClean +
