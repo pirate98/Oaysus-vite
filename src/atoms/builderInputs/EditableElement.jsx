@@ -15,6 +15,7 @@ export function EditableElement(props) {
       defaultValue={children}
       contentEditable={true}
       suppressContentEditableWarning={true}
+      // dangerouslySetInnerHTML={{ __html: children }}
     >
       {children}
     </Type>

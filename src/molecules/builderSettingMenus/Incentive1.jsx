@@ -33,10 +33,10 @@ export function Incentive1() {
           <Visibility data={activeComponent["subTitle"]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper>
+      <EditWrapper module={"countdown"}>
         <SettingSection title={"Countdown"}>
           <CountDown data={activeComponent["countdown"]} />
-          <Visibility />
+          <Visibility data={activeComponent["countdown"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>

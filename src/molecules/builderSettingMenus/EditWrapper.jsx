@@ -30,7 +30,7 @@ export function EditWrapper({ children, ...props }) {
     }
 
     if (key === "visibility") {
-      value = key.checked;
+      value = e.target.checked;
     }
 
     if (key === "fontFamily") setFontFamily(value);

@@ -4,6 +4,7 @@ import classes from "./.module.scss";
 
 import { styleFilter } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
+import { Grid } from "@mui/material";
 
 export const Incentive1 = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -19,7 +20,10 @@ export const Incentive1 = forwardRef(({ content }, ref) => {
       >
         <EditableElement
           // hidden={true}
-          style={{ ...userTitleStyle }}
+          style={{
+            ...userTitleStyle,
+            display: content.title.visibility ? "inherit" : "none",
+          }}
           name="title"
           data-oa-name="title"
           data-oa-type="text"
@@ -29,16 +33,38 @@ export const Incentive1 = forwardRef(({ content }, ref) => {
             ? content.title.text
             : "Add a Test T-shirt to your order"}
         </EditableElement>
-        <EditableElement
-          style={{ ...userSubTitleStyle }}
-          name="subTitle"
-          data-oa-name="subTitle"
-          data-oa-type="text"
-          type="p"
+        <Grid
+          justifyContent={"center"}
+          container
+          sx={{
+            whiteSpace: "pre-wrap",
+            ...userSubTitleStyle,
+            display: content.subTitle.visibility ? "inherit" : "none",
+          }}
         >
-          {content.subTitle ? content.subTitle.text : "Exclusive offer"}
-          {/* <span>{content.countdown && content.countdown.duration}</span> */}
-        </EditableElement>
+          <Grid item>
+            <EditableElement
+              name="subTitle"
+              data-oa-name="subTitle"
+              data-oa-type="text"
+              type="p"
+            >
+              {content.subTitle ? content.subTitle.text : "Exclusive offer"}
+            </EditableElement>
+          </Grid>
+          <Grid item>
+            <EditableElement
+              type="p"
+              data-oa-name="countdown"
+              data-oa-type="duration"
+              style={{
+                display: content.countdown.visibility ? "inherit" : "none",
+              }}
+            >
+              {content.countdown && content.countdown.duration}
+            </EditableElement>
+          </Grid>
+        </Grid>
       </div>
     )
   );

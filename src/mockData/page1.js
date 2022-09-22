@@ -18,7 +18,7 @@ export default [
       visibility: true,
     },
     subTitle: {
-      text: "Exclusive offer expires in:",
+      text: "Exclusive offer expires in: ",
       fontFamily: "Roboto",
       lineHeight: "20px",
       fontSize: "18px",
