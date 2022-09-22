@@ -39,9 +39,9 @@ export function Incentive1() {
           <Visibility />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper>
+      <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background />
+          <Background data={activeComponent["background"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

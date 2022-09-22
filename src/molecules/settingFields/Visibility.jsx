@@ -6,7 +6,7 @@ export function Visibility({ data }) {
     <SettingFieldContainer title={"VISIBILITY"}>
       <div className={classes.flexRow}>
         <p>Show content</p>
-        <Switch2 />
+        <Switch2 name="visibility" />
       </div>
     </SettingFieldContainer>
   );

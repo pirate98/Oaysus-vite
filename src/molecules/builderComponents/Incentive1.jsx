@@ -8,11 +8,17 @@ import { EditableElement } from "../../atoms/builderInputs";
 export const Incentive1 = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
+  const componentStyle = styleFilter(content.background);
 
   return (
     content && (
-      <div className={classes.incentiveContainer} ref={ref}>
+      <div
+        className={classes.incentiveContainer}
+        style={{ ...componentStyle }}
+        ref={ref}
+      >
         <EditableElement
+          // hidden={true}
           style={{ ...userTitleStyle }}
           name="title"
           data-oa-name="title"

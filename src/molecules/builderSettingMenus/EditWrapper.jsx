@@ -29,6 +29,10 @@ export function EditWrapper({ children, ...props }) {
       key = key.split("_")[0];
     }
 
+    if (key === "visibility") {
+      value = key.checked;
+    }
+
     if (key === "fontFamily") setFontFamily(value);
 
     // console.log({ activeComponent, module, key, value });
