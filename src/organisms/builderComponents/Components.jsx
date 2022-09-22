@@ -57,7 +57,7 @@ export function Components() {
 
         return (
           <Grid
-            onClick={() => dispatch(setActiveComponent(component))}
+            // onClick={() => dispatch(setActiveComponent(component))}
             key={`component-${idx}`}
             item
             xs={6}

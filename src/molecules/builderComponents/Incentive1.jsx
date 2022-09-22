@@ -30,9 +30,7 @@ const fn = forwardRef(({ content }, ref) => {
           data-oa-type="text"
           type="p"
         >
-          {content.title
-            ? content.title.text
-            : "Add a Test T-shirt to your order"}
+          {content.title ? content.title.text : ""}
         </EditableElement>
         <Grid
           justifyContent={"center"}
@@ -50,7 +48,7 @@ const fn = forwardRef(({ content }, ref) => {
               data-oa-type="text"
               type="p"
             >
-              {content.subTitle ? content.subTitle.text : "Exclusive offer"}
+              {content.subTitle ? content.subTitle.text : ""}
             </EditableElement>
           </Grid>
           <Grid item>
@@ -72,7 +70,7 @@ const fn = forwardRef(({ content }, ref) => {
 });
 
 const json = {
-  name: "Incentive1_1",
+  name: "",
   title: {
     text: "Add a Test T-shirt to your order",
     fontFamily: "Roboto",

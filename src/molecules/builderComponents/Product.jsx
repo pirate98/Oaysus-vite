@@ -11,9 +11,15 @@ import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
 
-export const Product = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content }, ref) => {
   return (
-    <Grid item container ref={ref}>
+    <Grid
+      item
+      container
+      ref={ref}
+      columnSpacing={1}
+      className={classes.componentContainer}
+    >
       <Grid item xs={6}>
         <img className={classes.image1} src={"/image/guy_1.jpg"} />
       </Grid>
@@ -21,7 +27,7 @@ export const Product = forwardRef(({ content }, ref) => {
         <Grid item sx={{ marginBottom: "2px" }}>
           <TextContainer>
             <Text variant="headingXl" as="h3">
-              Test T-shirt
+              {content.productDescription.title}
             </Text>
             <Grid container alignItems="">
               <ReactStars
@@ -33,8 +39,7 @@ export const Product = forwardRef(({ content }, ref) => {
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
             <Text variant="bodyLg" as="p">
-              Include a short, benefit-driven description of what your product
-              does and how it can improve your customer's life.
+              {content.productDescription.text}
             </Text>
           </TextContainer>
         </Grid>
@@ -75,3 +80,62 @@ export const Product = forwardRef(({ content }, ref) => {
     </Grid>
   );
 });
+
+const json = {
+  name: "",
+  layout: {
+    paddingTop: "",
+    paddingRight: "",
+    paddingBottom: "",
+    paddingLeft: "",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+  },
+  reviews: {},
+  productSelected: {},
+  productDescription: {
+    title: "Test T-shirt",
+    text: `Include a short, benefit-driven description of what your product
+    does and how it can improve your customer's life.`,
+    fontFamily: "Roboto",
+    lineHeight: "20px",
+    fontSize: "24px",
+    color: "#ffffff",
+    paddingTop: "",
+    paddingRight: "",
+    paddingBottom: "",
+    paddingLeft: "",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+  },
+  title: {
+    text: "",
+    fontFamily: "Roboto",
+    lineHeight: "20px",
+    fontSize: "24px",
+    fontWeight: 600,
+    fontColor: "black",
+    margin: "0 0 21px 0",
+    visibility: true,
+  },
+  subTitle: {
+    text: "",
+    price: 20,
+    fontFamily: "Roboto",
+    lineHeight: "20px",
+    fontWeight: 400,
+    fontSize: "16px",
+    fontColor: "black",
+    padding: 0,
+    margin: 0,
+    visibility: true,
+  },
+};
+
+Object.defineProperty(fn, "json", { value: json });
+
+export const Product = fn;

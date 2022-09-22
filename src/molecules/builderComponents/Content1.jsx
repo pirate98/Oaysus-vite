@@ -6,7 +6,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
-export const Content1 = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
 
@@ -35,15 +35,6 @@ export const Content1 = forwardRef(({ content }, ref) => {
         <Text style={{ ...userTitleStyle }} variant="headingXl" as="h3">
           {content.title && content.title.text}
         </Text>
-        {/* <Grid container alignItems="">
-          <ReactStars
-            count={5}
-            // onChange={ratingChanged}
-            size={22}
-            activeColor="rgba(248, 152, 29, 1)"
-          />
-          <p className={classes.starText}>5.0 Best Seller</p>
-        </Grid> */}
         <Text variant="bodyLg" as="p" style={{ ...userSubTitleStyle }}>
           {content.subTitle && content.subTitle.text}
         </Text>
@@ -53,7 +44,7 @@ export const Content1 = forwardRef(({ content }, ref) => {
 
   return (
     content && (
-      <Grid item container ref={ref}>
+      <Grid item container ref={ref} className={classes.componentContainer}>
         <Grid item xs={6}>
           {content.imagePosition === "left" ? imageSection : textSection}
         </Grid>
@@ -64,3 +55,62 @@ export const Content1 = forwardRef(({ content }, ref) => {
     )
   );
 });
+
+const json = {
+  name: "",
+  title: {
+    text: "Headline Content 1",
+    fontFamily: "Roboto",
+    fontWeight: "",
+    lineHeight: "20px",
+    fontSize: "24px",
+    color: "#ffffff",
+    paddingTop: "16px",
+    paddingLeft: "",
+    paddingRight: "",
+    paddingBottom: "18px",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+    visibility: true,
+  },
+  subTitle: {
+    text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
+    fontFamily: "Roboto",
+    fontWeight: "",
+    lineHeight: "20px",
+    fontStyle: "",
+    fontSize: "24px",
+    color: "#ffffff",
+    paddingTop: "16px",
+    paddingLeft: "",
+    paddingRight: "",
+    paddingBottom: "18px",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+    visibility: true,
+  },
+  background: {
+    backgroundColor: "rgb(0, 128, 96)",
+    backgroundImage: "url(/mockData/flowers.jpg)",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+  },
+  layout: {
+    paddingTop: "22px",
+    paddingRight: "10px",
+    paddingBottom: "2px",
+    paddingLeft: "10px",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+  },
+};
+
+Object.defineProperty(fn, "json", { value: json });
+
+export const Content1 = fn;

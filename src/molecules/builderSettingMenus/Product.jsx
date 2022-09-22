@@ -9,16 +9,24 @@ export function Product() {
 
   return (
     <SettingSectionContainer>
-      <SettingSection title={"Layout"}>
-        <Layout />
-      </SettingSection>
-      <SettingSection title={"Product Selected"}></SettingSection>
-      <SettingSection title={"Reviews"}></SettingSection>
-      <SettingSection title={"Product description"}>
-        <Style />
-        <Margin />
-        <Padding />
-      </SettingSection>
+      <EditWrapper module={"layout"}>
+        <SettingSection title={"Layout"}>
+          <Layout data={activeComponent["layout"]} />
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"productSelected"}>
+        <SettingSection title={"Product Selected"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"reviews"}>
+        <SettingSection title={"Reviews"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"productDescription"}>
+        <SettingSection title={"Product description"}>
+          <Style data={activeComponent["productDescription"]} />
+          <Margin data={activeComponent["productDescription"]} />
+          <Padding data={activeComponent["productDescription"]} />
+        </SettingSection>
+      </EditWrapper>
     </SettingSectionContainer>
   );
 }

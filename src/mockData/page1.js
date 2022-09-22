@@ -64,37 +64,6 @@ export default [
   //   }
   // },
   {
-    name: "Content1_1",
-    imagePosition: "left",
-    images: [
-      {
-        url: "/image/guy_1.jpg",
-      },
-    ],
-    title: {
-      text: "Test T-shirt",
-      fontFamily: "Roboto",
-      lineHeight: "20px",
-      fontSize: "24px",
-      fontWeight: 600,
-      fontColor: "black",
-      margin: "0 0 21px 0",
-      visibility: true,
-    },
-    subTitle: {
-      text: "Include a short, benefit-driven description of what your product does and how it can improve your customer's life.",
-      price: 20,
-      fontFamily: "Roboto",
-      lineHeight: "20px",
-      fontWeight: 400,
-      fontSize: "16px",
-      fontColor: "black",
-      padding: 0,
-      margin: 0,
-      visibility: true,
-    },
-  },
-  {
     name: "Content1_2",
     imagePosition: "right",
     title: {
