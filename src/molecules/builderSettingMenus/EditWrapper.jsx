@@ -16,7 +16,7 @@ export function EditWrapper({ children, ...props }) {
 
   const handleChange = (e) => {
     console.warn("wrapper");
-    console.log(e.target);
+    // console.log(e.target);
     // e.preventDefault();
     // console.log(e.target);
     const { module } = props;
@@ -51,6 +51,7 @@ export function EditWrapper({ children, ...props }) {
         onChange={handleChange}
         onKeyUp={handleChange}
         onBlur={handleChange}
+        onMouseUp={handleChange}
       >
         {children}
       </div>

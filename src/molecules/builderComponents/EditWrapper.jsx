@@ -12,7 +12,7 @@ export function EditWrapper({ children, componentName }) {
 
   const handleBlur = (e) => {
     // console.log({ name });
-    console.log(e.target);
+    // console.log(e.target);
 
     const { oaName: module, oaType: key } = e.target.dataset;
     const { value, textContent } = e.target;
