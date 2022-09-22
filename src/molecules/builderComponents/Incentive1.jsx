@@ -9,13 +9,14 @@ import { Grid } from "@mui/material";
 export const Incentive1 = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userSubTitleStyle = styleFilter(content.subTitle);
-  const componentStyle = styleFilter(content.background);
+  const componentBackground = styleFilter(content.background);
+  const componentLayout = styleFilter(content.layout);
 
   return (
     content && (
       <div
         className={classes.incentiveContainer}
-        style={{ ...componentStyle }}
+        style={{ ...componentBackground, ...componentLayout }}
         ref={ref}
       >
         <EditableElement
