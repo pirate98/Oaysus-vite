@@ -1,17 +1,14 @@
 import { PxInput } from "../../atoms";
-import { useGetActiveComponent } from "../../hooks";
 import classes from "./.module.scss";
 
-export function Distances({ type, module }) {
-  const activeComponent = useGetActiveComponent();
-  // console.log({ module });
+export function Distances({ data, type }) {
   return (
     <>
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
           <PxInput
-            value={activeComponent[module][`${type}Top`].replace("px", "")}
+            value={data[`${type}Top`].replace("px", "")}
             small
             name={`${type}Top_px`}
           />
@@ -21,7 +18,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Right_px`}
-            value={activeComponent[module][`${type}Right`].replace("px", "")}
+            value={data[`${type}Right`].replace("px", "")}
           />
         </div>
       </div>
@@ -31,7 +28,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Bottom_px`}
-            value={activeComponent[module][`${type}Bottom`].replace("px", "")}
+            value={data[`${type}Bottom`].replace("px", "")}
           />
         </div>
         <div className={classes.innerDoubleAttribute}>
@@ -39,7 +36,7 @@ export function Distances({ type, module }) {
           <PxInput
             small
             name={`${type}Left_px`}
-            value={activeComponent[module][`${type}Left`].replace("px", "")}
+            value={data[`${type}Left`].replace("px", "")}
           />
         </div>
       </div>

@@ -10,28 +10,25 @@ import {
   Alignment,
   FontFamily,
 } from "../settingField";
-import { useGetActiveComponent } from "../../hooks";
 
 export function Style({
   background = false,
   styling = false,
   weight = false,
   alignment = false,
-  module,
+  data,
 }) {
-  const activeComponent = useGetActiveComponent();
-
   return (
     <SettingFieldContainer title={"STYLE"}>
       {background && (
         <ColorSelector
-          defaultValue={activeComponent[module]["backgroundColor"]}
+          defaultValue={data["backgroundColor"]}
           name={"backgroundColor"}
           title={"Background"}
         />
       )}
       {styling && <FontStyles />}
-      <FontFamily defaultValue={activeComponent[module]["fontFamily"]} />
+      <FontFamily defaultValue={data["fontFamily"]} />
       {weight && (
         <div className={fieldClasses.singleAttribute}>
           <p>Font Weight</p>
@@ -42,7 +39,7 @@ export function Style({
         <p>Line Height</p>
         <PxInput
           placeholder="Enter size"
-          value={activeComponent[module]["lineHeight"].replace("px", "")}
+          value={data["lineHeight"].replace("px", "")}
           name={"lineHeight_px"}
         />
       </div>
@@ -51,12 +48,12 @@ export function Style({
         <PxInput
           placeholder="Enter size"
           name={"fontSize_px"}
-          value={activeComponent[module]["fontSize"].replace("px", "")}
+          value={data["fontSize"].replace("px", "")}
         />
       </div>
       {alignment && <Alignment />}
       <ColorSelector
-        defaultValue={activeComponent[module]["color"]}
+        defaultValue={data["color"]}
         name={"color"}
         title={"Font Color"}
       />

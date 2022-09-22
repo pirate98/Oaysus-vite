@@ -19,7 +19,7 @@ export const Autocomplete = styled((props) => (
       <TextField
         name={props.name}
         {...params}
-        inputRef={props.referance}
+        inputRef={props.reference}
         label=""
         placeholder={props.placeholder}
         sx={{

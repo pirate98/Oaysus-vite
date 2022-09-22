@@ -5,8 +5,6 @@ import { Autocomplete, CustomAutocomplete } from "../../atoms";
 import { useGetFontsQuery } from "../../data/googleAPI";
 import classes from "../settingField/.module.scss";
 
-const options = ["Option 1", "Option 2"];
-
 export function FontFamily({ defaultValue }) {
   const { data, error } = useGetFontsQuery();
   const textFieldRef = useRef();
@@ -16,9 +14,10 @@ export function FontFamily({ defaultValue }) {
 
   const _defaultValue =
     defaultValue && defaultValue.split(",") && defaultValue.split(",")[0];
+
   const [inputValue, setInputValue] = useState(_defaultValue || "");
 
-  // This enables handlers in wrapper to catch the changes
+  // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
     textFieldRef.current.blur();
   }, [value]);
@@ -27,7 +26,7 @@ export function FontFamily({ defaultValue }) {
     <div className={classes.singleAttribute}>
       <p>Font Family</p>
       <Autocomplete
-        referance={textFieldRef}
+        reference={textFieldRef}
         placeholder="Choose a font"
         value={value}
         onChange={(event, newValue) => {
@@ -36,7 +35,7 @@ export function FontFamily({ defaultValue }) {
           setValue(newValue);
           // event.target.blur();
         }}
-        inputValue={inputValue}
+        inputValue={inputValue || _defaultValue}
         onInputChange={(event, newInputValue) => {
           console.log({ input: newInputValue });
           if (!event) return; //  prevent update on page load
