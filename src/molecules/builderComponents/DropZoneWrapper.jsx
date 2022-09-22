@@ -86,10 +86,11 @@ export function DropZoneWrapper({ moduleContent }) {
       );
 
       let newPage = [...pageComponents];
-
+      // console.log(builderComponents["Incentive1"].json);
       const numerizedName = numerateTheName(newPage, item.name);
 
       newPage.splice(blankComponentIndex, 1, {
+        ...builderComponents[item.name].json,
         name: numerizedName,
       });
       // console.log({ newPage });
