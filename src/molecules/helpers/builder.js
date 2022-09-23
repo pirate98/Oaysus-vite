@@ -1,40 +1,42 @@
+const allowedFields = [
+  "color",
+  "backgroundColor",
+  "background",
+  "backgroundSize",
+  "backgroundRepeat",
+  "backgroundImage",
+  "backgroundPositionX",
+  "backgroundPositionY",
+  "border",
+  "borderStyle",
+  "borderWidth",
+  "borderColor",
+  "borderRadius",
+  "fontFamily",
+  "fontSize",
+  "fontColor",
+  "fontWeight",
+  "fontStyle",
+  "height",
+  "lineHeight",
+  "paddingLeft",
+  "paddingTop",
+  "paddingBottom",
+  "paddingRight",
+  "marginTop",
+  "marginBottom",
+  "marginLeft",
+  "marginRight",
+  "textDecoration",
+  "width",
+];
+
 /**
  * Get only the pre-determined style related fields from the object
  * @param {Object{}} elementData
  * @returns {Object{}}
  */
 export const styleFilter = (elementData) => {
-  const allowedFields = [
-    "color",
-    "backgroundColor",
-    "background",
-    "backgroundSize",
-    "backgroundRepeat",
-    "backgroundImage",
-    "backgroundPositionX",
-    "backgroundPositionY",
-    "borderStyle",
-    "borderWidth",
-    "borderColor",
-    "borderRadius",
-    "fontFamily",
-    "fontSize",
-    "fontColor",
-    "fontWeight",
-    "fontStyle",
-    "height",
-    "lineHeight",
-    "paddingLeft",
-    "paddingTop",
-    "paddingBottom",
-    "paddingRight",
-    "marginTop",
-    "marginBottom",
-    "marginLeft",
-    "marginRight",
-    "textDecoration",
-  ];
-
   const styleFields = {};
 
   for (const data in elementData) {
@@ -50,39 +52,6 @@ export const styleFilter = (elementData) => {
  * @returns {Object{}}
  */
 export const filterOnlyStyleValues = (componentData) => {
-  const allowedFields = [
-    "color",
-    "backgroundColor",
-    "background",
-    "backgroundSize",
-    "backgroundRepeat",
-    "backgroundImage",
-    "backgroundPositionX",
-    "backgroundPositionY",
-    "border",
-    "borderStyle",
-    "borderWidth",
-    "borderColor",
-    "borderRadius",
-    "fontFamily",
-    "fontSize",
-    "fontColor",
-    "fontWeight",
-    "fontStyle",
-    "height",
-    "lineHeight",
-    "paddingLeft",
-    "paddingTop",
-    "paddingBottom",
-    "paddingRight",
-    "marginTop",
-    "marginBottom",
-    "marginLeft",
-    "marginRight",
-    "textDecoration",
-    "width",
-  ];
-
   const onlyStyleFields = {};
 
   for (const moduleData in componentData) {

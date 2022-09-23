@@ -1,16 +1,52 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
+import { EditableElement } from "../../atoms/builderInputs";
+import { filterOnlyStyleValues } from "../helpers/builder";
 
 const fn = forwardRef(({ content }, ref) => {
+  const styles = filterOnlyStyleValues(content);
+
   return (
     <Grid item xs={12} ref={ref}>
-      <div className={classes.offer}>
-        <p>Exclusive offer expires in: 05:05</p>
+      <div
+        className={classes.offer}
+        style={{ ...styles.background, ...styles.layout }}
+      >
+        <Grid
+          justifyContent={"center"}
+          container
+          sx={{
+            whiteSpace: "pre-wrap",
+            ...styles.title,
+            display: content.title.visibility ? "inherit" : "none",
+          }}
+        >
+          <Grid item>
+            <EditableElement
+              name="title"
+              data-oa-name="title"
+              data-oa-type="text"
+              type="h3"
+            >
+              {content.title ? content.title.text : ""}
+            </EditableElement>
+          </Grid>
+          <Grid item>
+            <EditableElement
+              type="p"
+              data-oa-name="countdown"
+              data-oa-type="duration"
+              style={{
+                display: content.countdown.visibility ? "inherit" : "none",
+              }}
+            >
+              {content.countdown && content.countdown.duration}
+            </EditableElement>
+          </Grid>
+        </Grid>
       </div>
     </Grid>
   );
@@ -19,10 +55,11 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Add a Test T-shirt to your order",
+    text: "Exclusive offer expires in: ",
     fontFamily: "Roboto",
-    lineHeight: "20px",
-    fontSize: "24px",
+    lineHeight: "35px",
+    fontSize: "30px",
+    fontWeight: "600",
     color: "#ffffff",
     paddingTop: "16px",
     paddingLeft: "",
@@ -40,7 +77,7 @@ const json = {
   },
   background: {
     backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/flowers.jpg)",
+    backgroundImage: "url(/mockData/puppy.jpg)",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
@@ -53,6 +90,7 @@ const json = {
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
+    borderColor: "rgb(0, 128, 96)",
   },
 };
 
