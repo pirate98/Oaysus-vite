@@ -1,5 +1,23 @@
 import classes from "../../assets/css/_classes.module.scss";
 
-export function CleanButton({ children }) {
-  return <button className={classes.btnClean}>{children}</button>;
+export function CleanButton({
+  children,
+  onClick,
+  className = "",
+  fullWidth = false,
+  ...args
+}) {
+  return (
+    <button
+      {...args}
+      onClick={onClick}
+      className={
+        classes.btnClean +
+        (className ? ` ${className}` : "") +
+        (fullWidth ? ` ${classes.w100}` : "")
+      }
+    >
+      {children}
+    </button>
+  );
 }

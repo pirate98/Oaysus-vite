@@ -1,6 +1,11 @@
-import { useDrag, useDrop } from "react-dnd";
+import { useEffect } from "react";
+
+import { useDrag } from "react-dnd";
+import { useDispatch } from "react-redux";
 
 import classes from "./Card.module.scss";
+import dragDrop from "../../data/dragDrop";
+import { removeComponentFromPage } from "../../pages/builder/builderSlice";
 
 export function Card({
   children,
@@ -8,32 +13,46 @@ export function Card({
   title = { text: "", hoverColor: "inherit" },
   hover = false,
 }) {
+  const dispatch = useDispatch();
+
   const hoverStyle = {
     filter: "drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.33))",
     background: background.hoverColor,
     border: background.hoverColor,
     scale: "103%",
-    transition: "all 0.2s ease 0s",
+    transition: "all 0.1s ease 0s",
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging, extraProps }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
-    type: "div",
+    type: dragDrop.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods
-    item: { title: title.text },
+    item: { name: title.text },
     // method to collect additional data for drop handling like whether is currently being dragged
     collect: (monitor) => {
       return {
-        isDragging: monitor.isDragging(),
+        isDragging: !!monitor.isDragging(),
       };
+    },
+    end: (monitor) => {
+      // console.log({ monitor });
+      dispatch(removeComponentFromPage(dragDrop.BLANK_COMPONENT_NAME));
     },
   }));
 
+  useEffect(() => {
+    // console.log({ isDragging });
+  }, [isDragging]);
+
   return (
     <div
-      ref={drag}
+      ref={(el) => {
+        drag(el);
+      }}
       className={classes.componentCard}
-      style={hover ? hoverStyle : {}}
+      style={
+        isDragging ? { ...hoverStyle, opacity: 0.5 } : hover ? hoverStyle : {}
+      }
     >
       {children}
       <p

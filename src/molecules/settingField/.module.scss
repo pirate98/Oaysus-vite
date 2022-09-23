@@ -41,7 +41,6 @@
   }
 
   .colorPicker {
-    background-color: red;
     width: 35px;
     border-radius: 4px 0 0 4px;
     position: absolute;
@@ -50,6 +49,7 @@
     bottom: -1px;
     cursor: pointer;
     z-index: 1;
+    border: 1px solid lightgray;
   }
 
   .inputColor {

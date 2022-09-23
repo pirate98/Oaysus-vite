@@ -1,6 +1,7 @@
 @import "../../assets/css/classes.module", "../../assets/css/variables.module";
 
 .singleAttribute {
+  font-family: $fontFamily;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +11,7 @@
 .flexRow {
   display: flex;
   gap: 7px;
+  align-items: center;
 }
 
 .p {
@@ -22,11 +24,22 @@
   gap: 8px;
 
   .imagePreview {
+    min-width: 36px;
     width: 36px;
     height: 36px;
 
     background: #f9f7fa;
     border: 1px dashed #6d7175;
     border-radius: 2px;
+  }
+}
+
+.layout {
+  justify-content: space-around;
+  align-content: center;
+  display: flex;
+
+  p {
+    text-align: center;
   }
 }

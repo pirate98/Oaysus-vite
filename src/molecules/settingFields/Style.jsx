@@ -3,40 +3,58 @@ import {
   PxInput,
   SettingFieldContainer,
 } from "../../atoms";
-import classes from "./.module.scss";
 import fieldClasses from "../settingField/.module.scss";
-import { ColorSelector, FontStyles, Alignment } from "../settingField";
+import {
+  ColorSelector,
+  FontStyles,
+  Alignment,
+  FontFamily,
+  FontWeight,
+} from "../settingField";
+import { removePx } from "../helpers/builder";
 
 export function Style({
   background = false,
   styling = false,
   weight = false,
   alignment = false,
+  data = {},
+  module,
 }) {
   return (
     <SettingFieldContainer title={"STYLE"}>
-      {background && <ColorSelector title={"Background"} />}
-      {styling && <FontStyles />}
-      <div className={fieldClasses.singleAttribute}>
-        <p>Font Family</p>
-        <CustomAutocomplete placeholder="Choose a font" />
-      </div>
-      {weight && (
-        <div className={fieldClasses.singleAttribute}>
-          <p>Font Weight</p>
-          <CustomAutocomplete placeholder="Choose font weight" />
-        </div>
+      {background && (
+        <ColorSelector
+          defaultValue={data["backgroundColor"]}
+          name={"backgroundColor"}
+          title={"Background"}
+        />
       )}
+      {styling && <FontStyles module={module} />}
+      <FontFamily defaultValue={data["fontFamily"]} />
+      {weight && <FontWeight defaultValue={data["fontWeight"]} />}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
-        <PxInput placeholder="Enter size" />
+        <PxInput
+          placeholder="Enter size"
+          value={removePx(data["lineHeight"])}
+          name={"lineHeight_px"}
+        />
       </div>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Size</p>
-        <PxInput placeholder="Enter size" />
+        <PxInput
+          placeholder="Enter size"
+          name={"fontSize_px"}
+          value={removePx(data["fontSize"])}
+        />
       </div>
       {alignment && <Alignment />}
-      <ColorSelector title={"Font Color"} />
+      <ColorSelector
+        defaultValue={data["color"]}
+        name={"color"}
+        title={"Font Color"}
+      />
     </SettingFieldContainer>
   );
 }

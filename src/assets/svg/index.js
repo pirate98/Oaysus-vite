@@ -11,3 +11,5 @@ export { default as fontStyleUnderline } from "./fontStyleUnderline.svg";
 export { default as alignCenter } from "./alignCenter.svg";
 export { default as alignLeft } from "./alignLeft.svg";
 export { default as alignRight } from "./alignRight.svg";
+export { default as layoutLeft } from "./layoutLeft.svg";
+export { default as layoutRight } from "./layoutRight.svg";

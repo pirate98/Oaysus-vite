@@ -12,11 +12,11 @@ import {
   inputBorderFocused,
 } from "../../assets/css/_variables.module.scss";
 
-const options = ["Option 1", "Option 2"];
+const options = ["400", "500", "600", "700", "800"];
 
-export function CustomAutocomplete({ placeholder }) {
+export function CustomAutocomplete({ placeholder, defaultValue, name }) {
   const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = React.useState(defaultValue);
   // console.log({ value, inputValue });
   return (
     <Autocomplete
@@ -31,11 +31,12 @@ export function CustomAutocomplete({ placeholder }) {
         if (!event) return; //  prevent update on page load
         setInputValue(newInputValue);
       }}
-      id="controllable-states-demo"
+      // id={name}
       options={options}
       renderInput={(params) => (
         <TextField
           {...params}
+          name={name}
           label=""
           placeholder={placeholder}
           sx={{

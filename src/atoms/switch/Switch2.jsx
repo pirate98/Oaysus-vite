@@ -8,11 +8,13 @@ import {
 
 export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
   width: 42,
-  height: 26,
+  height: "min-content",
   padding: 0,
   "& .MuiSwitch-switchBase": {
-    padding: 0,
-    margin: 2,
+    // padding: 0,
+    bottom: 0,
+    padding: "2px 2px",
+    // marginLeft: 1,
     transitionDuration: "300ms",
     "&.Mui-checked": {
       transform: "translateX(16px)",
@@ -35,12 +37,12 @@ export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
   },
   "& .MuiSwitch-thumb": {
     boxSizing: "border-box",
-    width: 20.5,
-    height: 20.5,
+    width: 20,
+    height: 20,
     boxShadow: "none",
   },
   "& .MuiSwitch-track": {
-    width: "40px",
+    width: "39.4px",
     height: "24px",
     borderRadius: 26 / 2,
     backgroundColor: disabledColor,

@@ -11,6 +11,7 @@ export * from "./switch/Switch";
 export * from "./switch/Switch2";
 export * from "./actionList/ActionList";
 export * from "./customAutocomplete/CustomAutocomplete";
+export * from "./customAutocomplete/Autocomplete";
 export * from "./inputs/Input";
 export * from "./inputs/MinInput";
 export * from "./inputs/PxInput";

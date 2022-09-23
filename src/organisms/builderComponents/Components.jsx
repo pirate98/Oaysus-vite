@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as builderButtons from "../../molecules/builderButtons";
-import * as componentMenus from "../../molecules";
+import * as builderSettingMenus from "../../molecules/builderSettingMenus";
 import {
   setActiveComponent,
   setHoveredComponent,
@@ -10,6 +10,7 @@ import {
 import { Card } from "../../molecules/builderButtonCard/Card";
 import constants from "../../data/constants";
 import { EditBox } from "../../molecules/editBox/EditBox";
+import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
 
 export function Components() {
   const dispatch = useDispatch();
@@ -17,8 +18,9 @@ export function Components() {
     builder: { hoveredComponent, activeComponent },
   } = useSelector((state) => state);
 
+  const _activeComponent = removeDigitsAndReturnComponentName(activeComponent);
   const DynamicComponentMenu =
-    componentMenus[activeComponent] || activeComponent;
+    builderSettingMenus[_activeComponent] || _activeComponent;
 
   // Array content must be same with the names of the components
   const components = [
@@ -29,13 +31,13 @@ export function Components() {
     "Product",
     "Incentive2",
     "Video",
-    "Content3",
+    // "Content3",
     "CallToAction",
   ];
 
   return activeComponent ? (
     <>
-      <EditBox title={activeComponent} />
+      <EditBox title={_activeComponent} />
       <DynamicComponentMenu />
     </>
   ) : (
@@ -55,7 +57,7 @@ export function Components() {
 
         return (
           <Grid
-            onClick={() => dispatch(setActiveComponent(component))}
+            // onClick={() => dispatch(setActiveComponent(component))}
             key={`component-${idx}`}
             item
             xs={6}

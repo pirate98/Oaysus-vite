@@ -1,27 +1,44 @@
 import { PxInput } from "../../atoms";
+import { removePx } from "../helpers/builder";
 import classes from "./.module.scss";
 
-export function Distances() {
+export function Distances({ data = {}, type }) {
   return (
     <>
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
-          <PxInput small />
+          <PxInput
+            value={removePx(data[`${type}Top`])}
+            small
+            name={`${type}Top_px`}
+          />
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Right</p>
-          <PxInput small />
+          <PxInput
+            small
+            name={`${type}Right_px`}
+            value={removePx(data[`${type}Right`])}
+          />
         </div>
       </div>
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Bottom</p>
-          <PxInput small />
+          <PxInput
+            small
+            name={`${type}Bottom_px`}
+            value={removePx(data[`${type}Bottom`])}
+          />
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Left</p>
-          <PxInput small />
+          <PxInput
+            small
+            name={`${type}Left_px`}
+            value={removePx(data[`${type}Left`])}
+          />
         </div>
       </div>
     </>

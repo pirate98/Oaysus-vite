@@ -1,14 +1,23 @@
+import { useEffect } from "react";
+
 import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
-import { Content } from "../../organisms/builderContent/Content";
+import { Page } from "../../organisms/builderPage/Page";
 import { Components } from "../../organisms/builderComponents/Components";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveComponent, setActiveMenu } from "./builderSlice";
+import {
+  setActiveComponent,
+  setActiveMenu,
+  setPageComponents,
+} from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
+
+import mockPage from "../../mockData/page1";
+import { PageDemo } from "../../organisms/builderPage/pageDemo";
 
 export default function Builder() {
   const buttonContent = (
@@ -23,10 +32,15 @@ export default function Builder() {
   const dispatch = useDispatch();
 
   const {
-    builder: { activeMenu, activeComponent },
+    builder: { activeMenu, activeComponent, page },
   } = useSelector((state) => state);
 
-  const leftMenu = [{ title: "Templates" }, { title: "Components" }];
+  const leftMenu = [{ title: "Components" }, { title: "Templates" }];
+
+  // set mockdata for page
+  useEffect(() => {
+    dispatch(setPageComponents(mockPage));
+  }, [mockPage]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -48,26 +62,12 @@ export default function Builder() {
             ))}
           </div>
         )}
-        {activeMenu === 0 ? <Templates /> : <Components />}
+        {activeMenu === 0 ? <Components /> : <Templates />}
       </section>
       <main className={classes.main}>
         <section className={classes.rightSection}>
-          <div className={classes.titleContainer}>
-            <p className={classes.headlineWhite}>
-              Add a Test T-shirt to your order
-            </p>
-            <p className={classes.h2}>Exclusive offer expires in: 05:05</p>
-          </div>
-          <div
-            className={classes.imageZone}
-            style={{
-              backgroundImage: false
-                ? false
-                : 'url("/image/empty-image-dark.svg")',
-              backgroundSize: false ? "cover" : "unset",
-            }}
-          ></div>
-          <Content />
+          <Page pageContent={page} />
+          {/* <PageDemo /> */}
         </section>
       </main>
     </DndProvider>

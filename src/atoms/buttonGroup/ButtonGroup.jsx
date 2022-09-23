@@ -14,9 +14,14 @@ export const ButtonGroup = styled((props) => (
   <MuiButtonGroup {...props} variant="outlined">
     {props.buttons.map((button, idx) => (
       <PlainButton
+        name={button.name}
+        value={button.value}
+        onClick={button.onClick}
         color="success"
         key={idx}
         sx={{
+          flexGrow: 1,
+          background: button.selected ? "rgb(224 224 224)" : "white",
           color: "black",
           borderColor: "#BABFC3",
           "&:hover": {

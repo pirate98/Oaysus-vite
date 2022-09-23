@@ -1,12 +1,12 @@
 import { MinInput, SettingFieldContainer } from "../../atoms";
 import classes from "./.module.scss";
 
-export function CountDown() {
+export function CountDown({ data }) {
   return (
-    <SettingFieldContainer title={""}>
+    <SettingFieldContainer>
       <div className={classes.singleAttribute}>
         <p>Duration</p>
-        <MinInput />
+        <MinInput defaultValue={data.duration} name={"duration"} />
       </div>
     </SettingFieldContainer>
   );
