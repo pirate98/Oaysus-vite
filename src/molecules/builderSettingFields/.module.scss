@@ -1,5 +1,5 @@
-@import "../settingFields/.module.scss", "../../assets/css/variables.module",
-  "../../assets/css/classes.module";
+@import "../builderSettingFieldGroups/.module.scss",
+  "../../assets/css/variables.module", "../../assets/css/classes.module";
 
 .doubleAttribute {
   @extend .singleAttribute;

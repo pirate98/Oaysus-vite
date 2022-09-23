@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 // import { Autocomplete } from "@mui/material";
 import { Autocomplete, CustomAutocomplete } from "../../atoms";
 import { useGetFontsQuery } from "../../data/googleAPI";
-import classes from "../settingField/.module.scss";
+import classes from "../builderSettingFields/.module.scss";
 
 export function FontFamily({ defaultValue }) {
   const { data, error } = useGetFontsQuery();

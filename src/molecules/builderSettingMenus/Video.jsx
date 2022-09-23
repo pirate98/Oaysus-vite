@@ -1,4 +1,10 @@
-import { Margin, Style, Padding, Visibility, VideoURL } from "../settingFields";
+import {
+  Margin,
+  Style,
+  Padding,
+  Visibility,
+  VideoURL,
+} from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";

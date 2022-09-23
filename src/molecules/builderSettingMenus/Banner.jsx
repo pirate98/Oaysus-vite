@@ -1,6 +1,6 @@
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ImageUpload, Slider } from "../settingField";
+import { ImageUpload, Slider } from "../builderSettingFields";
 
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";

@@ -1,10 +1,15 @@
-import { Margin, Style, Padding, Background } from "../settingFields";
+import {
+  Margin,
+  Style,
+  Padding,
+  Background,
+} from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Position } from "../settingField";
+import { Position } from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
-import { SettingFieldContainer } from "../../atoms";
+import { settingFieldContainer } from "../../atoms";
 
 export function Content1() {
   const activeComponent = useGetActiveComponent();
@@ -31,9 +36,9 @@ export function Content1() {
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <SettingFieldContainer>
+          <settingFieldContainer>
             <Position data={activeComponent["background"]} />
-          </SettingFieldContainer>
+          </settingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

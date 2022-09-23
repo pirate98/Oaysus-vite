@@ -1,11 +1,11 @@
-import { Input, SettingFieldContainer } from "../../atoms";
+import { Input, settingFieldContainer } from "../../atoms";
 import classes from "./.module.scss";
 
 export function VideoURL() {
   return (
-    <SettingFieldContainer title={""}>
+    <settingFieldContainer title={""}>
       <p className={classes.p}>YouTube URL</p>
       <Input fullWidth />
-    </SettingFieldContainer>
+    </settingFieldContainer>
   );
 }

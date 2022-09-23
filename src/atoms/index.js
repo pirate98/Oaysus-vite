@@ -15,7 +15,7 @@ export * from "./customAutocomplete/Autocomplete";
 export * from "./inputs/Input";
 export * from "./inputs/MinInput";
 export * from "./inputs/PxInput";
-export * from "./settingSection/SettingFieldContainer";
+export * from "./settingSection/settingFieldContainer";
 export * from "./settingSection/SettingSection";
 export * from "./settingSection/SettingSectionContainer";
 export * from "./slider/Slider";

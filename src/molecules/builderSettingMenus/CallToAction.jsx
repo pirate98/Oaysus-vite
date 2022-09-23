@@ -1,10 +1,16 @@
 import {
-  SettingFieldContainer,
+  settingFieldContainer,
   SettingSection,
   SettingSectionContainer,
 } from "../../atoms";
-import { Slider } from "../settingField";
-import { Margin, Style, Padding, Background, Border } from "../settingFields";
+import { Slider } from "../builderSettingFields";
+import {
+  Margin,
+  Style,
+  Padding,
+  Background,
+  Border,
+} from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";
@@ -36,14 +42,14 @@ export function CallToAction() {
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
           <Style background weight data={activeComponent["buyButton"]} />
-          <SettingFieldContainer title={"SIZE"}>
+          <settingFieldContainer title={"SIZE"}>
             <Slider
               title={"Width"}
               defaultValue={removePx(activeComponent["buyButton"]["width"])}
               module={"buyButton"}
               name={"width"}
             />
-          </SettingFieldContainer>
+          </settingFieldContainer>
           <Border
             title={"BORDER"}
             data={activeComponent["buyButton"]}
