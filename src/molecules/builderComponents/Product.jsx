@@ -10,8 +10,12 @@ import { forwardRef } from "react";
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
+import { styleFilter } from "../helpers/builder";
+import { EditableElement } from "../../atoms/builderInputs";
 
 const fn = forwardRef(({ content }, ref) => {
+  const descriptionStyles = styleFilter(content.description);
+
   return (
     <Grid
       item
@@ -94,9 +98,10 @@ const json = {
     marginRight: "",
   },
   reviews: {},
-  productSelected: {},
-  productDescription: {
-    title: "Test T-shirt",
+  selected: {
+    text: "Test T-shirt",
+  },
+  description: {
     text: `Include a short, benefit-driven description of what your product
     does and how it can improve your customer's life.`,
     fontFamily: "Roboto",
