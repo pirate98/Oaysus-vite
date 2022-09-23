@@ -1,7 +1,7 @@
 import {
   CustomAutocomplete,
   PxInput,
-  settingFieldContainer,
+  SettingFieldContainer,
 } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import {
@@ -22,7 +22,7 @@ export function Style({
   module,
 }) {
   return (
-    <settingFieldContainer title={"STYLE"}>
+    <SettingFieldContainer title={"STYLE"}>
       {background && (
         <ColorSelector
           defaultValue={data["backgroundColor"]}
@@ -55,6 +55,6 @@ export function Style({
         name={"color"}
         title={"Font Color"}
       />
-    </settingFieldContainer>
+    </SettingFieldContainer>
   );
 }

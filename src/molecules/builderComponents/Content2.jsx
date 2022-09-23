@@ -30,7 +30,7 @@ const fn = forwardRef(({ content }, ref) => {
     //   // columnSpacing={2}
     //   spacing={2}
     // >
-    <section className={classes.componentContainer}>
+    <section className={classes.componentContainer} ref={ref}>
       <div style={{ ...layoutStyle, ...borderStyle, ...content.size }}>
         <Grid item>
           <EditableElement

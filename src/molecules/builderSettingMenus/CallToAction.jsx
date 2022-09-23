@@ -1,5 +1,5 @@
 import {
-  settingFieldContainer,
+  SettingFieldContainer,
   SettingSection,
   SettingSectionContainer,
 } from "../../atoms";
@@ -42,14 +42,14 @@ export function CallToAction() {
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
           <Style background weight data={activeComponent["buyButton"]} />
-          <settingFieldContainer title={"SIZE"}>
+          <SettingFieldContainer title={"SIZE"}>
             <Slider
               title={"Width"}
               defaultValue={removePx(activeComponent["buyButton"]["width"])}
               module={"buyButton"}
               name={"width"}
             />
-          </settingFieldContainer>
+          </SettingFieldContainer>
           <Border
             title={"BORDER"}
             data={activeComponent["buyButton"]}

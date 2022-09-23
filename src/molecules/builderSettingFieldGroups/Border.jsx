@@ -1,9 +1,9 @@
-import { settingFieldContainer } from "../../atoms";
+import { SettingFieldContainer } from "../../atoms";
 import { ColorSelector, Slider } from "../builderSettingFields";
 
 export function Border({ title = "MARGIN", data, module }) {
   return (
-    <settingFieldContainer title={title}>
+    <SettingFieldContainer title={title}>
       <Slider
         module={module}
         title={"Width"}
@@ -23,6 +23,6 @@ export function Border({ title = "MARGIN", data, module }) {
         name="borderColor"
         defaultValue={data.borderColor}
       />
-    </settingFieldContainer>
+    </SettingFieldContainer>
   );
 }
