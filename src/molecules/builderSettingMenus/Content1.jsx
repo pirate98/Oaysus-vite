@@ -4,6 +4,7 @@ import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { Position } from "../settingField";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
+import { SettingFieldContainer } from "../../atoms";
 
 export function Content1() {
   const activeComponent = useGetActiveComponent();
@@ -19,14 +20,20 @@ export function Content1() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
-          <Style styling />
+          <Style
+            styling
+            data={activeComponent["description"]}
+            module={"description"}
+          />
           <Margin data={activeComponent["description"]} />
           <Padding data={activeComponent["description"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Position data={activeComponent["background"]} />
+          <SettingFieldContainer>
+            <Position data={activeComponent["background"]} />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

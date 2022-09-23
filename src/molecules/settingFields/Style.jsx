@@ -19,6 +19,7 @@ export function Style({
   weight = false,
   alignment = false,
   data = {},
+  module,
 }) {
   return (
     <SettingFieldContainer title={"STYLE"}>
@@ -29,7 +30,7 @@ export function Style({
           title={"Background"}
         />
       )}
-      {styling && <FontStyles />}
+      {styling && <FontStyles module={module} />}
       <FontFamily defaultValue={data["fontFamily"]} />
       {weight && <FontWeight defaultValue={data["fontWeight"]} />}
       <div className={fieldClasses.singleAttribute}>

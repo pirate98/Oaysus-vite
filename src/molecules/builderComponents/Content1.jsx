@@ -9,7 +9,7 @@ import { EditableElement } from "../../atoms/builderInputs";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
-  const userSubTitleStyle = styleFilter(content.subTitle);
+  const userDescriptionStyle = styleFilter(content.description);
   const layoutStyle = styleFilter(content.layout);
 
   const imageSection = (
@@ -45,12 +45,12 @@ const fn = forwardRef(({ content }, ref) => {
         </EditableElement>
         <EditableElement
           type="p"
-          style={{ ...userSubTitleStyle }}
+          style={{ ...userDescriptionStyle }}
           // name="title"
-          data-oa-name="subTitle"
+          data-oa-name="description"
           data-oa-type="text"
         >
-          {content.subTitle && content.subTitle.text}
+          {content.description && content.description.text}
         </EditableElement>
       </TextContainer>
     </Grid>
@@ -96,7 +96,7 @@ const json = {
     marginRight: "",
     visibility: true,
   },
-  subTitle: {
+  description: {
     text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
     fontFamily: "Roboto",
     fontWeight: "400",

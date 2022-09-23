@@ -17,6 +17,7 @@ export const styleFilter = (elementData) => {
     "fontSize",
     "fontColor",
     "fontWeight",
+    "fontStyle",
     "height",
     "lineHeight",
     "paddingLeft",
@@ -27,6 +28,7 @@ export const styleFilter = (elementData) => {
     "marginBottom",
     "marginLeft",
     "marginRight",
+    "textDecoration",
   ];
 
   const styleFields = {};
@@ -95,7 +97,7 @@ export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
 };
 
 export const removePx = (value) => {
-  console.log({ value });
+  // console.log({ value });
   if (typeof value !== "string" || !value || !value.includes("px"))
     return value;
   return value.replace("px", "");
