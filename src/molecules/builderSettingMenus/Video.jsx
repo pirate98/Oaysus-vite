@@ -5,6 +5,8 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 
 export function Video() {
+  const activeComponent = useGetActiveComponent();
+
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
