@@ -17,49 +17,44 @@ export function FontStyles({ module }) {
 
   const activeComponent = useGetActiveComponent();
 
+  const { fontWeight, fontStyle, textDecoration } =
+    (activeComponent && activeComponent[module]) || {};
+
   const buttons = [
     {
       title: <img src={fontStyleBold} />,
-      selected: removePx(activeComponent[module].fontWeight) > BOLD_THRESHOLD,
+      selected: removePx(fontWeight) > BOLD_THRESHOLD,
       onClick: () =>
         dispatch(
           updatePageComponents({
             module,
             key: "fontWeight",
             value:
-              removePx(activeComponent[module].fontWeight) > BOLD_THRESHOLD
-                ? BOLD_THRESHOLD
-                : BOLD,
+              removePx(fontWeight) > BOLD_THRESHOLD ? BOLD_THRESHOLD : BOLD,
           })
         ),
     },
     {
       title: <img src={fontStyleItalic} />,
-      selected: activeComponent[module].fontStyle === "italic",
+      selected: fontStyle === "italic",
       onClick: () =>
         dispatch(
           updatePageComponents({
             module,
             key: "fontStyle",
-            value:
-              activeComponent[module].fontStyle === "italic"
-                ? "normal"
-                : "italic",
+            value: fontStyle === "italic" ? "normal" : "italic",
           })
         ),
     },
     {
       title: <img src={fontStyleUnderline} />,
-      selected: activeComponent[module].textDecoration === "underline",
+      selected: textDecoration === "underline",
       onClick: () =>
         dispatch(
           updatePageComponents({
             module,
             key: "textDecoration",
-            value:
-              activeComponent[module].textDecoration === "underline"
-                ? "none"
-                : "underline",
+            value: textDecoration === "underline" ? "none" : "underline",
           })
         ),
     },

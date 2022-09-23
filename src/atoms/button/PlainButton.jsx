@@ -16,7 +16,7 @@ export const PlainButton = styled((props) => (
   padding: "0.5rem 1.5rem",
   textTransform: "none",
 
-  "&:hover": {
-    // background: "#0f5140",
-  },
+  // "&:hover": {
+  // background: props.sx.backgroundColor,
+  // },
 });

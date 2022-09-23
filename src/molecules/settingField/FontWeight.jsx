@@ -4,7 +4,9 @@ import { Autocomplete } from "../../atoms";
 import fieldClasses from "../settingField/.module.scss";
 import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
 
-const options = ["400", "600"];
+const options = Array.from(Array(9).keys()).map((num) =>
+  ((num + 1) * 100).toString()
+);
 
 export function FontWeight({ defaultValue }) {
   const [value, setValue] = useState(options[0]);

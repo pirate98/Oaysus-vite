@@ -33,12 +33,17 @@ export function Content2() {
       </EditWrapper>
       <EditWrapper module={"size"}>
         <SettingSection title={"Size"}>
-          <Slider title={"Width"} />
+          <Slider
+            title={"Width"}
+            module={"size"}
+            name={"width"}
+            defaultValue={activeComponent["size"]["width"]}
+          />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"border"}>
         <SettingSection title={"Border"}>
-          <Border />
+          <Border data={activeComponent["border"]} module="border" />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

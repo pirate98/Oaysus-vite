@@ -1,7 +1,9 @@
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 
-const StyledButton = styled(Button)({
+export const AddButton = styled((props) => (
+  <Button variant="contained" {...props} />
+))({
   whiteSpace: "nowrap",
   textTransform: "none",
   boxShadow: "none",
@@ -18,10 +20,10 @@ const StyledButton = styled(Button)({
   },
 });
 
-export function AddButton({ children, color }) {
-  return (
-    <StyledButton color={color} variant="contained">
-      {children}
-    </StyledButton>
-  );
-}
+// export function AddButton({ children, color }) {
+//   return (
+//     <StyledButton color={color} variant="contained">
+//       {children}
+//     </StyledButton>
+//   );
+// }

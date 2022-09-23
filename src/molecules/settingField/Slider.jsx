@@ -4,14 +4,14 @@ import { removePx } from "../helpers/builder";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 
-export function Slider({ title, data = "", name, module }) {
+export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
   const dispatch = useDispatch();
 
   const {
     builder: { activeComponent },
   } = useSelector((state) => state);
 
-  const _data = removePx(data);
+  const _data = removePx(defaultValue);
 
   const handleChange = (e) => {
     const { name: key, value } = e.target;
@@ -26,10 +26,10 @@ export function Slider({ title, data = "", name, module }) {
       <p>{title}</p>
       <div className={classes.sliderBox}>
         <SliderInput
-          max={500}
+          max={max}
           name={name}
           aria-label="Volume"
-          value={parseInt(_data)}
+          value={_data}
           onChange={handleChange}
         />
         <span>
