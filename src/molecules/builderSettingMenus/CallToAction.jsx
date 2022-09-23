@@ -7,6 +7,7 @@ import { Slider } from "../settingField";
 import { Margin, Style, Padding, Background, Border } from "../settingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
+import { removePx } from "../helpers/builder";
 
 export function CallToAction() {
   const activeComponent = useGetActiveComponent();
@@ -36,9 +37,18 @@ export function CallToAction() {
         <SettingSection title={"Buy Button"}>
           <Style background weight data={activeComponent["buyButton"]} />
           <SettingFieldContainer title={"SIZE"}>
-            <Slider title={"Width"} data={activeComponent["buyButton"]} />
+            <Slider
+              title={"Width"}
+              defaultValue={removePx(activeComponent["buyButton"]["width"])}
+              module={"buyButton"}
+              name={"width"}
+            />
           </SettingFieldContainer>
-          <Border title={"BORDER"} data={activeComponent["buyButton"]} />
+          <Border
+            title={"BORDER"}
+            data={activeComponent["buyButton"]}
+            module="buyButton"
+          />
           <Margin data={activeComponent["buyButton"]} />
           <Padding data={activeComponent["buyButton"]} />
         </SettingSection>

@@ -14,10 +14,18 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
   const _data = removePx(defaultValue);
 
   const handleChange = (e) => {
+    e.stopPropagation();
+
+    console.log("slider");
     const { name: key, value } = e.target;
 
     dispatch(
-      updatePageComponents({ component: activeComponent, module, key, value })
+      updatePageComponents({
+        component: activeComponent,
+        module,
+        key,
+        value: `${value}px`,
+      })
     );
   };
 
@@ -29,8 +37,10 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
           max={max}
           name={name}
           aria-label="Volume"
-          value={_data}
+          value={parseInt(_data)}
           onChange={handleChange}
+          // Prevent edit wrapper from catching this change
+          onBlur={(e) => e.stopPropagation()}
         />
         <span>
           <p>{_data}</p>

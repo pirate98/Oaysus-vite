@@ -27,6 +27,7 @@ const allowedFields = [
   "marginBottom",
   "marginLeft",
   "marginRight",
+  "textAlign",
   "textDecoration",
   "width",
 ];

@@ -11,49 +11,73 @@ import {
 } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
+import { filterOnlyStyleValues } from "../helpers/builder";
+import { EditableElement } from "../../atoms/builderInputs";
+import variables from "../../assets/css/_variables.module.scss";
+import { PlainButton } from "../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
+  const styles = filterOnlyStyleValues(content);
+
   return (
-    <div className={classes.callToAction + " " + classes.headline} ref={ref}>
-      Buy This T-Shirt Right Now{" "}
-      <span className={classes.textGreen}>&nbsp;for $20.00</span>
-      <Box sx={{ width: "208px", marginLeft: "30px" }}>
-        <Button primary fullWidth>
-          Buy Now
-        </Button>
-      </Box>
+    <div
+      className={classes.callToAction + " " + classes.headline}
+      ref={ref}
+      style={{ ...styles.background, ...styles.border }}
+    >
+      <Grid container flexDirection={"row"} justifyContent={"center"}>
+        <Grid item>
+          <EditableElement
+            name="title"
+            data-oa-name="title"
+            data-oa-type="text"
+            type="h3"
+            style={{ ...styles.title }}
+          >
+            {content.title ? content.title.text : ""}
+          </EditableElement>
+        </Grid>
+        <Grid item>
+          <span className={classes.textGreen} style={{ ...styles.money }}>
+            &nbsp;for $20.00
+          </span>
+        </Grid>
+      </Grid>
+      <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
+        Buy Now
+      </PlainButton>
     </div>
   );
 });
 
 const json = {
   title: {
-    text: "Add a Test T-shirt to your order",
+    text: "Buy This T-Shirt Right Now",
     fontFamily: "Roboto",
+    fontWeight: "600",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "#ffffff",
-    paddingTop: "16px",
+    color: "black",
+    paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
     visibility: true,
+    textAlign: "center",
   },
-  subTitle: {
-    text: "Exclusive offer expires in: ",
+  money: {
     fontFamily: "Roboto",
     lineHeight: "20px",
-    fontSize: "18px",
-    color: "#ffffff",
+    fontSize: "24px",
+    color: variables.shopifyGreen,
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "14px",
+    paddingBottom: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
@@ -61,12 +85,24 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/flowers.jpg)",
+    backgroundColor: "#f2f2f2",
+    backgroundImage: "url(/mockData/strategy.jpg)",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
-  buyButton: {},
+  buyButton: {
+    width: "280px",
+    marginLeft: "30px",
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    marginBottom: "10px",
+    backgroundColor: "#008060",
+    color: "white",
+    borderStyle: "solid",
+    borderWidth: "0",
+    borderRadius: "0",
+    borderColor: "black",
+  },
 };
 
 Object.defineProperty(fn, "json", { value: json });
