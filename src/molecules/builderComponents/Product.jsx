@@ -44,7 +44,7 @@ const fn = forwardRef(({ content }, ref) => {
             >
               {content.product.text}
             </EditableElement>
-            <Grid container alignItems="">
+            <Grid container>
               <ReactStars
                 count={5}
                 // onChange={ratingChanged}
