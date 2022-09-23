@@ -10,11 +10,12 @@ import { forwardRef } from "react";
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
+import { filterOnlyStyleValues, styleFilter } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
+import { PlainButton } from "../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
-  const descriptionStyles = styleFilter(content.description);
+  const styles = filterOnlyStyleValues(content);
 
   return (
     <Grid
@@ -23,6 +24,7 @@ const fn = forwardRef(({ content }, ref) => {
       ref={ref}
       columnSpacing={1}
       className={classes.componentContainer}
+      sx={{ ...styles.layout }}
     >
       <Grid item xs={6}>
         <img className={classes.image1} src={"/image/guy_1.jpg"} />
@@ -30,9 +32,18 @@ const fn = forwardRef(({ content }, ref) => {
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
           <TextContainer>
-            <Text variant="headingXl" as="h3">
-              {content.productDescription.title}
-            </Text>
+            <EditableElement
+              // hidden={true}
+              style={{
+                ...styles.product,
+              }}
+              name="product"
+              data-oa-name="product"
+              data-oa-type="text"
+              type="h3"
+            >
+              {content.product.text}
+            </EditableElement>
             <Grid container alignItems="">
               <ReactStars
                 count={5}
@@ -42,9 +53,18 @@ const fn = forwardRef(({ content }, ref) => {
               />
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
-            <Text variant="bodyLg" as="p">
-              {content.productDescription.text}
-            </Text>
+            <EditableElement
+              // hidden={true}
+              style={{
+                ...styles.description,
+              }}
+              name="description"
+              data-oa-name="description"
+              data-oa-type="text"
+              type="p"
+            >
+              {content.description.text}
+            </EditableElement>
           </TextContainer>
         </Grid>
         <Grid item xs={12}>
@@ -73,12 +93,13 @@ const fn = forwardRef(({ content }, ref) => {
           </Stack>
         </Grid>
         <Grid item>
-          <ButtonGroup fullWidth>
-            <Button fullWidth primary>
-              Buy Now
-            </Button>
-            <Button fullWidth>Decline this offer</Button>
-          </ButtonGroup>
+          {/* <ButtonGroup fullWidth> */}
+          <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
+            Buy Now
+          </PlainButton>
+          <PlainButton variant="contained" sx={{ ...styles.declineButton }}>
+            Decline this offer
+          </PlainButton>
         </Grid>
       </Grid>
     </Grid>
@@ -88,9 +109,9 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   layout: {
-    paddingTop: "",
+    paddingTop: "42px",
     paddingRight: "",
-    paddingBottom: "",
+    paddingBottom: "40px",
     paddingLeft: "",
     marginTop: "",
     marginBottom: "",
@@ -98,16 +119,22 @@ const json = {
     marginRight: "",
   },
   reviews: {},
-  selected: {
+  product: {
     text: "Test T-shirt",
+    color: "black",
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    lineHeight: "20px",
+    fontSize: "24px",
   },
   description: {
     text: `Include a short, benefit-driven description of what your product
     does and how it can improve your customer's life.`,
     fontFamily: "Roboto",
-    lineHeight: "20px",
-    fontSize: "24px",
-    color: "#ffffff",
+    fontWeight: "400",
+    lineHeight: "24px",
+    fontSize: "16px",
+    color: "black",
     paddingTop: "",
     paddingRight: "",
     paddingBottom: "",
@@ -138,6 +165,24 @@ const json = {
     padding: 0,
     margin: 0,
     visibility: true,
+  },
+  buyButton: {
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    marginBottom: "10px",
+    backgroundColor: "#008060",
+    color: "white",
+    width: "100%",
+  },
+  declineButton: {
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    marginBottom: "10px",
+    backgroundColor: "white",
+    color: "black",
+    width: "100%",
+    border: "1px solid",
+    borderColor: "rgba(201, 204, 207, 1)",
   },
 };
 

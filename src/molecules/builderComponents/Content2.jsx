@@ -87,9 +87,9 @@ const json = {
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "24px",
-    fontStyle: "",
     fontSize: "16px",
     color: "black",
+    fontStyle: "",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
@@ -119,9 +119,6 @@ const json = {
     marginBottom: "20px",
     backgroundColor: "#008060",
     color: "white",
-    // "&:hover": {
-    //   background: "black",
-    // },
   },
   layout: {
     paddingTop: "22px",

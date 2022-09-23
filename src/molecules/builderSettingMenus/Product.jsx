@@ -14,17 +14,17 @@ export function Product() {
           <Layout data={activeComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"productSelected"}>
+      <EditWrapper module={"product"}>
         <SettingSection title={"Product Selected"}></SettingSection>
       </EditWrapper>
       <EditWrapper module={"reviews"}>
         <SettingSection title={"Reviews"}></SettingSection>
       </EditWrapper>
-      <EditWrapper module={"productDescription"}>
+      <EditWrapper module={"description"}>
         <SettingSection title={"Product description"}>
-          <Style data={activeComponent["productDescription"]} />
-          <Margin data={activeComponent["productDescription"]} />
-          <Padding data={activeComponent["productDescription"]} />
+          <Style data={activeComponent["description"]} />
+          <Margin data={activeComponent["description"]} />
+          <Padding data={activeComponent["description"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
