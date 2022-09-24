@@ -54,7 +54,7 @@ const json = {
   title: {
     text: "Buy This T-Shirt Right Now",
     fontFamily: "Roboto",
-    fontWeight: "600",
+    fontWeight: "500",
     lineHeight: "20px",
     fontSize: "24px",
     color: "#000000",
