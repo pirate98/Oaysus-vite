@@ -57,7 +57,7 @@ const json = {
     fontWeight: "600",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "black",
+    color: "#000000",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
@@ -101,7 +101,7 @@ const json = {
     borderStyle: "solid",
     borderWidth: "0",
     borderRadius: "0",
-    borderColor: "black",
+    borderColor: "#000000",
   },
 };
 

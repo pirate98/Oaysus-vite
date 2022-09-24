@@ -45,7 +45,7 @@ const json = {
     lineHeight: "20px",
     fontSize: "24px",
     fontWeight: 600,
-    fontColor: "black",
+    fontColor: "#000000",
     visibility: true,
     textAlign: "center",
     marginTop: "15px",
