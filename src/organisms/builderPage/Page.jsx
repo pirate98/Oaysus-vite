@@ -9,7 +9,7 @@ export function Page() {
     builder: { pageComponents },
   } = useSelector((state) => state);
 
-  console.log({ pageComponents });
+  // console.log({ pageComponents });
 
   return (
     <section>

@@ -3,8 +3,14 @@ import {
   SettingSection,
   SettingSectionContainer,
 } from "../../atoms";
-import { Slider } from "../settingField";
-import { Margin, Style, Padding, Background, Border } from "../settingFields";
+import { Slider } from "../builderSettingFields";
+import {
+  Margin,
+  Style,
+  Padding,
+  Background,
+  Border,
+} from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";

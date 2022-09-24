@@ -6,7 +6,7 @@ import {
   VideoURL,
   CountDown,
   Background,
-} from "../settingFields";
+} from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";

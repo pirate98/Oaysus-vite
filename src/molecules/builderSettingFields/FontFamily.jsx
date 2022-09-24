@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 // import { Autocomplete } from "@mui/material";
 import { Autocomplete, CustomAutocomplete } from "../../atoms";
 import { useGetFontsQuery } from "../../data/googleAPI";
-import classes from "../settingField/.module.scss";
+import classes from "../builderSettingFields/.module.scss";
 
 export function FontFamily({ defaultValue }) {
   const { data, error } = useGetFontsQuery();
@@ -19,7 +19,7 @@ export function FontFamily({ defaultValue }) {
 
   // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
-    console.log({ valueUpdatedTo: value });
+    // console.log({ valueUpdatedTo: value });
     textFieldRef.current.blur();
   }, [value]);
 
@@ -31,14 +31,14 @@ export function FontFamily({ defaultValue }) {
         placeholder="Choose a font"
         value={value}
         onChange={(event, newValue) => {
-          console.log({ autoCompleteChange: newValue });
+          // console.log({ autoCompleteChange: newValue });
           // console.log(textFieldRef);
           setValue(newValue);
           // event.target.blur();
         }}
         inputValue={inputValue}
         onInputChange={(event, newInputValue) => {
-          console.log({ newInput: newInputValue });
+          // console.log({ newInput: newInputValue });
           if (!event) return; //  prevent update on page load
           // if (newInputValue.length === 0) setValue(null);
           setInputValue(newInputValue);

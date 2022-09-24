@@ -1,6 +1,6 @@
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Margin, Padding, Style, Layout } from "../settingFields";
+import { Margin, Padding, Style, Layout } from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 

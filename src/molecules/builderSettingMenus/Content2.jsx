@@ -1,7 +1,13 @@
-import { Margin, Style, Padding, Background, Border } from "../settingFields";
+import {
+  Margin,
+  Style,
+  Padding,
+  Background,
+  Border,
+} from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Position, Slider } from "../settingField";
+import { Position, Slider } from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 

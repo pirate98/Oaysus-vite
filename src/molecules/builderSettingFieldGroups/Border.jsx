@@ -1,5 +1,5 @@
 import { SettingFieldContainer } from "../../atoms";
-import { ColorSelector, Slider } from "../settingField";
+import { ColorSelector, Slider } from "../builderSettingFields";
 
 export function Border({ title = "MARGIN", data, module }) {
   return (

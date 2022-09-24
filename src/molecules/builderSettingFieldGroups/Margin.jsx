@@ -1,4 +1,4 @@
-import { Distances } from "../settingField/Distances";
+import { Distances } from "../builderSettingFields/Distances";
 import { SettingFieldContainer } from "../../atoms";
 
 export function Margin({ data }) {

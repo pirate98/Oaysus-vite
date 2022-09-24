@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import { Autocomplete } from "../../atoms";
-import fieldClasses from "../settingField/.module.scss";
+import fieldClasses from "../builderSettingFields/.module.scss";
 import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
 
 const options = Array.from(Array(9).keys()).map((num) =>

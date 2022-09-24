@@ -29,7 +29,7 @@ export const builderSlice = createSlice({
       const component = state.activeComponent;
 
       const { module, key, value } = action.payload;
-      console.log({ component, module, key, value });
+      // console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 

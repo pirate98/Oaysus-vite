@@ -7,7 +7,7 @@ import {
   Visibility,
   CountDown,
   Background,
-} from "../settingFields";
+} from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetActiveComponent } from "../../hooks";
 

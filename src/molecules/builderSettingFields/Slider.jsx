@@ -11,12 +11,17 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
     builder: { activeComponent },
   } = useSelector((state) => state);
 
-  const _data = removePx(defaultValue);
+  const defaultValueString = removePx(defaultValue);
+  const defaultValueNumber = defaultValueString.length
+    ? parseInt(defaultValueString)
+    : 0;
+
+  // console.log({ sliderData: defaultValueNumber });
 
   const handleChange = (e) => {
     e.stopPropagation();
 
-    console.log("slider");
+    // console.log("slider");
     const { name: key, value } = e.target;
 
     dispatch(
@@ -37,13 +42,13 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
           max={max}
           name={name}
           aria-label="Volume"
-          value={parseInt(_data)}
+          value={defaultValueNumber}
           onChange={handleChange}
           // Prevent edit wrapper from catching this change
           onBlur={(e) => e.stopPropagation()}
         />
         <span>
-          <p>{_data}</p>
+          <p>{defaultValueNumber}</p>
           <p className={classes.pGray}>px</p>
         </span>
       </div>

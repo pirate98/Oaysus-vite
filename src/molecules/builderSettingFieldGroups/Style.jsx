@@ -3,14 +3,14 @@ import {
   PxInput,
   SettingFieldContainer,
 } from "../../atoms";
-import fieldClasses from "../settingField/.module.scss";
+import fieldClasses from "../builderSettingFields/.module.scss";
 import {
   ColorSelector,
   FontStyles,
   Alignment,
   FontFamily,
   FontWeight,
-} from "../settingField";
+} from "../builderSettingFields";
 import { removePx } from "../helpers/builder";
 
 export function Style({

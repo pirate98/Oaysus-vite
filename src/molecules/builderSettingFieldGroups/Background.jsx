@@ -1,5 +1,5 @@
 import { SettingFieldContainer } from "../../atoms";
-import { ColorSelector, ImageUpload, Position } from "../settingField";
+import { ColorSelector, ImageUpload, Position } from "../builderSettingFields";
 
 export function Background({ data }) {
   return (
