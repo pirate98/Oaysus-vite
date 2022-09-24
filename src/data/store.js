@@ -17,13 +17,33 @@ export const store = configureStore({
       serializableCheck: {
         // Ignore these action types
         ignoredActions: [
-          "builder/setHoveredComponent",
+          // "builder/setHoveredComponent",
           "navigation/setPageButtons",
         ],
         // Ignore these paths in the state
-        ignoredPaths: ["builder.hoveredComponent", "navigation.pageButtons"],
+        ignoredPaths: [
+          // "builder.hoveredComponent",
+          "navigation.pageButtons",
+        ],
       },
     })
       .concat(googleApi.middleware)
       .concat(backendApi.middleware),
+  devTools: {
+    // actionSanitizer: (action) => {
+    //   action.type === "FILE_DOWNLOAD_SUCCESS" && action.data
+    //     ? { ...action, data: "<<LONG_BLOB>>" }
+    //     : action;
+    // },
+    stateSanitizer: (state) => {
+      if (state.navigation.pageButtons) {
+        const navigation = {
+          ...state.navigation,
+          pageButtons: "<<LONG_BLOB>>",
+        };
+        return { ...state, navigation };
+      }
+      return state;
+    },
+  },
 });
