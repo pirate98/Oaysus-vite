@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setActiveComponent,
+  setSelectedPageComponentName,
   updatePageComponents,
 } from "../../pages/builder/builderSlice";
 import { removeDigitsAndReturnComponentName } from "../helpers/builder";
@@ -30,7 +30,7 @@ export function EditWrapper({ children, componentName }) {
   };
 
   const clickHandler = (e) => {
-    dispatch(setActiveComponent(componentName));
+    dispatch(setSelectedPageComponentName(componentName));
   };
 
   return (

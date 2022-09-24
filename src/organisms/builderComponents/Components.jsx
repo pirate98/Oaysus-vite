@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as builderButtons from "../../molecules/builderButtons";
 import * as builderSettingMenus from "../../molecules/builderSettingMenus";
 import {
-  setActiveComponent,
+  setSelectedPageComponentName,
   setHoveredComponent,
 } from "../../pages/builder/builderSlice";
 import { Card } from "../../molecules/builderButtonCard/Card";
@@ -15,12 +15,15 @@ import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/buil
 export function Components() {
   const dispatch = useDispatch();
   const {
-    builder: { hoveredComponent, activeComponent },
+    builder: { hoveredComponent, selectedPageComponentName },
   } = useSelector((state) => state);
 
-  const _activeComponent = removeDigitsAndReturnComponentName(activeComponent);
+  const _selectedPageComponentName = removeDigitsAndReturnComponentName(
+    selectedPageComponentName
+  );
   const DynamicComponentMenu =
-    builderSettingMenus[_activeComponent] || _activeComponent;
+    builderSettingMenus[_selectedPageComponentName] ||
+    _selectedPageComponentName;
 
   // Array content must be same with the names of the components
   const components = [
@@ -35,9 +38,9 @@ export function Components() {
     "CallToAction",
   ];
 
-  return activeComponent ? (
+  return selectedPageComponentName ? (
     <>
-      <EditBox title={_activeComponent} />
+      <EditBox title={_selectedPageComponentName} />
       <DynamicComponentMenu />
     </>
   ) : (
@@ -57,7 +60,7 @@ export function Components() {
 
         return (
           <Grid
-            // onClick={() => dispatch(setActiveComponent(component))}
+            // onClick={() => dispatch(setSelectedPageComponentName(component))}
             key={`component-${idx}`}
             item
             xs={6}

@@ -12,8 +12,8 @@ export const builderSlice = createSlice({
     setHoveredComponent: (state, action) => {
       state.hoveredComponent = action.payload;
     },
-    setActiveComponent: (state, action) => {
-      state.activeComponent = action.payload;
+    setSelectedPageComponentName: (state, action) => {
+      state.selectedPageComponentName = action.payload;
     },
     setPageComponents: (state, action) => {
       state.pageComponents = action.payload;
@@ -26,7 +26,7 @@ export const builderSlice = createSlice({
       state.pageComponents = pageComponentsWithoutGivenName;
     },
     updatePageComponents: (state, action) => {
-      const component = state.activeComponent;
+      const component = state.selectedPageComponentName;
 
       const { module, key, value } = action.payload;
       // console.log({ component, module, key, value });
@@ -46,7 +46,7 @@ export const builderSlice = createSlice({
 export const {
   setHoveredComponent,
   setActiveMenu,
-  setActiveComponent,
+  setSelectedPageComponentName,
   setPageComponents,
   removeComponentFromPage,
   updatePageComponents,

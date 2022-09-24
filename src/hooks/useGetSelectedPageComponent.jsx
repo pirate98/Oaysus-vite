@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 
-export function useGetActiveComponent() {
+export function useGetSelectedPageComponent() {
   const {
-    builder: { pageComponents, activeComponent },
+    builder: { pageComponents, selectedPageComponentName },
   } = useSelector((state) => state);
 
   let component = pageComponents.filter(
-    (comp) => comp.name === activeComponent
+    (comp) => comp.name === selectedPageComponentName
   );
 
   return component[0];

@@ -9,35 +9,35 @@ import {
   Background,
 } from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Incentive2() {
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponentName = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={activeComponent["title"]} />
-          <Margin data={activeComponent["title"]} />
-          <Padding data={activeComponent["title"]} />
+          <Style data={selectedPageComponentName["title"]} />
+          <Margin data={selectedPageComponentName["title"]} />
+          <Padding data={selectedPageComponentName["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"countdown"}>
         <SettingSection title={"Countdown"}>
-          <CountDown data={activeComponent["countdown"]} />
-          <Visibility data={activeComponent["countdown"]} />
+          <CountDown data={selectedPageComponentName["countdown"]} />
+          <Visibility data={selectedPageComponentName["countdown"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background data={activeComponent["background"]} />
+          <Background data={selectedPageComponentName["background"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={activeComponent["layout"]} />
-          <Padding data={activeComponent["layout"]} />
+          <Margin data={selectedPageComponentName["layout"]} />
+          <Padding data={selectedPageComponentName["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

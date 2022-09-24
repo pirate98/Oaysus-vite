@@ -8,7 +8,7 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
   const dispatch = useDispatch();
 
   const {
-    builder: { activeComponent },
+    builder: { selectedPageComponentName },
   } = useSelector((state) => state);
 
   const defaultValueString = removePx(defaultValue);
@@ -26,7 +26,7 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
 
     dispatch(
       updatePageComponents({
-        component: activeComponent,
+        component: selectedPageComponentName,
         module,
         key,
         value: `${value}px`,

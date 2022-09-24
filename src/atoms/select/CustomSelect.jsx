@@ -1,7 +1,5 @@
 import { forwardRef } from "react";
 
-import styles from "./CustomSelect.module.scss";
-
 import SelectUnstyled, {
   selectUnstyledClasses,
 } from "@mui/base/SelectUnstyled";
@@ -10,6 +8,8 @@ import OptionUnstyled, {
 } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled } from "@mui/system";
+
+import styles from "./CustomSelect.module.scss";
 
 const blue = {
   100: "#DAECFF",
@@ -35,10 +35,10 @@ const grey = {
 
 const StyledButton = styled("button")(
   ({ theme }) => `
+  min-width: 120px;
   cursor: pointer;
   line-height: 18px;
   box-sizing: border-box;
-  min-width: 120px;
   white-space: nowrap;
   display: flex;  
   
@@ -78,12 +78,11 @@ const StyledButton = styled("button")(
 
 const StyledListbox = styled("ul")(
   ({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
+  min-width: 120px;
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 6px;
-  margin: 12px 0;
-  min-width: 120px;
+  margin: 6px 0 12px 0;
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
@@ -101,7 +100,7 @@ export const StyledOption = styled(OptionUnstyled)(
   list-style: none;
   padding: 8px;
   border-radius: 8px;
-  cursor: default;
+  cursor: pointer;
 
   &:last-of-type {
     border-bottom: none;
@@ -115,6 +114,7 @@ export const StyledOption = styled(OptionUnstyled)(
   &.${optionUnstyledClasses.highlighted} {
     background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
     color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
+    cursor: pointer;
   }
 
   &.${optionUnstyledClasses.highlighted}.${optionUnstyledClasses.selected} {
@@ -134,7 +134,10 @@ export const StyledOption = styled(OptionUnstyled)(
 );
 
 const StyledPopper = styled(PopperUnstyled)`
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const CustomSelect = forwardRef(function CustomSelect(props, ref) {
@@ -147,10 +150,10 @@ export const CustomSelect = forwardRef(function CustomSelect(props, ref) {
 
   return (
     <SelectUnstyled
-      {...props}
       ref={ref}
       components={components}
       className={styles.border1}
+      {...props}
     />
   );
 });

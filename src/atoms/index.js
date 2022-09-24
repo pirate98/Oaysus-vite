@@ -1,6 +1,7 @@
 export { ProductsCard } from "./ProductsCard";
 export * from "./badge/Badge";
 export * from "./select/CustomSelect";
+export * from "./select/SelectForBuilder";
 export * from "./button/AddButton";
 export * from "./button/PlainButton";
 export * from "./button/CleanButton";

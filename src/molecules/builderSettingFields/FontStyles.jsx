@@ -5,7 +5,7 @@ import {
   fontStyleUnderline,
 } from "../../assets/svg";
 import { removePx } from "../helpers/builder";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 
@@ -15,10 +15,10 @@ const BOLD = 600;
 export function FontStyles({ module }) {
   const dispatch = useDispatch();
 
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponentName = useGetSelectedPageComponent();
 
   const { fontWeight, fontStyle, textDecoration } =
-    (activeComponent && activeComponent[module]) || {};
+    (selectedPageComponentName && selectedPageComponentName[module]) || {};
 
   const buttons = [
     {
