@@ -10,6 +10,7 @@ import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled } from "@mui/system";
 
 import styles from "./CustomSelect.module.scss";
+import cssVariables from "../../assets/css/_variables.module.scss";
 
 const blue = {
   100: "#DAECFF",
@@ -35,6 +36,7 @@ const grey = {
 
 const StyledButton = styled("button")(
   ({ theme }) => `
+  font-family: ${cssVariables.fontFamily};
   min-width: 120px;
   cursor: pointer;
   line-height: 18px;

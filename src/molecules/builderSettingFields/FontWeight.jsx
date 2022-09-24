@@ -10,6 +10,8 @@ import fieldClasses from "../builderSettingFields/.module.scss";
 import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
 import { useGetFontsQuery } from "../../data/googleAPI";
 import { useGetSelectedPageComponent } from "../../hooks";
+import { useDispatch } from "react-redux";
+import { updatePageComponents } from "../../pages/builder/builderSlice";
 // const options = Array.from(Array(9).keys()).map((num) =>
 //   ((num + 1) * 100).toString()
 // );
@@ -19,6 +21,8 @@ export function FontWeight({ defaultValue, module }) {
   const [inputValue, setInputValue] = useState(defaultValue);
   const [options, setOptions] = useState([]);
   const textFieldRef = useRef();
+
+  const dispatch = useDispatch();
 
   // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
@@ -55,13 +59,17 @@ export function FontWeight({ defaultValue, module }) {
     setOptions(onlyNumericalVariants);
   }, [fontFamily, fontFamilyData]);
 
+  const changeHandler = (e) =>
+    dispatch(updatePageComponents({ module, key: "fontWeight", value: e }));
+
   return (
     <div className={fieldClasses.singleAttribute}>
       <p>Font Weight</p>
       <SelectForBuilder
+        onChange={changeHandler}
         // name={"fontWeight"}
         standardWidth
-        defaultValue={fontWeight}
+        value={fontWeight}
         ref={textFieldRef}
         // popupIcon={<SelectIcon />}
         // value={value}
