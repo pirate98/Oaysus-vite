@@ -28,7 +28,7 @@ export function FontWeight({ defaultValue, module }) {
 
   const { fontFamily, fontWeight } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
-  console.log({ fontWeight });
+  // console.log({ fontWeight });
   useEffect(() => {
     if (!fontFamilyData) return;
 

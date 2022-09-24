@@ -1,5 +1,4 @@
 import { Provider } from "react-redux";
-import { Helmet } from "react-helmet";
 
 import { store } from "./data/store";
 import Routes from "./Routes";
@@ -27,9 +26,13 @@ export default function App() {
       <Provider store={store}>
         <Navigation />
         <Routes pages={pages} mainPage={"/upsells"}></Routes>
-        <Helmet>
-          <GoogleFonts />
-        </Helmet>
+        <GoogleFonts />
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href={`https://fonts.googleapis.com/css2?${"fonts"}&display=swap`}
+            rel="stylesheet"
+          /> */}
       </Provider>
     </QueryProvider>
   );

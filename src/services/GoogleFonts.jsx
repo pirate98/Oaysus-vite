@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 export function GoogleFonts() {
   const {
@@ -9,8 +11,8 @@ export function GoogleFonts() {
   const [fonts, setFonts] = useState([]);
 
   useEffect(() => {
-    console.log("referesh fonts");
     const _fonts = [];
+
     pageComponents.forEach((component) => {
       for (const module in component) {
         for (const key in component[module]) {
@@ -26,18 +28,18 @@ export function GoogleFonts() {
           (font) =>
             `family=${font}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500`
         )
-        .reduce((prev, cur) => prev + "&" + cur)
+        .reduce((prev, cur) => prev + "&" + cur, "")
     );
   }, [pageComponents]);
 
   return (
-    <>
+    <Helmet>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
         href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`}
         rel="stylesheet"
       />
-    </>
+    </Helmet>
   );
 }
