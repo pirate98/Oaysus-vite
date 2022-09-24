@@ -7,7 +7,7 @@ export function usePageButtons({ content }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageButtons(content));
+    dispatch(setPageButtons("content"));
 
     return () => {
       dispatch(setPageButtons(undefined));

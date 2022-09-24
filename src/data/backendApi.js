@@ -1,7 +1,7 @@
 /* React-specific entry point that automatically generates
    hooks corresponding to the defined endpoints */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// console.log({ google: process.env });
+console.log("redux backendApi");
 export const backendApi = createApi({
   reducerPath: "backendApi",
   baseQuery: fetchBaseQuery({
