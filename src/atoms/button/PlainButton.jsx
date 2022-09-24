@@ -6,8 +6,7 @@ export const PlainButton = styled((props) => (
 ))({
   height: "36px",
   boxShadow: "none",
-  fontFamily: "Segoe UI",
-  fontSize: "14px",
+  fontSize: "12px",
   fontWeight: 400,
   lineHeight: "20px",
   letterSpacing: "0px",
