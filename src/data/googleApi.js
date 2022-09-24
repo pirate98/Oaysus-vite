@@ -9,6 +9,30 @@ export const googleApi = createApi({
     getFonts: builder.query({
       query: () =>
         `webfonts/v1/webfonts?key=${import.meta.env.VITE_GOOGLE_API}`,
+      transformResponse: (response, meta, arg) => {
+        console.log(response);
+        response.data;
+      },
+      async onQueryStarted(arg, { queryFulfilled }) {
+        console.log("google fonts query");
+        const response = await queryFulfilled;
+        console.log({ response });
+      },
+      async onCacheEntryAdded(
+        arg,
+        {
+          dispatch,
+          getState,
+          extra,
+          requestId,
+          cacheEntryRemoved,
+          cacheDataLoaded,
+          getCacheEntry,
+          updateCachedData,
+        }
+      ) {
+        console.log("google");
+      },
     }),
   }),
 });

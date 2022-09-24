@@ -8,7 +8,7 @@ import classes from "../builderSettingFields/.module.scss";
 export function FontFamily({ defaultValue }) {
   const { data, error } = useGetFontsQuery();
   const textFieldRef = useRef();
-  console.log({ data, error });
+  // console.log({ data, error });
 
   const [value, setValue] = useState(null);
 
