@@ -75,20 +75,20 @@ export const filterOnlyStyleValues = (componentData) => {
  */
 export const getIndexes = (
   pageComponents,
-  moduleContent,
+  currentComponent = {},
   blankComponentName = "blank"
 ) => {
-  const { name } = moduleContent;
+  const currentComponentName = currentComponent && currentComponent.name;
 
   let hoveredComponentIndex = 0;
   let blankComponentIndex = undefined;
 
-  pageComponents.forEach((moduleContent, idx) => {
-    if (moduleContent.name === blankComponentName) {
+  pageComponents.forEach((component, idx) => {
+    if (component.name === blankComponentName) {
       blankComponentIndex = idx;
     }
 
-    if (moduleContent.name === name) {
+    if (component.name === currentComponentName) {
       hoveredComponentIndex = idx;
     }
   });

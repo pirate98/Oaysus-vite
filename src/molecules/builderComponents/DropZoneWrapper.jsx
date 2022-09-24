@@ -15,10 +15,13 @@ import {
   numerateTheName,
   removeDigitsAndReturnComponentName,
 } from "../helpers/builder";
+import { useAddComponentToPageBuilder } from "../../hooks";
 
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
   const refForInnerAccess = useRef();
+
+  const { addComponentToPageBuilder } = useAddComponentToPageBuilder();
 
   const {
     builder: { pageComponents },
@@ -77,24 +80,8 @@ export function DropZoneWrapper({ moduleContent }) {
       dispatch(setPageComponents(newPage));
     },
     drop: (item, monitor) => {
-      console.log({ item, monitor }, moduleContent.name);
-
-      const { undefined, blankComponentIndex } = getIndexes(
-        pageComponents,
-        moduleContent,
-        dragDrop.BLANK_COMPONENT_NAME
-      );
-
-      let newPage = [...pageComponents];
-      // console.log(builderComponents["Incentive1"].json);
-      const numerizedName = numerateTheName(newPage, item.name);
-
-      newPage.splice(blankComponentIndex, 1, {
-        ...builderComponents[item.name].json,
-        name: numerizedName,
-      });
-      // console.log({ newPage });
-      dispatch(setPageComponents(newPage));
+      // console.log({ item, monitor }, moduleContent.name);
+      addComponentToPageBuilder(item.name);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),

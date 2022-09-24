@@ -20,6 +20,11 @@ import mockPage from "../../mockData/page1";
 import { PageDemo } from "../../organisms/builderPage/pageDemo";
 
 export default function Builder() {
+  // set mockdata for page
+  useEffect(() => {
+    dispatch(setPageComponents(mockPage));
+  }, [mockPage]);
+
   const buttonContent = (
     <>
       <Button>Preview on store</Button>
@@ -36,11 +41,6 @@ export default function Builder() {
   } = useSelector((state) => state);
 
   const leftMenu = [{ title: "Components" }, { title: "Templates" }];
-
-  // set mockdata for page
-  useEffect(() => {
-    dispatch(setPageComponents(mockPage));
-  }, [mockPage]);
 
   return (
     <DndProvider backend={HTML5Backend}>

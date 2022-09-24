@@ -50,17 +50,33 @@ export function FontWeight({ defaultValue, module }) {
 
     if (!filterResult[0] || !filterResult[0].variants) return;
 
-    const onlyNumericalVariants = filterResult[0].variants.filter((variant) =>
-      /^[0-9]+$/i.test(variant)
-    );
+    const onlyNumericalVariants = (fontStyle = "regular") => {
+      const filtered = filterResult[0].variants.filter(
+        (variant) => /^[0-9]+$/i.test(variant) || variant === fontStyle
+      );
 
-    console.log({ onlyNumericalVariants });
+      return filtered.map((variant) => (variant === fontStyle ? 400 : variant));
+    };
 
-    setOptions(onlyNumericalVariants);
+    console.log({ onlyNumericalVariants: onlyNumericalVariants() });
+
+    setOptions(onlyNumericalVariants());
   }, [fontFamily, fontFamilyData]);
 
   const changeHandler = (e) =>
     dispatch(updatePageComponents({ module, key: "fontWeight", value: e }));
+
+  const fontWeightMap = {
+    100: "Thin",
+    200: "Extra Light",
+    300: "Light",
+    400: "Regular",
+    500: "Medium",
+    600: "Semi Bold",
+    700: "Bold",
+    800: "Extra Bold",
+    900: "Heavy",
+  };
 
   return (
     <div className={fieldClasses.singleAttribute}>
@@ -73,7 +89,7 @@ export function FontWeight({ defaultValue, module }) {
       >
         {options.map((option, idx) => (
           <StyledOption key={idx} value={option}>
-            {option}
+            {fontWeightMap[option]}
           </StyledOption>
         ))}
       </SelectForBuilder>

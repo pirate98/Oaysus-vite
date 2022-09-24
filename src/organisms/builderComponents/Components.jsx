@@ -25,8 +25,7 @@ export function Components() {
     builderSettingMenus[_selectedPageComponentName] ||
     _selectedPageComponentName;
 
-  // Array content must be same with the names of the components
-  const components = [
+  const componentFunctionNames = [
     "Incentive1",
     "Banner",
     "Content1",
@@ -34,7 +33,6 @@ export function Components() {
     "Product",
     "Incentive2",
     "Video",
-    // "Content3",
     "CallToAction",
   ];
 
@@ -55,7 +53,7 @@ export function Components() {
         paddingTop: "0",
       }}
     >
-      {components.map((component, idx) => {
+      {componentFunctionNames.map((component, idx) => {
         const DynamicComponent = builderButtons[component];
 
         return (
