@@ -15,17 +15,18 @@ export const Select = styled((props) => {
 
   return (
     <MuiSelect {...customProps}>
-      {props.options.map((option, idx) => (
-        <MenuItem
-          key={idx}
-          value={option.value}
-          sx={{
-            fontSize: inputFontSize,
-          }}
-        >
-          {option.label}
-        </MenuItem>
-      ))}
+      {props.options &&
+        props.options.map((option, idx) => (
+          <MenuItem
+            key={idx}
+            value={option.value}
+            sx={{
+              fontSize: inputFontSize,
+            }}
+          >
+            {option.label}
+          </MenuItem>
+        ))}
     </MuiSelect>
   );
 })({

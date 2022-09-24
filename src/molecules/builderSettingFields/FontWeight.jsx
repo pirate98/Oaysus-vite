@@ -18,18 +18,9 @@ import { updatePageComponents } from "../../pages/builder/builderSlice";
 // );
 
 export function FontWeight({ defaultValue, module }) {
-  const [value, setValue] = useState(null);
-  const [inputValue, setInputValue] = useState(defaultValue);
-  const [options, setOptions] = useState([]);
-  // const textFieldRef = useRef();
+  const [options, setOptions] = useState(null);
 
   const dispatch = useDispatch();
-
-  // This enables handlers in field wrapper to catch the changes
-  // useEffect(() => {
-  //   // console.log({ fontFamilyUpdatedTo: value });
-  //   textFieldRef.current.blur();
-  // }, [value]);
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
@@ -56,10 +47,12 @@ export function FontWeight({ defaultValue, module }) {
         (variant) => /^[0-9]+$/i.test(variant) || variant === fontStyle
       );
 
-      return filtered.map((variant) => (variant === fontStyle ? 400 : variant));
+      return filtered.map((variant) =>
+        variant === fontStyle ? "400" : variant
+      );
     };
 
-    console.log({ onlyNumericalVariants: onlyNumericalVariants() });
+    // console.log({ onlyNumericalVariants: onlyNumericalVariants() });
 
     setOptions(
       onlyNumericalVariants().map((variant) => {
@@ -69,7 +62,7 @@ export function FontWeight({ defaultValue, module }) {
   }, [fontFamily, fontFamilyData]);
 
   const changeHandler = (e) => {
-    console.log({ e: e.target });
+    // console.log({ e: e.target });
     const { value } = e.target;
     dispatch(updatePageComponents({ module, key: "fontWeight", value }));
   };
@@ -91,8 +84,7 @@ export function FontWeight({ defaultValue, module }) {
       <p>Font Weight</p>
       <Select
         onChange={changeHandler}
-        value={fontWeight}
-        // ref={textFieldRef}
+        value={(options && fontWeight) || ""}
         options={options}
       />
     </div>
