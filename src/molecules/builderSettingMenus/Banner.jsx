@@ -19,8 +19,9 @@ export function Banner() {
           <Slider
             title={"Height"}
             name="height"
-            data={activeComponent["sizing"]["height"]}
+            defaultValue={activeComponent["sizing"]["height"]}
             module={"sizing"}
+            max={500}
           />
         </SettingSection>
       </EditWrapper>
