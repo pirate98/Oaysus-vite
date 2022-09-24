@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
@@ -8,7 +8,7 @@ import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
 import { Components } from "../../organisms/builderComponents/Components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import {
   setSelectedPageComponentName,
   setActiveMenu,
@@ -16,14 +16,8 @@ import {
 } from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
-import mockPage from "../../mockData/page1";
-import { PageDemo } from "../../organisms/builderPage/pageDemo";
-
 export default function Builder() {
-  // set mockdata for page
-  useEffect(() => {
-    dispatch(setPageComponents(mockPage));
-  }, [mockPage]);
+  const dispatch = useDispatch();
 
   const buttonContent = (
     <>
@@ -33,8 +27,6 @@ export default function Builder() {
   );
 
   usePageButtons({ content: buttonContent });
-
-  const dispatch = useDispatch();
 
   const {
     builder: { activeMenu, selectedPageComponentName, page },

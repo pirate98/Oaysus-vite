@@ -21,7 +21,9 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
 import { NavigationMenu } from "@shopify/app-bridge-react";
+import { Provider } from "react-redux";
 
+import { store } from "./data/store";
 import { PolarisProvider } from "./services/providers";
 import App from "./App";
 
@@ -29,9 +31,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter basename="/">
       <PolarisProvider>
-        {/* <AppBridgeProvider> */}
-        <App />
-        {/* </AppBridgeProvider> */}
+        <Provider store={store}>
+          {/* <AppBridgeProvider> */}
+          <App />
+          {/* </AppBridgeProvider> */}
+        </Provider>
       </PolarisProvider>
     </BrowserRouter>
   </React.StrictMode>

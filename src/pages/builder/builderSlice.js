@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { activeMenu: 0, pageComponents: [] };
+import { boilerPlatePage } from "../../mockData/defaultBuilderPage";
+
+const initialState = { activeMenu: 0, pageComponents: boilerPlatePage };
 
 export const builderSlice = createSlice({
   name: "builder",
@@ -18,6 +20,7 @@ export const builderSlice = createSlice({
     setPageComponents: (state, action) => {
       state.pageComponents = action.payload;
     },
+
     removeComponentFromPage: (state, action) => {
       const pageComponentsWithoutGivenName = state.pageComponents.filter(
         (comp) => comp.name !== action.payload

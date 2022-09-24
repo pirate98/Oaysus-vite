@@ -1,4 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback } from "react";
+
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { getIndexes, numerateTheName } from "../molecules/helpers/builder";
 import { setPageComponents } from "../pages/builder/builderSlice";
 import dragDrop from "../data/dragDrop";
@@ -6,11 +8,12 @@ import * as builderComponents from "../molecules/builderComponents";
 
 export const useAddComponentToPageBuilder = () => {
   const dispatch = useDispatch();
-  const {
-    builder: { pageComponents },
-  } = useSelector((state) => state);
 
-  const fn = (componentName) => {
+  const { getState } = useStore();
+
+  const func = async (componentName) => {
+    const { pageComponents } = getState().builder;
+
     const { undefined, blankComponentIndex } = getIndexes(
       pageComponents,
       null,
@@ -25,9 +28,10 @@ export const useAddComponentToPageBuilder = () => {
       ...builderComponents[componentName].json,
       name: numerizedName,
     });
-    // console.log({ newPage });
-    dispatch(setPageComponents(newPage));
+    console.log({ newPage });
+    await dispatch(setPageComponents(newPage));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
   };
 
-  return { addComponentToPageBuilder: fn };
+  return { addComponentToPageBuilder: func };
 };

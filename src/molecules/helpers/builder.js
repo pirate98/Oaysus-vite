@@ -118,7 +118,7 @@ export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
     return nameNumerator > prev ? nameNumerator : prev;
   }, 0);
 
-  console.log({ biggestNumeratorFromNames });
+  // console.log({ biggestNumeratorFromNames });
   return name + "_" + (biggestNumeratorFromNames + 1);
 };
 

@@ -1,12 +1,15 @@
-import { Provider } from "react-redux";
+import { useEffect } from "react";
 
-import { store } from "./data/store";
+import { useDispatch, useStore } from "react-redux";
+
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./services/providers";
 import "./assets/css/app.scss";
 import Upsells from "./pages/upsells/Upsells";
 import Navigation from "./organisms/navigation/Navigation";
 import { GoogleFonts } from "./services";
+// import mockPage from "../../mockData/page1";
+// import { PageDemo } from "../../organisms/builderPage/pageDemo";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -23,17 +26,16 @@ export default function App() {
               },
             ]}
           /> */}
-      <Provider store={store}>
-        <Navigation />
-        <Routes pages={pages} mainPage={"/upsells"}></Routes>
-        <GoogleFonts />
-        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+      <Navigation />
+      <Routes pages={pages} mainPage={"/upsells"}></Routes>
+      <GoogleFonts />
+      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
             href={`https://fonts.googleapis.com/css2?${"fonts"}&display=swap`}
             rel="stylesheet"
           /> */}
-      </Provider>
     </QueryProvider>
   );
 }
