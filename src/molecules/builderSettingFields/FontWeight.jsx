@@ -53,16 +53,33 @@ export function FontWeight({ defaultValue, module }) {
     };
 
     // console.log({ onlyNumericalVariants: onlyNumericalVariants() });
+    const fontWeightList = onlyNumericalVariants();
 
     setOptions(
-      onlyNumericalVariants().map((variant) => {
+      fontWeightList.map((variant) => {
         return { value: variant, label: fontWeightMap[variant] };
       })
     );
+
+    // If new font family doesnt have selected weight update the weight
+    const fontWeightExists = fontWeightList.some(
+      (_fontWeight) => _fontWeight.toString() === fontWeight
+    );
+    console.log({ fontWeightExists });
+    if (!fontWeightExists) {
+      dispatch(
+        updatePageComponents({
+          module,
+          key: "fontWeight",
+          value: fontWeightList[0],
+        })
+      );
+    }
   }, [fontFamily, fontFamilyData]);
 
   const changeHandler = (e) => {
-    // console.log({ e: e.target });
+    console.log({ e: e.target });
+    e.stopPropagation();
     const { value } = e.target;
     dispatch(updatePageComponents({ module, key: "fontWeight", value }));
   };

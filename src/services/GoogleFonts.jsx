@@ -9,6 +9,7 @@ export function GoogleFonts() {
   const [fonts, setFonts] = useState([]);
 
   useEffect(() => {
+    console.log("referesh fonts");
     const _fonts = [];
     pageComponents.forEach((component) => {
       for (const module in component) {
@@ -23,7 +24,7 @@ export function GoogleFonts() {
       _fonts
         .map(
           (font) =>
-            `family=${font}:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500`
+            `family=${font}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500`
         )
         .reduce((prev, cur) => prev + "&" + cur)
     );
