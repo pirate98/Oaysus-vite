@@ -67,23 +67,9 @@ export function FontWeight({ defaultValue, module }) {
       <p>Font Weight</p>
       <SelectForBuilder
         onChange={changeHandler}
-        // name={"fontWeight"}
         standardWidth
         value={fontWeight}
         ref={textFieldRef}
-        // popupIcon={<SelectIcon />}
-        // value={value}
-        // // defaultValue={}
-        // onChange={(event, newValue) => {
-        //   setValue(newValue);
-        // }}
-        // inputValue={inputValue}
-        // onInputChange={(event, newInputValue) => {
-        //   if (!event) return; //  prevent update on page load
-        //   setInputValue(newInputValue);
-        // }}
-        // // id={name}
-        // // options={options}
       >
         {options.map((option, idx) => (
           <StyledOption key={idx} value={option}>

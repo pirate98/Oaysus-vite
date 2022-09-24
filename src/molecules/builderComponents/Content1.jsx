@@ -7,7 +7,7 @@ import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content = {} }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userDescriptionStyle = styleFilter(content.description);
   const layoutStyle = styleFilter(content.layout);
