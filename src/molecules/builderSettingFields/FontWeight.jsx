@@ -5,6 +5,7 @@ import {
   CustomSelect,
   SelectForBuilder,
   StyledOption,
+  Select,
 } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
@@ -20,23 +21,23 @@ export function FontWeight({ defaultValue, module }) {
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState(defaultValue);
   const [options, setOptions] = useState([]);
-  const textFieldRef = useRef();
+  // const textFieldRef = useRef();
 
   const dispatch = useDispatch();
 
   // This enables handlers in field wrapper to catch the changes
-  useEffect(() => {
-    // console.log({ fontFamilyUpdatedTo: value });
-    textFieldRef.current.blur();
-  }, [value]);
+  // useEffect(() => {
+  //   // console.log({ fontFamilyUpdatedTo: value });
+  //   textFieldRef.current.blur();
+  // }, [value]);
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
   const { data: fontFamilyData } = useGetFontsQuery();
 
   const { fontFamily, fontWeight } =
-    selectedPageComponent && selectedPageComponent[module];
-
+    (selectedPageComponent && selectedPageComponent[module]) || {};
+  console.log({ fontWeight });
   useEffect(() => {
     if (!fontFamilyData) return;
 
@@ -60,11 +61,18 @@ export function FontWeight({ defaultValue, module }) {
 
     console.log({ onlyNumericalVariants: onlyNumericalVariants() });
 
-    setOptions(onlyNumericalVariants());
+    setOptions(
+      onlyNumericalVariants().map((variant) => {
+        return { value: variant, label: fontWeightMap[variant] };
+      })
+    );
   }, [fontFamily, fontFamilyData]);
 
-  const changeHandler = (e) =>
-    dispatch(updatePageComponents({ module, key: "fontWeight", value: e }));
+  const changeHandler = (e) => {
+    console.log({ e: e.target });
+    const { value } = e.target;
+    dispatch(updatePageComponents({ module, key: "fontWeight", value }));
+  };
 
   const fontWeightMap = {
     100: "Thin",
@@ -81,18 +89,12 @@ export function FontWeight({ defaultValue, module }) {
   return (
     <div className={fieldClasses.singleAttribute}>
       <p>Font Weight</p>
-      <SelectForBuilder
+      <Select
         onChange={changeHandler}
-        standardWidth
         value={fontWeight}
-        ref={textFieldRef}
-      >
-        {options.map((option, idx) => (
-          <StyledOption key={idx} value={option}>
-            {fontWeightMap[option]}
-          </StyledOption>
-        ))}
-      </SelectForBuilder>
+        // ref={textFieldRef}
+        options={options}
+      />
     </div>
   );
 }

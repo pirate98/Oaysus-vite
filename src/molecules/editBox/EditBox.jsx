@@ -8,7 +8,7 @@ import {
   setSelectedPageComponentName,
   setActiveMenu,
 } from "../../pages/builder/builderSlice";
-import { CleanButton } from "../../atoms";
+import { HiddenWrapperButton } from "../../atoms";
 
 export function EditBox({ title, subTitle = "Editing" }) {
   const dispatch = useDispatch();
@@ -23,9 +23,9 @@ export function EditBox({ title, subTitle = "Editing" }) {
         <p className={classes.title}>{title}</p>
         <p className={classes.subTitle}>{subTitle}</p>
       </Grid>
-      <CleanButton>
+      <HiddenWrapperButton>
         <EditIcon onClick={() => dispatch(setSelectedPageComponentName(0))} />
-      </CleanButton>
+      </HiddenWrapperButton>
     </div>
   );
 }
