@@ -4,15 +4,15 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { filterOnlyStyleValues } from "../../helpers/builder";
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
     <Grid container item xs={12} ref={ref}>
-      <EditableElement
+      <EditableStyleable
         name="title"
         data-oa-name="title"
         data-oa-type="text"
@@ -23,7 +23,7 @@ const fn = forwardRef(({ content }, ref) => {
         }}
       >
         {content.title ? content.title.text : ""}
-      </EditableElement>
+      </EditableStyleable>
       {/* <p className={classes.videoTitle}></p> */}
       <div
         className={classes.imageZone}

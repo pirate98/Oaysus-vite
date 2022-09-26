@@ -1,18 +1,11 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import { AddButton, BuilderButton, PlainButton } from "../../atoms";
+import { styleFilter } from "../../helpers/builder";
+import { BuilderButton, PlainButton } from "../../../atoms";
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
 
 const fn = forwardRef(({ content }, ref) => {
   const titleStyle = styleFilter(content.title);
@@ -33,7 +26,7 @@ const fn = forwardRef(({ content }, ref) => {
     <section className={classes.componentContainer} ref={ref}>
       <div style={{ ...layoutStyle, ...borderStyle, ...content.size }}>
         <Grid item>
-          <EditableElement
+          <EditableStyleable
             type="h3"
             className={classes.headline}
             style={{ ...titleStyle }}
@@ -41,15 +34,15 @@ const fn = forwardRef(({ content }, ref) => {
             data-oa-type="text"
           >
             {content.title.text}
-          </EditableElement>
-          <EditableElement
+          </EditableStyleable>
+          <EditableStyleable
             type="p"
             style={{ ...descriptionStyle }}
             data-oa-name="description"
             data-oa-type="text"
           >
             {content.description.text}
-          </EditableElement>
+          </EditableStyleable>
         </Grid>
         <Grid item sx={{ width: "208px" }}>
           <BuilderButton variant="contained" sx={{ ...buyButtonStyle }}>

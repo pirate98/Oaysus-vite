@@ -10,11 +10,11 @@ import {
   ButtonGroup,
 } from "@shopify/polaris";
 
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import variables from "../../assets/css/_variables.module.scss";
-import { AddButton, BuilderButton, PlainButton } from "../../atoms";
+import { filterOnlyStyleValues } from "../../helpers/builder";
+import variables from "../../../assets/css/_variables.module.scss";
+import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -33,7 +33,7 @@ const fn = forwardRef(({ content }, ref) => {
         spacing={1}
       >
         <Grid item>
-          <EditableElement
+          <EditableStyleable
             name="title"
             data-oa-name="title"
             data-oa-type="text"
@@ -41,7 +41,7 @@ const fn = forwardRef(({ content }, ref) => {
             style={{ ...styles.title }}
           >
             {content.title ? content.title.text : ""}
-          </EditableElement>
+          </EditableStyleable>
         </Grid>
         <Grid item>
           <div className={classes.textGreen} style={{ ...styles.money }}>

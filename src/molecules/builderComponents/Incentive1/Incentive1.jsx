@@ -3,8 +3,8 @@ import { forwardRef } from "react";
 import classes from "./.module.scss";
 
 import { styleFilter } from "../../helpers/builder";
-import { EditableElement } from "../../../atoms/builderInputs";
 import { Grid } from "@mui/material";
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -19,7 +19,7 @@ const fn = forwardRef(({ content }, ref) => {
         style={{ ...componentBackground, ...componentLayout }}
         ref={ref}
       >
-        <EditableElement
+        <EditableStyleable
           // hidden={true}
           style={{
             ...userTitleStyle,
@@ -28,10 +28,11 @@ const fn = forwardRef(({ content }, ref) => {
           name="title"
           data-oa-name="title"
           data-oa-type="text"
-          type="p"
+          type="h3"
+          className={classes.title}
         >
           {content.title ? content.title.text : ""}
-        </EditableElement>
+        </EditableStyleable>
         <Grid
           justifyContent={"center"}
           container
@@ -42,14 +43,14 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableElement
+            <EditableStyleable
               name="subTitle"
               data-oa-name="subTitle"
               data-oa-type="text"
               type="p"
             >
               {content.subTitle ? content.subTitle.text : ""}
-            </EditableElement>
+            </EditableStyleable>
           </Grid>
           <Grid item>
             <p

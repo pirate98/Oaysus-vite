@@ -1,18 +1,13 @@
-import Grid from "@mui/material/Grid";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 import { forwardRef } from "react";
+
+import Grid from "@mui/material/Grid";
+import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import { BuilderButton, PlainButton } from "../../atoms";
+import { filterOnlyStyleValues } from "../../helpers/builder";
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { BuilderButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -32,7 +27,7 @@ const fn = forwardRef(({ content }, ref) => {
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
           <TextContainer>
-            <EditableElement
+            <EditableStyleable
               // hidden={true}
               style={{
                 ...styles.product,
@@ -43,7 +38,7 @@ const fn = forwardRef(({ content }, ref) => {
               type="h3"
             >
               {content.product.text}
-            </EditableElement>
+            </EditableStyleable>
             <Grid container>
               <ReactStars
                 count={5}
@@ -53,7 +48,7 @@ const fn = forwardRef(({ content }, ref) => {
               />
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
-            <EditableElement
+            <EditableStyleable
               // hidden={true}
               style={{
                 ...styles.description,
@@ -64,7 +59,7 @@ const fn = forwardRef(({ content }, ref) => {
               type="p"
             >
               {content.description.text}
-            </EditableElement>
+            </EditableStyleable>
           </TextContainer>
         </Grid>
         <Grid item xs={12}>

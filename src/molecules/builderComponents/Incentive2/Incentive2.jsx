@@ -3,8 +3,8 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { EditableElement } from "../../../atoms/builderInputs";
 import { filterOnlyStyleValues } from "../../helpers/builder";
+import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -25,14 +25,14 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableElement
+            <EditableStyleable
               name="title"
               data-oa-name="title"
               data-oa-type="text"
               type="h3"
             >
               {content.title ? content.title.text : ""}
-            </EditableElement>
+            </EditableStyleable>
           </Grid>
           <Grid item>
             <p
