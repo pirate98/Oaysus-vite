@@ -52,16 +52,15 @@ const fn = forwardRef(({ content }, ref) => {
             </EditableElement>
           </Grid>
           <Grid item>
-            <EditableElement
-              type="p"
+            <p
               data-oa-name="countdown"
               data-oa-type="duration"
               style={{
                 display: content.countdown.visibility ? "inherit" : "none",
               }}
             >
-              {content.countdown && content.countdown.duration}
-            </EditableElement>
+              {content.countdown && content.countdown.duration + ":00"}
+            </p>
           </Grid>
         </Grid>
       </div>

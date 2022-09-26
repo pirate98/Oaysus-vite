@@ -93,7 +93,7 @@ const json = {
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "24px",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
