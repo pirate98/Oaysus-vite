@@ -12,7 +12,7 @@ import {
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
-import { AddButton, PlainButton } from "../../atoms";
+import { AddButton, BuilderButton, PlainButton } from "../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const titleStyle = styleFilter(content.title);
@@ -52,9 +52,9 @@ const fn = forwardRef(({ content }, ref) => {
           </EditableElement>
         </Grid>
         <Grid item sx={{ width: "208px" }}>
-          <PlainButton variant="contained" sx={{ ...buyButtonStyle }}>
+          <BuilderButton variant="contained" sx={{ ...buyButtonStyle }}>
             Buy Now
-          </PlainButton>
+          </BuilderButton>
         </Grid>
       </div>
     </section>
@@ -122,9 +122,9 @@ const json = {
   },
   layout: {
     paddingTop: "",
-    paddingRight: "10px",
+    paddingRight: "",
     paddingBottom: "",
-    paddingLeft: "10px",
+    paddingLeft: "",
     marginTop: "20px",
     marginBottom: "20px",
     marginLeft: "",

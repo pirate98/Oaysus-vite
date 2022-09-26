@@ -12,7 +12,7 @@ import ReactStars from "react-rating-stars-component";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, styleFilter } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
-import { PlainButton } from "../../atoms";
+import { BuilderButton, PlainButton } from "../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -94,12 +94,10 @@ const fn = forwardRef(({ content }, ref) => {
         </Grid>
         <Grid item>
           {/* <ButtonGroup fullWidth> */}
-          <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
-            Buy Now
-          </PlainButton>
-          <PlainButton variant="contained" sx={{ ...styles.declineButton }}>
+          <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+          <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
             Decline this offer
-          </PlainButton>
+          </BuilderButton>
         </Grid>
       </Grid>
     </Grid>
@@ -167,22 +165,10 @@ const json = {
     visibility: true,
   },
   buyButton: {
-    fontFamily: "Roboto",
-    fontWeight: "400",
     marginBottom: "10px",
-    backgroundColor: "#008060",
-    color: "white",
-    width: "100%",
   },
   declineButton: {
-    fontFamily: "Roboto",
-    fontWeight: "400",
     marginBottom: "10px",
-    backgroundColor: "white",
-    color: "#000000",
-    width: "100%",
-    border: "1px solid",
-    borderColor: "rgba(201, 204, 207, 1)",
   },
 };
 

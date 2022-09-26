@@ -13,18 +13,19 @@ const componentsToAddOnInitialLoad = [
   "CallToAction",
 ];
 
-const boilerPlatePage = [];
+const boilerPlatePage = () => {
+  const moduleList = [];
 
-for (const componentName of componentsToAddOnInitialLoad) {
-  const numericalComponentName = numerateTheName(
-    boilerPlatePage,
-    componentName
-  );
+  for (const componentName of componentsToAddOnInitialLoad) {
+    const numericalComponentName = numerateTheName(moduleList, componentName);
 
-  boilerPlatePage.push({
-    ...builderComponents[componentName].json,
-    name: numericalComponentName,
-  });
-}
+    moduleList.push({
+      ...builderComponents[componentName].json,
+      name: numericalComponentName,
+    });
+  }
 
-export { boilerPlatePage };
+  return moduleList;
+};
+
+export default boilerPlatePage;

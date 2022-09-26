@@ -5,6 +5,7 @@ export * from "./select/SelectForBuilder";
 export * from "./select/Select";
 export * from "./button/AddButton";
 export * from "./button/PlainButton";
+export * from "./button/BuilderButton";
 export * from "./button/HiddenWrapperButton";
 export * from "./buttonGroup/ButtonGroup";
 export * from "./cards/ProductCard";
