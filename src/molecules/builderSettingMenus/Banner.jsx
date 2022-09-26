@@ -19,7 +19,7 @@ export function Banner() {
           <Slider
             title={"Height"}
             name="height"
-            defaultValue={selectedPageComponentName["sizing"]["height"]}
+            defaultValue={selectedPageComponent["sizing"]["height"]}
             module={"sizing"}
             max={500}
           />
