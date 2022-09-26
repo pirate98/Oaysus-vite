@@ -2,8 +2,8 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { styleFilter } from "../../helpers/builder";
+import { EditableElement } from "../../../atoms/builderInputs";
 import { Grid } from "@mui/material";
 
 const fn = forwardRef(({ content }, ref) => {

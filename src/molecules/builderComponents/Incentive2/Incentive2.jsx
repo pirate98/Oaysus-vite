@@ -3,8 +3,8 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { EditableElement } from "../../atoms/builderInputs";
-import { filterOnlyStyleValues } from "../helpers/builder";
+import { EditableElement } from "../../../atoms/builderInputs";
+import { filterOnlyStyleValues } from "../../helpers/builder";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -35,16 +35,15 @@ const fn = forwardRef(({ content }, ref) => {
             </EditableElement>
           </Grid>
           <Grid item>
-            <EditableElement
-              type="p"
+            <p
               data-oa-name="countdown"
               data-oa-type="duration"
               style={{
                 display: content.countdown.visibility ? "inherit" : "none",
               }}
             >
-              {content.countdown && content.countdown.duration}
-            </EditableElement>
+              {content.countdown && content.countdown.duration + ":00"}
+            </p>
           </Grid>
         </Grid>
       </div>

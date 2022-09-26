@@ -1,4 +1,4 @@
-import { SettingSection, SettingSectionContainer } from "../../atoms";
+import { SettingSection, SettingSectionContainer } from "../../../atoms";
 
 import {
   Margin,
@@ -7,9 +7,9 @@ import {
   Visibility,
   CountDown,
   Background,
-} from "../builderSettingFieldGroups";
-import { EditWrapper } from "./EditWrapper";
-import { useGetSelectedPageComponent } from "../../hooks";
+} from "../../builderSettingFieldGroups";
+import { EditWrapper } from "../EditWrapper";
+import { useGetSelectedPageComponent } from "../../../hooks";
 
 export function Incentive2() {
   const selectedPageComponent = useGetSelectedPageComponent();
