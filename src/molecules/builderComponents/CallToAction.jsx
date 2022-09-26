@@ -14,7 +14,7 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues } from "../helpers/builder";
 import { EditableElement } from "../../atoms/builderInputs";
 import variables from "../../assets/css/_variables.module.scss";
-import { PlainButton } from "../../atoms";
+import { AddButton, PlainButton } from "../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -52,6 +52,7 @@ const fn = forwardRef(({ content }, ref) => {
       <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
         Buy Now
       </PlainButton>
+      <AddButton>hi</AddButton>
     </div>
   );
 });
@@ -101,7 +102,7 @@ const json = {
     marginLeft: "30px",
     fontFamily: "Roboto",
     fontWeight: "400",
-    marginBottom: "10px",
+    marginBottom: "",
     backgroundColor: "#008060",
     color: "white",
     borderStyle: "solid",
