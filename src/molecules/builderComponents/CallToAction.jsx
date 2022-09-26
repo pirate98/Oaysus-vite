@@ -25,7 +25,13 @@ const fn = forwardRef(({ content }, ref) => {
       ref={ref}
       style={{ ...styles.background, ...styles.border }}
     >
-      <Grid container flexDirection={"row"} justifyContent={"center"}>
+      <Grid
+        container
+        flexDirection={"row"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        spacing={1}
+      >
         <Grid item>
           <EditableElement
             name="title"
@@ -38,9 +44,9 @@ const fn = forwardRef(({ content }, ref) => {
           </EditableElement>
         </Grid>
         <Grid item>
-          <span className={classes.textGreen} style={{ ...styles.money }}>
+          <div className={classes.textGreen} style={{ ...styles.money }}>
             &nbsp;for $20.00
-          </span>
+          </div>
         </Grid>
       </Grid>
       <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
