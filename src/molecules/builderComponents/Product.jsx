@@ -111,7 +111,7 @@ const json = {
   layout: {
     paddingTop: "42px",
     paddingRight: "",
-    paddingBottom: "40px",
+    paddingBottom: "20px",
     paddingLeft: "",
     marginTop: "",
     marginBottom: "",

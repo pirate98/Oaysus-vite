@@ -48,8 +48,8 @@ const json = {
     fontColor: "#000000",
     visibility: true,
     textAlign: "center",
-    marginTop: "15px",
-    marginBottom: "15px",
+    marginTop: "20px",
+    marginBottom: "20px",
   },
   video: {},
 };

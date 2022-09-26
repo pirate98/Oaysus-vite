@@ -121,8 +121,8 @@ const json = {
     backgroundRepeat: "no-repeat",
   },
   layout: {
-    paddingTop: "10px",
-    paddingBottom: "10px",
+    paddingTop: "20px",
+    paddingBottom: "20px",
     paddingRight: "",
     paddingLeft: "",
     marginTop: "",
