@@ -36,7 +36,6 @@ export function Content1() {
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
           <Style
-            styling
             data={selectedPageComponent["description"]}
             module={"description"}
           />

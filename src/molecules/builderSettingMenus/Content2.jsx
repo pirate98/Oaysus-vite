@@ -25,11 +25,7 @@ export function Content2() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
-          <Style
-            styling
-            alignment
-            data={selectedPageComponent["description"]}
-          />
+          <Style alignment data={selectedPageComponent["description"]} />
           <Margin data={selectedPageComponent["description"]} />
           <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
