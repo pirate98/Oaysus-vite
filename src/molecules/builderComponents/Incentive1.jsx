@@ -108,7 +108,7 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
+    backgroundColor: "#008060",
     backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",

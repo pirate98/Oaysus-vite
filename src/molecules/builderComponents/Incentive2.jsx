@@ -76,7 +76,7 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
+    backgroundColor: "#008060",
     backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
@@ -90,7 +90,7 @@ const json = {
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
-    borderColor: "rgb(0, 128, 96)",
+    borderColor: "#008060",
   },
 };
 
