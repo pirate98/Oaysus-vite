@@ -12,32 +12,35 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Incentive2() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponentName["title"]} />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
+          <Style data={selectedPageComponent["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"countdown"}>
         <SettingSection title={"Countdown"}>
-          <CountDown data={selectedPageComponentName["countdown"]} />
-          <Visibility data={selectedPageComponentName["countdown"]} />
+          <CountDown data={selectedPageComponent["countdown"]} />
+          <Visibility data={selectedPageComponent["countdown"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background data={selectedPageComponentName["background"]} />
+          <Background
+            data={selectedPageComponent["background"]}
+            module={"background"}
+          />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponentName["layout"]} />
-          <Padding data={selectedPageComponentName["layout"]} />
+          <Margin data={selectedPageComponent["layout"]} />
+          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

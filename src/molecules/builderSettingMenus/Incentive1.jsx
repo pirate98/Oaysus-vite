@@ -11,43 +11,49 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
+import builderData from "../../data/builderSettings";
 
 export function Incentive1() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
+  const { title, subTitle, background, layout, countdown } =
+    builderData.settingFieldNames;
 
   return (
     <SettingSectionContainer>
-      <EditWrapper module={"title"}>
+      <EditWrapper module={title}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponentName["title"]} />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
-          <Visibility data={selectedPageComponentName["title"]} />
+          <Style data={selectedPageComponent[title]} />
+          <Margin data={selectedPageComponent[title]} />
+          <Padding data={selectedPageComponent[title]} />
+          <Visibility data={selectedPageComponent[title]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"subTitle"}>
+      <EditWrapper module={subTitle}>
         <SettingSection title={"Sub Title"}>
-          <Style data={selectedPageComponentName["subTitle"]} />
-          <Margin data={selectedPageComponentName["subTitle"]} />
-          <Padding data={selectedPageComponentName["subTitle"]} />
-          <Visibility data={selectedPageComponentName["subTitle"]} />
+          <Style data={selectedPageComponent[subTitle]} />
+          <Margin data={selectedPageComponent[subTitle]} />
+          <Padding data={selectedPageComponent[subTitle]} />
+          <Visibility data={selectedPageComponent[subTitle]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"countdown"}>
+      <EditWrapper module={countdown}>
         <SettingSection title={"Countdown"}>
-          <CountDown data={selectedPageComponentName["countdown"]} />
-          <Visibility data={selectedPageComponentName["countdown"]} />
+          <CountDown data={selectedPageComponent[countdown]} />
+          <Visibility data={selectedPageComponent[countdown]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"background"}>
+      <EditWrapper module={background}>
         <SettingSection title={"Background"}>
-          <Background data={selectedPageComponentName["background"]} />
+          <Background
+            data={selectedPageComponent[background]}
+            module={background}
+          />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"layout"}>
+      <EditWrapper module={layout}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponentName["layout"]} />
-          <Padding data={selectedPageComponentName["layout"]} />
+          <Margin data={selectedPageComponent[layout]} />
+          <Padding data={selectedPageComponent[layout]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

@@ -15,10 +15,10 @@ const BOLD = 600;
 export function FontStyles({ module }) {
   const dispatch = useDispatch();
 
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   const { fontWeight, fontStyle, textDecoration } =
-    (selectedPageComponentName && selectedPageComponentName[module]) || {};
+    (selectedPageComponent && selectedPageComponent[module]) || {};
 
   const buttons = [
     {

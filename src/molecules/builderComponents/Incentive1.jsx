@@ -109,7 +109,7 @@ const json = {
   },
   background: {
     backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/flowers.jpg)",
+    backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },

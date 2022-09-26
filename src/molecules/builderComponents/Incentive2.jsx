@@ -77,7 +77,7 @@ const json = {
   },
   background: {
     backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/puppy.jpg)",
+    backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },

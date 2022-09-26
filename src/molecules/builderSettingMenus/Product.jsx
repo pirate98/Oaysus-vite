@@ -5,13 +5,13 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Product() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout"}>
-          <Layout data={selectedPageComponentName["layout"]} />
+          <Layout data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"product"}>
@@ -22,9 +22,9 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Product description"}>
-          <Style data={selectedPageComponentName["description"]} />
-          <Margin data={selectedPageComponentName["description"]} />
-          <Padding data={selectedPageComponentName["description"]} />
+          <Style data={selectedPageComponent["description"]} />
+          <Margin data={selectedPageComponent["description"]} />
+          <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

@@ -12,7 +12,7 @@ export function EditWrapper({ children, ...props }) {
   } = useSelector((state) => state);
 
   const handleChange = (e) => {
-    // console.warn("wrapper");
+    console.warn("wrapper");
 
     let { target } = e;
 
@@ -38,7 +38,6 @@ export function EditWrapper({ children, ...props }) {
 
     dispatch(
       updatePageComponents({
-        component: selectedPageComponentName,
         module,
         key,
         value,

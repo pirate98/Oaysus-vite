@@ -10,7 +10,7 @@ const changeHandlerMaker = (module) => (name, value) => {
 };
 
 export function Banner() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>

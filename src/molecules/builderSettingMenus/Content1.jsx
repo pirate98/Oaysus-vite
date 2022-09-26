@@ -12,7 +12,7 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { SettingFieldContainer } from "../../atoms";
 
 export function Content1() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
@@ -20,35 +20,35 @@ export function Content1() {
         <SettingSection title={"Title text"}>
           <Style
             weight
-            data={selectedPageComponentName["title"]}
+            data={selectedPageComponent["title"]}
             module={"title"}
           />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
           <Style
             styling
-            data={selectedPageComponentName["description"]}
+            data={selectedPageComponent["description"]}
             module={"description"}
           />
-          <Margin data={selectedPageComponentName["description"]} />
-          <Padding data={selectedPageComponentName["description"]} />
+          <Margin data={selectedPageComponent["description"]} />
+          <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
           <SettingFieldContainer>
-            <Position data={selectedPageComponentName["background"]} />
+            <Position data={selectedPageComponent["background"]} />
           </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponentName["layout"]} />
-          <Padding data={selectedPageComponentName["layout"]} />
+          <Margin data={selectedPageComponent["layout"]} />
+          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

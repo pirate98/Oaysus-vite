@@ -12,15 +12,15 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Content2() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style weight alignment data={selectedPageComponentName["title"]} />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
+          <Style weight alignment data={selectedPageComponent["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"description"}>
@@ -28,21 +28,17 @@ export function Content2() {
           <Style
             styling
             alignment
-            data={selectedPageComponentName["description"]}
+            data={selectedPageComponent["description"]}
           />
-          <Margin data={selectedPageComponentName["description"]} />
-          <Padding data={selectedPageComponentName["description"]} />
+          <Margin data={selectedPageComponent["description"]} />
+          <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
-          <Style
-            weight
-            background
-            data={selectedPageComponentName["buyButton"]}
-          />
-          <Margin data={selectedPageComponentName["buyButton"]} />
-          <Padding data={selectedPageComponentName["buyButton"]} />
+          <Style weight background data={selectedPageComponent["buyButton"]} />
+          <Margin data={selectedPageComponent["buyButton"]} />
+          <Padding data={selectedPageComponent["buyButton"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"size"}>
@@ -51,19 +47,19 @@ export function Content2() {
             title={"Width"}
             module={"size"}
             name={"width"}
-            defaultValue={selectedPageComponentName["size"]["width"]}
+            defaultValue={selectedPageComponent["size"]["width"]}
           />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"border"}>
         <SettingSection title={"Border"}>
-          <Border data={selectedPageComponentName["border"]} module="border" />
+          <Border data={selectedPageComponent["border"]} module="border" />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponentName["layout"]} />
-          <Padding data={selectedPageComponentName["layout"]} />
+          <Margin data={selectedPageComponent["layout"]} />
+          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

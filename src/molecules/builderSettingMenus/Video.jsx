@@ -11,21 +11,21 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Video() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponentName["title"]} />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
-          <Visibility data={selectedPageComponentName["title"]} />
+          <Style data={selectedPageComponent["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
+          <Visibility data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"video"}>
         <SettingSection title={"Video URL"}>
-          <VideoURL data={selectedPageComponentName["video"]} />
+          <VideoURL data={selectedPageComponent["video"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

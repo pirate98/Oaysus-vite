@@ -16,41 +16,40 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";
 
 export function CallToAction() {
-  const selectedPageComponentName = useGetSelectedPageComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponentName["title"]} />
-          <Margin data={selectedPageComponentName["title"]} />
-          <Padding data={selectedPageComponentName["title"]} />
+          <Style data={selectedPageComponent["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background data={selectedPageComponentName["background"]} />
+          <Background
+            data={selectedPageComponent["background"]}
+            module={"background"}
+          />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"subTitle"}>
         <SettingSection title={"Sub title money"}>
-          <Style data={selectedPageComponentName["subTitle"]} />
-          <Margin data={selectedPageComponentName["subTitle"]} />
-          <Padding data={selectedPageComponentName["subTitle"]} />
+          <Style data={selectedPageComponent["subTitle"]} />
+          <Margin data={selectedPageComponent["subTitle"]} />
+          <Padding data={selectedPageComponent["subTitle"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
-          <Style
-            background
-            weight
-            data={selectedPageComponentName["buyButton"]}
-          />
+          <Style background weight data={selectedPageComponent["buyButton"]} />
           <SettingFieldContainer title={"SIZE"}>
             <Slider
               title={"Width"}
               defaultValue={removePx(
-                selectedPageComponentName["buyButton"]["width"]
+                selectedPageComponent["buyButton"]["width"]
               )}
               module={"buyButton"}
               name={"width"}
@@ -58,11 +57,11 @@ export function CallToAction() {
           </SettingFieldContainer>
           <Border
             title={"BORDER"}
-            data={selectedPageComponentName["buyButton"]}
+            data={selectedPageComponent["buyButton"]}
             module="buyButton"
           />
-          <Margin data={selectedPageComponentName["buyButton"]} />
-          <Padding data={selectedPageComponentName["buyButton"]} />
+          <Margin data={selectedPageComponent["buyButton"]} />
+          <Padding data={selectedPageComponent["buyButton"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
