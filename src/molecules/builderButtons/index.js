@@ -7,3 +7,5 @@ export * from "./Incentive1";
 export * from "./Incentive2";
 export * from "./Product";
 export * from "./Video";
+export * from "./ImageAtLeft";
+export * from "./ImageAtRight";

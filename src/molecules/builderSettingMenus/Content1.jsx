@@ -6,16 +6,22 @@ import {
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Position } from "../builderSettingFields";
+import { ImageAlignment, Position } from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { SettingFieldContainer } from "../../atoms";
+import { ImageAtLeft, ImageAtRight } from "../builderButtons";
 
 export function Content1() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
+      <EditWrapper>
+        <SettingSection title={"Layout"}>
+          <ImageAlignment />
+        </SettingSection>
+      </EditWrapper>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
           <Style

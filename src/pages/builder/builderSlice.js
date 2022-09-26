@@ -44,7 +44,11 @@ export const builderSlice = createSlice({
         (comp) => comp.name === component
       );
 
-      componentToUpdate[module][key] = value;
+      if (module && module.length) {
+        componentToUpdate[module][key] = value;
+      } else {
+        componentToUpdate[key] = value;
+      }
     },
   },
 });

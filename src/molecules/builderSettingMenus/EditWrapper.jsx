@@ -28,6 +28,7 @@ export function EditWrapper({ children, ...props }) {
       key = key.split("_")[0];
     }
 
+    // Catch checkbox inputs
     if (key === "visibility") {
       value = e.target.checked;
     }

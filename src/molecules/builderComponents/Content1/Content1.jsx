@@ -4,14 +4,14 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { styleFilter } from "../../helpers/builder";
+import { EditableElement } from "../../../atoms/builderInputs";
 
 const fn = forwardRef(({ content = {} }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userDescriptionStyle = styleFilter(content.description);
   const layoutStyle = styleFilter(content.layout);
-
+  // console.log(content.imagePosition);
   const imageSection = (
     // <img
     //   className={classes.image1}
@@ -78,6 +78,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
 });
 
 const json = {
+  imagePosition: "right",
   name: "",
   title: {
     text: "Headline Content 1",

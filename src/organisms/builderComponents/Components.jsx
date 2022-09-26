@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as builderButtons from "../../molecules/builderButtons";
 import * as builderSettingMenus from "../../molecules/builderSettingMenus";
-import {
-  setSelectedPageComponentName,
-  setHoveredComponent,
-} from "../../pages/builder/builderSlice";
+import { setHoveredComponent } from "../../pages/builder/builderSlice";
 import { Card } from "../../molecules/builderButtonCard/Card";
 import constants from "../../data/constants";
 import { EditBox } from "../../molecules/editBox/EditBox";
@@ -72,7 +69,7 @@ export function Components() {
                 text: component,
                 hoverColor: "white",
               }}
-              background={{ hoverColor: constants.SHOPIFY_GREEN }}
+              background={{ hoverColor: constants.COLOR_MAIN }}
               hover={hoveredComponent === component}
             >
               <DynamicComponent hover={hoveredComponent === component} />

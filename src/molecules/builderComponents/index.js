@@ -1,4 +1,4 @@
-export * from "./Content1.jsx";
+export * from "./Content1/Content1.jsx";
 export * from "./Incentive1";
 export * from "./DropZoneWrapper";
 export * from "./Blank";
