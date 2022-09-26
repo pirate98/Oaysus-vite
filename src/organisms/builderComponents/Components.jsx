@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as builderButtons from "../../molecules/builderButtons";
 import * as builderSettingMenus from "../../molecules/builderSettingMenus";
 import { setHoveredComponent } from "../../pages/builder/builderSlice";
-import { Card } from "../../molecules/builderButtonCard/Card";
-import constants from "../../data/constants";
+import { BuilderButtonWrapper } from "../../molecules/wrappers";
 import { EditBox } from "../../molecules/editBox/EditBox";
 import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
 
@@ -64,16 +63,16 @@ export function Components() {
             }}
             onMouseOut={() => dispatch(setHoveredComponent(undefined))}
           >
-            <Card
+            <BuilderButtonWrapper
               title={{
                 text: component,
                 hoverColor: "white",
               }}
-              background={{ hoverColor: constants.COLOR_MAIN }}
+              // background={{ hoverColor: constants.COLOR_MAIN }}
               hover={hoveredComponent === component}
             >
               <DynamicComponent hover={hoveredComponent === component} />
-            </Card>
+            </BuilderButtonWrapper>
           </Grid>
         );
       })}
