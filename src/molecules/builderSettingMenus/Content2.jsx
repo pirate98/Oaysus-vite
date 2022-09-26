@@ -18,7 +18,12 @@ export function Content2() {
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style weight alignment data={selectedPageComponent["title"]} />
+          <Style
+            weight
+            alignment
+            data={selectedPageComponent["title"]}
+            module={"title"}
+          />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
