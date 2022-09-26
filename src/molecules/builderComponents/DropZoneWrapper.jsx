@@ -9,7 +9,7 @@ import {
 } from "../../pages/builder/builderSlice";
 import dragDrop from "../../data/dragDrop";
 import * as builderComponents from "../../molecules/builderComponents";
-import { EditWrapper } from "../../molecules/builderComponents";
+import { ComponentEditWrapper } from "../../molecules/builderComponents";
 import {
   getIndexes,
   numerateTheName,
@@ -103,7 +103,7 @@ export function DropZoneWrapper({ moduleContent }) {
   // console.log({ DynamicComponent });
 
   return (
-    <EditWrapper componentName={moduleContent.name}>
+    <ComponentEditWrapper componentName={moduleContent.name}>
       <DynamicComponent
         content={moduleContent}
         ref={(el) => {
@@ -111,6 +111,6 @@ export function DropZoneWrapper({ moduleContent }) {
           refForInnerAccess.current = el;
         }}
       />
-    </EditWrapper>
+    </ComponentEditWrapper>
   );
 }

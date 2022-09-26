@@ -16,3 +16,10 @@
     text-align: left;
   }
 }
+
+.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
+  box-shadow: $selectShadow;
+  .MuiButtonBase-root.MuiMenuItem-root.Mui-selected {
+    background: $primaryHover;
+  }
+}

@@ -41,4 +41,7 @@ export const Select = styled((props) => {
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: `${inputBorderFocused} !important`,
   },
+  // ".MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper": {
+  //   boxShadow: "none",
+  // },
 });

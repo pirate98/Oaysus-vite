@@ -5,7 +5,7 @@ import {
 } from "../../pages/builder/builderSlice";
 import { removeDigitsAndReturnComponentName } from "../helpers/builder";
 
-export function EditWrapper({ children, componentName }) {
+export function ComponentEditWrapper({ children, componentName }) {
   const dispatch = useDispatch();
 
   // const handleSubmit = (e) => e.preventDefault();
@@ -17,7 +17,7 @@ export function EditWrapper({ children, componentName }) {
     const { oaName: module, oaType: key } = e.target.dataset;
     const { value, textContent } = e.target;
 
-    console.log({ textContent });
+    // console.log({ textContent });
 
     dispatch(
       updatePageComponents({
