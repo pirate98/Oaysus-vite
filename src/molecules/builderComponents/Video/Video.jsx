@@ -21,6 +21,7 @@ const fn = forwardRef(({ content }, ref) => {
           ...styles.title,
           display: content.title.visibility ? "inherit" : "none",
         }}
+        className={classes.title}
       >
         {content.title ? content.title.text : ""}
       </EditableStyleable>
