@@ -13,6 +13,7 @@ export * from "./cards/PlainCard";
 export * from "./switch/Switch";
 export * from "./switch/Switch2";
 export * from "./actionList/ActionList";
+export * from "./builderInputs/EditableElement";
 export * from "./customAutocomplete/Autocomplete";
 export * from "./inputs/Input";
 export * from "./inputs/MinInput";
