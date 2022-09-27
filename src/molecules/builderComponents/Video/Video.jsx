@@ -5,7 +5,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues } from "../../helpers/builder";
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);

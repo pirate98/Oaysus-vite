@@ -5,7 +5,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { styleFilter } from "../../helpers/builder";
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content = {} }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -41,7 +41,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-name="title"
           data-oa-type="text"
         >
-          {content.title && content.title.text}
+          {content?.title?.text}
         </EditableStyleable>
 
         <EditableStyleable
@@ -51,7 +51,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-name="description"
           data-oa-type="text"
         >
-          {content.description && content.description.text}
+          {content?.description?.text}
         </EditableStyleable>
       </TextContainer>
     </Grid>

@@ -4,7 +4,7 @@ import classes from "./.module.scss";
 
 import { styleFilter } from "../../helpers/builder";
 import { Grid } from "@mui/material";
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);

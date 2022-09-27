@@ -10,7 +10,7 @@ import {
   ButtonGroup,
 } from "@shopify/polaris";
 
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";

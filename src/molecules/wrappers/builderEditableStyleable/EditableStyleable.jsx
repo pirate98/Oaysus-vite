@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EditableElement } from "../../atoms";
+import { EditableElement } from "../../../atoms";
 import classes from "./.module.scss";
 
 export function EditableStyleable(props) {

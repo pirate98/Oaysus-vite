@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import classes from "./.module.scss";
 import { styleFilter } from "../../helpers/builder";
 import { BuilderButton, PlainButton } from "../../../atoms";
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const titleStyle = styleFilter(content.title);
@@ -33,7 +33,7 @@ const fn = forwardRef(({ content }, ref) => {
             data-oa-name="title"
             data-oa-type="text"
           >
-            {content.title.text}
+            {content?.title?.text}
           </EditableStyleable>
           <EditableStyleable
             type="p"
@@ -41,7 +41,7 @@ const fn = forwardRef(({ content }, ref) => {
             data-oa-name="description"
             data-oa-type="text"
           >
-            {content.description.text}
+            {content?.description?.text}
           </EditableStyleable>
         </Grid>
         <Grid item sx={{ width: "208px" }}>

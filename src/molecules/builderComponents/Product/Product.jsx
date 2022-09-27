@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues } from "../../helpers/builder";
-import { EditableStyleable } from "../../builderEditableStyleable/EditableStyleable";
+import { EditableStyleable } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
