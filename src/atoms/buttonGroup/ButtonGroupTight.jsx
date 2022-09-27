@@ -40,6 +40,7 @@ export const ButtonGroupTight = styled((props) => (
   // width: "90px",
   border: "none",
   outline: "1px solid #BABFC3",
+  // border: "1px solid #BABFC3",
   boxShadow: "none",
   borderRadius: "4px",
   "&.MuiButtonGroup-root .MuiButtonGroup-grouped": {

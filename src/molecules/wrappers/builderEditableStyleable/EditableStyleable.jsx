@@ -14,21 +14,6 @@ export function EditableStyleable(props) {
 
   const { className } = props;
 
-  // console.log({ isFocused });
-
-  const editControls = (
-    <span
-      id="editingWrapper"
-      contentEditable={false}
-      className={!isFocused ? classes.focused : classes.hide}
-    >
-      <span>
-        <ContentCopySvg />
-      </span>
-      <FontStyles className={classes.styleBar} />
-    </span>
-  );
-
   const mutableProps = { ...props };
   delete mutableProps.style;
 
@@ -41,11 +26,19 @@ export function EditableStyleable(props) {
         onFocus={handleFocus}
         onBlur={handleBlur}
         {...mutableProps}
-        editControls={editControls}
       >
         {props.children}
       </EditableElement>
-      {editControls}
+      <span
+        id="editingWrapper"
+        contentEditable={false}
+        className={isFocused ? classes.focused : classes.hide}
+      >
+        <span>
+          <ContentCopySvg />
+        </span>
+        <FontStyles className={classes.styleBar} />
+      </span>
     </div>
   );
 }
