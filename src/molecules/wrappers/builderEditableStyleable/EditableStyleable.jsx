@@ -18,7 +18,7 @@ export function EditableStyleable(props) {
 
   const editControls = (
     <span id="editingWrapper" contentEditable={false}>
-      <span>
+      <span className={isFocused ? "" : classes.hide}>
         <ContentCopySvg />
       </span>
       <FontStyles className={isFocused ? classes.styleBar : classes.hide} />

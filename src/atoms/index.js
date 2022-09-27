@@ -8,6 +8,7 @@ export * from "./button/PlainButton";
 export * from "./button/BuilderButton";
 export * from "./button/HiddenWrapperButton";
 export * from "./buttonGroup/ButtonGroup";
+export * from "./buttonGroup/ButtonGroupTight";
 export * from "./cards/ProductCard";
 export * from "./cards/PlainCard";
 export * from "./switch/Switch";

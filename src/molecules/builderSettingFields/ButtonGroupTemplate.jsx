@@ -1,5 +1,5 @@
 import classes from "./.module.scss";
-import { ButtonGroup } from "../../atoms";
+import { ButtonGroupTight } from "../../atoms";
 
 export function ButtonGroupTemplate({ title, buttons, className }) {
   // console.log({ selectedValue });
@@ -7,8 +7,8 @@ export function ButtonGroupTemplate({ title, buttons, className }) {
     <div
       className={classes.singleAttribute + " " + (className ? className : "")}
     >
-      <p>{title}</p>
-      <ButtonGroup buttons={buttons} sx={{ borderRadius: 0 }} />
+      {title && <p>{title}</p>}
+      <ButtonGroupTight buttons={buttons} />
     </div>
   );
 }
