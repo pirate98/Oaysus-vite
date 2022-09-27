@@ -12,7 +12,7 @@ import { updatePageComponents } from "../../pages/builder/builderSlice";
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
-export function FontStyles({ module }) {
+export function FontStyles({ module, ...args }) {
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -60,5 +60,5 @@ export function FontStyles({ module }) {
     },
   ];
 
-  return <ButtonGroupTemplate title={"Styling"} buttons={buttons} />;
+  return <ButtonGroupTemplate {...args} buttons={buttons} />;
 }

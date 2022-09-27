@@ -1,5 +1,11 @@
+@use "sass:color";
+
 $shopifyGreen: #008060;
-$primaryHover: #{$shopifyGreen}1a;
+$primaryHover: rgb(237 235 235);
+$primaryActive: adjust-color(
+  adjust-color($shopifyGreen, $lightness: 65%),
+  $blackness: 10%
+);
 $disabledColor: rgb(224 224 224);
 $navHeight: 56px;
 $leftMenuWidth: 340px;
@@ -22,6 +28,7 @@ $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   inputBorderFocused: $inputBorderFocused;
   disabledColor: $disabledColor;
   shopifyGreen: $shopifyGreen;
+  primaryHover: $primaryHover;
   fontFamily: $fontFamily;
   selectShadow: $selectShadow;
 }

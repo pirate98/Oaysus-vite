@@ -1,6 +1,8 @@
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 
+import variables from "../../assets/css/_variables.module.scss";
+
 export const PlainButton = styled((props) => (
   <Button variant="outlined" {...props} />
 ))({
@@ -15,7 +17,7 @@ export const PlainButton = styled((props) => (
   padding: "0.5rem 1.5rem",
   textTransform: "none",
 
-  // "&:hover": {
-  // background: props.sx.backgroundColor,
-  // },
+  "&:hover": {
+    background: variables.primaryHover,
+  },
 });

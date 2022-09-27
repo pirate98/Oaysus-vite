@@ -15,8 +15,10 @@ $color: #5cbb00;
     left: -18px;
     right: -18px;
     pointer-events: none;
+    display: flex;
+    justify-content: center;
 
-    > * {
+    > span {
       width: 24px;
       height: 26px;
       background: $color;
@@ -26,10 +28,24 @@ $color: #5cbb00;
       border: 1px solid $color;
       border-radius: 2px 2px 0px 0px;
       display: grid;
+      cursor: pointer;
+      pointer-events: all;
 
       svg {
         margin: auto;
       }
     }
   }
+
+  .styleBar {
+    position: absolute;
+    display: block;
+    top: -66px;
+    cursor: pointer;
+    pointer-events: all;
+  }
+}
+
+.hide {
+  display: none !important;
 }
