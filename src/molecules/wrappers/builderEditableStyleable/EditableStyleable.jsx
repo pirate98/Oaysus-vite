@@ -17,11 +17,15 @@ export function EditableStyleable(props) {
   // console.log({ isFocused });
 
   const editControls = (
-    <span id="editingWrapper" contentEditable={false}>
-      <span className={isFocused ? "" : classes.hide}>
+    <span
+      id="editingWrapper"
+      contentEditable={false}
+      className={isFocused ? "" : classes.hide}
+    >
+      <span>
         <ContentCopySvg />
       </span>
-      <FontStyles className={isFocused ? classes.styleBar : classes.hide} />
+      <FontStyles className={classes.styleBar} />
     </span>
   );
 
@@ -30,9 +34,9 @@ export function EditableStyleable(props) {
       className={
         classes.w100 +
         " " +
-        (className ? className : "") +
+        classes.textInput +
         " " +
-        (isFocused ? classes.textInput : "")
+        (className ? className : "")
       }
     >
       <EditableElement

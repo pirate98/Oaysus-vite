@@ -21,8 +21,8 @@ export const ButtonGroupTight = styled((props) => (
           border: "none",
           "&:hover": {
             border: "none",
-            borderRightColor:
-              idx === props.buttons.length - 1 ? "inherit" : "white !important",
+            // borderRightColor:
+            //   idx === props.buttons.length - 1 ? "inherit" : "white !important",
             // borderColor: "#BABFC3",
           },
           img: {
