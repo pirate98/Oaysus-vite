@@ -30,15 +30,7 @@ export function EditableStyleable(props) {
   );
 
   return (
-    <div
-      className={
-        classes.w100 +
-        " " +
-        classes.textInput +
-        " " +
-        (className ? className : "")
-      }
-    >
+    <div className={classes.textInput + " " + (className ? className : "")}>
       <EditableElement
         onFocus={handleFocus}
         onBlur={handleBlur}

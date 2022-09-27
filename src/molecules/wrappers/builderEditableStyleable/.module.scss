@@ -3,6 +3,7 @@
 $color: #5cbb00;
 
 .textInput {
+  width: 100%;
   > * > * {
     z-index: 1500;
     border: 1px solid $color;
