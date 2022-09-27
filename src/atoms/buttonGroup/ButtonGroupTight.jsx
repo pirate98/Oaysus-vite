@@ -14,6 +14,7 @@ export const ButtonGroupTight = styled((props) => (
         color="success"
         key={idx}
         sx={{
+          padding: "14px 7px",
           // flexGrow: 1,
           background: button.selected ? "rgb(224 224 224)" : "white",
           color: "black",
@@ -29,7 +30,6 @@ export const ButtonGroupTight = styled((props) => (
             width: "10px",
             height: "12px",
           },
-          padding: "14px 7px",
         }}
       >
         {button.title}

@@ -8,6 +8,7 @@ import { removePx } from "../helpers/builder";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
+import { ButtonGroupTight } from "../../atoms";
 
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
@@ -60,5 +61,9 @@ export function FontStyles({ module, ...args }) {
     },
   ];
 
-  return <ButtonGroupTemplate {...args} buttons={buttons} />;
+  return (
+    <section className={args.className}>
+      <ButtonGroupTight buttons={buttons} />
+    </section>
+  );
 }

@@ -18,7 +18,6 @@ export function EditableElement(props) {
       // dangerouslySetInnerHTML={{ __html: children }}
     >
       {children}
-      {editControls}
     </Type>
   );
 }
