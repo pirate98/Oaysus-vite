@@ -2,8 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setSelectedPageComponentName,
   updatePageComponents,
-} from "../../pages/builder/builderSlice";
-import { removeDigitsAndReturnComponentName } from "../helpers/builder";
+} from "../../../pages/builder/builderSlice";
 
 export function ComponentEditWrapper({ children, componentName }) {
   const dispatch = useDispatch();

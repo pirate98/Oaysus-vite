@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { EditableElement } from "../../../atoms";
 import classes from "./.module.scss";
-import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
+// import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
 import { FontStyles } from "../../builderSettingFields/FontStyles";
 
 export function EditableStyleable(props) {
@@ -10,24 +10,29 @@ export function EditableStyleable(props) {
 
   const handleFocus = () => setIsFocused(true);
 
-  const handleBlur = () => setIsFocused(false);
+  const handleBlur = (e) => {
+    console.log("blur", e.target);
+    setTimeout(() => setIsFocused(false), 200);
+  };
 
   const { className } = props;
 
   const mutableProps = { ...props };
   delete mutableProps.style;
-
+  // console.log(props);
   return (
     <div
       className={classes.textInput + " " + (className ? className : "")}
       style={props.style}
     >
-      <div className={classes.editWrapper}>
-        <EditableElement
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...mutableProps}
-        >
+      <div
+        className={classes.editWrapper}
+        onFocus={handleFocus}
+
+        // onMouseUp={handleBlur}
+        // onClick={handleBlur}
+      >
+        <EditableElement {...mutableProps} onBlur={handleBlur}>
           {props.children}
         </EditableElement>
         <span
@@ -38,7 +43,10 @@ export function EditableStyleable(props) {
           {/* <span>
           <ContentCopySvg />
         </span> */}
-          <FontStyles className={classes.styleBar} />
+          <FontStyles
+            className={classes.styleBar}
+            module={props["data-oa-name"]}
+          />
         </span>
       </div>
     </div>

@@ -8,4 +8,4 @@ export * from "./CallToAction/CallToAction";
 export * from "./Content2/Content2";
 export * from "./Incentive2/Incentive2";
 export * from "./Video/Video";
-export * from "./ComponentEditWrapper";
+export * from "../wrappers/builderComponentEditWrapper/ComponentEditWrapper";

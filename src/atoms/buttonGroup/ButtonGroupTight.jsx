@@ -10,7 +10,7 @@ export const ButtonGroupTight = styled((props) => (
       <PlainButton
         name={button.name}
         value={button.value}
-        onClick={button.onClick}
+        onClickCapture={button.onClick}
         color="success"
         key={idx}
         sx={{
