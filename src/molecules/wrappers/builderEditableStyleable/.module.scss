@@ -4,9 +4,10 @@ $color: #5cbb00;
 
 .textInput {
   width: 100%;
+  position: relative;
 
   //id="editingWrapper"
-  > * > * {
+  .focused {
     z-index: 1500;
     border: 1px solid $color;
     box-shadow: 0px 2px 6px rgba(92, 187, 0, 0.12),

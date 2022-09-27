@@ -20,7 +20,7 @@ export function EditableStyleable(props) {
     <span
       id="editingWrapper"
       contentEditable={false}
-      className={!isFocused ? "" : classes.hide}
+      className={!isFocused ? classes.focused : classes.hide}
     >
       <span>
         <ContentCopySvg />
@@ -44,8 +44,8 @@ export function EditableStyleable(props) {
         editControls={editControls}
       >
         {props.children}
-        {editControls}
       </EditableElement>
+      {editControls}
     </div>
   );
 }
