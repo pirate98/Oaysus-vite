@@ -34,9 +34,9 @@ export function EditableStyleable(props) {
         contentEditable={false}
         className={isFocused ? classes.focused : classes.hide}
       >
-        <span>
+        {/* <span>
           <ContentCopySvg />
-        </span>
+        </span> */}
         <FontStyles className={classes.styleBar} />
       </span>
     </div>

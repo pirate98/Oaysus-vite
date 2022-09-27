@@ -11,7 +11,13 @@ const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid container item xs={12} ref={ref}>
+    <Grid
+      container
+      item
+      xs={12}
+      ref={ref}
+      className={classes.componentContainer}
+    >
       <EditableStyleable
         name="title"
         data-oa-name="title"
