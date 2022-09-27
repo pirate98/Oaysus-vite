@@ -4,6 +4,7 @@ import { numerateTheName } from "../molecules/helpers/builder";
 const componentsToAddOnInitialLoad = [
   "Incentive1",
   "Banner",
+  // "Blank",
   "Product",
   "Content1",
   "Content1",

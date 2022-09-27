@@ -13,3 +13,4 @@ export { default as alignLeft } from "./alignLeft.svg";
 export { default as alignRight } from "./alignRight.svg";
 export { default as layoutLeft } from "./layoutLeft.svg";
 export { default as layoutRight } from "./layoutRight.svg";
+export { default as circlePlus } from "./circlePlus.svg";
