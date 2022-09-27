@@ -1,7 +1,9 @@
+import { forwardRef } from "react";
+
 import classes from "./.module.scss";
 
-export function EditableElement(props) {
-  const { children, className, editControls } = props;
+export const EditableElement = forwardRef((props, ref) => {
+  const { children, className } = props;
   const propsCopy = { ...props };
   delete propsCopy.children;
   delete propsCopy.editControls;
@@ -10,6 +12,7 @@ export function EditableElement(props) {
   // console.log({ className });
   return (
     <Type
+      ref={ref}
       {...propsCopy}
       className={classes.clean + " " + (className ? className : "")}
       defaultValue={children}
@@ -20,4 +23,4 @@ export function EditableElement(props) {
       {children}
     </Type>
   );
-}
+});

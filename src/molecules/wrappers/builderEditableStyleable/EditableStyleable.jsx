@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { EditableElement } from "../../../atoms";
 import classes from "./.module.scss";
@@ -6,11 +6,14 @@ import classes from "./.module.scss";
 import { FontStyles } from "../../builderSettingFields/FontStyles";
 
 export function EditableStyleable(props) {
+  const elementToFocus = useRef();
+
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
 
   const handleBlur = (e) => {
+    // console.log(e.currentTarget);
     setIsFocused(false);
   };
 
@@ -25,15 +28,15 @@ export function EditableStyleable(props) {
       style={props.style}
     >
       <div
+        ref={elementToFocus}
+        tabIndex="-1"
         className={classes.editWrapper}
         onFocus={handleFocus}
-
         // onMouseUp={handleBlur}
         // onClick={handleBlur}
+        onBlur={handleBlur}
       >
-        <EditableElement {...mutableProps} onBlur={handleBlur}>
-          {props.children}
-        </EditableElement>
+        <EditableElement {...mutableProps}>{props.children}</EditableElement>
         <span
           id="editingWrapper"
           contentEditable={false}
@@ -45,6 +48,7 @@ export function EditableStyleable(props) {
           <FontStyles
             className={classes.styleBar}
             module={props["data-oa-name"]}
+            elementToFocus={elementToFocus}
           />
         </span>
       </div>

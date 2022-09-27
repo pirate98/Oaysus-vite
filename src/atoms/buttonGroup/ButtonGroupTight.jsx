@@ -14,7 +14,10 @@ export const ButtonGroupTight = styled((props) => (
           name={button.name}
           value={button.value}
           // onClickCapture={button.onClick}
-          onMouseDown={button.onClick}
+          onMouseDown={(e) => {
+            button.onClick(e);
+          }}
+          onMouseUp={button.onMouseUp}
           color="success"
           key={"button" + idx}
           sx={{

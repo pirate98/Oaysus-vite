@@ -55,7 +55,8 @@ $color: #5cbb00;
 }
 
 .hide {
-  display: none !important;
+  // display: none !important;
+  opacity: 0;
 }
 
 .editWrapper {

@@ -15,7 +15,7 @@ import { ButtonGroupTight } from "../../atoms";
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
-export function FontStyles({ module, ...args }) {
+export function FontStyles({ module, elementToFocus, ...args }) {
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -33,12 +33,18 @@ export function FontStyles({ module, ...args }) {
     );
   };
 
+  const handleMouseUp = () => {
+    console.log(elementToFocus.current);
+    elementToFocus?.current?.focus();
+  };
+
   const buttons = [
     {
       title: <img src={fontStyleBold} />,
       selected: removePx(fontWeight) > BOLD_THRESHOLD,
-      onClick: () => {
-        // console.log("click");
+      onMouseUp: handleMouseUp,
+      onClick: ({ target }) => {
+        console.log(target);
         dispatch(
           updatePageComponents({
             module,
@@ -52,6 +58,7 @@ export function FontStyles({ module, ...args }) {
     {
       title: <img src={fontStyleItalic} />,
       selected: fontStyle === "italic",
+      onMouseUp: handleMouseUp,
       onClick: () =>
         dispatch(
           updatePageComponents({
@@ -64,6 +71,7 @@ export function FontStyles({ module, ...args }) {
     {
       title: <img src={fontStyleUnderline} />,
       selected: textDecoration === "underline",
+      onMouseUp: handleMouseUp,
       onClick: () =>
         dispatch(
           updatePageComponents({
@@ -76,17 +84,21 @@ export function FontStyles({ module, ...args }) {
     {
       title: <img src={alignLeft} />,
       selected: textAlign === "left",
+      onMouseUp: handleMouseUp,
       onClick: () => handleAlign("left"),
     },
     {
       title: <img src={alignCenter} />,
       selected: textAlign === "center",
+      onMouseUp: handleMouseUp,
       onClick: () => handleAlign("center"),
     },
     {
       title: <img src={alignRight} />,
       selected: textAlign === "right",
+      onMouseUp: handleMouseUp,
       onClick: () => handleAlign("right"),
+      onMouseUp: handleMouseUp,
     },
   ];
 
