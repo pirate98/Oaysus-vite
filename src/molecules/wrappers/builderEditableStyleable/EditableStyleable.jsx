@@ -29,12 +29,18 @@ export function EditableStyleable(props) {
     </span>
   );
 
+  const mutableProps = { ...props };
+  delete mutableProps.style;
+
   return (
-    <div className={classes.textInput + " " + (className ? className : "")}>
+    <div
+      className={classes.textInput + " " + (className ? className : "")}
+      style={props.style}
+    >
       <EditableElement
         onFocus={handleFocus}
         onBlur={handleBlur}
-        {...props}
+        {...mutableProps}
         editControls={editControls}
       >
         {props.children}
