@@ -25,7 +25,8 @@ export function FontStyles({ module, ...args }) {
     {
       title: <img src={fontStyleBold} />,
       selected: removePx(fontWeight) > BOLD_THRESHOLD,
-      onClick: () =>
+      onClick: () => {
+        console.log("click");
         dispatch(
           updatePageComponents({
             module,
@@ -33,7 +34,8 @@ export function FontStyles({ module, ...args }) {
             value:
               removePx(fontWeight) > BOLD_THRESHOLD ? BOLD_THRESHOLD : BOLD,
           })
-        ),
+        );
+      },
     },
     {
       title: <img src={fontStyleItalic} />,

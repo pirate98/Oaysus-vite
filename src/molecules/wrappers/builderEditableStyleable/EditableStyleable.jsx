@@ -12,7 +12,9 @@ export function EditableStyleable(props) {
 
   const handleBlur = (e) => {
     console.log("blur", e.target);
-    setTimeout(() => setIsFocused(false), 200);
+    // Set timeout for style options bar to catch onCLick
+    // setTimeout(() => setIsFocused(false), 200);
+    setIsFocused(false);
   };
 
   const { className } = props;
