@@ -1,5 +1,4 @@
 import classes from "./.module.scss";
-import { ReactComponent as ContentCopySvg } from "../../assets/svg/contentCopy.svg";
 
 export function EditableElement(props) {
   const { children, className, editControls } = props;

@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import { EditableElement } from "../../../atoms";
 import classes from "./.module.scss";
+import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
 
 export function EditableStyleable(props) {
   const [isFocused, setIsFocused] = useState(false);
