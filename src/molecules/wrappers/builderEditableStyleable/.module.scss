@@ -57,6 +57,9 @@ $color: #5cbb00;
 .hide {
   // display: none !important;
   opacity: 0;
+  section {
+    pointer-events: none !important;
+  }
 }
 
 .editWrapper {
