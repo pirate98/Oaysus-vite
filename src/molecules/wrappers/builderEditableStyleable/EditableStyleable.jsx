@@ -22,23 +22,25 @@ export function EditableStyleable(props) {
       className={classes.textInput + " " + (className ? className : "")}
       style={props.style}
     >
-      <EditableElement
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        {...mutableProps}
-      >
-        {props.children}
-      </EditableElement>
-      <span
-        id="editingWrapper"
-        contentEditable={false}
-        className={isFocused ? classes.focused : classes.hide}
-      >
-        {/* <span>
+      <div className={classes.editWrapper}>
+        <EditableElement
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...mutableProps}
+        >
+          {props.children}
+        </EditableElement>
+        <span
+          id="editingWrapper"
+          contentEditable={false}
+          className={isFocused ? classes.focused : classes.hide}
+        >
+          {/* <span>
           <ContentCopySvg />
         </span> */}
-        <FontStyles className={classes.styleBar} />
-      </span>
+          <FontStyles className={classes.styleBar} />
+        </span>
+      </div>
     </div>
   );
 }
