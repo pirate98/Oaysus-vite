@@ -1,8 +1,12 @@
-import { ButtonGroupTemplate } from "./ButtonGroupTemplate";
+import Grid from "@mui/material/Grid";
+
 import {
   fontStyleBold,
   fontStyleItalic,
   fontStyleUnderline,
+  alignCenter,
+  alignLeft,
+  alignRight,
 } from "../../assets/svg";
 import { removePx } from "../helpers/builder";
 import { useGetSelectedPageComponent } from "../../hooks";
@@ -18,8 +22,18 @@ export function FontStyles({ module, ...args }) {
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
-  const { fontWeight, fontStyle, textDecoration } =
+  const { fontWeight, fontStyle, textDecoration, textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
+
+  const handleAlign = (value) => {
+    dispatch(
+      updatePageComponents({
+        module,
+        key: "textAlign",
+        value,
+      })
+    );
+  };
 
   const buttons = [
     {
@@ -61,11 +75,28 @@ export function FontStyles({ module, ...args }) {
           })
         ),
     },
+    {
+      title: <img src={alignLeft} />,
+      selected: textAlign === "left",
+      onClick: () => handleAlign("left"),
+    },
+    {
+      title: <img src={alignCenter} />,
+      selected: textAlign === "center",
+      onClick: () => handleAlign("center"),
+    },
+    {
+      title: <img src={alignRight} />,
+      selected: textAlign === "right",
+      onClick: () => handleAlign("right"),
+    },
   ];
+
+  // const alignmentButtons = [];
 
   return (
     <section className={args.className}>
-      <ButtonGroupTight buttons={buttons} />
+      <ButtonGroupTight buttons={buttons} divider={3} />
     </section>
   );
 }
