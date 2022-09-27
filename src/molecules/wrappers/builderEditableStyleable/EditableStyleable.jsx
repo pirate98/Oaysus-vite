@@ -10,18 +10,35 @@ export function EditableStyleable(props) {
   const handleBlur = () => setIsFocused(false);
 
   const { className } = props;
+
+  console.log({ isFocused });
+
+  const editControls = (
+    <span id="editingWrapper" contentEditable={false}>
+      <span>
+        <ContentCopySvg />
+      </span>
+    </span>
+  );
+
   return (
-    <EditableElement
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      {...props}
+    <div
       className={
+        classes.w100 +
+        " " +
         (className ? className : "") +
         " " +
         (isFocused ? classes.textInput : "")
       }
     >
-      {props.children}
-    </EditableElement>
+      <EditableElement
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...props}
+        editControls={editControls}
+      >
+        {props.children}
+      </EditableElement>
+    </div>
   );
 }

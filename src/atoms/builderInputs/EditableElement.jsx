@@ -1,27 +1,25 @@
 import classes from "./.module.scss";
+import { ReactComponent as ContentCopySvg } from "../../assets/svg/contentCopy.svg";
 
 export function EditableElement(props) {
-  const { children, className, style } = props;
+  const { children, className, editControls } = props;
   const propsCopy = { ...props };
   delete propsCopy.children;
-  delete propsCopy.style;
+  delete propsCopy.editControls;
 
   const Type = props.type;
   // console.log({ className });
   return (
-    // <input {...propsCopy} className={classes.clean} defaultValue={children} />
-    <div className={classes.w100 + " " + className} style={style}>
-      <Type
-        {...propsCopy}
-        className={classes.clean}
-        defaultValue={children}
-        contentEditable={true}
-        suppressContentEditableWarning={true}
-        // dangerouslySetInnerHTML={{ __html: children }}
-      >
-        {children}
-        <span contentEditable={false}></span>
-      </Type>
-    </div>
+    <Type
+      {...propsCopy}
+      className={classes.clean + " " + (className ? className : "")}
+      defaultValue={children}
+      contentEditable={true}
+      suppressContentEditableWarning={true}
+      // dangerouslySetInnerHTML={{ __html: children }}
+    >
+      {children}
+      {editControls}
+    </Type>
   );
 }
