@@ -26,7 +26,7 @@ export function Style({
           title={"Background"}
         />
       )}
-      {styling && <FontStyles module={module} />}
+      {/* {styling && <FontStyles module={module} />} */}
       <FontFamily defaultValue={data["fontFamily"]} />
       {weight && (
         <FontWeight defaultValue={data["fontWeight"]} module={module} />
