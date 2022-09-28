@@ -36,6 +36,7 @@ export const builderSlice = createSlice({
     },
     updatePageComponents: (state, action) => {
       const component = state.selectedPageComponentName;
+      if (!component) return;
 
       const { module, key, value } = action.payload;
       // console.log({ component, module, key, value });

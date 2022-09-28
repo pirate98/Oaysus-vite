@@ -5,7 +5,7 @@ import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableStyleable } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 
@@ -32,12 +32,13 @@ const fn = forwardRef(({ content }, ref) => {
               style={{
                 ...styles.product,
               }}
-              name="product"
-              data-oa-name="product"
-              data-oa-type="text"
+              // name="product"
+              // data-oa-name="product"
+              // data-oa-type="text"
+              module="product"
               type="h3"
             >
-              {content.product.text}
+              {content?.product?.editorState}
             </EditableStyleable>
             <Grid container>
               <ReactStars
@@ -58,7 +59,7 @@ const fn = forwardRef(({ content }, ref) => {
               data-oa-type="text"
               type="p"
             >
-              {content.description.text}
+              {content.description?.editorState}
             </EditableStyleable>
           </TextContainer>
         </Grid>
@@ -113,7 +114,7 @@ const json = {
   },
   reviews: {},
   product: {
-    text: "Test T-shirt",
+    editorState: makeEditorState("Test T-shirt"),
     color: "#000000",
     fontFamily: "Roboto",
     fontWeight: "400",
@@ -121,8 +122,9 @@ const json = {
     fontSize: "24px",
   },
   description: {
-    text: `Include a short, benefit-driven description of what your product
-    does and how it can improve your customer's life.`,
+    editorState:
+      makeEditorState(`Include a short, benefit-driven description of what your product\
+    does and how it can improve your customer's life.`),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "24px",
@@ -138,7 +140,7 @@ const json = {
     marginRight: "",
   },
   title: {
-    text: "",
+    editorState: makeEditorState(""),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",
@@ -148,7 +150,7 @@ const json = {
     visibility: true,
   },
   subTitle: {
-    text: "",
+    editorState: makeEditorState(""),
     price: 20,
     fontFamily: "Roboto",
     lineHeight: "20px",

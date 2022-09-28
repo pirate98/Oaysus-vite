@@ -2,17 +2,10 @@ import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 
 import { EditableStyleable } from "../../wrappers/";
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
 import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
 
@@ -40,7 +33,7 @@ const fn = forwardRef(({ content }, ref) => {
             type="h3"
             style={{ ...styles.title }}
           >
-            {content.title ? content.title.text : ""}
+            {content?.title?.editorState}
           </EditableStyleable>
         </Grid>
         <Grid item>
@@ -56,7 +49,7 @@ const fn = forwardRef(({ content }, ref) => {
 
 const json = {
   title: {
-    text: "Buy This T-Shirt Right Now",
+    editorState: makeEditorState("Buy This T-Shirt Right Now"),
     fontFamily: "Roboto",
     fontWeight: "500",
     lineHeight: "20px",

@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
@@ -29,7 +29,7 @@ const fn = forwardRef(({ content }, ref) => {
         }}
         className={classes.title}
       >
-        {content.title ? content.title.text : ""}
+        {content?.title?.editorState}
       </EditableStyleable>
       {/* <p className={classes.videoTitle}></p> */}
       <div
@@ -47,7 +47,7 @@ const fn = forwardRef(({ content }, ref) => {
 
 const json = {
   title: {
-    text: "Video Block Title",
+    editorState: makeEditorState("Video Block Title"),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",

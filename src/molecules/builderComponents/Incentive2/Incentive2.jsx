@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
@@ -31,7 +31,7 @@ const fn = forwardRef(({ content }, ref) => {
               data-oa-type="text"
               type="h3"
             >
-              {content.title ? content.title.text : ""}
+              {content?.title?.editorState}
             </EditableStyleable>
           </Grid>
           <Grid item>
@@ -54,7 +54,7 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Exclusive offer expires in: ",
+    editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
     lineHeight: "35px",
     fontSize: "30px",

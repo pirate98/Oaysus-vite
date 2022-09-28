@@ -18,9 +18,9 @@ export const EditableElement = forwardRef((props, ref) => {
       defaultValue={children}
       contentEditable={true}
       suppressContentEditableWarning={true}
-      // dangerouslySetInnerHTML={{ __html: children }}
+      dangerouslySetInnerHTML={{ __html: children }}
     >
-      {children}
+      {/* {children} */}
     </Type>
   );
 });

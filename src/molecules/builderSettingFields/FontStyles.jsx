@@ -1,3 +1,7 @@
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { $getSelection } from "lexical";
+import { FORMAT_TEXT_COMMAND } from "lexical";
+
 import {
   fontStyleBold,
   fontStyleItalic,
@@ -16,12 +20,25 @@ const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
 export function FontStyles({ module, elementToFocus, ...args }) {
+  const [editor] = useLexicalComposerContext();
+
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
-  const { fontWeight, fontStyle, textDecoration, textAlign } =
+  const { fontWeight, textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
+
+  const handleStyleChange = (command) => {
+    // const editorState = editor.getEditorState();
+    // console.log({ editorState });
+    // editorState.read(() => {
+    //   const selection = $getSelection();
+    //   console.log({ selection });
+    // });
+
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
+  };
 
   const handleAlign = (value) => {
     dispatch(
@@ -43,43 +60,19 @@ export function FontStyles({ module, elementToFocus, ...args }) {
       title: <img src={fontStyleBold} />,
       selected: removePx(fontWeight) > BOLD_THRESHOLD,
       onMouseUp: handleMouseUp,
-      onClick: ({ target }) => {
-        console.log(target);
-        dispatch(
-          updatePageComponents({
-            module,
-            key: "fontWeight",
-            value:
-              removePx(fontWeight) > BOLD_THRESHOLD ? BOLD_THRESHOLD : BOLD,
-          })
-        );
-      },
+      onClick: () => handleStyleChange("bold"),
     },
     {
       title: <img src={fontStyleItalic} />,
-      selected: fontStyle === "italic",
+      // selected: fontStyle === "italic",
       onMouseUp: handleMouseUp,
-      onClick: () =>
-        dispatch(
-          updatePageComponents({
-            module,
-            key: "fontStyle",
-            value: fontStyle === "italic" ? "normal" : "italic",
-          })
-        ),
+      onClick: () => handleStyleChange("italic"),
     },
     {
       title: <img src={fontStyleUnderline} />,
-      selected: textDecoration === "underline",
+      // selected: textDecoration === "underline",
       onMouseUp: handleMouseUp,
-      onClick: () =>
-        dispatch(
-          updatePageComponents({
-            module,
-            key: "textDecoration",
-            value: textDecoration === "underline" ? "none" : "underline",
-          })
-        ),
+      onClick: () => handleStyleChange("underline"),
     },
     {
       title: <img src={alignLeft} />,

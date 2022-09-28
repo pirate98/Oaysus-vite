@@ -51,7 +51,7 @@ export function BuilderButtonWrapper({
         style={{ color: hover ? title.hoverColor : "unset" }}
         className={classes.h4}
       >
-        {title.text}
+        {title?.editorState}
       </p>
     </div>
   );

@@ -9,21 +9,42 @@ export function ComponentEditWrapper({ children, componentName }) {
 
   // const handleSubmit = (e) => e.preventDefault();
 
-  const handleBlur = (e) => {
+  const handleBlur = ({ target }) => {
     // console.log({ name });
-    // console.log(e.target);
+    // console.log(target);
 
-    const { oaName: module, oaType: key } = e.target.dataset;
-    const { value, textContent } = e.target;
+    const { oaName: module, oaType: key } = target.dataset;
+    let { value, innerHTML } = target;
 
-    // console.log({ textContent });
+    const tagRegex = /<[iu]\s?.+<\/[iu]>/g;
+    const tagOpeningRegex = /<[iu]\s.+?>/g;
 
+    const tagMatch = innerHTML.match(tagRegex);
+
+    if (tagMatch) {
+      const tagString = tagMatch[0];
+      // console.log({ innerHTML, tagString });
+      const tag = tagString[1];
+
+      const tagStringWithoutStyle = tagString.replace(
+        tagOpeningRegex,
+        `<${tag}>`
+      );
+
+      const innerHTMLWithoutStyle = innerHTML.replace(
+        tagString,
+        tagStringWithoutStyle
+      );
+      // console.log({ innerHTMLWithoutStyle });
+
+      innerHTML = innerHTMLWithoutStyle;
+    }
     dispatch(
       updatePageComponents({
         component: componentName,
         module,
         key,
-        value: value || textContent,
+        value: value || innerHTML,
       })
     );
   };

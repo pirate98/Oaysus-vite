@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { styleFilter } from "../../helpers/builder";
+import { makeEditorState, styleFilter } from "../../helpers/builder";
 import { Grid } from "@mui/material";
 import { EditableStyleable } from "../../wrappers/";
 
@@ -31,7 +31,7 @@ const fn = forwardRef(({ content }, ref) => {
           type="h3"
           className={classes.title}
         >
-          {content.title ? content.title.text : ""}
+          {content?.title?.editorState}
         </EditableStyleable>
         <Grid
           justifyContent={"center"}
@@ -49,7 +49,7 @@ const fn = forwardRef(({ content }, ref) => {
               data-oa-type="text"
               type="p"
             >
-              {content.subTitle ? content.subTitle.text : ""}
+              {content?.subTitle?.editorState}
             </EditableStyleable>
           </Grid>
           <Grid item>
@@ -72,7 +72,7 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Add a Test T-shirt to your order",
+    editorState: makeEditorState("Add a Test T-shirt to your order"),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",
@@ -88,7 +88,7 @@ const json = {
     visibility: true,
   },
   subTitle: {
-    text: "Exclusive offer expires in: ",
+    editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "18px",

@@ -6,6 +6,12 @@ $color: #5cbb00;
   width: 100%;
   position: relative;
 
+  * {
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
   //id="editingWrapper"
   .focused {
     z-index: 1500;

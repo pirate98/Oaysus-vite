@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../../helpers/builder";
+import { makeEditorState, styleFilter } from "../../helpers/builder";
 import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content = {} }, ref) => {
@@ -41,7 +41,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-name="title"
           data-oa-type="text"
         >
-          {content?.title?.text}
+          {content?.title?.editorState}
         </EditableStyleable>
 
         <EditableStyleable
@@ -51,7 +51,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-name="description"
           data-oa-type="text"
         >
-          {content?.description?.text}
+          {content?.description?.editorState}
         </EditableStyleable>
       </TextContainer>
     </Grid>
@@ -82,7 +82,7 @@ const json = {
   imagePosition: "right",
   name: "",
   title: {
-    text: "Headline Content 1",
+    editorState: makeEditorState("Headline Content 1"),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "20px",
@@ -99,7 +99,9 @@ const json = {
     visibility: true,
   },
   description: {
-    text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
+    editorState: makeEditorState(
+      "You could highlight specific ingredients, materials, or functionality that make your product unique,and explain how it will improve the customer's life."
+    ),
     fontFamily: "Roboto",
     fontWeight: "400",
     fontSize: "16px",
