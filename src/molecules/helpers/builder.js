@@ -80,7 +80,7 @@ export const getIndexes = (
 ) => {
   const currentComponentName = currentComponent && currentComponent.name;
 
-  let hoveredComponentIndex = 0;
+  let hoveredComponentIndex = undefined;
   let blankComponentIndex = undefined;
 
   pageComponents.forEach((component, idx) => {

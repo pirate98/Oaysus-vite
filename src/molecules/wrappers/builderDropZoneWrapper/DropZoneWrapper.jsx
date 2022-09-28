@@ -36,7 +36,7 @@ export function DropZoneWrapper({ moduleContent }) {
         )
       )
         return;
-      console.log("hovering");
+      // console.log("hovering");
       const clientRects = refForInnerAccess.current.getClientRects();
       const elTop = clientRects[0].top;
 
@@ -51,7 +51,7 @@ export function DropZoneWrapper({ moduleContent }) {
         moduleContent,
         dragDrop.BLANK_COMPONENT_NAME
       );
-      // console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
+      console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
       if (
         (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
@@ -63,14 +63,14 @@ export function DropZoneWrapper({ moduleContent }) {
       let dropIndex = hoveredComponentIndex;
 
       if (blankComponentIndex === undefined) {
-        dropIndex++;
+        dropIndex++; // drop after hovered component
       } else {
         // Remove empty component.
-        // dropIndex automatically targets the emptied position
+        // dropIndex automatically targets hoveredIndex + 1
         newPage.splice(blankComponentIndex, 1);
       }
 
-      if (canDropTop) dropIndex = Math.max(dropIndex - 1, 0);
+      if (canDropTop) dropIndex = hoveredComponentIndex;
       // console.log({ dropIndex });
 
       newPage.splice(dropIndex, 0, {

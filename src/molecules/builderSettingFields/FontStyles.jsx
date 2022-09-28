@@ -98,7 +98,6 @@ export function FontStyles({ module, elementToFocus, ...args }) {
       selected: textAlign === "right",
       onMouseUp: handleMouseUp,
       onClick: () => handleAlign("right"),
-      onMouseUp: handleMouseUp,
     },
   ];
 
