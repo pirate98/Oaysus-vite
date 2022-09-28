@@ -1,6 +1,6 @@
 export * from "./Content1/Content1.jsx";
 export * from "./Incentive1/Incentive1";
-export * from "./DropZoneWrapper";
+export * from "../wrappers/builderDropZoneWrapper/DropZoneWrapper";
 export * from "./Blank";
 export * from "./Product/Product";
 export * from "./Banner";

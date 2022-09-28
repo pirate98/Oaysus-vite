@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 
-import Grid from "@mui/material/Grid";
-
 import { DropZoneWrapper } from "../../molecules/builderComponents";
 
 export function Page() {

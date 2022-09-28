@@ -115,9 +115,12 @@
   margin-bottom: 0;
 }
 
+.dropZone {
+  padding: 0.8rem 3.2rem;
+}
+
 .blankElement {
   position: relative;
-  margin: 0.8rem 3.2rem;
   height: 12px;
   border-width: 0 2px;
   border-style: solid;

@@ -6,16 +6,16 @@ import { useDrop } from "react-dnd";
 import {
   removeComponentFromPage,
   setPageComponents,
-} from "../../pages/builder/builderSlice";
-import dragDrop from "../../data/dragDrop";
-import * as builderComponents from "../../molecules/builderComponents";
-import { ComponentEditWrapper } from "../../molecules/builderComponents";
+} from "../../../pages/builder/builderSlice";
+import dragDrop from "../../../data/dragDrop";
+import * as builderComponents from "../../builderComponents";
+import { ComponentEditWrapper } from "../../builderComponents";
 import {
   getIndexes,
   numerateTheName,
   removeDigitsAndReturnComponentName,
-} from "../helpers/builder";
-import { useAddComponentToPageBuilder } from "../../hooks";
+} from "../../helpers/builder";
+import { useAddComponentToPageBuilder } from "../../../hooks";
 
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export function DropZoneWrapper({ moduleContent }) {
         )
       )
         return;
-
+      console.log("hovering");
       const clientRects = refForInnerAccess.current.getClientRects();
       const elTop = clientRects[0].top;
 
