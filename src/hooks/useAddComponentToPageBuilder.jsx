@@ -28,7 +28,7 @@ export const useAddComponentToPageBuilder = () => {
       ...builderComponents[componentName].json,
       name: numerizedName,
     });
-    console.log({ newPage });
+    // console.log({ newPage });
     await dispatch(setPageComponents(newPage));
     // await new Promise((resolve) => setTimeout(resolve, 2000));
   };

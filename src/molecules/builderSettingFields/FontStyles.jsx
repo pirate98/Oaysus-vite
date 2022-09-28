@@ -34,7 +34,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   };
 
   const handleMouseUp = () => {
-    console.log(elementToFocus.current);
+    // console.log(elementToFocus.current);
     elementToFocus?.current?.focus();
   };
 
