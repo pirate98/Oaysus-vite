@@ -43,7 +43,7 @@ export const ButtonGroupTight = styled((props) => (
         </PlainButton>
         {props.divider && props.divider - 1 === idx && (
           <span
-            style={{ width: "1.5px", background: "#BABFC3" }}
+            style={{ width: "1.6px", background: "#BABFC3" }}
             key={"divider" + idx}
           ></span>
         )}
