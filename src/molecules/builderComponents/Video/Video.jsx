@@ -20,7 +20,7 @@ const fn = forwardRef(({ content }, ref) => {
     >
       <EditableStyleable
         name="title"
-        data-oa-name="title"
+        module="title"
         data-oa-type="text"
         type="h3"
         style={{

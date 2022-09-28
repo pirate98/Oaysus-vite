@@ -38,7 +38,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           type="h3"
           style={{ ...userTitleStyle }}
           // name="title"
-          data-oa-name="title"
+          module="title"
           data-oa-type="text"
         >
           {content?.title?.editorState}
@@ -48,7 +48,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           type="p"
           style={{ ...userDescriptionStyle }}
           // name="title"
-          data-oa-name="description"
+          module="description"
           data-oa-type="text"
         >
           {content?.description?.editorState}

@@ -41,6 +41,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   };
 
   const handleAlign = (value) => {
+    console.log({ module });
     dispatch(
       updatePageComponents({
         module,

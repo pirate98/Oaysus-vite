@@ -33,7 +33,7 @@ const fn = forwardRef(({ content }, ref) => {
                 ...styles.product,
               }}
               // name="product"
-              // data-oa-name="product"
+              // module="product"
               // data-oa-type="text"
               module="product"
               type="h3"
@@ -55,7 +55,7 @@ const fn = forwardRef(({ content }, ref) => {
                 ...styles.description,
               }}
               name="description"
-              data-oa-name="description"
+              module="description"
               data-oa-type="text"
               type="p"
             >

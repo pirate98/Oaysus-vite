@@ -6,6 +6,7 @@ import { useDrop } from "react-dnd";
 import {
   removeComponentFromPage,
   setPageComponents,
+  setSelectedPageComponentName,
 } from "../../../pages/builder/builderSlice";
 import dragDrop from "../../../data/dragDrop";
 import * as builderComponents from "../../builderComponents";
@@ -101,9 +102,13 @@ export function DropZoneWrapper({ moduleContent }) {
   const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
   // console.log({ DynamicComponent });
+  const clickHandler = () => {
+    dispatch(setSelectedPageComponentName(moduleContent.name));
+  };
 
   return (
-    <ComponentEditWrapper componentName={moduleContent.name}>
+    // <ComponentEditWrapper componentName={moduleContent.name}>
+    <section onClick={clickHandler}>
       <DynamicComponent
         content={moduleContent}
         ref={(el) => {
@@ -111,6 +116,7 @@ export function DropZoneWrapper({ moduleContent }) {
           refForInnerAccess.current = el;
         }}
       />
-    </ComponentEditWrapper>
+    </section>
+    // </ComponentEditWrapper>
   );
 }

@@ -26,7 +26,7 @@ const fn = forwardRef(({ content }, ref) => {
             display: content.title.visibility ? "inherit" : "none",
           }}
           name="title"
-          data-oa-name="title"
+          module="title"
           data-oa-type="text"
           type="h3"
           className={classes.title}
@@ -45,7 +45,7 @@ const fn = forwardRef(({ content }, ref) => {
           <Grid item>
             <EditableStyleable
               name="subTitle"
-              data-oa-name="subTitle"
+              module="subTitle"
               data-oa-type="text"
               type="p"
             >
@@ -54,7 +54,7 @@ const fn = forwardRef(({ content }, ref) => {
           </Grid>
           <Grid item>
             <p
-              data-oa-name="countdown"
+              module="countdown"
               data-oa-type="duration"
               style={{
                 display: content.countdown.visibility ? "inherit" : "none",

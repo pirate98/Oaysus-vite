@@ -100,8 +100,8 @@ export function EditableStyleable({
             placeholder={<div>Enter some text...</div>}
           />
           <OnChangePlugin onChange={onChange} />
-          <HistoryPlugin />
-          <MyCustomAutoFocusPlugin />
+          {/* <HistoryPlugin />
+          <MyCustomAutoFocusPlugin /> */}
           <span
             id="editingWrapper"
             contentEditable={false}

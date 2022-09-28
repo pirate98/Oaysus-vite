@@ -30,7 +30,7 @@ const fn = forwardRef(({ content }, ref) => {
             type="h3"
             className={classes.headline}
             style={{ ...titleStyle }}
-            data-oa-name="title"
+            module="title"
             data-oa-type="text"
           >
             {content?.title?.editorState}
@@ -38,7 +38,7 @@ const fn = forwardRef(({ content }, ref) => {
           <EditableStyleable
             type="p"
             style={{ ...descriptionStyle }}
-            data-oa-name="description"
+            module="description"
             data-oa-type="text"
           >
             {content?.description?.editorState}

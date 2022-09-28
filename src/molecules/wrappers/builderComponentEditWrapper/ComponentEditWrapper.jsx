@@ -49,12 +49,15 @@ export function ComponentEditWrapper({ children, componentName }) {
     );
   };
 
-  const clickHandler = (e) => {
-    dispatch(setSelectedPageComponentName(componentName));
-  };
+  // const clickHandler = (e) => {
+  //   dispatch(setSelectedPageComponentName(componentName));
+  // };
 
   return (
-    <div onClick={clickHandler} onBlur={handleBlur}>
+    <div
+      // onClick={clickHandler}
+      onBlur={handleBlur}
+    >
       {children}
     </div>
   );
