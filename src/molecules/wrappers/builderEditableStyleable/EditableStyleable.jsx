@@ -8,7 +8,6 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-import ToolbarPlugin from "./ToolBarPlugin";
 // import { EditableElement } from "../../../atoms";
 // import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
 import { updatePageComponents } from "../../../pages/builder/builderSlice";
@@ -107,7 +106,7 @@ export function EditableStyleable({
             <span
               id="editingWrapper"
               contentEditable={false}
-              className={!isFocused ? classes.focused : classes.hide}
+              className={isFocused ? classes.focused : classes.hide}
             >
               {/* <span><ContentCopySvg /></span> */}
               <FontStyles
