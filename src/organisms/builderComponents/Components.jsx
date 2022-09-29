@@ -65,7 +65,7 @@ export function Components() {
           >
             <BuilderButtonWrapper
               title={{
-                title: component,
+                text: component,
                 hoverColor: "white",
               }}
               // background={{ hoverColor: constants.COLOR_MAIN }}

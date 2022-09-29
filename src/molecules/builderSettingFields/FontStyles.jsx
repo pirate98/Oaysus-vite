@@ -15,6 +15,7 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import { ButtonGroupTight } from "../../atoms";
+import { useState } from "react";
 
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
@@ -28,6 +29,9 @@ export function FontStyles({ module, elementToFocus, ...args }) {
 
   const { fontWeight, textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
 
   const handleStyleChange = (command) => {
     // const editorState = editor.getEditorState();
@@ -59,19 +63,19 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   const buttons = [
     {
       title: <img src={fontStyleBold} />,
-      selected: removePx(fontWeight) > BOLD_THRESHOLD,
+      selected: isBold,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("bold"),
     },
     {
       title: <img src={fontStyleItalic} />,
-      // selected: fontStyle === "italic",
+      selected: isItalic,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("italic"),
     },
     {
       title: <img src={fontStyleUnderline} />,
-      // selected: textDecoration === "underline",
+      selected: isUnderline,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("underline"),
     },
