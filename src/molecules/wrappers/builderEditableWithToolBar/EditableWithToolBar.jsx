@@ -12,7 +12,7 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 // import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
 import { updatePageComponents } from "../../../pages/builder/builderSlice";
 import classes from "./.module.scss";
-import { FontStyles } from "../../builderSettingFields/FontStyles";
+import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -25,7 +25,7 @@ function MyCustomAutoFocusPlugin() {
   return null;
 }
 
-export function EditableStyleable({
+export function EditableWithToolBar({
   style,
   module,
   type,
@@ -57,6 +57,7 @@ export function EditableStyleable({
   };
 
   function onChangeLexical(editorState) {
+    // console.log("onchange");
     dispatch(
       updatePageComponents({
         module,
@@ -84,7 +85,7 @@ export function EditableStyleable({
       <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
-          // style={style}
+          style={style}
         >
           <div
             ref={elementToFocus}
@@ -92,7 +93,7 @@ export function EditableStyleable({
             className={classes.editWrapper}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            style={style}
+            // style={style}
           >
             {/* <EditableElement type={type}>{children}</EditableElement> */}
             {/* <ToolbarPlugin /> */}
@@ -109,7 +110,7 @@ export function EditableStyleable({
               className={isFocused ? classes.focused : classes.hide}
             >
               {/* <span><ContentCopySvg /></span> */}
-              <FontStyles
+              <TextToolBar
                 className={classes.styleBar}
                 module={module}
                 elementToFocus={elementToFocus}

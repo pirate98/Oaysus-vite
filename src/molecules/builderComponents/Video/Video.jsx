@@ -5,7 +5,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -18,7 +18,7 @@ const fn = forwardRef(({ content }, ref) => {
       ref={ref}
       className={classes.componentContainer}
     >
-      <EditableStyleable
+      <EditableWithToolBar
         name="title"
         module="title"
         data-oa-type="text"
@@ -30,7 +30,7 @@ const fn = forwardRef(({ content }, ref) => {
         className={classes.title}
       >
         {content?.title?.editorState}
-      </EditableStyleable>
+      </EditableWithToolBar>
       {/* <p className={classes.videoTitle}></p> */}
       <div
         className={classes.imageZone}

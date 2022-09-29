@@ -21,7 +21,7 @@ import { useCallback, useEffect, useState } from "react";
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
-export function FontStyles({ module, elementToFocus, ...args }) {
+export function TextToolBar({ module, elementToFocus, ...args }) {
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();

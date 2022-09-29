@@ -2,6 +2,7 @@
 
 body {
   @extend .defaultFont;
+  overflow-x: hidden;
 }
 
 p {

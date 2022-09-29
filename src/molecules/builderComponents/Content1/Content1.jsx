@@ -5,7 +5,7 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { makeEditorState, styleFilter } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content = {} }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -34,7 +34,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
   const textSection = (
     <Grid item sx={{ marginBottom: "2px" }}>
       <TextContainer>
-        <EditableStyleable
+        <EditableWithToolBar
           type="h3"
           style={{ ...userTitleStyle }}
           // name="title"
@@ -42,9 +42,9 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-type="text"
         >
           {content?.title?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
 
-        <EditableStyleable
+        <EditableWithToolBar
           type="p"
           style={{ ...userDescriptionStyle }}
           // name="title"
@@ -52,7 +52,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
           data-oa-type="text"
         >
           {content?.description?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
       </TextContainer>
     </Grid>
   );

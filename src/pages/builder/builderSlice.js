@@ -1,4 +1,4 @@
-import boilerPlatePage from "../../mockData/defaultBuilderPage";
+import { default as boilerPlatePage } from "../../mockData/defaultBuilderPage";
 
 import { createSlice } from "@reduxjs/toolkit";
 

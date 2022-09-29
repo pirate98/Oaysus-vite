@@ -18,6 +18,17 @@ import {
 } from "../../helpers/builder";
 import { useAddComponentToPageBuilder } from "../../../hooks";
 
+function canElementDropTop(element, mouseYPosition) {
+  const clientRects = element.getClientRects();
+  const elTop = clientRects[0].top;
+
+  const elHeight = element.offsetHeight;
+
+  // console.log(elTop, elHeight, pointerY);
+
+  return mouseYPosition <= elTop + elHeight / 2;
+}
+
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
   const refForInnerAccess = useRef();
@@ -38,21 +49,18 @@ export function DropZoneWrapper({ moduleContent }) {
       )
         return;
       // console.log("hovering");
-      const clientRects = refForInnerAccess.current.getClientRects();
-      const elTop = clientRects[0].top;
 
-      const elHeight = refForInnerAccess.current.offsetHeight;
-
-      const pointerY = monitor.getClientOffset().y;
-      // console.log(elTop, elHeight, pointerY);
-      const canDropTop = pointerY <= elTop + elHeight / 2;
+      const canDropTop = canElementDropTop(
+        refForInnerAccess.current,
+        monitor.getClientOffset().y
+      );
 
       const { hoveredComponentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent,
         dragDrop.BLANK_COMPONENT_NAME
       );
-      console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
+      // console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
       if (
         (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
@@ -88,34 +96,24 @@ export function DropZoneWrapper({ moduleContent }) {
     }),
   });
 
-  // Remove blank component when mouse pointer leaves drop zone
   useEffect(() => {
     if (isOver)
       return () => {
-        // console.log("removing");
-        // dispatch(removeComponentFromPage(BLANK_COMPONENT_NAME));
+        console.log("removing");
       };
   }, [isOver]);
 
   // console.log(removeDigitsAndReturnComponentName(moduleContent.name));
   const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
-  // console.log({ DynamicComponent });
-  const clickHandler = () => {
-    dispatch(setSelectedPageComponentName(moduleContent.name));
-  };
 
   return (
-    // <ComponentEditWrapper componentName={moduleContent.name}>
-    <section onClick={clickHandler}>
-      <DynamicComponent
-        content={moduleContent}
-        ref={(el) => {
-          drop(el);
-          refForInnerAccess.current = el;
-        }}
-      />
-    </section>
-    // </ComponentEditWrapper>
+    <DynamicComponent
+      content={moduleContent}
+      ref={(el) => {
+        drop(el);
+        refForInnerAccess.current = el;
+      }}
+    />
   );
 }

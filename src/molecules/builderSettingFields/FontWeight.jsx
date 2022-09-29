@@ -65,7 +65,7 @@ export function FontWeight({ defaultValue, module }) {
     const fontWeightExists = fontWeightList.some(
       (_fontWeight) => _fontWeight.toString() === fontWeight
     );
-    console.log({ fontWeightExists });
+    // console.log({ fontWeightExists });
     if (!fontWeightExists) {
       dispatch(
         updatePageComponents({

@@ -4,7 +4,7 @@ import classes from "./.module.scss";
 
 import { makeEditorState, styleFilter } from "../../helpers/builder";
 import { Grid } from "@mui/material";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -19,7 +19,7 @@ const fn = forwardRef(({ content }, ref) => {
         style={{ ...componentBackground, ...componentLayout }}
         ref={ref}
       >
-        <EditableStyleable
+        <EditableWithToolBar
           // hidden={true}
           style={{
             ...userTitleStyle,
@@ -32,7 +32,7 @@ const fn = forwardRef(({ content }, ref) => {
           className={classes.title}
         >
           {content?.title?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
         <Grid
           justifyContent={"center"}
           container
@@ -43,14 +43,14 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableStyleable
+            <EditableWithToolBar
               name="subTitle"
               module="subTitle"
               data-oa-type="text"
               type="p"
             >
               {content?.subTitle?.editorState}
-            </EditableStyleable>
+            </EditableWithToolBar>
           </Grid>
           <Grid item>
             <p

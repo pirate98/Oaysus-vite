@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
@@ -26,7 +26,7 @@ const fn = forwardRef(({ content }, ref) => {
         spacing={1}
       >
         <Grid item>
-          <EditableStyleable
+          <EditableWithToolBar
             name="title"
             module="title"
             data-oa-type="text"
@@ -34,7 +34,7 @@ const fn = forwardRef(({ content }, ref) => {
             style={{ ...styles.title }}
           >
             {content?.title?.editorState}
-          </EditableStyleable>
+          </EditableWithToolBar>
         </Grid>
         <Grid item>
           <div className={classes.textGreen} style={{ ...styles.money }}>

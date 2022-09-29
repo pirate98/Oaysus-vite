@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
@@ -27,7 +27,7 @@ const fn = forwardRef(({ content }, ref) => {
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
           <TextContainer>
-            <EditableStyleable
+            <EditableWithToolBar
               // hidden={true}
               style={{
                 ...styles.product,
@@ -39,7 +39,7 @@ const fn = forwardRef(({ content }, ref) => {
               type="h3"
             >
               {content?.product?.editorState}
-            </EditableStyleable>
+            </EditableWithToolBar>
             <Grid container>
               <ReactStars
                 count={5}
@@ -49,7 +49,7 @@ const fn = forwardRef(({ content }, ref) => {
               />
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
-            <EditableStyleable
+            <EditableWithToolBar
               // hidden={true}
               style={{
                 ...styles.description,
@@ -60,7 +60,7 @@ const fn = forwardRef(({ content }, ref) => {
               type="p"
             >
               {content.description?.editorState}
-            </EditableStyleable>
+            </EditableWithToolBar>
           </TextContainer>
         </Grid>
         <Grid item xs={12}>

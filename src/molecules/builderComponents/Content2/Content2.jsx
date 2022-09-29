@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import classes from "./.module.scss";
 import { makeEditorState, styleFilter } from "../../helpers/builder";
 import { BuilderButton, PlainButton } from "../../../atoms";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const titleStyle = styleFilter(content.title);
@@ -26,7 +26,7 @@ const fn = forwardRef(({ content }, ref) => {
     <section className={classes.componentContainer} ref={ref}>
       <div style={{ ...layoutStyle, ...borderStyle, ...content.size }}>
         <Grid item>
-          <EditableStyleable
+          <EditableWithToolBar
             type="h3"
             className={classes.headline}
             style={{ ...titleStyle }}
@@ -34,15 +34,15 @@ const fn = forwardRef(({ content }, ref) => {
             data-oa-type="text"
           >
             {content?.title?.editorState}
-          </EditableStyleable>
-          <EditableStyleable
+          </EditableWithToolBar>
+          <EditableWithToolBar
             type="p"
             style={{ ...descriptionStyle }}
             module="description"
             data-oa-type="text"
           >
             {content?.description?.editorState}
-          </EditableStyleable>
+          </EditableWithToolBar>
         </Grid>
         <Grid item sx={{ width: "208px" }}>
           <BuilderButton variant="contained" sx={{ ...buyButtonStyle }}>

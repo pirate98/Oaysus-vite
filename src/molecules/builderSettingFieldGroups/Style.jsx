@@ -2,7 +2,6 @@ import { PxInput, SettingFieldContainer } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import {
   ColorSelector,
-  FontStyles,
   Alignment,
   FontFamily,
   FontWeight,
