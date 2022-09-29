@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 
+import { useDispatch } from "react-redux";
+
+import { updatePageComponents } from "../../../pages/builder/builderSlice";
 import { EditableElement } from "../../../atoms";
 import classes from "./.module.scss";
 // import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
@@ -14,8 +17,7 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { useDispatch } from "react-redux";
-import { updatePageComponents } from "../../../pages/builder/builderSlice";
+
 import ToolbarPlugin from "./ToolBarPlugin";
 
 function MyCustomAutoFocusPlugin() {
@@ -44,9 +46,20 @@ export function EditableStyleable({
 
   const initialConfig = {
     namespace: "MyEditor",
-    theme: { border: "none" },
     onError,
     editorState: children,
+    theme: {
+      text: {
+        bold: "editor-text-bold",
+        italic: "editor-text-italic",
+        overflowed: "editor-text-overflowed",
+        hashtag: "editor-text-hashtag",
+        underline: "editor-text-underline",
+        strikethrough: "editor-text-strikethrough",
+        underlineStrikethrough: "editor-text-underlineStrikethrough",
+        code: "editor-text-code",
+      },
+    },
   };
 
   function onChange(editorState) {
@@ -81,41 +94,52 @@ export function EditableStyleable({
   };
 
   return (
-    <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
-      <div
-        className={classes.textInput + " " + (className ? className : "")}
-        style={style}
-      >
+    <>
+      <LexicalComposer initialConfig={{}}>
+        <RichTextPlugin
+          contentEditable={<ContentEditable />}
+          placeholder={<div>Enter some text...</div>}
+        />
+        <OnChangePlugin onChange={onChange} />
+        <HistoryPlugin />
+        <MyCustomAutoFocusPlugin />
+      </LexicalComposer>
+      <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
-          ref={elementToFocus}
-          tabIndex="-1"
-          className={classes.editWrapper}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          className={classes.textInput + " " + (className ? className : "")}
+          style={style}
         >
-          {/* <EditableElement type={type}>{children}</EditableElement> */}
-          {/* <ToolbarPlugin /> */}
-          <RichTextPlugin
-            contentEditable={<ContentEditable />}
-            placeholder={<div>Enter some text...</div>}
-          />
-          <OnChangePlugin onChange={onChange} />
-          {/* <HistoryPlugin />
-          <MyCustomAutoFocusPlugin /> */}
-          <span
-            id="editingWrapper"
-            contentEditable={false}
-            className={isFocused ? classes.focused : classes.hide}
+          <div
+            ref={elementToFocus}
+            tabIndex="-1"
+            className={classes.editWrapper}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           >
-            {/* <span><ContentCopySvg /></span> */}
-            <FontStyles
-              className={classes.styleBar}
-              module={module}
-              elementToFocus={elementToFocus}
+            {/* <EditableElement type={type}>{children}</EditableElement> */}
+            {/* <ToolbarPlugin /> */}
+            <RichTextPlugin
+              contentEditable={<ContentEditable />}
+              placeholder={<div>Enter some text...</div>}
             />
-          </span>
+            <OnChangePlugin onChange={onChange} />
+            {/* <HistoryPlugin />
+          <MyCustomAutoFocusPlugin /> */}
+            <span
+              id="editingWrapper"
+              contentEditable={false}
+              className={isFocused ? classes.focused : classes.hide}
+            >
+              {/* <span><ContentCopySvg /></span> */}
+              <FontStyles
+                className={classes.styleBar}
+                module={module}
+                elementToFocus={elementToFocus}
+              />
+            </span>
+          </div>
         </div>
-      </div>
-    </LexicalComposer>
+      </LexicalComposer>
+    </>
   );
 }
