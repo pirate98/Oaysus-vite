@@ -51,7 +51,7 @@ export function Components() {
     >
       {componentFunctionNames.map((component, idx) => {
         const DynamicComponent = builderButtons[component];
-
+        // console.log({ component });
         return (
           <Grid
             // onClick={() => dispatch(setSelectedPageComponentName(component))}

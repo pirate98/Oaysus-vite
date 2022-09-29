@@ -48,10 +48,10 @@ export function BuilderButtonWrapper({
     >
       {children}
       <p
-        style={{ color: hover ? title.hoverColor : "unset" }}
+        style={{ color: hover ? title?.hoverColor : "unset" }}
         className={classes.h4}
       >
-        {title?.editorState}
+        {title?.title}
       </p>
     </div>
   );
