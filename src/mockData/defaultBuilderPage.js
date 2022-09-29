@@ -14,7 +14,7 @@ const componentsToAddOnInitialLoad = [
   "CallToAction",
 ];
 
-const boilerPlatePage = () => {
+export default () => {
   const moduleList = [];
 
   for (const componentName of componentsToAddOnInitialLoad) {
@@ -26,7 +26,7 @@ const boilerPlatePage = () => {
     });
   }
 
+  console.log("boilerplate");
+
   return moduleList;
 };
-
-export default boilerPlatePage;

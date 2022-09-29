@@ -12,7 +12,7 @@ import { removePx } from "../helpers/builder";
 export function Style({
   background = false,
   styling = false,
-  weight = false,
+  weight = true,
   alignment = false,
   data = {},
   module,

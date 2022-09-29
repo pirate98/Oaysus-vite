@@ -22,7 +22,7 @@ export function CallToAction() {
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponent["title"]} />
+          <Style data={selectedPageComponent["title"]} module={"title"} />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
@@ -37,14 +37,18 @@ export function CallToAction() {
       </EditWrapper>
       <EditWrapper module={"subTitle"}>
         <SettingSection title={"Sub title money"}>
-          <Style data={selectedPageComponent["subTitle"]} />
+          <Style module={"subTitle"} data={selectedPageComponent["subTitle"]} />
           <Margin data={selectedPageComponent["subTitle"]} />
           <Padding data={selectedPageComponent["subTitle"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
-          <Style background weight data={selectedPageComponent["buyButton"]} />
+          <Style
+            background
+            module={"buyButton"}
+            data={selectedPageComponent["buyButton"]}
+          />
           <SettingFieldContainer title={"SIZE"}>
             <Slider
               title={"Width"}

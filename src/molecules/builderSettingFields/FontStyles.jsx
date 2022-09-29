@@ -43,8 +43,6 @@ export function FontStyles({ module, elementToFocus, ...args }) {
     const editorState = editor.getEditorState();
     // console.log("selecting..");
     editorState.read(() => {
-      const selection = $getSelection();
-      // console.log({ selection });
       updateToolBar();
     });
     // console.log("changing..")

@@ -84,13 +84,13 @@ export function EditableStyleable({
     // console.log(e.currentTarget);
     setIsFocused(false);
   };
-
+  // console.log({ style });
   return (
     <>
       <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
-          style={style}
+          // style={style}
         >
           <div
             ref={elementToFocus}
@@ -98,6 +98,7 @@ export function EditableStyleable({
             className={classes.editWrapper}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            style={style}
           >
             {/* <EditableElement type={type}>{children}</EditableElement> */}
             {/* <ToolbarPlugin /> */}

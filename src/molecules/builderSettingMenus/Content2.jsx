@@ -30,14 +30,23 @@ export function Content2() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
-          <Style alignment data={selectedPageComponent["description"]} />
+          <Style
+            alignment
+            data={selectedPageComponent["description"]}
+            module={"description"}
+          />
           <Margin data={selectedPageComponent["description"]} />
           <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
-          <Style weight background data={selectedPageComponent["buyButton"]} />
+          <Style
+            weight
+            background
+            data={selectedPageComponent["buyButton"]}
+            module={"buyButton"}
+          />
           <Margin data={selectedPageComponent["buyButton"]} />
           <Padding data={selectedPageComponent["buyButton"]} />
         </SettingSection>
