@@ -22,7 +22,7 @@ export function Incentive1() {
     <SettingSectionContainer>
       <EditWrapper module={title}>
         <SettingSection title={"Title text"}>
-          <Style data={selectedPageComponent[title]} />
+          <Style data={selectedPageComponent[title]} module={"title"} />
           <Margin data={selectedPageComponent[title]} />
           <Padding data={selectedPageComponent[title]} />
           <Visibility data={selectedPageComponent[title]} />
@@ -30,7 +30,7 @@ export function Incentive1() {
       </EditWrapper>
       <EditWrapper module={subTitle}>
         <SettingSection title={"Sub Title"}>
-          <Style data={selectedPageComponent[subTitle]} />
+          <Style data={selectedPageComponent[subTitle]} module={"subTitle"} />
           <Margin data={selectedPageComponent[subTitle]} />
           <Padding data={selectedPageComponent[subTitle]} />
           <Visibility data={selectedPageComponent[subTitle]} />

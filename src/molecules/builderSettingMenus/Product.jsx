@@ -22,7 +22,10 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Product description"}>
-          <Style data={selectedPageComponent["description"]} />
+          <Style
+            module={"description"}
+            data={selectedPageComponent["description"]}
+          />
           <Margin data={selectedPageComponent["description"]} />
           <Padding data={selectedPageComponent["description"]} />
         </SettingSection>

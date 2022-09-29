@@ -1,6 +1,7 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $getSelection } from "lexical";
 import { FORMAT_TEXT_COMMAND } from "lexical";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 
 import {
   fontStyleBold,
@@ -15,13 +16,12 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import { ButtonGroupTight } from "../../atoms";
+import { useCallback, useEffect, useState } from "react";
 
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
 export function FontStyles({ module, elementToFocus, ...args }) {
-  const [editor] = useLexicalComposerContext();
-
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -29,19 +29,36 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   const { fontWeight, textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
 
-  const handleStyleChange = (command) => {
-    // const editorState = editor.getEditorState();
-    // console.log({ editorState });
-    // editorState.read(() => {
-    //   const selection = $getSelection();
-    //   console.log({ selection });
-    // });
+  const [editor] = useLexicalComposerContext();
 
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
+
+  const handleStyleChange = (command) => {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
   };
 
+  const onChangeLexical = () => {
+    const editorState = editor.getEditorState();
+    // console.log("selecting..");
+    editorState.read(() => {
+      updateToolBar();
+    });
+    // console.log("changing..")
+  };
+
+  const updateToolBar = useCallback(() => {
+    const selection = $getSelection();
+
+    // Update text format
+    setIsBold(selection.hasFormat("bold"));
+    setIsItalic(selection.hasFormat("italic"));
+    setIsUnderline(selection.hasFormat("underline"));
+  }, [editor]);
+
   const handleAlign = (value) => {
-    console.log({ module });
+    // console.log({ module });
     dispatch(
       updatePageComponents({
         module,
@@ -59,19 +76,19 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   const buttons = [
     {
       title: <img src={fontStyleBold} />,
-      selected: removePx(fontWeight) > BOLD_THRESHOLD,
+      selected: isBold,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("bold"),
     },
     {
       title: <img src={fontStyleItalic} />,
-      // selected: fontStyle === "italic",
+      selected: isItalic,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("italic"),
     },
     {
       title: <img src={fontStyleUnderline} />,
-      // selected: textDecoration === "underline",
+      selected: isUnderline,
       onMouseUp: handleMouseUp,
       onClick: () => handleStyleChange("underline"),
     },
@@ -100,6 +117,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   return (
     <section className={args.className}>
       <ButtonGroupTight buttons={buttons} divider={3} />
+      <OnChangePlugin onChange={onChangeLexical} />
     </section>
   );
 }

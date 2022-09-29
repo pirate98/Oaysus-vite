@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-
 import boilerPlatePage from "../../mockData/defaultBuilderPage";
 
-const pageComponents = boilerPlatePage();
+import { createSlice } from "@reduxjs/toolkit";
+
+let pageComponents = boilerPlatePage();
 
 const initialState = {
   activeMenu: 0,
@@ -39,7 +39,7 @@ export const builderSlice = createSlice({
       if (!component) return;
 
       const { module, key, value } = action.payload;
-      console.log({ component, module, key, value });
+      // console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 

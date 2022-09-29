@@ -8,11 +8,13 @@ export function ImageAtLeft({
   secondaryHover = constants.COLOR_MAIN,
   hover = false,
 }) {
+  const hoverStyle = {
+    background: secondaryHover,
+    borderColor: secondaryHover,
+  };
+
   return (
-    <div
-      className={classes.imageAlignBox}
-      style={{ background: hover ? secondaryHover : "unset" }}
-    >
+    <div className={classes.imageAlignBox} style={hover ? hoverStyle : {}}>
       <svg
         width="94"
         height="28"

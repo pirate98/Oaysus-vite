@@ -12,6 +12,8 @@ export const useAddComponentToPageBuilder = () => {
   const { getState } = useStore();
 
   const func = async (componentName) => {
+    if (!componentName) return;
+
     const { pageComponents } = getState().builder;
 
     const { undefined, blankComponentIndex } = getIndexes(

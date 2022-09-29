@@ -81,8 +81,7 @@ export function DropZoneWrapper({ moduleContent }) {
       dispatch(setPageComponents(newPage));
     },
     drop: (item, monitor) => {
-      // console.log({ item, monitor }, moduleContent.name);
-      addComponentToPageBuilder(item.name);
+      addComponentToPageBuilder(item?.name);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),

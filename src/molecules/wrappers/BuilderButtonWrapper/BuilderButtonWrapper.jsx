@@ -13,7 +13,7 @@ export function BuilderButtonWrapper({
   hover = false,
 }) {
   const dispatch = useDispatch();
-
+  // console.log({ title: title.text });
   const [{ isDragging, extraProps }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
     type: dragDrop.types.BUILDER_COMPONENT,
@@ -51,7 +51,7 @@ export function BuilderButtonWrapper({
         style={{ color: hover ? title?.hoverColor : "unset" }}
         className={classes.h4}
       >
-        {title?.title}
+        {title?.text}
       </p>
     </div>
   );

@@ -2,23 +2,17 @@ import { useState, useRef, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { updatePageComponents } from "../../../pages/builder/builderSlice";
-import { EditableElement } from "../../../atoms";
-import classes from "./.module.scss";
-// import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
-import { FontStyles } from "../../builderSettingFields/FontStyles";
-
-import { $getRoot, $getSelection } from "lexical";
-
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-
-import ToolbarPlugin from "./ToolBarPlugin";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+// import { EditableElement } from "../../../atoms";
+// import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
+import { updatePageComponents } from "../../../pages/builder/builderSlice";
+import classes from "./.module.scss";
+import { FontStyles } from "../../builderSettingFields/FontStyles";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -62,15 +56,7 @@ export function EditableStyleable({
     },
   };
 
-  function onChange(editorState) {
-    // console.log(JSON.stringify(editorState));
-    editorState.read(() => {
-      // Read the contents of the EditorState here.
-      const root = $getRoot();
-      const selection = $getSelection();
-
-      console.log(root, selection);
-    });
+  function onChangeLexical(editorState) {
     dispatch(
       updatePageComponents({
         module,
@@ -92,13 +78,13 @@ export function EditableStyleable({
     // console.log(e.currentTarget);
     setIsFocused(false);
   };
-
+  // console.log({ style });
   return (
     <>
       <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
-          style={style}
+          // style={style}
         >
           <div
             ref={elementToFocus}
@@ -106,6 +92,7 @@ export function EditableStyleable({
             className={classes.editWrapper}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            style={style}
           >
             {/* <EditableElement type={type}>{children}</EditableElement> */}
             {/* <ToolbarPlugin /> */}
@@ -113,7 +100,7 @@ export function EditableStyleable({
               contentEditable={<ContentEditable />}
               placeholder={<div>Enter some text...</div>}
             />
-            <OnChangePlugin onChange={onChange} />
+            <OnChangePlugin onChange={onChangeLexical} />
             {/* <HistoryPlugin />
           <MyCustomAutoFocusPlugin /> */}
             <span

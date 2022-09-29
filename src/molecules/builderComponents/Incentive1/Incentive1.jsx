@@ -74,6 +74,7 @@ const json = {
   title: {
     editorState: makeEditorState("Add a Test T-shirt to your order"),
     fontFamily: "Roboto",
+    fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
     color: "#ffffff",
@@ -90,6 +91,7 @@ const json = {
   subTitle: {
     editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
+    fontWeight: "400",
     lineHeight: "20px",
     fontSize: "18px",
     color: "#ffffff",
