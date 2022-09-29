@@ -15,34 +15,43 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import { ButtonGroupTight } from "../../atoms";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const BOLD_THRESHOLD = 400;
 const BOLD = 600;
 
 export function FontStyles({ module, elementToFocus, ...args }) {
-  const [editor] = useLexicalComposerContext();
-
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
   const { fontWeight, textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
+
+  const [editor] = useLexicalComposerContext();
+
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
 
   const handleStyleChange = (command) => {
-    // const editorState = editor.getEditorState();
-    // console.log({ editorState });
-    // editorState.read(() => {
-    //   const selection = $getSelection();
-    //   console.log({ selection });
-    // });
-
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
   };
+
+  const updateToolBar = useCallback(() => {
+    const selection = $getSelection();
+
+    // Update text format
+    setIsBold(selection.hasFormat("bold"));
+    setIsItalic(selection.hasFormat("italic"));
+    setIsUnderline(selection.hasFormat("underline"));
+  }, [editor]);
+
+  useEffect(() => {
+    const editorState = editor.getEditorState();
+
+    // editorState.read(() => updateToolBar());
+  }, [editor]);
 
   const handleAlign = (value) => {
     console.log({ module });
