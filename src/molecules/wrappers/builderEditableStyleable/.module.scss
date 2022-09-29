@@ -59,6 +59,11 @@ $color: #5cbb00;
 
     display: flex;
   }
+
+  .barAtBottom {
+    top: unset;
+    bottom: -46px;
+  }
 }
 
 .hide {

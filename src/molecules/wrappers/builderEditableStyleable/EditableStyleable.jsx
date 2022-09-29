@@ -2,23 +2,18 @@ import { useState, useRef, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { updatePageComponents } from "../../../pages/builder/builderSlice";
-import { EditableElement } from "../../../atoms";
-import classes from "./.module.scss";
-// import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
-import { FontStyles } from "../../builderSettingFields/FontStyles";
-
-import { $getRoot, $getSelection } from "lexical";
-
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import ToolbarPlugin from "./ToolBarPlugin";
+// import { EditableElement } from "../../../atoms";
+// import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
+import { updatePageComponents } from "../../../pages/builder/builderSlice";
+import classes from "./.module.scss";
+import { FontStyles } from "../../builderSettingFields/FontStyles";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -112,7 +107,7 @@ export function EditableStyleable({
             <span
               id="editingWrapper"
               contentEditable={false}
-              className={isFocused ? classes.focused : classes.hide}
+              className={!isFocused ? classes.focused : classes.hide}
             >
               {/* <span><ContentCopySvg /></span> */}
               <FontStyles

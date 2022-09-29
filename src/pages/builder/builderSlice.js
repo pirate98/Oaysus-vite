@@ -2,7 +2,7 @@ import boilerPlatePage from "../../mockData/defaultBuilderPage";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const pageComponents = boilerPlatePage();
+let pageComponents = boilerPlatePage();
 
 const initialState = {
   activeMenu: 0,
