@@ -95,15 +95,6 @@ export function EditableStyleable({
 
   return (
     <>
-      <LexicalComposer initialConfig={{}}>
-        <RichTextPlugin
-          contentEditable={<ContentEditable />}
-          placeholder={<div>Enter some text...</div>}
-        />
-        <OnChangePlugin onChange={onChange} />
-        <HistoryPlugin />
-        <MyCustomAutoFocusPlugin />
-      </LexicalComposer>
       <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
