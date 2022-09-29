@@ -6,45 +6,54 @@ import {
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Position } from "../builderSettingFields";
+import { ImageAlignment, Position } from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 import { SettingFieldContainer } from "../../atoms";
+import { ImageAtLeft, ImageAtRight } from "../builderButtons";
 
 export function Content1() {
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
+      <EditWrapper>
+        <SettingSection title={"Layout"}>
+          <ImageAlignment />
+        </SettingSection>
+      </EditWrapper>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style weight data={activeComponent["title"]} />
-          <Margin data={activeComponent["title"]} />
-          <Padding data={activeComponent["title"]} />
+          <Style
+            weight
+            data={selectedPageComponent["title"]}
+            module={"title"}
+          />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
           <Style
-            styling
-            data={activeComponent["description"]}
+            data={selectedPageComponent["description"]}
             module={"description"}
           />
-          <Margin data={activeComponent["description"]} />
-          <Padding data={activeComponent["description"]} />
+          <Margin data={selectedPageComponent["description"]} />
+          <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
           <SettingFieldContainer>
-            <Position data={activeComponent["background"]} />
+            <Position data={selectedPageComponent["background"]} />
           </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
-          <Margin data={activeComponent["layout"]} />
-          <Padding data={activeComponent["layout"]} />
+          <Margin data={selectedPageComponent["layout"]} />
+          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

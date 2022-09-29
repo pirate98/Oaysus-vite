@@ -8,7 +8,7 @@ export function EditWrapper({ children, ...props }) {
   const dispatch = useDispatch();
 
   const {
-    builder: { activeComponent },
+    builder: { selectedPageComponentName },
   } = useSelector((state) => state);
 
   const handleChange = (e) => {
@@ -28,16 +28,21 @@ export function EditWrapper({ children, ...props }) {
       key = key.split("_")[0];
     }
 
+    // Catch checkbox inputs
     if (key === "visibility") {
       value = e.target.checked;
     }
 
     // if (key==='upload')
 
-    // console.log({ activeComponent, module, key, value });
+    // console.log({ selectedPageComponentName, module, key, value });
 
     dispatch(
-      updatePageComponents({ component: activeComponent, module, key, value })
+      updatePageComponents({
+        module,
+        key,
+        value,
+      })
     );
   };
 

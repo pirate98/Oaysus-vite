@@ -3,27 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as builderButtons from "../../molecules/builderButtons";
 import * as builderSettingMenus from "../../molecules/builderSettingMenus";
-import {
-  setActiveComponent,
-  setHoveredComponent,
-} from "../../pages/builder/builderSlice";
-import { Card } from "../../molecules/builderButtonCard/Card";
-import constants from "../../data/constants";
+import { setHoveredComponent } from "../../pages/builder/builderSlice";
+import { BuilderButtonWrapper } from "../../molecules/wrappers";
 import { EditBox } from "../../molecules/editBox/EditBox";
 import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
 
 export function Components() {
   const dispatch = useDispatch();
   const {
-    builder: { hoveredComponent, activeComponent },
+    builder: { hoveredComponent, selectedPageComponentName },
   } = useSelector((state) => state);
 
-  const _activeComponent = removeDigitsAndReturnComponentName(activeComponent);
+  const _selectedPageComponentName = removeDigitsAndReturnComponentName(
+    selectedPageComponentName
+  );
   const DynamicComponentMenu =
-    builderSettingMenus[_activeComponent] || _activeComponent;
+    builderSettingMenus[_selectedPageComponentName] ||
+    _selectedPageComponentName;
 
-  // Array content must be same with the names of the components
-  const components = [
+  const componentFunctionNames = [
     "Incentive1",
     "Banner",
     "Content1",
@@ -31,13 +29,12 @@ export function Components() {
     "Product",
     "Incentive2",
     "Video",
-    // "Content3",
     "CallToAction",
   ];
 
-  return activeComponent ? (
+  return selectedPageComponentName ? (
     <>
-      <EditBox title={_activeComponent} />
+      <EditBox title={_selectedPageComponentName} />
       <DynamicComponentMenu />
     </>
   ) : (
@@ -52,12 +49,12 @@ export function Components() {
         paddingTop: "0",
       }}
     >
-      {components.map((component, idx) => {
+      {componentFunctionNames.map((component, idx) => {
         const DynamicComponent = builderButtons[component];
-
+        // console.log({ component });
         return (
           <Grid
-            // onClick={() => dispatch(setActiveComponent(component))}
+            // onClick={() => dispatch(setSelectedPageComponentName(component))}
             key={`component-${idx}`}
             item
             xs={6}
@@ -66,16 +63,16 @@ export function Components() {
             }}
             onMouseOut={() => dispatch(setHoveredComponent(undefined))}
           >
-            <Card
+            <BuilderButtonWrapper
               title={{
-                text: component,
+                title: component,
                 hoverColor: "white",
               }}
-              background={{ hoverColor: constants.SHOPIFY_GREEN }}
+              // background={{ hoverColor: constants.COLOR_MAIN }}
               hover={hoveredComponent === component}
             >
               <DynamicComponent hover={hoveredComponent === component} />
-            </Card>
+            </BuilderButtonWrapper>
           </Grid>
         );
       })}

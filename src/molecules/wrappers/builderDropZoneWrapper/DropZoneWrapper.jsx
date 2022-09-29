@@ -6,19 +6,23 @@ import { useDrop } from "react-dnd";
 import {
   removeComponentFromPage,
   setPageComponents,
-} from "../../pages/builder/builderSlice";
-import dragDrop from "../../data/dragDrop";
-import * as builderComponents from "../../molecules/builderComponents";
-import { EditWrapper } from "../../molecules/builderComponents";
+  setSelectedPageComponentName,
+} from "../../../pages/builder/builderSlice";
+import dragDrop from "../../../data/dragDrop";
+import * as builderComponents from "../../builderComponents";
+import { ComponentEditWrapper } from "../../builderComponents";
 import {
   getIndexes,
   numerateTheName,
   removeDigitsAndReturnComponentName,
-} from "../helpers/builder";
+} from "../../helpers/builder";
+import { useAddComponentToPageBuilder } from "../../../hooks";
 
 export function DropZoneWrapper({ moduleContent }) {
   const dispatch = useDispatch();
   const refForInnerAccess = useRef();
+
+  const { addComponentToPageBuilder } = useAddComponentToPageBuilder();
 
   const {
     builder: { pageComponents },
@@ -33,7 +37,7 @@ export function DropZoneWrapper({ moduleContent }) {
         )
       )
         return;
-
+      // console.log("hovering");
       const clientRects = refForInnerAccess.current.getClientRects();
       const elTop = clientRects[0].top;
 
@@ -48,7 +52,7 @@ export function DropZoneWrapper({ moduleContent }) {
         moduleContent,
         dragDrop.BLANK_COMPONENT_NAME
       );
-      // console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
+      console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
 
       if (
         (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
@@ -60,14 +64,14 @@ export function DropZoneWrapper({ moduleContent }) {
       let dropIndex = hoveredComponentIndex;
 
       if (blankComponentIndex === undefined) {
-        dropIndex++;
+        dropIndex++; // drop after hovered component
       } else {
         // Remove empty component.
-        // dropIndex automatically targets the emptied position
+        // dropIndex automatically targets hoveredIndex + 1
         newPage.splice(blankComponentIndex, 1);
       }
 
-      if (canDropTop) dropIndex = Math.max(dropIndex - 1, 0);
+      if (canDropTop) dropIndex = hoveredComponentIndex;
       // console.log({ dropIndex });
 
       newPage.splice(dropIndex, 0, {
@@ -77,24 +81,8 @@ export function DropZoneWrapper({ moduleContent }) {
       dispatch(setPageComponents(newPage));
     },
     drop: (item, monitor) => {
-      console.log({ item, monitor }, moduleContent.name);
-
-      const { undefined, blankComponentIndex } = getIndexes(
-        pageComponents,
-        moduleContent,
-        dragDrop.BLANK_COMPONENT_NAME
-      );
-
-      let newPage = [...pageComponents];
-      // console.log(builderComponents["Incentive1"].json);
-      const numerizedName = numerateTheName(newPage, item.name);
-
-      newPage.splice(blankComponentIndex, 1, {
-        ...builderComponents[item.name].json,
-        name: numerizedName,
-      });
-      // console.log({ newPage });
-      dispatch(setPageComponents(newPage));
+      // console.log({ item, monitor }, moduleContent.name);
+      addComponentToPageBuilder(item.name);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -114,9 +102,13 @@ export function DropZoneWrapper({ moduleContent }) {
   const DynamicComponent =
     builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
   // console.log({ DynamicComponent });
+  const clickHandler = () => {
+    dispatch(setSelectedPageComponentName(moduleContent.name));
+  };
 
   return (
-    <EditWrapper componentName={moduleContent.name}>
+    // <ComponentEditWrapper componentName={moduleContent.name}>
+    <section onClick={clickHandler}>
       <DynamicComponent
         content={moduleContent}
         ref={(el) => {
@@ -124,6 +116,7 @@ export function DropZoneWrapper({ moduleContent }) {
           refForInnerAccess.current = el;
         }}
       />
-    </EditWrapper>
+    </section>
+    // </ComponentEditWrapper>
   );
 }

@@ -4,14 +4,14 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { makeEditorState, styleFilter } from "../../helpers/builder";
+import { EditableStyleable } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content = {} }, ref) => {
   const userTitleStyle = styleFilter(content.title);
   const userDescriptionStyle = styleFilter(content.description);
   const layoutStyle = styleFilter(content.layout);
-
+  // console.log(content.imagePosition);
   const imageSection = (
     // <img
     //   className={classes.image1}
@@ -34,24 +34,25 @@ const fn = forwardRef(({ content }, ref) => {
   const textSection = (
     <Grid item sx={{ marginBottom: "2px" }}>
       <TextContainer>
-        <EditableElement
+        <EditableStyleable
           type="h3"
           style={{ ...userTitleStyle }}
           // name="title"
-          data-oa-name="title"
+          module="title"
           data-oa-type="text"
         >
-          {content.title && content.title.text}
-        </EditableElement>
-        <EditableElement
+          {content?.title?.editorState}
+        </EditableStyleable>
+
+        <EditableStyleable
           type="p"
           style={{ ...userDescriptionStyle }}
           // name="title"
-          data-oa-name="description"
+          module="description"
           data-oa-type="text"
         >
-          {content.description && content.description.text}
-        </EditableElement>
+          {content?.description?.editorState}
+        </EditableStyleable>
       </TextContainer>
     </Grid>
   );
@@ -78,14 +79,15 @@ const fn = forwardRef(({ content }, ref) => {
 });
 
 const json = {
+  imagePosition: "right",
   name: "",
   title: {
-    text: "Headline Content 1",
+    editorState: makeEditorState("Headline Content 1"),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "black",
+    color: "#000000",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
@@ -97,13 +99,15 @@ const json = {
     visibility: true,
   },
   description: {
-    text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
+    editorState: makeEditorState(
+      "You could highlight specific ingredients, materials, or functionality that make your product unique,and explain how it will improve the customer's life."
+    ),
     fontFamily: "Roboto",
     fontWeight: "400",
     fontSize: "16px",
     lineHeight: "24px",
     fontStyle: "",
-    color: "black",
+    color: "#000000",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
@@ -115,14 +119,14 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
+    backgroundColor: "#008060",
     backgroundImage: "url(/mockData/flowers.jpg)",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
   layout: {
-    paddingTop: "10px",
-    paddingBottom: "10px",
+    paddingTop: "20px",
+    paddingBottom: "20px",
     paddingRight: "",
     paddingLeft: "",
     marginTop: "",

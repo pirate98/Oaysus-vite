@@ -2,19 +2,12 @@ import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 
+import { EditableStyleable } from "../../wrappers/";
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import variables from "../../assets/css/_variables.module.scss";
-import { PlainButton } from "../../atoms";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import variables from "../../../assets/css/_variables.module.scss";
+import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -25,39 +18,43 @@ const fn = forwardRef(({ content }, ref) => {
       ref={ref}
       style={{ ...styles.background, ...styles.border }}
     >
-      <Grid container flexDirection={"row"} justifyContent={"center"}>
+      <Grid
+        container
+        flexDirection={"row"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        spacing={1}
+      >
         <Grid item>
-          <EditableElement
+          <EditableStyleable
             name="title"
-            data-oa-name="title"
+            module="title"
             data-oa-type="text"
             type="h3"
             style={{ ...styles.title }}
           >
-            {content.title ? content.title.text : ""}
-          </EditableElement>
+            {content?.title?.editorState}
+          </EditableStyleable>
         </Grid>
         <Grid item>
-          <span className={classes.textGreen} style={{ ...styles.money }}>
+          <div className={classes.textGreen} style={{ ...styles.money }}>
             &nbsp;for $20.00
-          </span>
+          </div>
         </Grid>
       </Grid>
-      <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
-        Buy Now
-      </PlainButton>
+      <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
     </div>
   );
 });
 
 const json = {
   title: {
-    text: "Buy This T-Shirt Right Now",
+    editorState: makeEditorState("Buy This T-Shirt Right Now"),
     fontFamily: "Roboto",
-    fontWeight: "600",
+    fontWeight: "500",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "black",
+    color: "#000000",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
@@ -86,7 +83,7 @@ const json = {
   },
   background: {
     backgroundColor: "#f2f2f2",
-    backgroundImage: "url(/mockData/strategy.jpg)",
+    backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
@@ -95,13 +92,13 @@ const json = {
     marginLeft: "30px",
     fontFamily: "Roboto",
     fontWeight: "400",
-    marginBottom: "10px",
+    marginBottom: "",
     backgroundColor: "#008060",
     color: "white",
     borderStyle: "solid",
     borderWidth: "0",
-    borderRadius: "0",
-    borderColor: "black",
+    borderRadius: "",
+    borderColor: "#000000",
   },
 };
 

@@ -8,3 +8,4 @@ export * from "./FontStyles";
 export * from "./Alignment";
 export * from "./FontFamily";
 export * from "./FontWeight";
+export * from "./ImageAlignment/ImageAlignment";

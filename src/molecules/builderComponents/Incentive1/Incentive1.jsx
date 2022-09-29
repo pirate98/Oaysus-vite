@@ -2,9 +2,9 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { makeEditorState, styleFilter } from "../../helpers/builder";
 import { Grid } from "@mui/material";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const userTitleStyle = styleFilter(content.title);
@@ -19,19 +19,20 @@ const fn = forwardRef(({ content }, ref) => {
         style={{ ...componentBackground, ...componentLayout }}
         ref={ref}
       >
-        <EditableElement
+        <EditableStyleable
           // hidden={true}
           style={{
             ...userTitleStyle,
             display: content.title.visibility ? "inherit" : "none",
           }}
           name="title"
-          data-oa-name="title"
+          module="title"
           data-oa-type="text"
-          type="p"
+          type="h3"
+          className={classes.title}
         >
-          {content.title ? content.title.text : ""}
-        </EditableElement>
+          {content?.title?.editorState}
+        </EditableStyleable>
         <Grid
           justifyContent={"center"}
           container
@@ -42,26 +43,25 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableElement
+            <EditableStyleable
               name="subTitle"
-              data-oa-name="subTitle"
+              module="subTitle"
               data-oa-type="text"
               type="p"
             >
-              {content.subTitle ? content.subTitle.text : ""}
-            </EditableElement>
+              {content?.subTitle?.editorState}
+            </EditableStyleable>
           </Grid>
           <Grid item>
-            <EditableElement
-              type="p"
-              data-oa-name="countdown"
+            <p
+              module="countdown"
               data-oa-type="duration"
               style={{
                 display: content.countdown.visibility ? "inherit" : "none",
               }}
             >
-              {content.countdown && content.countdown.duration}
-            </EditableElement>
+              {content.countdown && content.countdown.duration + ":00"}
+            </p>
           </Grid>
         </Grid>
       </div>
@@ -72,12 +72,12 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Add a Test T-shirt to your order",
+    editorState: makeEditorState("Add a Test T-shirt to your order"),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",
     color: "#ffffff",
-    paddingTop: "16px",
+    paddingTop: "2px",
     paddingLeft: "",
     paddingRight: "",
     paddingBottom: "18px",
@@ -88,7 +88,7 @@ const json = {
     visibility: true,
   },
   subTitle: {
-    text: "Exclusive offer expires in: ",
+    editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "18px",
@@ -96,7 +96,7 @@ const json = {
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "14px",
+    paddingBottom: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
@@ -108,15 +108,15 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/flowers.jpg)",
+    backgroundColor: "#008060",
+    backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
   layout: {
-    paddingTop: "22px",
+    paddingTop: "20px",
     paddingRight: "10px",
-    paddingBottom: "2px",
+    paddingBottom: "20px",
     paddingLeft: "10px",
     marginTop: "",
     marginBottom: "",

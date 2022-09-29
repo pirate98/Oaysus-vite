@@ -1,0 +1,15 @@
+@import "../../../assets/css/type", "../../../assets/css/classes.module",
+  "../.module.scss";
+
+.imageZone {
+  background: rgba(224, 224, 224, 1);
+  height: 240px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}

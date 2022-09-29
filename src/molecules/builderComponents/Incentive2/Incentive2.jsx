@@ -3,14 +3,14 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { EditableElement } from "../../atoms/builderInputs";
-import { filterOnlyStyleValues } from "../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid item xs={12} ref={ref}>
+    <Grid item xs={12} ref={ref} className={classes.componentContainer}>
       <div
         className={classes.offer}
         style={{ ...styles.background, ...styles.layout }}
@@ -25,26 +25,25 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableElement
+            <EditableStyleable
               name="title"
-              data-oa-name="title"
+              module="title"
               data-oa-type="text"
               type="h3"
             >
-              {content.title ? content.title.text : ""}
-            </EditableElement>
+              {content?.title?.editorState}
+            </EditableStyleable>
           </Grid>
           <Grid item>
-            <EditableElement
-              type="p"
-              data-oa-name="countdown"
+            <p
+              module="countdown"
               data-oa-type="duration"
               style={{
                 display: content.countdown.visibility ? "inherit" : "none",
               }}
             >
-              {content.countdown && content.countdown.duration}
-            </EditableElement>
+              {content.countdown && content.countdown.duration + ":00"}
+            </p>
           </Grid>
         </Grid>
       </div>
@@ -55,16 +54,16 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Exclusive offer expires in: ",
+    editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
     lineHeight: "35px",
     fontSize: "30px",
     fontWeight: "600",
     color: "#ffffff",
-    paddingTop: "16px",
+    paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
@@ -76,21 +75,21 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "rgb(0, 128, 96)",
-    backgroundImage: "url(/mockData/puppy.jpg)",
+    backgroundColor: "#008060",
+    backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
   },
   layout: {
-    paddingTop: "22px",
+    paddingTop: "37px",
     paddingRight: "10px",
-    paddingBottom: "2px",
+    paddingBottom: "37px",
     paddingLeft: "10px",
-    marginTop: "",
-    marginBottom: "",
+    marginTop: "20px",
+    marginBottom: "20px",
     marginLeft: "",
     marginRight: "",
-    borderColor: "rgb(0, 128, 96)",
+    borderColor: "#008060",
   },
 };
 

@@ -8,24 +8,24 @@ import {
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Video() {
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style data={activeComponent["title"]} />
-          <Margin data={activeComponent["title"]} />
-          <Padding data={activeComponent["title"]} />
-          <Visibility data={activeComponent["title"]} />
+          <Style data={selectedPageComponent["title"]} />
+          <Margin data={selectedPageComponent["title"]} />
+          <Padding data={selectedPageComponent["title"]} />
+          <Visibility data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"video"}>
         <SettingSection title={"Video URL"}>
-          <VideoURL data={activeComponent["video"]} />
+          <VideoURL data={selectedPageComponent["video"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

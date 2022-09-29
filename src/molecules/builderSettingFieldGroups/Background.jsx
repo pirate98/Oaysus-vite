@@ -1,7 +1,7 @@
 import { SettingFieldContainer } from "../../atoms";
 import { ColorSelector, ImageUpload, Position } from "../builderSettingFields";
 
-export function Background({ data }) {
+export function Background({ data, module }) {
   return (
     <SettingFieldContainer>
       <ColorSelector
@@ -9,7 +9,7 @@ export function Background({ data }) {
         name="backgroundColor"
         defaultValue={data.color || data.backgroundColor}
       />
-      <ImageUpload name={"backgroundImage"} />
+      <ImageUpload name={"backgroundImage"} module={module} />
       <Position data={data} />
     </SettingFieldContainer>
   );

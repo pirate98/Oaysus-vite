@@ -1,6 +1,6 @@
 import classes from "../../assets/css/_classes.module.scss";
 
-export function CleanButton({
+export function HiddenWrapperButton({
   children,
   onClick,
   className = "",

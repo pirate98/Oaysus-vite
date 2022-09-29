@@ -1,0 +1,34 @@
+@import "../../../assets/css/type", "../../../assets/css/classes.module";
+
+.componentContainer {
+  padding: 0 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image1 {
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.divider {
+  background: #e0e0e0;
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+}
+
+.starText {
+  @extend .defaultFont;
+  font-size: 10px;
+  font-weight: 400;
+  padding-left: 13.88px;
+
+  position: relative;
+  top: 2px;
+}

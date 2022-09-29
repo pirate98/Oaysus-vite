@@ -3,14 +3,14 @@ import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { ImageUpload, Slider } from "../builderSettingFields";
 
 import { EditWrapper } from "./EditWrapper";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 
 const changeHandlerMaker = (module) => (name, value) => {
   return { module, name, value };
 };
 
 export function Banner() {
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
@@ -19,7 +19,7 @@ export function Banner() {
           <Slider
             title={"Height"}
             name="height"
-            defaultValue={activeComponent["sizing"]["height"]}
+            defaultValue={selectedPageComponent["sizing"]["height"]}
             module={"sizing"}
             max={500}
           />

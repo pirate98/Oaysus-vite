@@ -1,8 +1,4 @@
-import {
-  CustomAutocomplete,
-  PxInput,
-  SettingFieldContainer,
-} from "../../atoms";
+import { PxInput, SettingFieldContainer } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import {
   ColorSelector,
@@ -30,9 +26,11 @@ export function Style({
           title={"Background"}
         />
       )}
-      {styling && <FontStyles module={module} />}
+      {/* {styling && <FontStyles module={module} />} */}
       <FontFamily defaultValue={data["fontFamily"]} />
-      {weight && <FontWeight defaultValue={data["fontWeight"]} />}
+      {weight && (
+        <FontWeight defaultValue={data["fontWeight"]} module={module} />
+      )}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
         <PxInput
@@ -49,7 +47,7 @@ export function Style({
           value={removePx(data["fontSize"])}
         />
       </div>
-      {alignment && <Alignment />}
+      {!alignment && <Alignment />}
       <ColorSelector
         defaultValue={data["color"]}
         name={"color"}

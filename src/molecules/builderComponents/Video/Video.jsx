@@ -4,26 +4,33 @@ import Grid from "@mui/material/Grid";
 import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid container item xs={12} ref={ref}>
-      <EditableElement
+    <Grid
+      // container
+      item
+      xs={12}
+      ref={ref}
+      className={classes.componentContainer}
+    >
+      <EditableStyleable
         name="title"
-        data-oa-name="title"
+        module="title"
         data-oa-type="text"
         type="h3"
         style={{
           ...styles.title,
           display: content.title.visibility ? "inherit" : "none",
         }}
+        className={classes.title}
       >
-        {content.title ? content.title.text : ""}
-      </EditableElement>
+        {content?.title?.editorState}
+      </EditableStyleable>
       {/* <p className={classes.videoTitle}></p> */}
       <div
         className={classes.imageZone}
@@ -40,16 +47,16 @@ const fn = forwardRef(({ content }, ref) => {
 
 const json = {
   title: {
-    text: "Video Block Title",
+    editorState: makeEditorState("Video Block Title"),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",
     fontWeight: 600,
-    fontColor: "black",
+    fontColor: "#000000",
     visibility: true,
     textAlign: "center",
-    marginTop: "15px",
-    marginBottom: "15px",
+    marginTop: "20px",
+    marginBottom: "20px",
   },
   video: {},
 };

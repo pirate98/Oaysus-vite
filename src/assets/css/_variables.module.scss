@@ -1,4 +1,11 @@
-$shopifyGreen: rgba(0, 128, 96, 1);
+@use "sass:color";
+
+$shopifyGreen: #008060;
+$primaryHover: rgb(237 235 235);
+$primaryActive: adjust-color(
+  adjust-color($shopifyGreen, $lightness: 65%),
+  $blackness: 10%
+);
 $disabledColor: rgb(224 224 224);
 $navHeight: 56px;
 $leftMenuWidth: 340px;
@@ -11,6 +18,8 @@ $inputWidth: 190px;
 $inputPadding: 7.5px 4px 7.5px 12px;
 $inputFontSize: 14px;
 $inputBorderFocused: $shopifyGreen;
+$selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+  0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
 :export {
   inputWidth: $inputWidth;
@@ -19,4 +28,8 @@ $inputBorderFocused: $shopifyGreen;
   inputBorderFocused: $inputBorderFocused;
   disabledColor: $disabledColor;
   shopifyGreen: $shopifyGreen;
+  primaryHover: $primaryHover;
+  primaryActive: $primaryActive;
+  fontFamily: $fontFamily;
+  selectShadow: $selectShadow;
 }

@@ -8,6 +8,7 @@ import {
   inputPadding,
   inputFontSize,
   inputBorderFocused,
+  selectShadow,
 } from "../../assets/css/_variables.module.scss";
 
 export const Autocomplete = styled((props) => (

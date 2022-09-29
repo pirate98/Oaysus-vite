@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { activeMenu: 0, pageComponents: [] };
+import boilerPlatePage from "../../mockData/defaultBuilderPage";
+
+const pageComponents = boilerPlatePage();
+
+const initialState = {
+  activeMenu: 0,
+  pageComponents,
+  selectedPageComponentName: undefined,
+};
 
 export const builderSlice = createSlice({
   name: "builder",
@@ -12,12 +20,13 @@ export const builderSlice = createSlice({
     setHoveredComponent: (state, action) => {
       state.hoveredComponent = action.payload;
     },
-    setActiveComponent: (state, action) => {
-      state.activeComponent = action.payload;
+    setSelectedPageComponentName: (state, action) => {
+      state.selectedPageComponentName = action.payload;
     },
     setPageComponents: (state, action) => {
       state.pageComponents = action.payload;
     },
+
     removeComponentFromPage: (state, action) => {
       const pageComponentsWithoutGivenName = state.pageComponents.filter(
         (comp) => comp.name !== action.payload
@@ -26,10 +35,11 @@ export const builderSlice = createSlice({
       state.pageComponents = pageComponentsWithoutGivenName;
     },
     updatePageComponents: (state, action) => {
-      const component = state.activeComponent;
+      const component = state.selectedPageComponentName;
+      if (!component) return;
 
       const { module, key, value } = action.payload;
-      // console.log({ component, module, key, value });
+      console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 
@@ -37,7 +47,11 @@ export const builderSlice = createSlice({
         (comp) => comp.name === component
       );
 
-      componentToUpdate[module][key] = value;
+      if (module && module.length) {
+        componentToUpdate[module][key] = value;
+      } else {
+        componentToUpdate[key] = value;
+      }
     },
   },
 });
@@ -46,7 +60,7 @@ export const builderSlice = createSlice({
 export const {
   setHoveredComponent,
   setActiveMenu,
-  setActiveComponent,
+  setSelectedPageComponentName,
   setPageComponents,
   removeComponentFromPage,
   updatePageComponents,

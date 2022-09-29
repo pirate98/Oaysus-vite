@@ -50,11 +50,35 @@ export function Position({ data = {} }) {
       onClick: handleClick,
     },
   ];
+  const buttons3 = [
+    {
+      title: "Auto",
+      name: "backgroundSize",
+      value: "auto",
+      selected: data.backgroundSize === "auto",
+      onClick: handleClick,
+    },
+    {
+      title: "Cover",
+      name: "backgroundSize",
+      value: "cover",
+      selected: data.backgroundSize === "cover",
+      onClick: handleClick,
+    },
+    {
+      title: "Contain",
+      name: "backgroundSize",
+      value: "contain",
+      selected: data.backgroundSize === "contain",
+      onClick: handleClick,
+    },
+  ];
 
   return (
     <>
       <ButtonGroupTemplate title={"Position"} buttons={buttons} />
       <ButtonGroupTemplate buttons={buttons2} />
+      <ButtonGroupTemplate buttons={buttons3} />
     </>
   );
 }

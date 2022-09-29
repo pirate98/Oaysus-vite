@@ -1,18 +1,13 @@
-import Grid from "@mui/material/Grid";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 import { forwardRef } from "react";
+
+import Grid from "@mui/material/Grid";
+import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import { PlainButton } from "../../atoms";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import { EditableStyleable } from "../../wrappers/";
+import { BuilderButton } from "../../../atoms";
 
 const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -32,18 +27,19 @@ const fn = forwardRef(({ content }, ref) => {
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
           <TextContainer>
-            <EditableElement
+            <EditableStyleable
               // hidden={true}
               style={{
                 ...styles.product,
               }}
-              name="product"
-              data-oa-name="product"
-              data-oa-type="text"
+              // name="product"
+              // module="product"
+              // data-oa-type="text"
+              module="product"
               type="h3"
             >
-              {content.product.text}
-            </EditableElement>
+              {content?.product?.editorState}
+            </EditableStyleable>
             <Grid container>
               <ReactStars
                 count={5}
@@ -53,18 +49,18 @@ const fn = forwardRef(({ content }, ref) => {
               />
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
-            <EditableElement
+            <EditableStyleable
               // hidden={true}
               style={{
                 ...styles.description,
               }}
               name="description"
-              data-oa-name="description"
+              module="description"
               data-oa-type="text"
               type="p"
             >
-              {content.description.text}
-            </EditableElement>
+              {content.description?.editorState}
+            </EditableStyleable>
           </TextContainer>
         </Grid>
         <Grid item xs={12}>
@@ -94,12 +90,10 @@ const fn = forwardRef(({ content }, ref) => {
         </Grid>
         <Grid item>
           {/* <ButtonGroup fullWidth> */}
-          <PlainButton variant="contained" sx={{ ...styles.buyButton }}>
-            Buy Now
-          </PlainButton>
-          <PlainButton variant="contained" sx={{ ...styles.declineButton }}>
+          <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+          <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
             Decline this offer
-          </PlainButton>
+          </BuilderButton>
         </Grid>
       </Grid>
     </Grid>
@@ -111,7 +105,7 @@ const json = {
   layout: {
     paddingTop: "42px",
     paddingRight: "",
-    paddingBottom: "40px",
+    paddingBottom: "20px",
     paddingLeft: "",
     marginTop: "",
     marginBottom: "",
@@ -120,21 +114,22 @@ const json = {
   },
   reviews: {},
   product: {
-    text: "Test T-shirt",
-    color: "black",
+    editorState: makeEditorState("Test T-shirt"),
+    color: "#000000",
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
   },
   description: {
-    text: `Include a short, benefit-driven description of what your product
-    does and how it can improve your customer's life.`,
+    editorState:
+      makeEditorState(`Include a short, benefit-driven description of what your product\
+    does and how it can improve your customer's life.`),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "24px",
     fontSize: "16px",
-    color: "black",
+    color: "#000000",
     paddingTop: "",
     paddingRight: "",
     paddingBottom: "",
@@ -145,44 +140,32 @@ const json = {
     marginRight: "",
   },
   title: {
-    text: "",
+    editorState: makeEditorState(""),
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",
     fontWeight: 600,
-    fontColor: "black",
+    fontColor: "#000000",
     margin: "0 0 21px 0",
     visibility: true,
   },
   subTitle: {
-    text: "",
+    editorState: makeEditorState(""),
     price: 20,
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontWeight: 400,
     fontSize: "16px",
-    fontColor: "black",
+    fontColor: "#000000",
     padding: 0,
     margin: 0,
     visibility: true,
   },
   buyButton: {
-    fontFamily: "Roboto",
-    fontWeight: "400",
     marginBottom: "10px",
-    backgroundColor: "#008060",
-    color: "white",
-    width: "100%",
   },
   declineButton: {
-    fontFamily: "Roboto",
-    fontWeight: "400",
     marginBottom: "10px",
-    backgroundColor: "white",
-    color: "black",
-    width: "100%",
-    border: "1px solid",
-    borderColor: "rgba(201, 204, 207, 1)",
   },
 };
 

@@ -2,7 +2,7 @@ export default [
   {
     name: "Incentive1_1",
     title: {
-      text: "Add a Test T-shirt to your order",
+      editorState: makeEditorState("Add a Test T-shirt to your order"),
       fontFamily: "Roboto",
       lineHeight: "20px",
       fontSize: "24px",
@@ -18,7 +18,7 @@ export default [
       visibility: true,
     },
     subTitle: {
-      text: "Exclusive offer expires in: ",
+      editorState: makeEditorState("Exclusive offer expires in: "),
       fontFamily: "Roboto",
       lineHeight: "20px",
       fontSize: "18px",
@@ -38,7 +38,7 @@ export default [
       visibility: true,
     },
     background: {
-      backgroundColor: "rgb(0, 128, 96)",
+      backgroundColor: "#008060",
       backgroundImage: "url(/mockData/flowers.jpg)",
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
@@ -67,22 +67,22 @@ export default [
   //   name: "Content1_2",
   //   imagePosition: "right",
   //   title: {
-  //     text: "Headline Content 1",
+  //     editorState: makeEditorState("Headline Content 1", ),
   //     fontFamily: "Roboto",
   //     lineHeight: "20px",
   //     fontSize: "24px",
   //     fontWeight: 600,
-  //     fontColor: "black",
+  //     fontColor: "#000000",
   //     margin: "0 0 21px 0",
   //     visibility: true,
   //   },
   //   subTitle: {
-  //     text: "You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.",
+  //     editorState: makeEditorState("You could highlight specific ingredients, materials, or functionality that make your product unique, and explain how it will improve the customer's life.", ),
   //     fontFamily: "Roboto",
   //     lineHeight: "20px",
   //     fontWeight: 400,
   //     fontSize: "16px",
-  //     fontColor: "black",
+  //     fontColor: "#000000",
   //     padding: 0,
   //     margin: 0,
   //     visibility: true,

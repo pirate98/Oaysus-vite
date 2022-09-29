@@ -2,16 +2,16 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { Margin, Padding, Style, Layout } from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
-import { useGetActiveComponent } from "../../hooks";
+import { useGetSelectedPageComponent } from "../../hooks";
 
 export function Product() {
-  const activeComponent = useGetActiveComponent();
+  const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout"}>
-          <Layout data={activeComponent["layout"]} />
+          <Layout data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"product"}>
@@ -22,9 +22,9 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Product description"}>
-          <Style data={activeComponent["description"]} />
-          <Margin data={activeComponent["description"]} />
-          <Padding data={activeComponent["description"]} />
+          <Style data={selectedPageComponent["description"]} />
+          <Margin data={selectedPageComponent["description"]} />
+          <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

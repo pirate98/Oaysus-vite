@@ -1,18 +1,11 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import {
-  TextContainer,
-  Stack,
-  Text,
-  Button,
-  ButtonGroup,
-} from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
-import { EditableElement } from "../../atoms/builderInputs";
-import { AddButton, PlainButton } from "../../atoms";
+import { makeEditorState, styleFilter } from "../../helpers/builder";
+import { BuilderButton, PlainButton } from "../../../atoms";
+import { EditableStyleable } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
   const titleStyle = styleFilter(content.title);
@@ -33,28 +26,28 @@ const fn = forwardRef(({ content }, ref) => {
     <section className={classes.componentContainer} ref={ref}>
       <div style={{ ...layoutStyle, ...borderStyle, ...content.size }}>
         <Grid item>
-          <EditableElement
+          <EditableStyleable
             type="h3"
             className={classes.headline}
             style={{ ...titleStyle }}
-            data-oa-name="title"
+            module="title"
             data-oa-type="text"
           >
-            {content.title.text}
-          </EditableElement>
-          <EditableElement
+            {content?.title?.editorState}
+          </EditableStyleable>
+          <EditableStyleable
             type="p"
             style={{ ...descriptionStyle }}
-            data-oa-name="description"
+            module="description"
             data-oa-type="text"
           >
-            {content.description.text}
-          </EditableElement>
+            {content?.description?.editorState}
+          </EditableStyleable>
         </Grid>
         <Grid item sx={{ width: "208px" }}>
-          <PlainButton variant="contained" sx={{ ...buyButtonStyle }}>
+          <BuilderButton variant="contained" sx={{ ...buyButtonStyle }}>
             Buy Now
-          </PlainButton>
+          </BuilderButton>
         </Grid>
       </div>
     </section>
@@ -64,36 +57,36 @@ const fn = forwardRef(({ content }, ref) => {
 const json = {
   name: "",
   title: {
-    text: "Headline Content 2",
+    editorState: makeEditorState("Headline Content 2"),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
-    color: "black",
+    color: "#000000",
     paddingTop: "16px",
     paddingLeft: "",
     paddingRight: "",
     paddingBottom: "",
-    marginTop: "",
+    marginTop: "4px",
     marginBottom: "21px",
     marginLeft: "",
     marginRight: "",
     visibility: true,
   },
   description: {
-    text: `You could highlight specific ingredients, materials, or functionality
-    that make your product unique, and explain how it will improve the
-    customer's life.`,
+    editorState:
+      makeEditorState(`You could highlight specific ingredients, materials, or functionality\
+    that make your product unique, and explain how it will improve the customer's life.`),
     fontFamily: "Roboto",
     fontWeight: "400",
     lineHeight: "24px",
     fontSize: "16px",
-    color: "black",
+    color: "#000000",
     fontStyle: "",
     paddingTop: "",
     paddingLeft: "",
     paddingRight: "",
-    paddingBottom: "18px",
+    paddingBottom: "24px",
     marginTop: "",
     marginBottom: "",
     marginLeft: "",
@@ -101,7 +94,7 @@ const json = {
     visibility: true,
   },
   // background: {
-  //   backgroundColor: "rgb(0, 128, 96)",
+  //   backgroundColor: "#008060",
   //   backgroundImage: "url(/mockData/flowers.jpg)",
   //   backgroundSize: "contain",
   //   backgroundRepeat: "no-repeat",
@@ -110,7 +103,7 @@ const json = {
     borderStyle: "solid",
     borderWidth: "0",
     borderRadius: "0",
-    borderColor: "black",
+    borderColor: "#000000",
   },
   size: { width: "" },
   buyButton: {
@@ -121,12 +114,12 @@ const json = {
     color: "white",
   },
   layout: {
-    paddingTop: "22px",
-    paddingRight: "10px",
-    paddingBottom: "2px",
-    paddingLeft: "10px",
-    marginTop: "",
-    marginBottom: "",
+    paddingTop: "",
+    paddingRight: "",
+    paddingBottom: "",
+    paddingLeft: "",
+    marginTop: "20px",
+    marginBottom: "20px",
     marginLeft: "",
     marginRight: "",
   },

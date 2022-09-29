@@ -75,20 +75,20 @@ export const filterOnlyStyleValues = (componentData) => {
  */
 export const getIndexes = (
   pageComponents,
-  moduleContent,
+  currentComponent = {},
   blankComponentName = "blank"
 ) => {
-  const { name } = moduleContent;
+  const currentComponentName = currentComponent && currentComponent.name;
 
-  let hoveredComponentIndex = 0;
+  let hoveredComponentIndex = undefined;
   let blankComponentIndex = undefined;
 
-  pageComponents.forEach((moduleContent, idx) => {
-    if (moduleContent.name === blankComponentName) {
+  pageComponents.forEach((component, idx) => {
+    if (component.name === blankComponentName) {
       blankComponentIndex = idx;
     }
 
-    if (moduleContent.name === name) {
+    if (component.name === currentComponentName) {
       hoveredComponentIndex = idx;
     }
   });
@@ -118,7 +118,7 @@ export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
     return nameNumerator > prev ? nameNumerator : prev;
   }, 0);
 
-  console.log({ biggestNumeratorFromNames });
+  // console.log({ biggestNumeratorFromNames });
   return name + "_" + (biggestNumeratorFromNames + 1);
 };
 
@@ -128,3 +128,8 @@ export const removePx = (value) => {
     return value;
   return value.replace("px", "");
 };
+
+export const makeEditorState = (text) => `{"root":{"children":[{"children":\
+[{"detail":0,"format":0,"mode":"normal","style":"","text":"${text}","type":"text","version":1}],\
+"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],\
+"direction":null,"format":"","indent":0,"type":"root","version":1}}`;
