@@ -25,7 +25,7 @@ export function FontWeight({ defaultValue, module }) {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   const { data: fontFamilyData } = useGetFontsQuery();
-
+  console.log({ selectedPageComponent, module });
   const { fontFamily, fontWeight } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
   // console.log({ fontWeight });
@@ -63,15 +63,29 @@ export function FontWeight({ defaultValue, module }) {
 
     // If new font family doesnt have selected weight update the weight
     const fontWeightExists = fontWeightList.some(
-      (_fontWeight) => _fontWeight.toString() === fontWeight
+      (_fontWeight) => _fontWeight.toString() === fontWeight.toString()
     );
+
+    // console.log({ fontWeightList, fontWeight });
     // console.log({ fontWeightExists });
     if (!fontWeightExists) {
+      let value = fontWeightList[0];
+
+      if (fontWeight) {
+        const nearestWeight = fontWeightList.reduce((prev, cur) => {
+          return cur === fontWeight || cur < fontWeight ? cur : prev;
+        });
+
+        value = nearestWeight;
+      }
+
+      console.log({ value });
+
       dispatch(
         updatePageComponents({
           module,
           key: "fontWeight",
-          value: fontWeightList[0],
+          value,
         })
       );
     }

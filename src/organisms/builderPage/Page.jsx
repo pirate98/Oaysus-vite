@@ -1,7 +1,9 @@
+import { Fragment } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { DropZoneWrapper } from "../../molecules/builderComponents";
-import { ComponentToolBar } from "../../molecules/builderComponentToolBar/ComponentToolBar";
+import { ComponentToolBar } from "../../molecules/wrappers/builderComponentToolBar/ComponentToolBar";
 import { setSelectedPageComponentName } from "../../pages/builder/builderSlice";
 import classes from "./Page.module.scss";
 
@@ -9,10 +11,16 @@ export function Page() {
   const dispatch = useDispatch();
 
   const {
-    builder: { pageComponents },
+    builder: { pageComponents, selectedPageComponentName },
   } = useSelector((state) => state);
 
   // console.log({ pageComponents });
+
+  const handleClick = (componentName) => {
+    if (selectedPageComponentName === componentName) return;
+
+    dispatch(setSelectedPageComponentName(componentName));
+  };
 
   return (
     <div>
@@ -21,16 +29,15 @@ export function Page() {
         pageComponents.length &&
         pageComponents.map((component, idx) => {
           return (
-            <section
+            <div
               className={classes.componentWrapper}
-              key={idx}
-              onMouseDownCapture={() => {
-                dispatch(setSelectedPageComponentName(component.name));
-              }}
+              key={`${component.name}-idx`}
+              onMouseDownCapture={() => handleClick(component.name)}
             >
-              <DropZoneWrapper moduleContent={component} />
-              <ComponentToolBar />
-            </section>
+              <ComponentToolBar>
+                <DropZoneWrapper moduleContent={component} />
+              </ComponentToolBar>
+            </div>
           );
         })}
       {/* </Grid> */}

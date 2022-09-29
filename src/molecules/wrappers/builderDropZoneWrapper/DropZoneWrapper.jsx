@@ -55,21 +55,21 @@ export function DropZoneWrapper({ moduleContent }) {
         monitor.getClientOffset().y
       );
 
-      const { hoveredComponentIndex, blankComponentIndex } = getIndexes(
+      const { componentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
-        moduleContent,
+        moduleContent.name,
         dragDrop.BLANK_COMPONENT_NAME
       );
-      // console.log({ canDropTop, blankComponentIndex, hoveredComponentIndex });
+      // console.log({ canDropTop, blankComponentIndex, componentIndex });
 
       if (
-        (canDropTop && blankComponentIndex === hoveredComponentIndex - 1) ||
-        (!canDropTop && blankComponentIndex === hoveredComponentIndex + 1)
+        (canDropTop && blankComponentIndex === componentIndex - 1) ||
+        (!canDropTop && blankComponentIndex === componentIndex + 1)
       )
         return;
 
       let newPage = [...pageComponents];
-      let dropIndex = hoveredComponentIndex;
+      let dropIndex = componentIndex;
 
       if (blankComponentIndex === undefined) {
         dropIndex++; // drop after hovered component
@@ -79,7 +79,7 @@ export function DropZoneWrapper({ moduleContent }) {
         newPage.splice(blankComponentIndex, 1);
       }
 
-      if (canDropTop) dropIndex = hoveredComponentIndex;
+      if (canDropTop) dropIndex = componentIndex;
       // console.log({ dropIndex });
 
       newPage.splice(dropIndex, 0, {

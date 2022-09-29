@@ -75,12 +75,10 @@ export const filterOnlyStyleValues = (componentData) => {
  */
 export const getIndexes = (
   pageComponents,
-  currentComponent = {},
+  componentName,
   blankComponentName = "blank"
 ) => {
-  const currentComponentName = currentComponent && currentComponent.name;
-
-  let hoveredComponentIndex = undefined;
+  let componentIndex = undefined;
   let blankComponentIndex = undefined;
 
   pageComponents.forEach((component, idx) => {
@@ -88,12 +86,12 @@ export const getIndexes = (
       blankComponentIndex = idx;
     }
 
-    if (component.name === currentComponentName) {
-      hoveredComponentIndex = idx;
+    if (component.name === componentName) {
+      componentIndex = idx;
     }
   });
 
-  return { hoveredComponentIndex, blankComponentIndex };
+  return { componentIndex, blankComponentIndex };
 };
 
 // Returns Incentive from Incentive_2123
