@@ -1,6 +1,7 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $getSelection } from "lexical";
 import { FORMAT_TEXT_COMMAND } from "lexical";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 
 import {
   fontStyleBold,
@@ -38,6 +39,17 @@ export function FontStyles({ module, elementToFocus, ...args }) {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
   };
 
+  const onChange = () => {
+    const editorState = editor.getEditorState();
+    // console.log("selecting..");
+    editorState.read(() => {
+      const selection = $getSelection();
+      // console.log({ selection });
+      updateToolBar();
+    });
+    // console.log("changing..")
+  };
+
   const updateToolBar = useCallback(() => {
     const selection = $getSelection();
 
@@ -47,14 +59,8 @@ export function FontStyles({ module, elementToFocus, ...args }) {
     setIsUnderline(selection.hasFormat("underline"));
   }, [editor]);
 
-  useEffect(() => {
-    const editorState = editor.getEditorState();
-
-    // editorState.read(() => updateToolBar());
-  }, [editor]);
-
   const handleAlign = (value) => {
-    console.log({ module });
+    // console.log({ module });
     dispatch(
       updatePageComponents({
         module,
@@ -113,6 +119,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   return (
     <section className={args.className}>
       <ButtonGroupTight buttons={buttons} divider={3} />
+      <OnChangePlugin onChange={onChange} />
     </section>
   );
 }
