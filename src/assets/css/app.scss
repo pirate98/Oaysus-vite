@@ -4,6 +4,10 @@ body {
   @extend .defaultFont;
 }
 
+p {
+  font-weight: inherit;
+}
+
 .editor-text-bold {
   font-weight: bold;
 }
