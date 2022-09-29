@@ -39,7 +39,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
   };
 
-  const onChange = () => {
+  const onChangeLexical = () => {
     const editorState = editor.getEditorState();
     // console.log("selecting..");
     editorState.read(() => {
@@ -119,7 +119,7 @@ export function FontStyles({ module, elementToFocus, ...args }) {
   return (
     <section className={args.className}>
       <ButtonGroupTight buttons={buttons} divider={3} />
-      <OnChangePlugin onChange={onChange} />
+      <OnChangePlugin onChange={onChangeLexical} />
     </section>
   );
 }

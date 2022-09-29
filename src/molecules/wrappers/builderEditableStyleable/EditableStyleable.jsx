@@ -62,15 +62,7 @@ export function EditableStyleable({
     },
   };
 
-  function onChange(editorState) {
-    // console.log(JSON.stringify(editorState));
-    editorState.read(() => {
-      // Read the contents of the EditorState here.
-      const root = $getRoot();
-      const selection = $getSelection();
-
-      // console.log(root, selection);
-    });
+  function onChangeLexical(editorState) {
     dispatch(
       updatePageComponents({
         module,
@@ -113,7 +105,7 @@ export function EditableStyleable({
               contentEditable={<ContentEditable />}
               placeholder={<div>Enter some text...</div>}
             />
-            <OnChangePlugin onChange={onChange} />
+            <OnChangePlugin onChange={onChangeLexical} />
             {/* <HistoryPlugin />
           <MyCustomAutoFocusPlugin /> */}
             <span
