@@ -2,27 +2,24 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { makeEditorState, styleFilter } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { Grid } from "@mui/material";
 import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content }, ref) => {
-  const userTitleStyle = styleFilter(content.title);
-  const userSubTitleStyle = styleFilter(content.subTitle);
-  const componentBackground = styleFilter(content.background);
-  const componentLayout = styleFilter(content.layout);
+  const styles = filterOnlyStyleValues(content);
 
   return (
     content && (
       <div
         className={classes.incentiveContainer}
-        style={{ ...componentBackground, ...componentLayout }}
+        style={{ ...styles.background, ...styles.layout }}
         ref={ref}
       >
         <EditableWithToolBar
           // hidden={true}
           style={{
-            ...userTitleStyle,
+            ...styles.title,
             display: content.title.visibility ? "inherit" : "none",
           }}
           name="title"
@@ -38,7 +35,7 @@ const fn = forwardRef(({ content }, ref) => {
           container
           sx={{
             whiteSpace: "pre-wrap",
-            ...userSubTitleStyle,
+            ...styles.subTitle,
             display: content.subTitle.visibility ? "inherit" : "none",
           }}
         >

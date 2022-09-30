@@ -16,7 +16,7 @@ export function Page() {
 
   // console.log({ pageComponents });
 
-  const handleClick = (componentName) => {
+  const handleClickOnComponent = (componentName) => {
     if (selectedPageComponentName === componentName) return;
 
     dispatch(setSelectedPageComponentName(componentName));
@@ -29,15 +29,15 @@ export function Page() {
         pageComponents.length &&
         pageComponents.map((component, idx) => {
           return (
-            <div
-              className={classes.componentWrapper}
-              key={`${component.name}-idx`}
-              onMouseDownCapture={() => handleClick(component.name)}
-            >
-              <ComponentToolBar>
+            <Fragment key={`${component.name}-idx`}>
+              <ComponentToolBar
+                onMouseDownCapture={() =>
+                  handleClickOnComponent(component.name)
+                }
+              >
                 <DropZoneWrapper moduleContent={component} />
               </ComponentToolBar>
-            </div>
+            </Fragment>
           );
         })}
       {/* </Grid> */}

@@ -66,6 +66,16 @@ export const filterOnlyStyleValues = (componentData) => {
   return onlyStyleFields;
 };
 
+// export const extractLayoutMarginYAsPaddingFromLayout = (styles) => {
+//   const paddingTop = styles?.layout?.marginTop;
+//   delete styles?.layout?.marginTop;
+
+//   const paddingBottom = styles?.layout?.marginBottom;
+//   delete styles?.layout?.marginBottom;
+
+//   return { paddingTop, paddingBottom };
+// };
+
 /**
  *
  * @param {{name: string, {...}}} moduleContent

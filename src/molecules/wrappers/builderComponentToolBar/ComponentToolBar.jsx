@@ -23,7 +23,7 @@ import {
   setSelectedPageComponentName,
 } from "../../../pages/builder/builderSlice";
 
-export function ComponentToolBar({ children }) {
+export function ComponentToolBar({ children, onMouseDownCapture }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const dispatch = useDispatch();
@@ -128,7 +128,11 @@ export function ComponentToolBar({ children }) {
 
   return (
     <ClickAwayListener onClickAway={handleBlur}>
-      <section onClick={clickHandle}>
+      <section
+        onClick={clickHandle}
+        className={classes.toolBarWrapper}
+        onMouseDownCapture={onMouseDownCapture}
+      >
         {children}
         {isVisible && (
           <section className={classes.toolBar}>

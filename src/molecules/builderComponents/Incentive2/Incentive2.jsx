@@ -10,7 +10,7 @@ const fn = forwardRef(({ content }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid item xs={12} ref={ref} className={classes.componentContainer}>
+    <div ref={ref} className={classes.componentContainer}>
       <div
         className={classes.offer}
         style={{ ...styles.background, ...styles.layout }}
@@ -47,7 +47,7 @@ const fn = forwardRef(({ content }, ref) => {
           </Grid>
         </Grid>
       </div>
-    </Grid>
+    </div>
   );
 });
 

@@ -1,16 +1,15 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import { TextContainer, Text } from "@shopify/polaris";
+import { TextContainer } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { makeEditorState, styleFilter } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content = {} }, ref) => {
-  const userTitleStyle = styleFilter(content.title);
-  const userDescriptionStyle = styleFilter(content.description);
-  const layoutStyle = styleFilter(content.layout);
+  const styles = filterOnlyStyleValues(content);
+
   // console.log(content.imagePosition);
   const imageSection = (
     // <img
@@ -36,7 +35,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
       <TextContainer>
         <EditableWithToolBar
           type="h3"
-          style={{ ...userTitleStyle }}
+          style={{ ...styles.title }}
           // name="title"
           module="title"
           data-oa-type="text"
@@ -46,7 +45,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
 
         <EditableWithToolBar
           type="p"
-          style={{ ...userDescriptionStyle }}
+          style={{ ...styles.description }}
           // name="title"
           module="description"
           data-oa-type="text"
@@ -65,7 +64,7 @@ const fn = forwardRef(({ content = {} }, ref) => {
         ref={ref}
         columnSpacing={2}
         className={classes.componentContainer}
-        sx={{ ...layoutStyle }}
+        sx={{ ...styles.layout }}
       >
         <Grid item xs={6}>
           {content.imagePosition === "left" ? imageSection : textSection}
