@@ -7,7 +7,7 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { BuilderButton } from "../../../atoms";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
@@ -19,7 +19,12 @@ const fn = forwardRef(({ content }, ref) => {
     //   // columnSpacing={2}
     //   spacing={2}
     // >
-    <div className={classes.componentContainer} ref={ref}>
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
+      ref={ref}
+    >
       <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
         <Grid item>
           <EditableWithToolBar

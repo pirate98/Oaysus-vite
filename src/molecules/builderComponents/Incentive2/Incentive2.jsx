@@ -6,11 +6,16 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <div ref={ref} className={classes.componentContainer}>
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
+      ref={ref}
+    >
       <div
         className={classes.offer}
         style={{ ...styles.background, ...styles.layout }}

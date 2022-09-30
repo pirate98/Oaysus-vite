@@ -7,11 +7,16 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <div className={classes.componentContainer} ref={ref}>
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
+      ref={ref}
+    >
       <section>
         <EditableWithToolBar
           name="title"

@@ -7,7 +7,7 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content = {} }, ref) => {
+const fn = forwardRef(({ content = {}, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   // console.log(content.imagePosition);
@@ -58,7 +58,12 @@ const fn = forwardRef(({ content = {} }, ref) => {
 
   return (
     content && (
-      <div className={classes.componentContainer} ref={ref}>
+      <div
+        className={
+          classes.componentContainer + (className ? ` ${className}` : "")
+        }
+        ref={ref}
+      >
         <Grid item container columnSpacing={2} sx={{ ...styles.layout }}>
           <Grid item xs={6}>
             {content.imagePosition === "left" ? imageSection : textSection}

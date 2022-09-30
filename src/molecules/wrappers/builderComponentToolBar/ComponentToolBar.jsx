@@ -152,7 +152,9 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
           className={classes.toolBarWrapper}
           onMouseDownCapture={onMouseDownCapture}
         >
-          {children}
+          {cloneElement(children, {
+            className: isVisible && classes.borderFocused,
+          })}
           {isVisible && (
             <section
               className={

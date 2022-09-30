@@ -5,6 +5,15 @@
   display: flex;
 }
 
+.component {
+  display: flex;
+  flex-grow: 1;
+}
+
+.borderFocused {
+  border: 1px solid #ffb802;
+}
+
 .toolBar {
   background: #ffb802;
   height: 35px;

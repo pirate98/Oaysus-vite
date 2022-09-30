@@ -9,12 +9,12 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
 import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
     <div
-      className={classes.callToAction + " " + classes.headline}
+      className={classes.callToAction + (className ? ` ${className}` : "")}
       ref={ref}
       style={{ ...styles.background, ...styles.border }}
     >

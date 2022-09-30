@@ -9,7 +9,7 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
@@ -18,7 +18,9 @@ const fn = forwardRef(({ content }, ref) => {
       container
       ref={ref}
       columnSpacing={1}
-      className={classes.componentContainer}
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
       sx={{ ...styles.layout }}
     >
       <Grid item xs={6}>

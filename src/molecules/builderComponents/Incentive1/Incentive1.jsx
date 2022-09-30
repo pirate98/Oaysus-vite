@@ -6,15 +6,17 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { Grid } from "@mui/material";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
     content && (
       <div
-        className={classes.incentiveContainer}
-        style={{ ...styles.background, ...styles.layout }}
+        className={
+          classes.incentiveContainer + (className ? ` ${className}` : "")
+        }
         ref={ref}
+        style={{ ...styles.background, ...styles.layout }}
       >
         <EditableWithToolBar
           // hidden={true}
