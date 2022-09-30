@@ -1,7 +1,7 @@
 @use "sass:color";
 
 $shopifyGreen: #008060;
-$primaryHover: rgb(237 235 235);
+$primaryHover: rgb(0 110 82);
 $primaryActive: adjust-color(
   adjust-color($shopifyGreen, $lightness: 65%),
   $blackness: 10%
