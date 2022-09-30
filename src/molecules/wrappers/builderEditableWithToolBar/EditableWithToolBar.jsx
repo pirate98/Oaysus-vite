@@ -88,6 +88,7 @@ export function EditableWithToolBar({
           style={style}
         >
           <div
+            id="editingWrapper"
             ref={elementToFocus}
             tabIndex="-1"
             className={classes.editWrapper}
@@ -105,7 +106,6 @@ export function EditableWithToolBar({
             {/* <HistoryPlugin />
           <MyCustomAutoFocusPlugin /> */}
             <span
-              id="editingWrapper"
               contentEditable={false}
               className={isFocused ? classes.focused : classes.hide}
             >

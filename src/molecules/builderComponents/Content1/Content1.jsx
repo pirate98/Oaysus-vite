@@ -58,21 +58,16 @@ const fn = forwardRef(({ content = {} }, ref) => {
 
   return (
     content && (
-      <Grid
-        item
-        container
-        ref={ref}
-        columnSpacing={2}
-        className={classes.componentContainer}
-        sx={{ ...styles.layout }}
-      >
-        <Grid item xs={6}>
-          {content.imagePosition === "left" ? imageSection : textSection}
+      <div className={classes.componentContainer} ref={ref}>
+        <Grid item container columnSpacing={2} sx={{ ...styles.layout }}>
+          <Grid item xs={6}>
+            {content.imagePosition === "left" ? imageSection : textSection}
+          </Grid>
+          <Grid item xs={6}>
+            {content.imagePosition === "left" ? textSection : imageSection}
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          {content.imagePosition === "left" ? textSection : imageSection}
-        </Grid>
-      </Grid>
+      </div>
     )
   );
 });
