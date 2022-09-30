@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
@@ -18,14 +18,15 @@ import {
   removeDigitsAndReturnComponentName,
 } from "../../helpers/builder";
 import {
-  setActiveMenu,
   setPageComponents,
   setSelectedPageComponentName,
 } from "../../../pages/builder/builderSlice";
 import componentsData from "../../../data/componentsData";
+import { DeleteModal } from "./DeleteModal";
 
 export function ComponentToolBar({ children, onMouseDownCapture }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -101,16 +102,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
   };
 
   const deleteComponent = () => {
-    const { componentIndex } = getIndexes(
-      pageComponents,
-      selectedPageComponentName
-    );
-
-    const newPage = [...pageComponents];
-    newPage.splice(componentIndex, 1);
-
-    dispatch(setSelectedPageComponentName(undefined));
-    dispatch(setPageComponents(newPage));
+    setIsModalOpen(true);
   };
 
   const clickHandle = ({ target }) => {
@@ -131,38 +123,64 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     setIsVisible(false);
   };
 
+  const modalOnClose = useCallback(
+    () => setIsModalOpen(false),
+    [setIsModalOpen]
+  );
+
+  const modalOnApprove = useCallback(() => {
+    const { componentIndex } = getIndexes(
+      pageComponents,
+      selectedPageComponentName
+    );
+
+    const newPage = [...pageComponents];
+    newPage.splice(componentIndex, 1);
+
+    dispatch(setSelectedPageComponentName(undefined));
+    dispatch(setPageComponents(newPage));
+    setIsModalOpen(false);
+  }, [selectedPageComponentName]);
+
   return (
-    <ClickAwayListener onClickAway={handleBlur}>
-      <section
-        onClick={clickHandle}
-        className={classes.toolBarWrapper}
-        onMouseDownCapture={onMouseDownCapture}
-      >
-        {children}
-        {isVisible && (
-          <section
-            className={
-              classes.toolBar + " " + (componentIsOnTop && classes.zIndex3000)
-            }
-          >
-            <HiddenWrapperButton>
-              <ToolbarArrowDown onClick={moveDown} />
-            </HiddenWrapperButton>
-            <HiddenWrapperButton>
-              <ToolbarArrowUp onClick={moveUp} />
-            </HiddenWrapperButton>
-            <HiddenWrapperButton>
-              <ToolbarDrag />
-            </HiddenWrapperButton>
-            <HiddenWrapperButton>
-              <ToolBarCopy onClick={copy} />
-            </HiddenWrapperButton>
-            <HiddenWrapperButton>
-              <ToolbarDelete onClick={deleteComponent} />
-            </HiddenWrapperButton>
-          </section>
-        )}
-      </section>
-    </ClickAwayListener>
+    <>
+      <ClickAwayListener onClickAway={handleBlur}>
+        <section
+          onClick={clickHandle}
+          className={classes.toolBarWrapper}
+          onMouseDownCapture={onMouseDownCapture}
+        >
+          {children}
+          {isVisible && (
+            <section
+              className={
+                classes.toolBar + " " + (componentIsOnTop && classes.zIndex3000)
+              }
+            >
+              <HiddenWrapperButton>
+                <ToolbarArrowDown onClick={moveDown} />
+              </HiddenWrapperButton>
+              <HiddenWrapperButton>
+                <ToolbarArrowUp onClick={moveUp} />
+              </HiddenWrapperButton>
+              <HiddenWrapperButton>
+                <ToolbarDrag />
+              </HiddenWrapperButton>
+              <HiddenWrapperButton>
+                <ToolBarCopy onClick={copy} />
+              </HiddenWrapperButton>
+              <HiddenWrapperButton>
+                <ToolbarDelete onClick={deleteComponent} />
+              </HiddenWrapperButton>
+            </section>
+          )}
+        </section>
+      </ClickAwayListener>
+      <DeleteModal
+        open={isModalOpen}
+        onClose={modalOnClose}
+        onApprove={modalOnApprove}
+      />
+    </>
   );
 }

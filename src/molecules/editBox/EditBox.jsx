@@ -20,8 +20,11 @@ export function EditBox({ title, subTitle = "Editing" }) {
         <p className={classes.title}>{title}</p>
         <p className={classes.subTitle}>{subTitle}</p>
       </Grid>
-      <HiddenWrapperButton className={classes.iconWrapper}>
-        <EditIcon onClick={() => dispatch(setSelectedPageComponentName(0))} />
+      <HiddenWrapperButton
+        className={classes.iconWrapper}
+        onClick={() => dispatch(setSelectedPageComponentName(0))}
+      >
+        <EditIcon />
       </HiddenWrapperButton>
     </div>
   );
