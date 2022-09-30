@@ -25,7 +25,7 @@ export function FontWeight({ defaultValue, module }) {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   const { data: fontFamilyData } = useGetFontsQuery();
-  console.log({ selectedPageComponent, module });
+  // console.log({ selectedPageComponent, module });
   const { fontFamily, fontWeight } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
   // console.log({ fontWeight });
@@ -79,8 +79,6 @@ export function FontWeight({ defaultValue, module }) {
         value = nearestWeight;
       }
 
-      console.log({ value });
-
       dispatch(
         updatePageComponents({
           module,
@@ -92,7 +90,7 @@ export function FontWeight({ defaultValue, module }) {
   }, [fontFamily, fontFamilyData]);
 
   const changeHandler = (e) => {
-    console.log({ e: e.target });
+    // console.log({ e: e.target });
     e.stopPropagation();
     const { value } = e.target;
     dispatch(updatePageComponents({ module, key: "fontWeight", value }));

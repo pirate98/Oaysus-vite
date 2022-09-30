@@ -1,5 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 
 import classes from "./ComponentToolBar.module.scss";
@@ -16,8 +17,11 @@ import {
   numerateTheName,
   removeDigitsAndReturnComponentName,
 } from "../../helpers/builder";
-import { setPageComponents } from "../../../pages/builder/builderSlice";
-import { useState } from "react";
+import {
+  setActiveMenu,
+  setPageComponents,
+  setSelectedPageComponentName,
+} from "../../../pages/builder/builderSlice";
 
 export function ComponentToolBar({ children }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -102,6 +106,7 @@ export function ComponentToolBar({ children }) {
     const newPage = [...pageComponents];
     newPage.splice(componentIndex, 1);
 
+    dispatch(setSelectedPageComponentName(undefined));
     dispatch(setPageComponents(newPage));
   };
 

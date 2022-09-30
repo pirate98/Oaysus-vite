@@ -1,8 +1,5 @@
 import { forwardRef } from "react";
 
-import Grid from "@mui/material/Grid";
-import { TextContainer, Text } from "@shopify/polaris";
-
 import classes from "./.module.scss";
 import { styleFilter } from "../helpers/builder";
 
