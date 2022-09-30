@@ -2,6 +2,7 @@
 
 $shopifyGreen: #008060;
 $primaryHover: rgb(0 110 82);
+$secondaryHover: rgb(237 235 235);
 $primaryActive: adjust-color(
   adjust-color($shopifyGreen, $lightness: 65%),
   $blackness: 10%
@@ -29,6 +30,7 @@ $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   disabledColor: $disabledColor;
   shopifyGreen: $shopifyGreen;
   primaryHover: $primaryHover;
+  secondaryHover: $secondaryHover;
   primaryActive: $primaryActive;
   fontFamily: $fontFamily;
   selectShadow: $selectShadow;
