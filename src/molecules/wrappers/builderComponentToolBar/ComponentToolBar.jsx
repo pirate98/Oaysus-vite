@@ -22,6 +22,7 @@ import {
   setPageComponents,
   setSelectedPageComponentName,
 } from "../../../pages/builder/builderSlice";
+import componentsData from "../../../data/componentsData";
 
 export function ComponentToolBar({ children, onMouseDownCapture }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -111,8 +112,10 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
   };
 
   const clickHandle = ({ target }) => {
-    const editableSpan = target;
-    const contentIsEditable = editableSpan?.parentElement?.isContentEditable;
+    // console.log(target);
+    const contentIsEditable = target.closest(
+      `.${componentsData.EDITABLE_CLASS}`
+    );
     // console.log({ contentIsEditable });
     if (contentIsEditable) {
       setIsVisible(false);

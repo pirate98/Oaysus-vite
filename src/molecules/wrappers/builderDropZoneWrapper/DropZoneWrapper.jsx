@@ -8,7 +8,7 @@ import {
   setPageComponents,
   setSelectedPageComponentName,
 } from "../../../pages/builder/builderSlice";
-import dragDrop from "../../../data/dragDrop";
+import componentsData from "../../../data/componentsData";
 import * as builderComponents from "../../builderComponents";
 import { ComponentEditWrapper } from "../../builderComponents";
 import {
@@ -40,11 +40,11 @@ export function DropZoneWrapper({ moduleContent }) {
   } = useSelector((state) => state);
 
   const [{ isOver }, drop] = useDrop({
-    accept: dragDrop.types.BUILDER_COMPONENT,
+    accept: componentsData.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
       if (
         refForInnerAccess.current.className.includes(
-          dragDrop.BLANK_COMPONENT_NAME
+          componentsData.BLANK_COMPONENT_NAME
         )
       )
         return;
@@ -58,7 +58,7 @@ export function DropZoneWrapper({ moduleContent }) {
       const { componentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
         moduleContent.name,
-        dragDrop.BLANK_COMPONENT_NAME
+        componentsData.BLANK_COMPONENT_NAME
       );
       // console.log({ canDropTop, blankComponentIndex, componentIndex });
 
@@ -83,7 +83,7 @@ export function DropZoneWrapper({ moduleContent }) {
       // console.log({ dropIndex });
 
       newPage.splice(dropIndex, 0, {
-        name: dragDrop.BLANK_COMPONENT_NAME,
+        name: componentsData.BLANK_COMPONENT_NAME,
       });
 
       dispatch(setPageComponents(newPage));

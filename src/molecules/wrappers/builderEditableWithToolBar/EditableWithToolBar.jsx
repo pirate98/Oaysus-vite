@@ -13,6 +13,7 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { updatePageComponents } from "../../../pages/builder/builderSlice";
 import classes from "./.module.scss";
 import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
+import { componentsData } from "../../../data/componentsData";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -88,10 +89,12 @@ export function EditableWithToolBar({
           style={style}
         >
           <div
-            id="editingWrapper"
             ref={elementToFocus}
             tabIndex="-1"
-            className={classes.editWrapper}
+            // classname is used to traverse parents in dom
+            className={
+              classes.editWrapper + " " + componentsData.EDITABLE_CLASS
+            }
             onFocus={handleFocus}
             onBlur={handleBlur}
             // style={style}
