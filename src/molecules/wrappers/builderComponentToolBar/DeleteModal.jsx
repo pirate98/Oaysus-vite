@@ -13,8 +13,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "none",
+  borderRadius: "5px",
   boxShadow: 24,
+  textAlign: "center",
   p: 4,
 };
 
@@ -29,7 +31,7 @@ export const DeleteModal = memo(({ open, onClose, onApprove }) => {
     >
       <Box sx={style}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          Are you sure to delete this component?
+          Are you sure you want to delete this?
         </Typography>
         {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
         <Grid container justifyContent={"center"} sx={{ mt: 2 }} spacing={2}>
