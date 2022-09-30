@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { cloneElement, forwardRef, useCallback, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
@@ -23,6 +23,8 @@ import {
 } from "../../../pages/builder/builderSlice";
 import componentsData from "../../../data/componentsData";
 import { DeleteModal } from "./DeleteModal";
+import { DragWrapper } from "../builderDragWrapper/DragWrapper";
+import { RefWrapper } from "../refWrapper/RefWrapper";
 
 export function ComponentToolBar({ children, onMouseDownCapture }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -164,7 +166,11 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
                 <ToolbarArrowUp onClick={moveUp} />
               </HiddenWrapperButton>
               <HiddenWrapperButton>
-                <ToolbarDrag />
+                <DragWrapper componentName={selectedPageComponentName}>
+                  <RefWrapper>
+                    <ToolbarDrag />
+                  </RefWrapper>
+                </DragWrapper>
               </HiddenWrapperButton>
               <HiddenWrapperButton>
                 <ToolBarCopy onClick={copy} />

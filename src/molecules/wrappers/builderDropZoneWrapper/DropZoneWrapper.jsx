@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, cloneElement } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
@@ -17,6 +17,7 @@ import {
   removeDigitsAndReturnComponentName,
 } from "../../helpers/builder";
 import { useAddComponentToPageBuilder } from "../../../hooks";
+import { forwardRef } from "react";
 
 function canElementDropTop(element, mouseYPosition) {
   const clientRects = element.getClientRects();
@@ -29,9 +30,9 @@ function canElementDropTop(element, mouseYPosition) {
   return mouseYPosition <= elTop + elHeight / 2;
 }
 
-export function DropZoneWrapper({ moduleContent }) {
+export function DropZoneWrapper({ moduleContent, children }) {
   const dispatch = useDispatch();
-  const refForInnerAccess = useRef();
+  const refForHookAccess = useRef();
 
   const { addComponentToPageBuilder } = useAddComponentToPageBuilder();
 
@@ -43,7 +44,7 @@ export function DropZoneWrapper({ moduleContent }) {
     accept: componentsData.types.BUILDER_COMPONENT,
     hover: (item, monitor) => {
       if (
-        refForInnerAccess.current.className.includes(
+        refForHookAccess.current.className.includes(
           componentsData.BLANK_COMPONENT_NAME
         )
       )
@@ -51,7 +52,7 @@ export function DropZoneWrapper({ moduleContent }) {
       // console.log("hovering");
 
       const canDropTop = canElementDropTop(
-        refForInnerAccess.current,
+        refForHookAccess.current,
         monitor.getClientOffset().y
       );
 
@@ -103,17 +104,10 @@ export function DropZoneWrapper({ moduleContent }) {
       };
   }, [isOver]);
 
-  // console.log(removeDigitsAndReturnComponentName(moduleContent.name));
-  const DynamicComponent =
-    builderComponents[removeDigitsAndReturnComponentName(moduleContent.name)];
-
-  return (
-    <DynamicComponent
-      content={moduleContent}
-      ref={(el) => {
-        drop(el);
-        refForInnerAccess.current = el;
-      }}
-    />
-  );
+  return cloneElement(children, {
+    ref: (el) => {
+      drop(el);
+      refForHookAccess.current = el;
+    },
+  });
 }
