@@ -166,7 +166,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
                 <ToolbarArrowUp onClick={moveUp} />
               </HiddenWrapperButton>
               <HiddenWrapperButton>
-                <DragWrapper componentName={selectedPageComponentName}>
+                <DragWrapper>
                   <RefWrapper>
                     <ToolbarDrag />
                   </RefWrapper>
