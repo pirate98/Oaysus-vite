@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -34,6 +34,12 @@ export function EditableWithToolBar({
   children,
 }) {
   const dispatch = useDispatch();
+
+  const {
+    builder: { pageComponents, selectedPageComponentName },
+  } = useSelector((state) => state);
+
+  const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
 
   function onError(error) {
     console.error(error);
@@ -114,7 +120,10 @@ export function EditableWithToolBar({
             >
               {/* <span><ContentCopySvg /></span> */}
               <TextToolBar
-                className={classes.styleBar}
+                className={
+                  classes.styleBar +
+                  (componentIsOnTop ? " " + classes.zIndex3000 : "")
+                }
                 module={module}
                 elementToFocus={elementToFocus}
               />

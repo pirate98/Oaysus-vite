@@ -33,6 +33,8 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     builder: { pageComponents, selectedPageComponentName },
   } = useSelector((state) => state);
 
+  const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
+
   const moveDown = () => {
     const { componentIndex } = getIndexes(
       pageComponents,
@@ -138,7 +140,11 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
       >
         {children}
         {isVisible && (
-          <section className={classes.toolBar}>
+          <section
+            className={
+              classes.toolBar + " " + (componentIsOnTop && classes.zIndex3000)
+            }
+          >
             <HiddenWrapperButton>
               <ToolbarArrowDown onClick={moveDown} />
             </HiddenWrapperButton>
