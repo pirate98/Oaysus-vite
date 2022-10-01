@@ -138,10 +138,10 @@ export function DropZoneWrapper({ moduleContent, children, className }) {
   useEffect(() => {
     if (isOver)
       return () => {
-        console.log("removing");
+        // console.log("removing");
       };
   }, [isOver]);
-  console.log(children.props);
+  // console.log(children.props);
   return cloneElement(children, {
     className: children.props.className + (className ? ` ${className}` : ""),
     ref: (el) => {

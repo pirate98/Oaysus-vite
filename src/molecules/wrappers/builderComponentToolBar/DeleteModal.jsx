@@ -35,10 +35,10 @@ export const DeleteModal = memo(({ open, onClose, onApprove }) => {
         </Typography>
         {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
         <Grid container justifyContent={"center"} sx={{ mt: 2 }} spacing={2}>
-          <Grid item xs={4}>
+          <Grid xs={4}>
             <BuilderButton onClick={onApprove}>Yes</BuilderButton>
           </Grid>
-          <Grid item xs={4}>
+          <Grid xs={4}>
             <PlainButton onClick={onClose} fullWidth>
               No
             </PlainButton>

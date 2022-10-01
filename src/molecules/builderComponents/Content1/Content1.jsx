@@ -8,10 +8,8 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
 const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
-  console.log({ className, rest }, content.name);
   const styles = filterOnlyStyleValues(content);
 
-  // console.log(content.imagePosition);
   const imageSection = (
     // <img
     //   className={classes.image1}

@@ -8,7 +8,8 @@ export const PlainButton = styled((props) => (
 ))({
   fontFamily: variables.fontFamily,
   fontSize: "16px",
-  height: "36px",
+  height: "auto",
+  minHeight: "36px",
   boxShadow: "none",
   fontWeight: 400,
   lineHeight: "20px",

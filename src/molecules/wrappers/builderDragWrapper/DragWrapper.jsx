@@ -16,7 +16,7 @@ export const DragWrapper = forwardRef(({ children }, ref) => {
     builder: { selectedPageComponentName, draggedComponent },
   } = useSelector((state) => state);
 
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging, connectDropTarget }, drag] = useDrag({
     type: componentsData.types.BUILDER_COMPONENT_TOOLBAR,
     // data of the item to be available to the drop methods
     item: {
@@ -29,10 +29,12 @@ export const DragWrapper = forwardRef(({ children }, ref) => {
     },
     collect: (monitor) => {
       return {
-        isDragging: !!monitor.isDragging(),
+        isDragging: !!monitor?.isDragging(),
       };
     },
   });
+
+  // console.log({ connectDropTarget });
 
   useEffect(() => {
     if (!isDragging && draggedComponent)
