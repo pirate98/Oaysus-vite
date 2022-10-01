@@ -8,9 +8,9 @@ export const Blank = forwardRef((props, ref) => {
   return (
     <div
       // this classname is used to return from drop zone hover method
+      {...props}
       className={classes.dropZone + " " + componentsData.BLANK_COMPONENT_NAME}
       ref={ref}
-      {...props}
     >
       <div className={classes.blankElement}>
         <span className={classes.midLine}></span>
