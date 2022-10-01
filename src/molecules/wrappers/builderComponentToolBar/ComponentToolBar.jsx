@@ -1,4 +1,10 @@
-import { cloneElement, forwardRef, useCallback, useState } from "react";
+import {
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
@@ -38,6 +44,8 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
 
   const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
 
+  const memoPageComponents = useMemo(() => pageComponents, [pageComponents]);
+
   const moveDown = () => {
     const { componentIndex } = getIndexes(
       pageComponents,
@@ -76,7 +84,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     dispatch(setPageComponents(newPage));
   };
 
-  const copy = () => {
+  const copy = ({ target }) => {
     const componentNameBase = removeDigitsAndReturnComponentName(
       selectedPageComponentName
     );
@@ -101,6 +109,9 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     newPage.splice(componentIndex, 0, newModule);
 
     dispatch(setPageComponents(newPage));
+
+    // console.log(target);
+    // target.blur();
   };
 
   const deleteComponent = () => {
@@ -132,17 +143,17 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
 
   const modalOnApprove = useCallback(() => {
     const { componentIndex } = getIndexes(
-      pageComponents,
+      memoPageComponents,
       selectedPageComponentName
     );
 
-    const newPage = [...pageComponents];
+    const newPage = [...memoPageComponents];
     newPage.splice(componentIndex, 1);
 
     dispatch(setSelectedPageComponentName(undefined));
     dispatch(setPageComponents(newPage));
     setIsModalOpen(false);
-  }, [selectedPageComponentName]);
+  }, [selectedPageComponentName, memoPageComponents]);
 
   return (
     <>
