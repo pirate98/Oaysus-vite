@@ -10,7 +10,14 @@
   flex-grow: 1;
 }
 
+.focusContainer {
+  display: flex;
+  flex-grow: 1;
+}
+
 .borderFocused {
+  @extend .focusContainer;
+
   border: 1px solid #ffb802;
 }
 
