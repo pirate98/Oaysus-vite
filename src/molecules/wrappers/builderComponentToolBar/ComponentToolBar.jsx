@@ -185,7 +185,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
           {isFocused && (
             <section
               className={
-                classes.toolBar + " " + (componentIsOnTop && classes.zIndex3000)
+                classes.toolBar + " " + (componentIsOnTop && classes.zIndex1200)
               }
             >
               <HiddenWrapperButton>

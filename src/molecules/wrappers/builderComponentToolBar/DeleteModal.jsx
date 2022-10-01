@@ -3,7 +3,11 @@ import { memo } from "react";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { BuilderButton, PlainButton } from "../../../atoms";
+import {
+  BuilderButton,
+  BuilderSecondaryButton,
+  PlainButton,
+} from "../../../atoms";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 
 const style = {
@@ -39,9 +43,9 @@ export const DeleteModal = memo(({ open, onClose, onApprove }) => {
             <BuilderButton onClick={onApprove}>Yes</BuilderButton>
           </Grid>
           <Grid xs={4}>
-            <PlainButton onClick={onClose} fullWidth>
+            <BuilderSecondaryButton color="white" onClick={onClose} fullWidth>
               No
-            </PlainButton>
+            </BuilderSecondaryButton>
           </Grid>
         </Grid>
         {/* </Typography> */}

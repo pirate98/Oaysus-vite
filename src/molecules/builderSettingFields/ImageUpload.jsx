@@ -40,7 +40,7 @@ export function ImageUpload({ name, module }) {
           }}
           className={classes.w100}
         >
-          <PlainButton fullWidth color="success">
+          <PlainButton fullWidth color="success" sx={{ fontSize: "14px" }}>
             Upload Image
           </PlainButton>
         </label>

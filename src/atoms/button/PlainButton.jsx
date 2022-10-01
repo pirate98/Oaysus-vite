@@ -18,6 +18,7 @@ export const PlainButton = styled((props) => (
   // width: "max-content",
   padding: "0.5rem 1.5rem",
   textTransform: "none",
+  // border: variables.secondaryBorder,
 
   "&:hover": {
     background: variables.secondaryHover,
