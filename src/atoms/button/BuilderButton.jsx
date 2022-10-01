@@ -5,7 +5,7 @@ import variables from "../../assets/css/_variables.module.scss";
 
 const styles = {
   whiteButton: {
-    backgroundColor: "white !important",
+    backgroundColor: "#ffffff !important",
     color: "#000000",
     border: "1px solid",
     borderColor: "rgba(201, 204, 207, 1)",

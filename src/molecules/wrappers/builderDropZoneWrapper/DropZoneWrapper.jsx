@@ -83,6 +83,7 @@ export function DropZoneWrapper({ moduleContent, children, className }) {
       )
         return;
       // console.log("hovering");
+      if (item.name === moduleContent.name) return; // prevent dropping on itself
 
       const canDropTop = canElementDropTop(
         refForHookAccess.current,

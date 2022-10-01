@@ -11,7 +11,7 @@ export const AddButton = styled((props) => (
   boxShadow: "none",
   background: "#008060",
   borderRadius: "6px",
-  color: "white",
+  color: "#ffffff",
   "&:hover": {
     background: "rgba(0, 110, 82, 1)",
   },

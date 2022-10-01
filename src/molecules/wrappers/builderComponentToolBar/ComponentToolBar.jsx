@@ -31,9 +31,13 @@ import componentsData from "../../../data/componentsData";
 import { DeleteModal } from "./DeleteModal";
 import { DragWrapper } from "../builderDragWrapper/DragWrapper";
 import { RefWrapper } from "../refWrapper/RefWrapper";
+import { useRef } from "react";
 
 export function ComponentToolBar({ children, onMouseDownCapture }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef();
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [isComponentVisible, setIsComponentVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -125,15 +129,15 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     );
     // console.log({ contentIsEditable });
     if (contentIsEditable) {
-      setIsVisible(false);
+      setIsFocused(false);
       return;
     }
 
-    if (!isVisible) setIsVisible(true);
+    if (!isFocused) setIsFocused(true);
   };
 
   const handleBlur = () => {
-    setIsVisible(false);
+    setIsFocused(false);
   };
 
   const modalOnClose = useCallback(
@@ -155,6 +159,9 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     setIsModalOpen(false);
   }, [selectedPageComponentName, memoPageComponents]);
 
+  const onDrag = useCallback(() => setIsComponentVisible(false));
+  const onDragEnd = useCallback(() => setIsComponentVisible(true));
+
   return (
     <>
       <ClickAwayListener onClickAway={handleBlur}>
@@ -163,16 +170,19 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
           className={classes.toolBarWrapper}
           onMouseDownCapture={onMouseDownCapture}
         >
-          <div
-            className={
-              isVisible ? classes.borderFocused : classes.focusContainer
-            }
-          >
-            {cloneElement(children, {
-              // className: isVisible && classes.borderFocused,
-            })}
-          </div>
-          {isVisible && (
+          {isComponentVisible && (
+            <div
+              ref={componentRef}
+              className={
+                isFocused ? classes.borderFocused : classes.focusContainer
+              }
+            >
+              {cloneElement(children, {
+                // className: isFocused && classes.borderFocused,
+              })}
+            </div>
+          )}
+          {isFocused && (
             <section
               className={
                 classes.toolBar + " " + (componentIsOnTop && classes.zIndex3000)
@@ -185,7 +195,11 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
                 <ToolbarArrowUp onClick={moveUp} />
               </HiddenWrapperButton>
               <HiddenWrapperButton>
-                <DragWrapper>
+                <DragWrapper
+                  componentRef={componentRef}
+                  onDrag={onDrag}
+                  onDragEnd={onDragEnd}
+                >
                   <RefWrapper>
                     <ToolbarDrag />
                   </RefWrapper>

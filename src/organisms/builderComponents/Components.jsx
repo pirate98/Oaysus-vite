@@ -66,7 +66,7 @@ export function Components() {
             <BuilderButtonWrapper
               title={{
                 text: component,
-                hoverColor: "white",
+                hoverColor: "#ffffff",
               }}
               // background={{ hoverColor: constants.COLOR_MAIN }}
               hover={hoveredComponent === component}

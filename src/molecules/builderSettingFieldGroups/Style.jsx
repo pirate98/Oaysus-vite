@@ -46,7 +46,7 @@ export function Style({
           value={removePx(data["fontSize"])}
         />
       </div>
-      {!alignment && <Alignment />}
+      {/* {!alignment && <Alignment />} */}
       <ColorSelector
         defaultValue={data["color"]}
         name={"color"}

@@ -94,7 +94,7 @@ const json = {
     fontWeight: "400",
     marginBottom: "",
     backgroundColor: "#008060",
-    color: "white",
+    color: "#ffffff",
     borderStyle: "solid",
     borderWidth: "0",
     borderRadius: "",
