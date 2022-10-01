@@ -14,7 +14,7 @@ export function Page() {
   const dispatch = useDispatch();
 
   const {
-    builder: { pageComponents, selectedPageComponentName },
+    builder: { pageComponents, selectedPageComponentName, draggedComponent },
   } = useSelector((state) => state);
 
   // console.log({ pageComponents });
@@ -44,7 +44,14 @@ export function Page() {
                 }
               >
                 <DropZoneWrapper moduleContent={component}>
-                  <DynamicComponent content={component} />
+                  <DynamicComponent
+                    content={component}
+                    className={
+                      draggedComponent === component.name
+                        ? classes.dragging
+                        : ""
+                    }
+                  />
                 </DropZoneWrapper>
               </ComponentToolBar>
             </Fragment>

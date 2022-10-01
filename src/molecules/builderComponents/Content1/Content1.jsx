@@ -7,7 +7,8 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content = {}, className }, ref) => {
+const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
+  console.log({ className, rest }, content.name);
   const styles = filterOnlyStyleValues(content);
 
   // console.log(content.imagePosition);

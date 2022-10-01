@@ -1,19 +1,22 @@
-import { cloneElement, forwardRef } from "react";
+import { cloneElement, forwardRef, useEffect } from "react";
 
 import { useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
 
 import { componentsData } from "../../../data/componentsData";
-import { removeComponentFromPage } from "../../../pages/builder/builderSlice";
+import {
+  removeComponentFromPage,
+  setDraggedComponent,
+} from "../../../pages/builder/builderSlice";
 
 export const DragWrapper = forwardRef(({ children }, ref) => {
   const dispatch = useDispatch();
 
   const {
-    builder: { selectedPageComponentName },
+    builder: { selectedPageComponentName, draggedComponent },
   } = useSelector((state) => state);
 
-  const [{}, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag({
     type: componentsData.types.BUILDER_COMPONENT_TOOLBAR,
     // data of the item to be available to the drop methods
     item: {
@@ -24,7 +27,20 @@ export const DragWrapper = forwardRef(({ children }, ref) => {
       // console.log({ monitor });
       dispatch(removeComponentFromPage(componentsData.BLANK_COMPONENT_NAME));
     },
+    collect: (monitor) => {
+      return {
+        isDragging: !!monitor.isDragging(),
+      };
+    },
   });
+
+  useEffect(() => {
+    if (!isDragging && draggedComponent)
+      dispatch(setDraggedComponent(undefined));
+
+    if (isDragging && !draggedComponent)
+      dispatch(setDraggedComponent(selectedPageComponentName));
+  }, [isDragging]);
 
   return cloneElement(children, {
     ref: (el) => {

@@ -20,7 +20,7 @@ function canElementDropTop(element, mouseYPosition) {
   return mouseYPosition <= elTop + elHeight / 2;
 }
 
-export function DropZoneWrapper({ moduleContent, children, ...rest }) {
+export function DropZoneWrapper({ moduleContent, children, className }) {
   const dispatch = useDispatch();
   const refForHookAccess = useRef();
 
@@ -141,9 +141,9 @@ export function DropZoneWrapper({ moduleContent, children, ...rest }) {
         console.log("removing");
       };
   }, [isOver]);
-
+  console.log(children.props);
   return cloneElement(children, {
-    ...rest,
+    className: children.props.className + (className ? ` ${className}` : ""),
     ref: (el) => {
       drop(el);
       refForHookAccess.current = el;

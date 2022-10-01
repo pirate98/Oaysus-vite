@@ -53,6 +53,9 @@ export const builderSlice = createSlice({
         componentToUpdate[key] = value;
       }
     },
+    setDraggedComponent: (state, action) => {
+      state.draggedComponent = action.payload;
+    },
   },
 });
 
@@ -64,6 +67,7 @@ export const {
   setPageComponents,
   removeComponentFromPage,
   updatePageComponents,
+  setDraggedComponent,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;
