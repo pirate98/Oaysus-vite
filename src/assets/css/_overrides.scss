@@ -5,6 +5,11 @@
   --p-interactive-hovered: black !important;
 }
 
+p {
+  font-weight: inherit;
+  font-size: inerit;
+}
+
 // for autocomplete popper
 .MuiPopper-root.MuiAutocomplete-popper,
 .MuiAutocomplete-popper {

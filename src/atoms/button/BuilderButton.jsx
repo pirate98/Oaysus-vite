@@ -7,8 +7,7 @@ const styles = {
   whiteButton: {
     backgroundColor: "#ffffff !important",
     color: "#000000",
-    border: "1px solid",
-    borderColor: "rgba(201, 204, 207, 1)",
+    border: `1px solid ${variables.secondaryBorder}`,
   },
 };
 
@@ -33,6 +32,7 @@ export const BuilderButton = styled((props) => {
     </PlainButton>
   );
 })({
+  height: "44px",
   fontFamily: variables.fontFamily,
   fontSize: "16px",
   lineHeight: "20px",
@@ -42,6 +42,6 @@ export const BuilderButton = styled((props) => {
   width: "100%",
   "&:hover": {
     backgroundColor: variables.shopifyGreen,
-    borderColor: "black",
+    // borderColor: "black",
   },
 });

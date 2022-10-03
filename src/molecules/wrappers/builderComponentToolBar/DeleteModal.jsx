@@ -43,9 +43,9 @@ export const DeleteModal = memo(({ open, onClose, onApprove }) => {
             <BuilderButton onClick={onApprove}>Yes</BuilderButton>
           </Grid>
           <Grid xs={4}>
-            <BuilderSecondaryButton color="white" onClick={onClose} fullWidth>
+            <BuilderButton color="white" onClick={onClose} fullWidth>
               No
-            </BuilderSecondaryButton>
+            </BuilderButton>
           </Grid>
         </Grid>
         {/* </Typography> */}
