@@ -77,7 +77,9 @@ export function Product() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper>
-        <SettingSection title={"Savings label"}></SettingSection>
+        <SettingSection title={"Savings label"}>
+          <Visibility text="Show savings" />
+        </SettingSection>
       </EditWrapper>
       <EditWrapper>
         <SettingSection title={"Quantity selector"}></SettingSection>

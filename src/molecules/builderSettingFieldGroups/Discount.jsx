@@ -20,7 +20,7 @@ export function Discount() {
           <Input placeholder={0} />
         </SettingField>
       </SettingFieldContainer>
-      <Visibility />
+      <Visibility text={"Show discount"} />
     </>
   );
 }

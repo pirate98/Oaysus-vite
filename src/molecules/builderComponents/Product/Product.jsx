@@ -96,7 +96,7 @@ const fn = forwardRef(({ content, className }, ref) => {
             </Stack>
           </Stack>
         </Grid>
-        <Grid item>
+        <Grid item xs={12}>
           {/* <ButtonGroup fullWidth> */}
           <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
           <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
