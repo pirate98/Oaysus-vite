@@ -19,3 +19,5 @@ export { ReactComponent as ToolbarArrowUp } from "./toolbarArrowUp.svg";
 export { ReactComponent as ToolBarCopy } from "./toolbarCopy.svg";
 export { ReactComponent as ToolbarDelete } from "./toolbarDelete.svg";
 export { ReactComponent as ToolbarDrag } from "./toolbarDrag.svg";
+export { ReactComponent as SwiperPrev } from "./swiperPrev.svg";
+export { ReactComponent as SwiperNext } from "./swiperNext.svg";
