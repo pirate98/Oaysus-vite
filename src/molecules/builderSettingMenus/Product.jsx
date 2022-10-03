@@ -3,6 +3,7 @@ import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import {
   Background,
   Border,
+  Discount,
   Margin,
   Padding,
   Style,
@@ -71,7 +72,9 @@ export function Product() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper>
-        <SettingSection title={"Discount"}></SettingSection>
+        <SettingSection title={"Discount"}>
+          <Discount />
+        </SettingSection>
       </EditWrapper>
       <EditWrapper>
         <SettingSection title={"Savings label"}></SettingSection>

@@ -20,6 +20,7 @@ export * from "./customAutocomplete/Autocomplete";
 export * from "./inputs/Input";
 export * from "./inputs/MinInput";
 export * from "./inputs/PxInput";
+export * from "./settingSection/SettingField";
 export * from "./settingSection/SettingFieldContainer";
 export * from "./settingSection/SettingSection";
 export * from "./settingSection/SettingSectionContainer";
