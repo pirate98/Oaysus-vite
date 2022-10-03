@@ -8,6 +8,12 @@
   flex-grow: 1;
 }
 
+.image {
+  width: auto;
+  min-width: 170px;
+  height: 344px;
+}
+
 .starText {
   @extend .defaultFont;
   font-size: 10px;

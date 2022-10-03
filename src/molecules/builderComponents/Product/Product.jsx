@@ -1,5 +1,13 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 import Grid from "@mui/material/Grid";
 import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
@@ -12,6 +20,8 @@ import { BuilderButton } from "../../../atoms";
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   return (
     <Grid
       item
@@ -23,12 +33,135 @@ const fn = forwardRef(({ content, className }, ref) => {
       }
       sx={{ ...styles.layout }}
     >
+      <>
+        <Swiper
+          style={{
+            "--swiper-navigation-color": "#fff",
+            "--swiper-pagination-color": "#fff",
+          }}
+          spaceBetween={10}
+          navigation={true}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          // className="mySwiper2"
+        >
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          </SwiperSlide>
+        </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          // className="mySwiper"
+        >
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          </SwiperSlide>
+        </Swiper>
+      </>
       <Grid
         item
         xs={6}
         className={content.imagePosition === "right" ? classes.order1 : ""}
       >
-        <img style={styles.image} src={"/image/guy_1.jpg"} />
+        {/* <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          modules={[FreeMode, Navigation, Thumbs]}
+          thumbs={{ swiper: thumbsSwiper }}
+          navigation={true}
+        >
+          {content.images.map((url, idx) => {
+            return (
+              <SwiperSlide key={idx} className={classes.w100}>
+                <div
+                  className={classes.image}
+                  style={{ ...styles.image, backgroundImage: url }}
+                ></div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <Swiper
+          spaceBetween={10}
+          modules={[FreeMode, Navigation, Thumbs]}
+          watchSlidesProgress={true}
+          onSwiper={setThumbsSwiper}
+          slidesPerView={4}
+          freeMode={true}
+        >
+          {content.images.map((url, idx) => {
+            return (
+              <SwiperSlide key={idx} className={classes.w100}>
+                <div
+                  // className={classes.image}
+                  style={{ backgroundImage: url }}
+                ></div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper> */}
+        {/* <img style={styles.image} src={"/image/guy_1.jpg"} /> */}
       </Grid>
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
@@ -130,11 +263,16 @@ const json = {
   image: {
     border: "1px solid #e0e0e0",
     borderRadius: "6px",
-    width: "100%",
-    minHeight: "200px",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
+    backgroundSize: "cover",
   },
+  images: [
+    "url(/mockData/flowers.jpg)",
+    "url(/mockData/puppy.jpg)",
+    "url(/mockData/strategy.jpg)",
+    "url(/image/guy_1.jpg)",
+  ],
   title: {
     editorState: makeEditorState("Test T-shirt"),
     color: "#000000",
