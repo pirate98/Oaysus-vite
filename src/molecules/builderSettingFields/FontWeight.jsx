@@ -1,21 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-import {
-  Autocomplete,
-  CustomSelect,
-  SelectForBuilder,
-  StyledOption,
-  Select,
-} from "../../atoms";
+import { Select } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
 import { useGetFontsQuery } from "../../data/googleAPI";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
-// const options = Array.from(Array(9).keys()).map((num) =>
-//   ((num + 1) * 100).toString()
-// );
 
 export function FontWeight({ defaultValue, module }) {
   const [options, setOptions] = useState(null);

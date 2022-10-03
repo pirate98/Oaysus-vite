@@ -9,3 +9,5 @@ export * from "./FontFamily";
 export * from "./FontWeight";
 export * from "./ImageAlignment/ImageAlignment";
 export * from "./ImageAlignment/ProductImageAlignment";
+export * from "./ProductSelect";
+export * from "./ImageDisplayType";

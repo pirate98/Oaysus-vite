@@ -28,7 +28,7 @@ const fn = forwardRef(({ content, className }, ref) => {
         xs={6}
         className={content.imagePosition === "right" ? classes.order1 : ""}
       >
-        <img className={classes.image1} src={"/image/guy_1.jpg"} />
+        <img style={styles.image} src={"/image/guy_1.jpg"} />
       </Grid>
       <Grid item xs={6} container spacing={2} alignContent="baseline">
         <Grid item sx={{ marginBottom: "2px" }}>
@@ -36,7 +36,7 @@ const fn = forwardRef(({ content, className }, ref) => {
             <EditableWithToolBar
               // hidden={true}
               style={{
-                ...styles.product,
+                ...styles.title,
               }}
               // name="product"
               // module="product"
@@ -44,9 +44,14 @@ const fn = forwardRef(({ content, className }, ref) => {
               module="product"
               type="h3"
             >
-              {content?.product?.editorState}
+              {content?.title?.editorState}
             </EditableWithToolBar>
-            <Grid container>
+            <Grid
+              container
+              sx={{
+                display: content?.reviews?.visibility ? "flex" : "none",
+              }}
+            >
               <ReactStars
                 count={5}
                 // onChange={ratingChanged}
@@ -119,8 +124,18 @@ const json = {
     marginLeft: "",
     marginRight: "",
   },
-  reviews: {},
-  product: {
+  reviews: {
+    visibility: true,
+  },
+  image: {
+    border: "1px solid #e0e0e0",
+    borderRadius: "6px",
+    width: "100%",
+    minHeight: "200px",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  title: {
     editorState: makeEditorState("Test T-shirt"),
     color: "#000000",
     fontFamily: "Roboto",
@@ -145,16 +160,6 @@ const json = {
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
-  },
-  title: {
-    editorState: makeEditorState(""),
-    fontFamily: "Roboto",
-    lineHeight: "20px",
-    fontSize: "24px",
-    fontWeight: 600,
-    fontColor: "#000000",
-    margin: "0 0 21px 0",
-    visibility: true,
   },
   subTitle: {
     editorState: makeEditorState(""),
