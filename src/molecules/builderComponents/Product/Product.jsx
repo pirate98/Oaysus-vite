@@ -1,33 +1,17 @@
 import { forwardRef, useEffect, useState } from "react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
 import Grid from "@mui/material/Grid";
 import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
 
-import { SwiperPrev, SwiperNext } from "../../../assets/svg";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
+import { Carousel } from "./Carousel";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
-
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [swiper, setSwiper] = useState(null);
-
-  // useEffect(() => {
-  // console.log(thumbsSwiper);
-  // console.log({ swiper });
-  // }, [swiper]);
 
   return (
     <Grid
@@ -45,65 +29,7 @@ const fn = forwardRef(({ content, className }, ref) => {
         xs={6}
         className={content.imagePosition === "right" ? classes.order1 : ""}
       >
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          onSlideChange={(e) => console.log("slide change", e)}
-          onSwiper={(swiper) => setSwiper(swiper)}
-          modules={[Thumbs]}
-          thumbs={{
-            swiper:
-              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-          }}
-          // navigation={true}
-        >
-          {content.images.map((url, idx) => {
-            return (
-              <SwiperSlide key={idx} className={classes.w100}>
-                {/* {({ isActive }) =>
-                  isActive && ( */}
-                <div
-                  className={classes.image}
-                  style={{ ...styles.image, backgroundImage: url }}
-                ></div>
-                {/* )                } */}
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <Swiper
-          spaceBetween={10}
-          modules={[Thumbs]}
-          watchSlidesProgress={true}
-          onSwiper={setThumbsSwiper}
-          slidesPerView={5}
-          // freeMode={true}
-          className={classes.swiperThumbs}
-          thumbsContainerClass={classes.swiperWrapper}
-        >
-          {content.images.map((url, idx) => {
-            return (
-              <SwiperSlide key={idx}>
-                <div
-                  className={classes.thumbnail}
-                  style={{ backgroundImage: url }}
-                ></div>
-              </SwiperSlide>
-            );
-          })}
-          <span
-            className={classes.backArrow}
-            onClick={() => swiper.slidePrev()}
-          >
-            <SwiperPrev />
-          </span>
-          <span
-            className={classes.arrowContainer}
-            onClick={() => swiper.slideNext()}
-          >
-            <SwiperNext />
-          </span>
-        </Swiper>
+        <Carousel images={content.images} imageStyle={styles.image} />
         {/* <img style={styles.image} src={"/image/guy_1.jpg"} /> */}
       </Grid>
       <Grid item xs={6} container spacing={2} alignContent="baseline">

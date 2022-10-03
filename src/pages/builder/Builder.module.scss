@@ -74,4 +74,7 @@
 .rightSection {
   margin-left: $leftMenuWidth;
   background-color: rgb(255, 255, 255); // white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
