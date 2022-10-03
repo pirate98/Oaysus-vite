@@ -15,6 +15,7 @@ import {
   Position,
   ProductImageAlignment,
   ProductSelect,
+  StarRating,
 } from "../builderSettingFields";
 import { SettingFieldContainer } from "../../atoms";
 
@@ -49,6 +50,7 @@ export function Product() {
       <EditWrapper module={"reviews"}>
         <SettingSection title={"Reviews"}>
           <Visibility data={selectedPageComponent["reviews"]} />
+          <StarRating />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"title"}>
@@ -67,6 +69,24 @@ export function Product() {
           <Margin data={selectedPageComponent["description"]} />
           <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Discount"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Savings label"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Quantity selector"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Payment disclaimer"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Buy button"}></SettingSection>
+      </EditWrapper>
+      <EditWrapper>
+        <SettingSection title={"Decline button"}></SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
   );

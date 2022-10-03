@@ -3,6 +3,7 @@ import { forwardRef, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import { TextContainer, Stack, Text } from "@shopify/polaris";
 import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
@@ -12,6 +13,8 @@ import { Carousel } from "./Carousel";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
+
+  const [value, setValue] = useState(2);
 
   return (
     <Grid
@@ -40,10 +43,7 @@ const fn = forwardRef(({ content, className }, ref) => {
               style={{
                 ...styles.title,
               }}
-              // name="product"
-              // module="product"
-              // data-oa-type="text"
-              module="product"
+              module="title"
               type="h3"
             >
               {content?.title?.editorState}
@@ -54,12 +54,7 @@ const fn = forwardRef(({ content, className }, ref) => {
                 display: content?.reviews?.visibility ? "flex" : "none",
               }}
             >
-              <ReactStars
-                count={5}
-                // onChange={ratingChanged}
-                size={22}
-                activeColor="rgba(248, 152, 29, 1)"
-              />
+              <Rating name="read-only" value={value} readOnly />
               <p className={classes.starText}>5.0 Best Seller</p>
             </Grid>
             <EditableWithToolBar

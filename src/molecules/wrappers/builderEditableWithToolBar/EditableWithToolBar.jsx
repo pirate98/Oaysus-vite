@@ -64,7 +64,7 @@ export function EditableWithToolBar({
   };
 
   function onChangeLexical(editorState) {
-    // console.log("onchange");
+    console.log("module");
     dispatch(
       updatePageComponents({
         module,

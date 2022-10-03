@@ -11,3 +11,5 @@ export * from "./ImageAlignment/ImageAlignment";
 export * from "./ImageAlignment/ProductImageAlignment";
 export * from "./ProductSelect";
 export * from "./ImageDisplayType";
+export * from "./Visibility";
+export * from "./StarRating";
