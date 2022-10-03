@@ -2,4 +2,21 @@
   display: flex;
   justify-content: center;
   gap: 12px;
+  text-align: center;
+
+  p {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 20px;
+  }
 }
+
+// .layout {
+//   justify-content: space-around;
+//   align-content: center;
+//   display: flex;
+
+//   p {
+//     text-align: center;
+//   }
+// }

@@ -23,7 +23,11 @@ const fn = forwardRef(({ content, className }, ref) => {
       }
       sx={{ ...styles.layout }}
     >
-      <Grid item xs={6}>
+      <Grid
+        item
+        xs={6}
+        className={content.imagePosition === "right" ? classes.order1 : ""}
+      >
         <img className={classes.image1} src={"/image/guy_1.jpg"} />
       </Grid>
       <Grid item xs={6} container spacing={2} alignContent="baseline">
@@ -104,6 +108,7 @@ const fn = forwardRef(({ content, className }, ref) => {
 
 const json = {
   name: "",
+  imagePosition: "left",
   layout: {
     paddingTop: "42px",
     paddingRight: "",

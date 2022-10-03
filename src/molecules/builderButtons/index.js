@@ -9,3 +9,5 @@ export * from "./Product";
 export * from "./Video";
 export * from "./ImageAtLeft";
 export * from "./ImageAtRight";
+export * from "./Product/ProductAlignLeft";
+export * from "./Product/ProductAlignRight";

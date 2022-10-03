@@ -1,17 +1,18 @@
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { Margin, Padding, Style, Layout } from "../builderSettingFieldGroups";
+import { Margin, Padding, Style } from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
+import { ProductImageAlignment } from "../builderSettingFields";
 
 export function Product() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
-      <EditWrapper module={"layout"}>
+      <EditWrapper>
         <SettingSection title={"Layout"}>
-          <Layout data={selectedPageComponent["layout"]} />
+          <ProductImageAlignment />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"product"}>
