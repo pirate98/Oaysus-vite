@@ -36,32 +36,34 @@ export default function Builder() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <section className={classes.leftSection}>
-        {!selectedPageComponentName && (
-          <div className={classes.leftMenu}>
-            {leftMenu.map((menu, idx) => (
-              <div
-                key={`left-menu-${idx}`}
-                onClick={() => {
-                  dispatch(setActiveMenu(idx));
-                  dispatch(setSelectedPageComponentName(undefined));
-                }}
-                className={activeMenu === idx ? classes.divActive : ""}
-              >
-                <p>{menu.title}</p>
-                <span></span>
-              </div>
-            ))}
-          </div>
-        )}
-        {activeMenu === 0 ? <Components /> : <Templates />}
-      </section>
-      <main className={classes.main}>
-        <section className={classes.rightSection}>
-          <Page pageContent={page} />
-          {/* <PageDemo /> */}
+      <div>
+        <section className={classes.leftSection}>
+          {!selectedPageComponentName && (
+            <div className={classes.leftMenu}>
+              {leftMenu.map((menu, idx) => (
+                <div
+                  key={`left-menu-${idx}`}
+                  onClick={() => {
+                    dispatch(setActiveMenu(idx));
+                    dispatch(setSelectedPageComponentName(undefined));
+                  }}
+                  className={activeMenu === idx ? classes.divActive : ""}
+                >
+                  <p>{menu.title}</p>
+                  <span></span>
+                </div>
+              ))}
+            </div>
+          )}
+          {activeMenu === 0 ? <Components /> : <Templates />}
         </section>
-      </main>
+        <main className={classes.main}>
+          <section className={classes.rightSection}>
+            <Page pageContent={page} />
+            {/* <PageDemo /> */}
+          </section>
+        </main>
+      </div>
     </DndProvider>
   );
 }

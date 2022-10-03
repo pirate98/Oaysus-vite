@@ -1,0 +1,45 @@
+@import "../../../assets/css/classes.module";
+
+.toolBarWrapper {
+  position: relative;
+  display: flex;
+}
+
+.component {
+  display: flex;
+  flex-grow: 1;
+}
+
+.focusContainer {
+  display: flex;
+  flex-grow: 1;
+}
+
+.borderFocused {
+  @extend .focusContainer;
+
+  border: 1px solid #ffb802;
+}
+
+.toolBar {
+  background: #ffb802;
+  height: 35px;
+  border-radius: 4px 4px 0 0;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  svg {
+    // border-radius: 4px 4px 0 0;
+    padding: 10px;
+    height: 36px;
+    width: auto;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      // background: antiquewhite;
+    }
+  }
+}

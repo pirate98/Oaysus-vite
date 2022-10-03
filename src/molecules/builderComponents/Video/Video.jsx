@@ -5,43 +5,44 @@ import { TextContainer, Text } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid
-      // container
-      item
-      xs={12}
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
       ref={ref}
-      className={classes.componentContainer}
     >
-      <EditableStyleable
-        name="title"
-        module="title"
-        data-oa-type="text"
-        type="h3"
-        style={{
-          ...styles.title,
-          display: content.title.visibility ? "inherit" : "none",
-        }}
-        className={classes.title}
-      >
-        {content?.title?.editorState}
-      </EditableStyleable>
-      {/* <p className={classes.videoTitle}></p> */}
-      <div
-        className={classes.imageZone}
-        style={{
-          backgroundImage: false
-            ? false
-            : 'url("/image/play.svg"), url("/image/empty-video.svg")',
-          backgroundSize: false ? "cover" : "unset",
-        }}
-      ></div>
-    </Grid>
+      <section>
+        <EditableWithToolBar
+          name="title"
+          module="title"
+          data-oa-type="text"
+          type="h3"
+          style={{
+            ...styles.title,
+            display: content.title.visibility ? "inherit" : "none",
+          }}
+          className={classes.title}
+        >
+          {content?.title?.editorState}
+        </EditableWithToolBar>
+        {/* <p className={classes.videoTitle}></p> */}
+        <div
+          className={classes.imageZone}
+          style={{
+            backgroundImage: false
+              ? false
+              : 'url("/image/play.svg"), url("/image/empty-video.svg")',
+            backgroundSize: false ? "cover" : "unset",
+          }}
+        ></div>
+      </section>
+    </div>
   );
 });
 

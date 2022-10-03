@@ -14,3 +14,8 @@ export { default as alignRight } from "./alignRight.svg";
 export { default as layoutLeft } from "./layoutLeft.svg";
 export { default as layoutRight } from "./layoutRight.svg";
 export { default as circlePlus } from "./circlePlus.svg";
+export { ReactComponent as ToolbarArrowDown } from "./toolbarArrowDown.svg";
+export { ReactComponent as ToolbarArrowUp } from "./toolbarArrowUp.svg";
+export { ReactComponent as ToolBarCopy } from "./toolbarCopy.svg";
+export { ReactComponent as ToolbarDelete } from "./toolbarDelete.svg";
+export { ReactComponent as ToolbarDrag } from "./toolbarDrag.svg";

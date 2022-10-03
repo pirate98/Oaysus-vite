@@ -6,7 +6,9 @@
   border: none !important;
   background: rgba(0, 128, 96, 1);
   border-color: rgba(0, 128, 96, 1);
-  height: 104px;
+  min-height: 104px;
+  // min-height: 104px;
+  height: auto;
   color: white;
   display: flex;
   justify-content: center;

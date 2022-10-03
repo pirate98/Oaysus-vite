@@ -3,16 +3,12 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { makeEditorState, styleFilter } from "../../helpers/builder";
-import { BuilderButton, PlainButton } from "../../../atoms";
-import { EditableStyleable } from "../../wrappers/";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import { BuilderButton } from "../../../atoms";
+import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
-  const titleStyle = styleFilter(content.title);
-  const descriptionStyle = styleFilter(content.description);
-  const layoutStyle = styleFilter(content.layout);
-  const borderStyle = styleFilter(content.border);
-  const buyButtonStyle = styleFilter(content.buyButton);
+const fn = forwardRef(({ content, className }, ref) => {
+  const styles = filterOnlyStyleValues(content);
 
   return (
     // <Grid
@@ -23,34 +19,39 @@ const fn = forwardRef(({ content }, ref) => {
     //   // columnSpacing={2}
     //   spacing={2}
     // >
-    <section className={classes.componentContainer} ref={ref}>
-      <div style={{ ...layoutStyle, ...borderStyle, ...content.size }}>
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
+      ref={ref}
+    >
+      <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
         <Grid item>
-          <EditableStyleable
+          <EditableWithToolBar
             type="h3"
             className={classes.headline}
-            style={{ ...titleStyle }}
+            style={styles.title}
             module="title"
             data-oa-type="text"
           >
             {content?.title?.editorState}
-          </EditableStyleable>
-          <EditableStyleable
+          </EditableWithToolBar>
+          <EditableWithToolBar
             type="p"
-            style={{ ...descriptionStyle }}
+            style={styles.description}
             module="description"
             data-oa-type="text"
           >
             {content?.description?.editorState}
-          </EditableStyleable>
+          </EditableWithToolBar>
         </Grid>
         <Grid item sx={{ width: "208px" }}>
-          <BuilderButton variant="contained" sx={{ ...buyButtonStyle }}>
+          <BuilderButton variant="contained" sx={styles.buyButton}>
             Buy Now
           </BuilderButton>
         </Grid>
       </div>
-    </section>
+    </div>
   );
 });
 

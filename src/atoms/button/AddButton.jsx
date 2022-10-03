@@ -4,12 +4,14 @@ import Button from "@mui/material/Button";
 export const AddButton = styled((props) => (
   <Button variant="contained" {...props} />
 ))({
+  height: "auto",
+  minHeight: "36px",
   whiteSpace: "nowrap",
   textTransform: "none",
   boxShadow: "none",
   background: "#008060",
   borderRadius: "6px",
-  color: "white",
+  color: "#ffffff",
   "&:hover": {
     background: "rgba(0, 110, 82, 1)",
   },

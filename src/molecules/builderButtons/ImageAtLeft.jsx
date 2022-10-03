@@ -4,7 +4,7 @@ import classes from "./.module.scss";
 export function ImageAtLeft({
   primary = constants.COLOR_GRAY,
   secondary = constants.COLOR_DARK_GRAY,
-  primaryHover = "white",
+  primaryHover = "#ffffff",
   secondaryHover = constants.COLOR_MAIN,
   hover = false,
 }) {

@@ -2,27 +2,26 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { makeEditorState, styleFilter } from "../../helpers/builder";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { Grid } from "@mui/material";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
-  const userTitleStyle = styleFilter(content.title);
-  const userSubTitleStyle = styleFilter(content.subTitle);
-  const componentBackground = styleFilter(content.background);
-  const componentLayout = styleFilter(content.layout);
+const fn = forwardRef(({ content, className }, ref) => {
+  const styles = filterOnlyStyleValues(content);
 
   return (
     content && (
       <div
-        className={classes.incentiveContainer}
-        style={{ ...componentBackground, ...componentLayout }}
+        className={
+          classes.incentiveContainer + (className ? ` ${className}` : "")
+        }
         ref={ref}
+        style={{ ...styles.background, ...styles.layout }}
       >
-        <EditableStyleable
+        <EditableWithToolBar
           // hidden={true}
           style={{
-            ...userTitleStyle,
+            ...styles.title,
             display: content.title.visibility ? "inherit" : "none",
           }}
           name="title"
@@ -32,25 +31,25 @@ const fn = forwardRef(({ content }, ref) => {
           className={classes.title}
         >
           {content?.title?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
         <Grid
           justifyContent={"center"}
           container
           sx={{
             whiteSpace: "pre-wrap",
-            ...userSubTitleStyle,
+            ...styles.subTitle,
             display: content.subTitle.visibility ? "inherit" : "none",
           }}
         >
           <Grid item>
-            <EditableStyleable
+            <EditableWithToolBar
               name="subTitle"
               module="subTitle"
               data-oa-type="text"
               type="p"
             >
               {content?.subTitle?.editorState}
-            </EditableStyleable>
+            </EditableWithToolBar>
           </Grid>
           <Grid item>
             <p

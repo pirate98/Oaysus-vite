@@ -5,6 +5,10 @@
   justify-content: end;
 }
 
+.leftSectionWrapper {
+  position: relative;
+}
+
 .leftSection {
   position: fixed;
   top: $navHeight;
@@ -68,6 +72,6 @@
 }
 
 .rightSection {
-  width: calc(100vw - $leftMenuWidth);
+  margin-left: $leftMenuWidth;
   background-color: rgb(255, 255, 255); // white;
 }

@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { getIndexes, numerateTheName } from "../molecules/helpers/builder";
 import { setPageComponents } from "../pages/builder/builderSlice";
-import dragDrop from "../data/dragDrop";
+import componentsData from "../data/componentsData";
 import * as builderComponents from "../molecules/builderComponents";
 
 export const useAddComponentToPageBuilder = () => {
@@ -19,7 +19,7 @@ export const useAddComponentToPageBuilder = () => {
     const { undefined, blankComponentIndex } = getIndexes(
       pageComponents,
       null,
-      dragDrop.BLANK_COMPONENT_NAME
+      componentsData.BLANK_COMPONENT_NAME
     );
 
     let newPage = [...pageComponents];

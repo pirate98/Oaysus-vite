@@ -1,7 +1,7 @@
 export function _Content2({
   primary = "#F2F2F2",
   secondary = "#BDBDBD",
-  primaryHover = "white",
+  primaryHover = "#ffffff",
   secondaryHover = "#008060",
   hover = false,
 }) {

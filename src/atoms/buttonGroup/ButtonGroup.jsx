@@ -21,6 +21,7 @@ export const ButtonGroup = styled((props) => (
         key={idx}
         sx={{
           flexGrow: 1,
+          fontSize: "12px",
           background: button.selected ? "rgb(224 224 224)" : "white",
           color: "black",
           borderColor: "#BABFC3",

@@ -4,13 +4,18 @@ import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid item xs={12} ref={ref} className={classes.componentContainer}>
+    <div
+      className={
+        classes.componentContainer + (className ? ` ${className}` : "")
+      }
+      ref={ref}
+    >
       <div
         className={classes.offer}
         style={{ ...styles.background, ...styles.layout }}
@@ -25,14 +30,14 @@ const fn = forwardRef(({ content }, ref) => {
           }}
         >
           <Grid item>
-            <EditableStyleable
+            <EditableWithToolBar
               name="title"
               module="title"
               data-oa-type="text"
               type="h3"
             >
               {content?.title?.editorState}
-            </EditableStyleable>
+            </EditableWithToolBar>
           </Grid>
           <Grid item>
             <p
@@ -47,7 +52,7 @@ const fn = forwardRef(({ content }, ref) => {
           </Grid>
         </Grid>
       </div>
-    </Grid>
+    </div>
   );
 });
 

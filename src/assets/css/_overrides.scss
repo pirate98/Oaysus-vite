@@ -5,6 +5,11 @@
   --p-interactive-hovered: black !important;
 }
 
+p {
+  font-weight: inherit;
+  font-size: inerit;
+}
+
 // for autocomplete popper
 .MuiPopper-root.MuiAutocomplete-popper,
 .MuiAutocomplete-popper {
@@ -20,6 +25,6 @@
 .MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
   box-shadow: $selectShadow;
   .MuiButtonBase-root.MuiMenuItem-root.Mui-selected {
-    background: $primaryHover;
+    background: $primaryActive;
   }
 }

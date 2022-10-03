@@ -5,6 +5,10 @@
   margin: 0 6rem !important;
   // display: flex;
   justify-content: center;
+  // overflow: auto;
+  display: inline-block;
+  flex-grow: 1;
+  // width: 100%;
 }
 
 .buyBox {
@@ -117,6 +121,7 @@
 
 .dropZone {
   padding: 0.8rem 3.2rem;
+  flex-grow: 1;
 }
 
 .blankElement {

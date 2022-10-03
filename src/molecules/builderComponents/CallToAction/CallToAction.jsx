@@ -3,18 +3,18 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-import { EditableStyleable } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers/";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
 import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
 
-const fn = forwardRef(({ content }, ref) => {
+const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
     <div
-      className={classes.callToAction + " " + classes.headline}
+      className={classes.callToAction + (className ? ` ${className}` : "")}
       ref={ref}
       style={{ ...styles.background, ...styles.border }}
     >
@@ -26,7 +26,7 @@ const fn = forwardRef(({ content }, ref) => {
         spacing={1}
       >
         <Grid item>
-          <EditableStyleable
+          <EditableWithToolBar
             name="title"
             module="title"
             data-oa-type="text"
@@ -34,7 +34,7 @@ const fn = forwardRef(({ content }, ref) => {
             style={{ ...styles.title }}
           >
             {content?.title?.editorState}
-          </EditableStyleable>
+          </EditableWithToolBar>
         </Grid>
         <Grid item>
           <div className={classes.textGreen} style={{ ...styles.money }}>
@@ -94,7 +94,7 @@ const json = {
     fontWeight: "400",
     marginBottom: "",
     backgroundColor: "#008060",
-    color: "white",
+    color: "#ffffff",
     borderStyle: "solid",
     borderWidth: "0",
     borderRadius: "",

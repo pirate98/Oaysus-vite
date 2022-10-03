@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -12,7 +12,8 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 // import { ReactComponent as ContentCopySvg } from "../../../assets/svg/contentCopy.svg";
 import { updatePageComponents } from "../../../pages/builder/builderSlice";
 import classes from "./.module.scss";
-import { FontStyles } from "../../builderSettingFields/FontStyles";
+import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
+import { componentsData } from "../../../data/componentsData";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -25,7 +26,7 @@ function MyCustomAutoFocusPlugin() {
   return null;
 }
 
-export function EditableStyleable({
+export function EditableWithToolBar({
   style,
   module,
   type,
@@ -33,6 +34,12 @@ export function EditableStyleable({
   children,
 }) {
   const dispatch = useDispatch();
+
+  const {
+    builder: { pageComponents, selectedPageComponentName },
+  } = useSelector((state) => state);
+
+  const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
 
   function onError(error) {
     console.error(error);
@@ -57,6 +64,7 @@ export function EditableStyleable({
   };
 
   function onChangeLexical(editorState) {
+    // console.log("onchange");
     dispatch(
       updatePageComponents({
         module,
@@ -84,15 +92,18 @@ export function EditableStyleable({
       <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
-          // style={style}
+          style={style}
         >
           <div
             ref={elementToFocus}
             tabIndex="-1"
-            className={classes.editWrapper}
+            // classname is used to traverse parents in dom
+            className={
+              classes.editWrapper + " " + componentsData.EDITABLE_CLASS
+            }
             onFocus={handleFocus}
             onBlur={handleBlur}
-            style={style}
+            // style={style}
           >
             {/* <EditableElement type={type}>{children}</EditableElement> */}
             {/* <ToolbarPlugin /> */}
@@ -104,13 +115,15 @@ export function EditableStyleable({
             {/* <HistoryPlugin />
           <MyCustomAutoFocusPlugin /> */}
             <span
-              id="editingWrapper"
               contentEditable={false}
               className={isFocused ? classes.focused : classes.hide}
             >
               {/* <span><ContentCopySvg /></span> */}
-              <FontStyles
-                className={classes.styleBar}
+              <TextToolBar
+                className={
+                  classes.styleBar +
+                  (componentIsOnTop ? " " + classes.zIndex3000 : "")
+                }
                 module={module}
                 elementToFocus={elementToFocus}
               />

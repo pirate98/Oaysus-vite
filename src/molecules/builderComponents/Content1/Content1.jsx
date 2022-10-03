@@ -1,17 +1,15 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import { TextContainer, Text } from "@shopify/polaris";
+import { TextContainer } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { makeEditorState, styleFilter } from "../../helpers/builder";
-import { EditableStyleable } from "../../wrappers/";
+import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content = {} }, ref) => {
-  const userTitleStyle = styleFilter(content.title);
-  const userDescriptionStyle = styleFilter(content.description);
-  const layoutStyle = styleFilter(content.layout);
-  // console.log(content.imagePosition);
+const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
+  const styles = filterOnlyStyleValues(content);
+
   const imageSection = (
     // <img
     //   className={classes.image1}
@@ -34,46 +32,46 @@ const fn = forwardRef(({ content = {} }, ref) => {
   const textSection = (
     <Grid item sx={{ marginBottom: "2px" }}>
       <TextContainer>
-        <EditableStyleable
+        <EditableWithToolBar
           type="h3"
-          style={{ ...userTitleStyle }}
+          style={{ ...styles.title }}
           // name="title"
           module="title"
           data-oa-type="text"
         >
           {content?.title?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
 
-        <EditableStyleable
+        <EditableWithToolBar
           type="p"
-          style={{ ...userDescriptionStyle }}
+          style={{ ...styles.description }}
           // name="title"
           module="description"
           data-oa-type="text"
         >
           {content?.description?.editorState}
-        </EditableStyleable>
+        </EditableWithToolBar>
       </TextContainer>
     </Grid>
   );
 
   return (
     content && (
-      <Grid
-        item
-        container
+      <div
+        className={
+          classes.componentContainer + (className ? ` ${className}` : "")
+        }
         ref={ref}
-        columnSpacing={2}
-        className={classes.componentContainer}
-        sx={{ ...layoutStyle }}
       >
-        <Grid item xs={6}>
-          {content.imagePosition === "left" ? imageSection : textSection}
+        <Grid item container columnSpacing={2} sx={{ ...styles.layout }}>
+          <Grid item xs={6}>
+            {content.imagePosition === "left" ? imageSection : textSection}
+          </Grid>
+          <Grid item xs={6}>
+            {content.imagePosition === "left" ? textSection : imageSection}
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          {content.imagePosition === "left" ? textSection : imageSection}
-        </Grid>
-      </Grid>
+      </div>
     )
   );
 });

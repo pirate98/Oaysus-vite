@@ -4,7 +4,7 @@ import { useDrag } from "react-dnd";
 import { useDispatch } from "react-redux";
 
 import classes from "./.module.scss";
-import dragDrop from "../../../data/dragDrop";
+import componentsData from "../../../data/componentsData";
 import { removeComponentFromPage } from "../../../pages/builder/builderSlice";
 
 export function BuilderButtonWrapper({
@@ -16,7 +16,7 @@ export function BuilderButtonWrapper({
   // console.log({ title: title.text });
   const [{ isDragging, extraProps }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
-    type: dragDrop.types.BUILDER_COMPONENT,
+    type: componentsData.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods
     item: { name: title.text },
     // method to collect additional data for drop handling like whether is currently being dragged
@@ -27,7 +27,7 @@ export function BuilderButtonWrapper({
     },
     end: (monitor) => {
       // console.log({ monitor });
-      dispatch(removeComponentFromPage(dragDrop.BLANK_COMPONENT_NAME));
+      dispatch(removeComponentFromPage(componentsData.BLANK_COMPONENT_NAME));
     },
   }));
 

@@ -6,9 +6,11 @@ import variables from "../../assets/css/_variables.module.scss";
 export const PlainButton = styled((props) => (
   <Button variant="outlined" {...props} />
 ))({
-  height: "36px",
+  fontFamily: variables.fontFamily,
+  fontSize: "16px",
+  height: "auto",
+  minHeight: "36px",
   boxShadow: "none",
-  fontSize: "12px",
   fontWeight: 400,
   lineHeight: "20px",
   letterSpacing: "0px",
@@ -16,8 +18,9 @@ export const PlainButton = styled((props) => (
   // width: "max-content",
   padding: "0.5rem 1.5rem",
   textTransform: "none",
+  // border: variables.secondaryBorder,
 
   "&:hover": {
-    background: variables.primaryHover,
+    background: variables.secondaryHover,
   },
 });

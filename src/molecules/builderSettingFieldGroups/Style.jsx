@@ -2,7 +2,6 @@ import { PxInput, SettingFieldContainer } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import {
   ColorSelector,
-  FontStyles,
   Alignment,
   FontFamily,
   FontWeight,
@@ -47,7 +46,7 @@ export function Style({
           value={removePx(data["fontSize"])}
         />
       </div>
-      {!alignment && <Alignment />}
+      {/* {!alignment && <Alignment />} */}
       <ColorSelector
         defaultValue={data["color"]}
         name={"color"}

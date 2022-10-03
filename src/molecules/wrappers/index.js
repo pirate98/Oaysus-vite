@@ -1,3 +1,3 @@
 export * from "./builderButtonWrapper/BuilderButtonWrapper";
-export * from "./builderEditableStyleable/EditableStyleable";
+export * from "./builderEditableWithToolBar/EditableWithToolBar";
 export * from "./builderDropZoneWrapper/DropZoneWrapper";

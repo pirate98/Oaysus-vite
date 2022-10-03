@@ -1,12 +1,12 @@
-import boilerPlatePage from "../../mockData/defaultBuilderPage";
+import { default as boilerPlatePage } from "../../mockData/defaultBuilderPage";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-let pageComponents = boilerPlatePage();
+let boilerPlate = boilerPlatePage();
 
 const initialState = {
   activeMenu: 0,
-  pageComponents,
+  pageComponents: boilerPlate,
   selectedPageComponentName: undefined,
 };
 
@@ -53,6 +53,9 @@ export const builderSlice = createSlice({
         componentToUpdate[key] = value;
       }
     },
+    setDraggedComponent: (state, action) => {
+      state.draggedComponent = action.payload;
+    },
   },
 });
 
@@ -64,6 +67,7 @@ export const {
   setPageComponents,
   removeComponentFromPage,
   updatePageComponents,
+  setDraggedComponent,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

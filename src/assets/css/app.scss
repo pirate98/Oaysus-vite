@@ -2,10 +2,7 @@
 
 body {
   @extend .defaultFont;
-}
-
-p {
-  font-weight: inherit;
+  // overflow-x: hidden;
 }
 
 .editor-text-bold {
