@@ -3,14 +3,23 @@ import { useState } from "react";
 // import ReactStars from "react-rating-stars-component";
 import Rating from "@mui/material/Rating";
 
-import { SettingFieldContainer } from "../../atoms";
+import { Input, SettingField, SettingFieldContainer } from "../../atoms";
+import { useGetSelectedPageComponent } from "../../hooks";
+import { Visibility } from "./Visibility";
 
 export function StarRating() {
   const [value, setValue] = useState(2);
 
+  const component = useGetSelectedPageComponent();
+
   return (
-    <SettingFieldContainer title="STAR RATING">
-      <Rating name="read-only" value={value} readOnly />
-    </SettingFieldContainer>
+    <>
+      <Visibility data={component["reviews"]} />
+      <SettingFieldContainer title="STAR RATING">
+        <SettingField fieldName={"Rating"}>
+          <Input />
+        </SettingField>
+      </SettingFieldContainer>
+    </>
   );
 }

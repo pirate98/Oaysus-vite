@@ -7,3 +7,5 @@ export * from "./CountDown";
 export * from "./Background";
 export * from "./Border";
 export * from "./Discount";
+export * from "./Quantity";
+export * from "./Savings";

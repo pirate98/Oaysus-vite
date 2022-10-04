@@ -134,9 +134,9 @@ const json = {
   images: [
     "url(/mockData/flowers.jpg)",
     "url(/mockData/puppy.jpg)",
-    "url(/mockData/strategy.jpg)",
-    "url(/image/guy_1.jpg)",
-    "url(/mockData/ayak.jpg)",
+    // "url(/mockData/strategy.jpg)",
+    // "url(/image/guy_1.jpg)",
+    // "url(/mockData/ayak.jpg)",
   ],
   title: {
     editorState: makeEditorState("Test T-shirt"),

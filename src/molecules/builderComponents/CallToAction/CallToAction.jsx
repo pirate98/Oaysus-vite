@@ -18,31 +18,33 @@ const fn = forwardRef(({ content, className }, ref) => {
       ref={ref}
       style={{ ...styles.background, ...styles.border }}
     >
-      <Grid
-        container
-        flexDirection={"row"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        spacing={1}
-      >
-        <Grid item>
-          <EditableWithToolBar
-            name="title"
-            module="title"
-            data-oa-type="text"
-            type="h3"
-            style={{ ...styles.title }}
-          >
-            {content?.title?.editorState}
-          </EditableWithToolBar>
+      <div className={classes.width}>
+        <Grid
+          container
+          flexDirection={"row"}
+          justifyContent={"start"}
+          alignItems={"center"}
+          spacing={1}
+        >
+          <Grid item>
+            <EditableWithToolBar
+              name="title"
+              module="title"
+              data-oa-type="text"
+              type="h3"
+              style={{ ...styles.title }}
+            >
+              {content?.title?.editorState}
+            </EditableWithToolBar>
+          </Grid>
+          <Grid item>
+            <div className={classes.textGreen} style={{ ...styles.money }}>
+              &nbsp;for $20.00
+            </div>
+          </Grid>
         </Grid>
-        <Grid item>
-          <div className={classes.textGreen} style={{ ...styles.money }}>
-            &nbsp;for $20.00
-          </div>
-        </Grid>
-      </Grid>
-      <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+        <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+      </div>
     </div>
   );
 });

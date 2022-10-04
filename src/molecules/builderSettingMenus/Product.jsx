@@ -6,6 +6,8 @@ import {
   Discount,
   Margin,
   Padding,
+  Quantity,
+  Savings,
   Style,
   Visibility,
 } from "../builderSettingFieldGroups";
@@ -50,7 +52,6 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={"reviews"}>
         <SettingSection title={"Reviews"}>
-          <Visibility data={selectedPageComponent["reviews"]} />
           <StarRating />
         </SettingSection>
       </EditWrapper>
@@ -77,12 +78,10 @@ export function Product() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper>
-        <SettingSection title={"Savings label"}>
-          <Visibility text="Show savings" />
-        </SettingSection>
+        <Savings />
       </EditWrapper>
       <EditWrapper>
-        <SettingSection title={"Quantity selector"}></SettingSection>
+        <Quantity />
       </EditWrapper>
       <EditWrapper>
         <SettingSection title={"Payment disclaimer"}></SettingSection>
