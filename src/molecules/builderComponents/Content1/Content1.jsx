@@ -63,7 +63,7 @@ const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
         }
         ref={ref}
       >
-        <Grid item container columnSpacing={2} sx={{ ...styles.layout }}>
+        <Grid container columnSpacing={4} sx={{ ...styles.layout }}>
           <Grid item xs={6}>
             {content.imagePosition === "left" ? imageSection : textSection}
           </Grid>

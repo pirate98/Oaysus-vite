@@ -17,94 +17,94 @@ const fn = forwardRef(({ content, className }, ref) => {
   const [value, setValue] = useState(2);
 
   return (
-    <Grid
-      item
-      container
-      ref={ref}
-      columnSpacing={3}
-      className={
-        classes.componentContainer + (className ? ` ${className}` : "")
-      }
-      sx={{ ...styles.layout }}
-    >
+    <div className={classes.componentContainer}>
       <Grid
-        item
-        xs={6}
-        className={content.imagePosition === "right" ? classes.order1 : ""}
+        // item
+        container
+        ref={ref}
+        columnSpacing={4}
+        className={className ? ` ${className}` : ""}
+        sx={{ ...styles.layout }}
       >
-        <Carousel images={content.images} imageStyle={styles.image} />
-        {/* <img style={styles.image} src={"/image/guy_1.jpg"} /> */}
+        <Grid
+          item
+          xs={6}
+          className={content.imagePosition === "right" ? classes.order1 : ""}
+        >
+          <Carousel images={content.images} imageStyle={styles.image} />
+          {/* <img style={styles.image} src={"/image/guy_1.jpg"} /> */}
+        </Grid>
+        <Grid item xs={6} container spacing={2} alignContent="baseline">
+          <Grid item sx={{ marginBottom: "2px" }}>
+            <TextContainer>
+              <EditableWithToolBar
+                // hidden={true}
+                style={{
+                  ...styles.title,
+                }}
+                module="title"
+                type="h3"
+              >
+                {content?.title?.editorState}
+              </EditableWithToolBar>
+              <Grid
+                container
+                sx={{
+                  display: content?.reviews?.visibility ? "flex" : "none",
+                }}
+              >
+                <Rating name="read-only" value={value} readOnly />
+                <p className={classes.starText}>5.0 Best Seller</p>
+              </Grid>
+              <EditableWithToolBar
+                // hidden={true}
+                style={{
+                  ...styles.description,
+                }}
+                name="description"
+                module="description"
+                data-oa-type="text"
+                type="p"
+              >
+                {content.description?.editorState}
+              </EditableWithToolBar>
+            </TextContainer>
+          </Grid>
+          <Grid item xs={12}>
+            <Stack distribution="fill" vertical spacing="tight">
+              <Stack distribution="equalSpacing">
+                <Text color="subdued" fontWeight="semibold">
+                  Subtotal
+                </Text>
+                <Text color="subdued" fontWeight="semibold">
+                  $ 20.00
+                </Text>
+              </Stack>
+              <Stack distribution="equalSpacing">
+                <Text color="subdued" fontWeight="semibold">
+                  Taxes
+                </Text>
+                <Text color="subdued" fontWeight="semibold">
+                  N/A
+                </Text>
+              </Stack>
+              <div className={classes.divider}></div>
+              <Stack distribution="equalSpacing">
+                <Text fontWeight="semibold">Total</Text>
+                <Text fontWeight="semibold">$ 20.00</Text>
+              </Stack>
+            </Stack>
+          </Grid>
+          <Grid item xs={12}>
+            {/* <ButtonGroup fullWidth> */}
+            <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+            <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
+              Decline this offer
+            </BuilderButton>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item xs={6} container spacing={2} alignContent="baseline">
-        <Grid item sx={{ marginBottom: "2px" }}>
-          <TextContainer>
-            <EditableWithToolBar
-              // hidden={true}
-              style={{
-                ...styles.title,
-              }}
-              module="title"
-              type="h3"
-            >
-              {content?.title?.editorState}
-            </EditableWithToolBar>
-            <Grid
-              container
-              sx={{
-                display: content?.reviews?.visibility ? "flex" : "none",
-              }}
-            >
-              <Rating name="read-only" value={value} readOnly />
-              <p className={classes.starText}>5.0 Best Seller</p>
-            </Grid>
-            <EditableWithToolBar
-              // hidden={true}
-              style={{
-                ...styles.description,
-              }}
-              name="description"
-              module="description"
-              data-oa-type="text"
-              type="p"
-            >
-              {content.description?.editorState}
-            </EditableWithToolBar>
-          </TextContainer>
-        </Grid>
-        <Grid item xs={12}>
-          <Stack distribution="fill" vertical spacing="tight">
-            <Stack distribution="equalSpacing">
-              <Text color="subdued" fontWeight="semibold">
-                Subtotal
-              </Text>
-              <Text color="subdued" fontWeight="semibold">
-                $ 20.00
-              </Text>
-            </Stack>
-            <Stack distribution="equalSpacing">
-              <Text color="subdued" fontWeight="semibold">
-                Taxes
-              </Text>
-              <Text color="subdued" fontWeight="semibold">
-                N/A
-              </Text>
-            </Stack>
-            <div className={classes.divider}></div>
-            <Stack distribution="equalSpacing">
-              <Text fontWeight="semibold">Total</Text>
-              <Text fontWeight="semibold">$ 20.00</Text>
-            </Stack>
-          </Stack>
-        </Grid>
-        <Grid item xs={12}>
-          {/* <ButtonGroup fullWidth> */}
-          <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
-          <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
-            Decline this offer
-          </BuilderButton>
-        </Grid>
-      </Grid>
-    </Grid>
+    </div>
   );
 });
 
@@ -136,6 +136,7 @@ const json = {
     "url(/mockData/puppy.jpg)",
     "url(/mockData/strategy.jpg)",
     "url(/image/guy_1.jpg)",
+    "url(/mockData/ayak.jpg)",
   ],
   title: {
     editorState: makeEditorState("Test T-shirt"),
