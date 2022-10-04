@@ -54,7 +54,7 @@ const fn = forwardRef(({ content, className }, ref) => {
                 }}
               >
                 <Rating name="read-only" value={value} readOnly />
-                <p className={classes.starText}>5.0 Best Seller</p>
+                {/* <p className={classes.starText}>5.0 Best Seller</p> */}
               </Grid>
               <EditableWithToolBar
                 // hidden={true}
