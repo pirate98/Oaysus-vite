@@ -48,36 +48,45 @@ export function Carousel({ images, imageStyle }) {
           );
         })}
       </Swiper>
-      <Swiper
-        // spaceBetween={10}
-        modules={[Thumbs]}
-        watchSlidesProgress={true}
-        onSwiper={setThumbsSwiper}
-        slidesPerView={5}
-        // freeMode={true}
-        className={classes.swiperThumbs}
-        thumbsContainerClass={classes.swiperWrapper}
-      >
-        {images.map((url, idx) => {
-          return (
-            <SwiperSlide key={idx}>
-              <div
-                className={classes.thumbnail}
-                style={{ backgroundImage: url }}
-              ></div>
-            </SwiperSlide>
-          );
-        })}
-        <span className={classes.backArrow} onClick={() => swiper.slidePrev()}>
-          <SwiperPrev />
+      <section className={classes.thumbnailContainer}>
+        <span
+          className={classes.backArrowContainer}
+          onClick={() => swiper.slidePrev()}
+        >
+          <span className={classes.arrow}>
+            <SwiperPrev />
+          </span>
         </span>
+        <Swiper
+          // spaceBetween={10}
+          modules={[Thumbs]}
+          watchSlidesProgress={true}
+          onSwiper={setThumbsSwiper}
+          slidesPerView={5}
+          // freeMode={true}
+          className={classes.swiperThumbs}
+          thumbsContainerClass={classes.swiperWrapper}
+        >
+          {images.map((url, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <div
+                  className={classes.thumbnail}
+                  style={{ backgroundImage: url }}
+                ></div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
         <span
           className={classes.arrowContainer}
           onClick={() => swiper.slideNext()}
         >
-          <SwiperNext />
+          <span className={classes.arrow}>
+            <SwiperNext />
+          </span>
         </span>
-      </Swiper>
+      </section>
     </>
   );
 }
