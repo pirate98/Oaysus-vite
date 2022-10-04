@@ -7,7 +7,7 @@ export function Background({ data, module, image = true, title }) {
       <ColorSelector
         title={"Color"}
         name="backgroundColor"
-        defaultValue={data.color || data.backgroundColor}
+        defaultValue={data.backgroundColor}
       />
       {image && (
         <>

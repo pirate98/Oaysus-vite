@@ -172,7 +172,7 @@ const json = {
     price: 20,
     fontFamily: "Roboto",
     lineHeight: "20px",
-    fontWeight: 400,
+    fontWeight: "400",
     fontSize: "16px",
     fontColor: "#000000",
     padding: 0,
@@ -181,9 +181,31 @@ const json = {
   },
   buyButton: {
     marginBottom: "10px",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "20px",
+    borderRadius: "4px",
+    borderStyle: "solid",
+    borderWidth: "0px",
+
+    borderColor: "#008060",
+    color: "#ffffff",
+    backgroundColor: "#008060",
   },
   declineButton: {
     marginBottom: "10px",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "20px",
+    borderRadius: "4px",
+    borderStyle: "solid",
+    borderWidth: "0px",
+
+    color: "#000000",
+    borderColor: "#babfc3",
+    backgroundColor: "#ffffff",
   },
 };
 

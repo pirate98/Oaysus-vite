@@ -27,9 +27,7 @@ export function Style({
       )}
       {/* {styling && <FontStyles module={module} />} */}
       <FontFamily defaultValue={data["fontFamily"]} />
-      {weight && (
-        <FontWeight defaultValue={data["fontWeight"]} module={module} />
-      )}
+      {weight && <FontWeight module={module} />}
       <div className={fieldClasses.singleAttribute}>
         <p>Line Height</p>
         <PxInput

@@ -4,6 +4,7 @@ const builderSettings = {
     layout: "layout",
     title: "title",
     subTitle: "subTitle",
+    description: "description",
     countdown: "countdown",
     disclaimer: "paymentDisclaimer",
     buyButton: "buyButton",

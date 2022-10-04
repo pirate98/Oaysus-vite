@@ -33,6 +33,7 @@ export function Product() {
     background,
     layout,
     countdown,
+    description,
     disclaimer,
     buyButton,
     declineButton,
@@ -69,11 +70,11 @@ export function Product() {
           <Padding module={title} data={component[title]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"description"}>
+      <EditWrapper module={description}>
         <SettingSection title={"Product description"}>
-          <Style module={"description"} data={component["description"]} />
-          <Margin data={component["description"]} />
-          <Padding data={component["description"]} />
+          <Style module={description} data={component[description]} />
+          <Margin data={component[description]} />
+          <Padding data={component[description]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper>
@@ -94,7 +95,7 @@ export function Product() {
           <Padding data={component[disclaimer]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper>
+      <EditWrapper module={buyButton}>
         <SettingSection title={"Buy button"}>
           <Style data={component[buyButton]} />
           <Background
@@ -111,12 +112,16 @@ export function Product() {
               max={500}
             />
           </SettingFieldContainer>
-          <Border data={component[buyButton]} title={"BORDER"} />
+          <Border
+            data={component[buyButton]}
+            title={"BORDER"}
+            module={buyButton}
+          />
           <Margin data={component[buyButton]} />
           <Padding data={component[buyButton]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper>
+      <EditWrapper module={declineButton}>
         <SettingSection title={"Decline button"}>
           <Style data={component[declineButton]} />
           <Background
