@@ -53,7 +53,7 @@ const json = {
   title: {
     editorState: makeEditorState("Buy This T-Shirt Right Now"),
     fontFamily: "Roboto",
-    fontWeight: "500",
+    fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
     color: "#000000",

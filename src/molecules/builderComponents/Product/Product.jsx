@@ -111,6 +111,7 @@ const fn = forwardRef(({ content, className }, ref) => {
 const json = {
   name: "",
   imagePosition: "left",
+  imageDisplaytype: "single",
   layout: {
     paddingTop: "42px",
     paddingRight: "",
