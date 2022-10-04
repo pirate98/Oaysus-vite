@@ -2,14 +2,14 @@ import { forwardRef, useEffect, useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { TextContainer, Stack, Text } from "@shopify/polaris";
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 import Rating from "@mui/material/Rating";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
-import { Carousel } from "./Carousel";
+import { ImageSelector } from "./ImageSelector";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -31,8 +31,7 @@ const fn = forwardRef(({ content, className }, ref) => {
           xs={6}
           className={content.imagePosition === "right" ? classes.order1 : ""}
         >
-          <Carousel images={content.images} imageStyle={styles.image} />
-          {/* <img style={styles.image} src={"/image/guy_1.jpg"} /> */}
+          <ImageSelector content={content} style={styles.image} />
         </Grid>
         <Grid item xs={6} container spacing={2} alignContent="baseline">
           <Grid item sx={{ marginBottom: "2px" }}>
@@ -111,7 +110,7 @@ const fn = forwardRef(({ content, className }, ref) => {
 const json = {
   name: "",
   imagePosition: "left",
-  imageDisplaytype: "single",
+  imageDisplayType: "single",
   layout: {
     paddingTop: "42px",
     paddingRight: "",

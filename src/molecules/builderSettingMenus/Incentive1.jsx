@@ -11,12 +11,12 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
-import builderData from "../../data/builderSettings";
+import { builderSettings } from "../../data/builderSettings";
 
 export function Incentive1() {
   const selectedPageComponent = useGetSelectedPageComponent();
   const { title, subTitle, background, layout, countdown } =
-    builderData.settingFieldNames;
+    builderSettings.fieldNames;
 
   return (
     <SettingSectionContainer>

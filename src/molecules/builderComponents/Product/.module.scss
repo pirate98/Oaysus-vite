@@ -15,6 +15,14 @@
   margin: auto;
 }
 
+.imageEmpty {
+  @extend .image;
+  background: #e0e0e0;
+  background-position: center;
+  background-size: auto;
+  background-image: url("/image/empty-image-dark.svg");
+}
+
 .thumbnailContainer {
   display: flex;
   justify-content: space-around;
