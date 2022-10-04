@@ -73,25 +73,25 @@ const fn = forwardRef(({ content, className }, ref) => {
           <Grid item xs={12}>
             <Stack distribution="fill" vertical spacing="tight">
               <Stack distribution="equalSpacing">
-                <Text color="subdued" fontWeight="semibold">
+                <Text color="subdued" fontWeight="regular">
                   Subtotal
                 </Text>
-                <Text color="subdued" fontWeight="semibold">
+                <Text color="subdued" fontWeight="regular">
                   $ 20.00
                 </Text>
               </Stack>
               <Stack distribution="equalSpacing">
-                <Text color="subdued" fontWeight="semibold">
+                <Text color="subdued" fontWeight="regular">
                   Taxes
                 </Text>
-                <Text color="subdued" fontWeight="semibold">
+                <Text color="subdued" fontWeight="regular">
                   N/A
                 </Text>
               </Stack>
               <div className={classes.divider}></div>
               <Stack distribution="equalSpacing">
-                <Text fontWeight="semibold">Total</Text>
-                <Text fontWeight="semibold">$ 20.00</Text>
+                <Text fontWeight="regular">Total</Text>
+                <Text fontWeight="regular">$ 20.00</Text>
               </Stack>
             </Stack>
           </Grid>
