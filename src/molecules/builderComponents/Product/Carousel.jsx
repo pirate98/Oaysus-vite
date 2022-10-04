@@ -49,7 +49,7 @@ export function Carousel({ images, imageStyle }) {
         })}
       </Swiper>
       <Swiper
-        spaceBetween={10}
+        // spaceBetween={10}
         modules={[Thumbs]}
         watchSlidesProgress={true}
         onSwiper={setThumbsSwiper}

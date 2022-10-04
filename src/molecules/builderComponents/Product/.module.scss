@@ -28,11 +28,12 @@
     height: 100%;
     z-index: 1;
     display: flex;
-    justify-content: center;
+    flex-grow: 1;
+    justify-content: space-evenly;
     transition-property: transform;
     box-sizing: content-box;
     width: min-content;
-    padding: 0 10px;
+    // padding: 0 10px;
 
     > div {
       width: min-content !important;
