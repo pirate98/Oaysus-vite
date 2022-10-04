@@ -185,14 +185,16 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
           {isFocused && (
             <section
               className={
-                classes.toolBar + " " + (componentIsOnTop && classes.zIndex1200)
+                classes.toolBar +
+                " " +
+                (componentIsOnTop ? classes.zIndex1200 : classes.zIndex2)
               }
             >
               <HiddenWrapperButton>
-                <ToolbarArrowDown onClick={moveDown} />
+                <ToolbarArrowUp onClick={moveUp} />
               </HiddenWrapperButton>
               <HiddenWrapperButton>
-                <ToolbarArrowUp onClick={moveUp} />
+                <ToolbarArrowDown onClick={moveDown} />
               </HiddenWrapperButton>
               <HiddenWrapperButton>
                 <DragWrapper

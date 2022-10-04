@@ -5,6 +5,9 @@ const builderSettings = {
     title: "title",
     subTitle: "subTitle",
     countdown: "countdown",
+    disclaimer: "paymentDisclaimer",
+    buyButton: "buyButton",
+    declineButton: "declineButton",
   },
   imageDisplayTypes: {
     single: "single",

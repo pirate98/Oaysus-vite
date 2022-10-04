@@ -1,19 +1,20 @@
 import { forwardRef } from "react";
 
 import classes from "./.module.scss";
-import { styleFilter } from "../helpers/builder";
+import { filterOnlyStyleValues } from "../helpers/builder";
 
 const fn = forwardRef(({ content, className }, ref) => {
-  const sizingStyle = styleFilter(content.sizing);
+  const styles = filterOnlyStyleValues(content);
 
   return (
     <div
       ref={ref}
       className={classes.imageZone + (className ? ` ${className}` : "")}
       style={{
-        backgroundImage: false ? false : 'url("/image/empty-image-dark.svg")',
+        backgroundImage:
+          content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
         backgroundSize: false ? "cover" : "unset",
-        ...sizingStyle,
+        ...styles.sizing,
       }}
     ></div>
   );
@@ -21,6 +22,7 @@ const fn = forwardRef(({ content, className }, ref) => {
 
 const json = {
   sizing: { height: "240px" },
+  backgroundPreview: null,
   background: {
     backgroundColor: "#008060",
     backgroundImage: "url(/mockData/flowers.jpg)",

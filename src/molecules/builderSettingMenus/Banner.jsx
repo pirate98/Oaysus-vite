@@ -27,7 +27,7 @@ export function Banner() {
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <ImageUpload />
+          <ImageUpload module={"background"} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

@@ -1,0 +1,21 @@
+@import "../../assets/css/variables.module", "../../assets/css/classes.module";
+
+.setting {
+  width: $inputWidth;
+  display: flex;
+  gap: 8px;
+
+  .imagePreview {
+    min-width: 36px;
+    width: 36px;
+    height: 36px;
+
+    background: #f9f7fa;
+    border: 1px dashed #6d7175;
+    border-radius: 2px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
