@@ -1,28 +1,41 @@
-import { Select } from "../../atoms";
+import { useDispatch } from "react-redux";
+import { Select, SettingFieldContainer } from "../../atoms";
+import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "./.module.scss";
 
 export function ImageDisplayType({ className }) {
+  const dispatch = useDispatch();
+
   const options = [
     {
       label: "Single Image",
-      value: "",
+      value: "single",
     },
     {
       label: "Custom Image",
-      value: "",
+      value: "custom",
     },
     {
       label: "Image Carousel",
-      value: "",
+      value: "carousel",
     },
   ];
 
+  const handleChange = (e) => {
+    e.stopPropagation();
+    // e.preventDefault();
+    const { value } = e.target;
+    dispatch(updatePageComponents({ key: "imageDisplayType", value }));
+  };
+
   return (
-    <div
-      className={classes.singleAttribute + " " + (className ? className : "")}
-    >
-      <p>Type</p>
-      <Select options={options} />
-    </div>
+    <SettingFieldContainer title={""}>
+      <div
+        className={classes.singleAttribute + " " + (className ? className : "")}
+      >
+        <p>Type</p>
+        <Select onChange={handleChange} options={options} />
+      </div>
+    </SettingFieldContainer>
   );
 }

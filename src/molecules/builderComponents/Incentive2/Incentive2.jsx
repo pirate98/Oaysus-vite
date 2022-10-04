@@ -63,7 +63,7 @@ const json = {
     fontFamily: "Roboto",
     lineHeight: "35px",
     fontSize: "30px",
-    fontWeight: "600",
+    fontWeight: "400",
     color: "#ffffff",
     paddingTop: "",
     paddingLeft: "",

@@ -37,9 +37,7 @@ export function Product() {
       </SettingSection>
       <EditWrapper module={"image"}>
         <SettingSection title={"Product image"}>
-          <SettingFieldContainer title={""}>
-            <ImageDisplayType />
-          </SettingFieldContainer>
+          <ImageDisplayType />
           <SettingFieldContainer title={"BACKGROUND IMAGE"}>
             <Position module={"image"} data={selectedPageComponent["image"]} />
           </SettingFieldContainer>
