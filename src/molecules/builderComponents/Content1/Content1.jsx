@@ -119,6 +119,8 @@ const json = {
     visibility: true,
   },
   background: {
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
     backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
   },

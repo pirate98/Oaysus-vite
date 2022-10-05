@@ -3,7 +3,7 @@ import { Visibility } from "../builderSettingFields";
 
 export function Quantity() {
   return (
-    <SettingSection title={"QuantitySelector"}>
+    <SettingSection title={"Quantity Selector"}>
       <Visibility text="Show quantity" />
       <SettingField fieldName={"Quantity"}>
         <Input />

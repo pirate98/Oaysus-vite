@@ -9,7 +9,7 @@ const fn = forwardRef(({ content, className }, ref) => {
   return (
     <div
       ref={ref}
-      className={classes.imageZone + (className ? ` ${className}` : "")}
+      className={classes.w100 + (className ? ` ${className}` : "")}
       style={{
         backgroundImage:
           content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
@@ -25,6 +25,9 @@ const json = {
   sizing: { height: "240px" },
   backgroundPreview: null,
   background: {
+    backgroundColor: "rgba(224, 224, 224, 1)",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
     backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
   },

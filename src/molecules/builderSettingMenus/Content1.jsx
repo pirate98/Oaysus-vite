@@ -2,17 +2,15 @@ import {
   Margin,
   Style,
   Padding,
-  Background,
-  BackgroundImage,
+  BackgroundWithImage,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { ImageAlignment, Position } from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
-import { SettingFieldContainer } from "../../atoms";
-import { ImageAtLeft, ImageAtRight } from "../builderButtons";
 import { builderSettings } from "../../data/builderSettings";
+import { SettingFieldContainer } from "../../atoms";
 const { background } = builderSettings?.fieldNames;
 
 export function Content1() {
@@ -47,11 +45,13 @@ export function Content1() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={background}>
-        <SettingSection title={"Background"}>
-          <BackgroundImage
-            module={background}
-            data={selectedPageComponent[background]}
-          />
+        <SettingSection title={"Product Image"}>
+          <SettingFieldContainer>
+            <BackgroundWithImage
+              module={background}
+              data={selectedPageComponent[background]}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

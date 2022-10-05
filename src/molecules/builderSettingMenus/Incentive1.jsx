@@ -6,12 +6,14 @@ import {
   VideoURL,
   CountDown,
   Background,
+  BackgroundWithImage,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { builderSettings } from "../../data/builderSettings";
+import { SettingFieldContainer } from "../../atoms";
 
 export function Incentive1() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -44,10 +46,12 @@ export function Incentive1() {
       </EditWrapper>
       <EditWrapper module={background}>
         <SettingSection title={"Background"}>
-          <Background
-            data={selectedPageComponent[background]}
-            module={background}
-          />
+          <SettingFieldContainer>
+            <BackgroundWithImage
+              data={selectedPageComponent[background]}
+              module={background}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={layout}>

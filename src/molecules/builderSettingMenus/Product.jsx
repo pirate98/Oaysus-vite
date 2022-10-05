@@ -2,6 +2,7 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import {
   Background,
+  BackgroundWithImage,
   Border,
   Discount,
   Margin,
@@ -21,8 +22,9 @@ import {
   Slider,
   StarRating,
 } from "../builderSettingFields";
-import { SettingFieldContainer } from "../../atoms";
+import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { builderSettings } from "../../data/builderSettings";
+import { removePx } from "../helpers/builder";
 
 export function Product() {
   const component = useGetSelectedPageComponent();
@@ -46,21 +48,28 @@ export function Product() {
           <ProductImageAlignment />
         </SettingSection>
       </EditWrapper>
-      <SettingSection title={"Product selected"}>
+      <SettingSection title={"Product Selected"}>
         <ProductSelect />
       </SettingSection>
       <EditWrapper module={"image"}>
-        <SettingSection title={"Product image"}>
-          <ImageDisplayType />
-          <SettingFieldContainer title={"BACKGROUND IMAGE"}>
+        <SettingSection title={"Product Image"}>
+          <SettingFieldContainer>
+            <ImageDisplayType />
+            <BackgroundWithImage
+              allowImageUpload={component["imageDisplayType"] === "custom"}
+              module={"image"}
+              data={component["image"]}
+            />
+            {/* <SettingFieldContainer>
             <Position module={"image"} data={component["image"]} />
+          </SettingFieldContainer> */}
           </SettingFieldContainer>
           <Border title={"BORDER"} module={"image"} data={component["image"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"reviews"}>
         <SettingSection title={"Reviews"}>
-          <StarRating />
+          <StarRating value={component["reviews"].rating} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={title}>
@@ -71,7 +80,7 @@ export function Product() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={description}>
-        <SettingSection title={"Product description"}>
+        <SettingSection title={"Description"}>
           <Style module={description} data={component[description]} />
           <Margin data={component[description]} />
           <Padding data={component[description]} />
@@ -89,14 +98,14 @@ export function Product() {
         <Quantity />
       </EditWrapper>
       <EditWrapper>
-        <SettingSection title={"Payment disclaimer"}>
+        <SettingSection title={"Payment Disclaimer"}>
           <Style data={component[disclaimer]} />
           <Margin data={component[disclaimer]} />
           <Padding data={component[disclaimer]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={buyButton}>
-        <SettingSection title={"Buy button"}>
+        <SettingSection title={"Buy Button"}>
           <Style data={component[buyButton]} />
           <Background
             data={component[buyButton]}
@@ -104,13 +113,13 @@ export function Product() {
             title={"BACKGROUND"}
           />
           <SettingFieldContainer title={"Size"}>
-            <Slider
-              title={"Width"}
-              name="width"
-              defaultValue={component[buyButton]?.width}
-              module={buyButton}
-              max={500}
-            />
+            <SettingField fieldName={"Width"}>
+              <PxInput
+                placeholder="Enter size"
+                value={removePx(component[buyButton]?.width)}
+                name={"width_px"}
+              />
+            </SettingField>
           </SettingFieldContainer>
           <Border
             data={component[buyButton]}
@@ -122,21 +131,21 @@ export function Product() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={declineButton}>
-        <SettingSection title={"Decline button"}>
+        <SettingSection title={"Decline Button"}>
           <Style data={component[declineButton]} />
           <Background
             data={component[declineButton]}
             image={false}
             title={"BACKGROUND"}
           />
-          <SettingFieldContainer title={"Size"}>
-            <Slider
-              title={"Width"}
-              name="width"
-              defaultValue={component[declineButton]?.width}
-              module={declineButton}
-              max={500}
-            />
+          <SettingFieldContainer title={"SIZE"}>
+            <SettingField fieldName={"Width"}>
+              <PxInput
+                placeholder="Enter size"
+                value={removePx(component[declineButton]?.width)}
+                name={"width_px"}
+              />
+            </SettingField>
           </SettingFieldContainer>
           <Border data={component[declineButton]} title={"BORDER"} />
           <Margin data={component[declineButton]} />

@@ -35,7 +35,11 @@ export function ImageUpload({ name, module }) {
         // onClick={(e) => console.log(e.currentTarget.blur())}
       >
         <div
-          className={classes.imagePreview}
+          className={
+            component?.backgroundPreview
+              ? classes.imagePreviewActive
+              : classes.imagePreview
+          }
           style={{
             backgroundImage: component?.backgroundPreview || "",
           }}

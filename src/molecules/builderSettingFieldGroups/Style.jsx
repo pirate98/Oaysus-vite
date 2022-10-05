@@ -1,4 +1,4 @@
-import { PxInput, SettingFieldContainer } from "../../atoms";
+import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import {
   ColorSelector,
@@ -28,14 +28,13 @@ export function Style({
       {/* {styling && <FontStyles module={module} />} */}
       <FontFamily defaultValue={data["fontFamily"]} />
       {weight && <FontWeight module={module} />}
-      <div className={fieldClasses.singleAttribute}>
-        <p>Line Height</p>
+      <SettingField fieldName={"Line Height"}>
         <PxInput
           placeholder="Enter size"
           value={removePx(data["lineHeight"])}
           name={"lineHeight_px"}
         />
-      </div>
+      </SettingField>
       <div className={fieldClasses.singleAttribute}>
         <p>Font Size</p>
         <PxInput

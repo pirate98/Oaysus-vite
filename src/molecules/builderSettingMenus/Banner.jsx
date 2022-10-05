@@ -1,12 +1,15 @@
-import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
-import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ImageUpload, Position, Slider } from "../builderSettingFields";
-
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
-import { SettingFieldContainer } from "../../atoms";
-import { BackgroundImage } from "../builderSettingFieldGroups/BackgroundImage";
+import {
+  PxInput,
+  SettingField,
+  SettingSectionContainer,
+  SettingSection,
+  SettingFieldContainer,
+} from "../../atoms";
+import { BackgroundWithImage } from "../builderSettingFieldGroups/BackgroundWithImage";
 import { builderSettings } from "../../data/builderSettings";
+import { removePx } from "../helpers/builder";
 const { background } = builderSettings?.fieldNames;
 // console.log({ background });
 export function Banner() {
@@ -14,23 +17,32 @@ export function Banner() {
 
   return (
     <SettingSectionContainer>
-      <EditWrapper>
+      <EditWrapper module={"sizing"}>
         <SettingSection title={"Sizing"}>
-          <Slider
+          <SettingField fieldName={"Height"}>
+            <PxInput
+              placeholder="Enter size"
+              value={removePx(selectedPageComponent["sizing"]["height"])}
+              name={"height_px"}
+            />
+          </SettingField>
+          {/* <Slider
             title={"Height"}
             name="height"
             defaultValue={selectedPageComponent["sizing"]["height"]}
             module={"sizing"}
             max={500}
-          />
+          /> */}
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={background}>
         <SettingSection title={"Background"}>
-          <BackgroundImage
-            module={background}
-            data={selectedPageComponent[background]}
-          />
+          <SettingFieldContainer>
+            <BackgroundWithImage
+              module={background}
+              data={selectedPageComponent[background]}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

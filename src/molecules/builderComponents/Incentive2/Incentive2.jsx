@@ -80,6 +80,8 @@ const json = {
     visibility: true,
   },
   background: {
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
     backgroundColor: "#008060",
     backgroundImage: "",
     backgroundSize: "contain",

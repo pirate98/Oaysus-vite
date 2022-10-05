@@ -17,7 +17,7 @@ export function Discount() {
           <Select options={options} />
         </SettingField>
         <SettingField fieldName={"Amount"}>
-          <Input placeholder={0} />
+          <Input placeholder={""} />
         </SettingField>
       </SettingFieldContainer>
       <Visibility text={"Show discount"} />

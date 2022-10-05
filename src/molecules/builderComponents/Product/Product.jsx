@@ -52,7 +52,11 @@ const fn = forwardRef(({ content, className }, ref) => {
                   display: content?.reviews?.visibility ? "flex" : "none",
                 }}
               >
-                <Rating name="read-only" value={value} readOnly />
+                <Rating
+                  name="read-only"
+                  value={content?.reviews?.rating}
+                  readOnly
+                />
                 {/* <p className={classes.starText}>5.0 Best Seller</p> */}
               </Grid>
               <EditableWithToolBar
@@ -123,10 +127,13 @@ const json = {
   },
   reviews: {
     visibility: true,
+    rating: 2,
   },
   image: {
     border: "1px solid #e0e0e0",
     borderRadius: "6px",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -141,6 +148,7 @@ const json = {
     "url(/image/guy_1.jpg)",
     "url(/mockData/ayak.jpg)",
   ],
+  customImages: [],
   title: {
     editorState: makeEditorState("Test T-shirt"),
     color: "#000000",

@@ -3,7 +3,7 @@ import { Visibility } from "../builderSettingFields";
 
 export function Savings() {
   return (
-    <SettingSection title={"Savings label"}>
+    <SettingSection title={"Savings Label"}>
       <Visibility text="Show savings" />
     </SettingSection>
   );

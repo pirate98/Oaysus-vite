@@ -7,9 +7,7 @@ import { Input, SettingField, SettingFieldContainer } from "../../atoms";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { Visibility } from "./Visibility";
 
-export function StarRating() {
-  const [value, setValue] = useState(2);
-
+export function StarRating({ value }) {
   const component = useGetSelectedPageComponent();
 
   return (
@@ -17,7 +15,7 @@ export function StarRating() {
       <Visibility data={component["reviews"]} />
       <SettingFieldContainer title="STAR RATING">
         <SettingField fieldName={"Rating"}>
-          <Input />
+          <Input name="rating" value={value} />
         </SettingField>
       </SettingFieldContainer>
     </>
