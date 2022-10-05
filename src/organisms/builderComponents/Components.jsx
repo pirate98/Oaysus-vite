@@ -23,11 +23,11 @@ export function Components() {
 
   const componentFunctionNames = [
     "Incentive1",
+    "Incentive2",
     "Banner",
     "Content1",
     "Content2",
     "Product",
-    "Incentive2",
     "Video",
     "CallToAction",
   ];
