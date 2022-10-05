@@ -5,6 +5,7 @@ export * from "./VideoURL";
 export * from "../builderSettingFields/Visibility";
 export * from "./CountDown";
 export * from "./Background";
+export * from "./BackgroundImage";
 export * from "./Border";
 export * from "./Discount";
 export * from "./Quantity";

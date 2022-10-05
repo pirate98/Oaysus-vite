@@ -15,6 +15,7 @@ const fn = forwardRef(({ content, className }, ref) => {
           content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
         backgroundSize: false ? "cover" : "unset",
         ...styles.sizing,
+        ...styles.background,
       }}
     ></div>
   );
@@ -24,9 +25,7 @@ const json = {
   sizing: { height: "240px" },
   backgroundPreview: null,
   background: {
-    backgroundColor: "#008060",
-    backgroundImage: "url(/mockData/flowers.jpg)",
-    backgroundSize: "contain",
+    backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
   },
 };

@@ -3,6 +3,7 @@ import {
   Style,
   Padding,
   Background,
+  BackgroundImage,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
@@ -11,6 +12,8 @@ import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { SettingFieldContainer } from "../../atoms";
 import { ImageAtLeft, ImageAtRight } from "../builderButtons";
+import { builderSettings } from "../../data/builderSettings";
+const { background } = builderSettings?.fieldNames;
 
 export function Content1() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -43,10 +46,13 @@ export function Content1() {
           <Padding data={selectedPageComponent["description"]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"background"}>
+      <EditWrapper module={background}>
         <SettingSection title={"Background"}>
           <SettingFieldContainer>
-            <Position data={selectedPageComponent["background"]} />
+            <BackgroundImage
+              module={background}
+              data={selectedPageComponent[background]}
+            />
           </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>

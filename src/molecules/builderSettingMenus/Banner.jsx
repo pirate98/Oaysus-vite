@@ -1,14 +1,14 @@
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ImageUpload, Slider } from "../builderSettingFields";
+import { ImageUpload, Position, Slider } from "../builderSettingFields";
 
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
-
-const changeHandlerMaker = (module) => (name, value) => {
-  return { module, name, value };
-};
-
+import { SettingFieldContainer } from "../../atoms";
+import { BackgroundImage } from "../builderSettingFieldGroups/BackgroundImage";
+import { builderSettings } from "../../data/builderSettings";
+const { background } = builderSettings?.fieldNames;
+// console.log({ background });
 export function Banner() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
@@ -25,9 +25,12 @@ export function Banner() {
           />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"background"}>
+      <EditWrapper module={background}>
         <SettingSection title={"Background"}>
-          <ImageUpload module={"background"} />
+          <BackgroundImage
+            module={background}
+            data={selectedPageComponent[background]}
+          />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

@@ -6,32 +6,19 @@ import {
   SettingField,
   SettingFieldContainer,
 } from "../../atoms";
+import { useGetSelectedPageComponent } from "../../hooks";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "./ImageUpload.module.scss";
 
 export function ImageUpload({ name, module }) {
   const dispatch = useDispatch();
 
-  const [imagePath, setImagePath] = useState(undefined);
-
-  // const handleClick = () => {
-  //   dispatch(
-  //     updatePageComponents({
-  //       module,
-  //       key: "backgroundImage",
-  //       value: [
-  //         "url(/mockData/flowers.jpg)",
-  //         "url(/mockData/puppy.jpg)",
-  //         "url(/mockData/strategy.jpg)",
-  //       ][Math.floor(Math.random() * 3)],
-  //     })
-  //   );
-  // };
+  const component = useGetSelectedPageComponent();
 
   const handleImageLoad = (e) => {
     console.log(e.target);
     const path = `url(${window.URL.createObjectURL(e?.target?.files[0])})`;
-    setImagePath(path);
+
     dispatch(
       updatePageComponents({
         key: "backgroundPreview",
@@ -53,7 +40,7 @@ export function ImageUpload({ name, module }) {
           <div
             className={classes.imagePreview}
             style={{
-              backgroundImage: imagePath || "",
+              backgroundImage: component?.backgroundPreview || "",
             }}
           ></div>
         </HiddenWrapperButton>
@@ -66,7 +53,7 @@ export function ImageUpload({ name, module }) {
           }}
           className={classes.w100}
         >
-          <PlainButton fullWidth color="success" sx={{ fontSize: "14px" }}>
+          <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
             Upload Image
           </PlainButton>
         </label>

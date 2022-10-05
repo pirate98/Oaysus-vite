@@ -21,10 +21,12 @@ const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
     <div
       className={classes.image1}
       style={{
-        backgroundImage: content.images
-          ? `url(${content.images[0].url})`
-          : 'url("/image/empty-image-dark.svg")',
-        backgroundSize: content.images ? "cover" : "unset",
+        ...styles.background,
+        backgroundImage:
+          content?.backgroundPreview ||
+          (content?.images
+            ? `url(${content.images[0]?.url})`
+            : 'url("/image/empty-image-dark.svg")'),
       }}
     ></div>
   );
@@ -117,9 +119,7 @@ const json = {
     visibility: true,
   },
   background: {
-    backgroundColor: "#008060",
-    backgroundImage: "url(/mockData/flowers.jpg)",
-    backgroundSize: "contain",
+    backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
   },
   layout: {
