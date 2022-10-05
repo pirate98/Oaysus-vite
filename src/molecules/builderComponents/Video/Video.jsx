@@ -30,15 +30,17 @@ const fn = forwardRef(({ content }, ref) => {
             {content?.title?.editorState}
           </EditableWithToolBar>
           {content?.video?.url ? (
-            <iframe
-              className={classes.iframe}
-              src={content?.video?.url}
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="video"
-              width={"400px"}
-            />
+            <div className={classes.iframeParent}>
+              <iframe
+                className={classes.iframe}
+                src={`https://www.youtube.com/embed/${content?.video?.url}`}
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="video"
+                width={"400px"}
+              />
+            </div>
           ) : (
             <div
               className={classes.imageZone}

@@ -41,6 +41,10 @@ export function EditWrapper({ children, ...props }) {
       value = e.target.checked;
     }
 
+    if (key === "url") {
+      value = value.split("=")[1];
+    }
+
     // if (key==='upload')
 
     // console.log({ selectedPageComponentName, module, key, value });

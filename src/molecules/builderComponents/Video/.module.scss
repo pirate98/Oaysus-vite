@@ -5,14 +5,19 @@
   flex-grow: 1;
 }
 
+.iframeParent {
+  display: grid;
+}
+
 .iframe {
+  margin: auto;
   height: 240px;
-  width: 100%;
 }
 
 .imageZone {
   @extend .iframe;
 
+  width: 100%;
   background: rgba(224, 224, 224, 1);
   background-position: center;
   background-repeat: no-repeat;
