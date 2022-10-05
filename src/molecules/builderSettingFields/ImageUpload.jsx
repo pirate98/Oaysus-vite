@@ -28,43 +28,39 @@ export function ImageUpload({ name, module }) {
   };
 
   return (
-    <SettingField fieldName="Image">
-      {/* <p>Image</p> */}
-      {/* {imagePath && <img src={window.URL.createPathectURL(imagePath)} />} */}
-      <div className={classes.setting}>
-        <HiddenWrapperButton
-          name={name}
-          // temporary method to test background image
-          // onClick={(e) => console.log(e.currentTarget.blur())}
-        >
-          <div
-            className={classes.imagePreview}
-            style={{
-              backgroundImage: component?.backgroundPreview || "",
-            }}
-          ></div>
-        </HiddenWrapperButton>
-        <label
-          htmlFor="uploadImage"
-          onClickCapture={(e) => {
-            e.stopPropagation();
-            e.currentTarget.click();
-            // handleClick();
+    <div className={classes.setting}>
+      <HiddenWrapperButton
+        name={name}
+        // temporary method to test background image
+        // onClick={(e) => console.log(e.currentTarget.blur())}
+      >
+        <div
+          className={classes.imagePreview}
+          style={{
+            backgroundImage: component?.backgroundPreview || "",
           }}
-          className={classes.w100}
-        >
-          <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
-            Upload Image
-          </PlainButton>
-        </label>
-        <input
-          id="uploadImage"
-          name="uploadImage"
-          onChange={handleImageLoad}
-          type="file"
-          hidden
-        />
-      </div>
-    </SettingField>
+        ></div>
+      </HiddenWrapperButton>
+      <label
+        htmlFor="uploadImage"
+        onClickCapture={(e) => {
+          e.stopPropagation();
+          e.currentTarget.click();
+          // handleClick();
+        }}
+        className={classes.w100}
+      >
+        <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
+          Upload Image
+        </PlainButton>
+      </label>
+      <input
+        id="uploadImage"
+        name="uploadImage"
+        onChange={handleImageLoad}
+        type="file"
+        hidden
+      />
+    </div>
   );
 }

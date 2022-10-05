@@ -48,12 +48,10 @@ export function Content1() {
       </EditWrapper>
       <EditWrapper module={background}>
         <SettingSection title={"Background"}>
-          <SettingFieldContainer>
-            <BackgroundImage
-              module={background}
-              data={selectedPageComponent[background]}
-            />
-          </SettingFieldContainer>
+          <BackgroundImage
+            module={background}
+            data={selectedPageComponent[background]}
+          />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

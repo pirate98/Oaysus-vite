@@ -1,11 +1,15 @@
-import { SettingFieldContainer } from "../../atoms";
+import { SettingField, SettingFieldContainer } from "../../atoms";
 import { ImageUpload, Position } from "../builderSettingFields";
 
 export function BackgroundImage({ module, data }) {
   return (
-    <SettingFieldContainer>
-      <ImageUpload module={module} />
-      <Position data={data} />
-    </SettingFieldContainer>
+    <>
+      <SettingFieldContainer>
+        <SettingField fieldName="Image">
+          <ImageUpload module={module} />
+        </SettingField>
+        <Position data={data} />
+      </SettingFieldContainer>
+    </>
   );
 }
