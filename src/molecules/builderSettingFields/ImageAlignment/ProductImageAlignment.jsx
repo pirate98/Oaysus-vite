@@ -15,10 +15,12 @@ export function ProductImageAlignment() {
 
   const component = useGetSelectedPageComponent();
 
-  const { imagePosition } = component;
+  const {
+    layout: { imagePosition },
+  } = component;
 
   return (
-    <SettingFieldContainer className={classes.container}>
+    <div className={classes.container}>
       <div>
         <label
           htmlFor="imageLeft"
@@ -57,6 +59,6 @@ export function ProductImageAlignment() {
           hidden
         />
       </div>
-    </SettingFieldContainer>
+    </div>
   );
 }

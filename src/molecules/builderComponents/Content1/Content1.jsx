@@ -7,79 +7,79 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 
-const fn = forwardRef(({ content = {}, className, ...rest }, ref) => {
+const fn = forwardRef(({ content, className, ...rest }, ref) => {
   const styles = filterOnlyStyleValues(content);
-
-  const imageSection = (
-    // <img
-    //   className={classes.image1}
-    //   src={
-    //     content.images ? content.images[0].url : "/image/empty-image-dark.svg"
-    //   }
-    // />
-
-    <div
-      className={classes.image1}
-      style={{
-        ...styles.background,
-        backgroundImage:
-          content?.backgroundPreview ||
-          (content?.images
-            ? `url(${content.images[0]?.url})`
-            : 'url("/image/empty-image-dark.svg")'),
-      }}
-    ></div>
-  );
-
-  const textSection = (
-    <Grid item sx={{ marginBottom: "2px" }}>
-      <TextContainer>
-        <EditableWithToolBar
-          type="h3"
-          style={{ ...styles.title }}
-          // name="title"
-          module="title"
-          data-oa-type="text"
-        >
-          {content?.title?.editorState}
-        </EditableWithToolBar>
-
-        <EditableWithToolBar
-          type="p"
-          style={{ ...styles.description }}
-          // name="title"
-          module="description"
-          data-oa-type="text"
-        >
-          {content?.description?.editorState}
-        </EditableWithToolBar>
-      </TextContainer>
-    </Grid>
-  );
-
   return (
     content && (
       <div
-        className={
-          classes.componentContainer + (className ? ` ${className}` : "")
-        }
+        className={classes.componentContainer}
+        style={{ backgroundColor: styles?.layout?.backgroundColor }}
         ref={ref}
       >
-        <Grid container columnSpacing={4} sx={{ ...styles.layout }}>
-          <Grid item xs={6}>
-            {content.imagePosition === "left" ? imageSection : textSection}
+        <div className={classes.box}>
+          <Grid container columnSpacing={4} sx={{ ...styles.layout }}>
+            <Grid
+              item
+              xs={6}
+              className={
+                content?.layout?.imagePosition === "right" ? classes.order1 : ""
+              }
+            >
+              <div
+                className={classes.image1}
+                style={{
+                  ...styles.background,
+                  backgroundImage:
+                    content?.backgroundPreview ||
+                    (content?.images
+                      ? `url(${content.images[0]?.url})`
+                      : 'url("/image/empty-image-dark.svg")'),
+                }}
+              ></div>
+            </Grid>
+            <Grid item sx={{ marginBottom: "2px" }} xs={6}>
+              <TextContainer>
+                <EditableWithToolBar
+                  type="h3"
+                  style={{ ...styles.title }}
+                  // name="title"
+                  module="title"
+                  data-oa-type="text"
+                >
+                  {content?.title?.editorState}
+                </EditableWithToolBar>
+
+                <EditableWithToolBar
+                  type="p"
+                  style={{ ...styles.description }}
+                  // name="title"
+                  module="description"
+                  data-oa-type="text"
+                >
+                  {content?.description?.editorState}
+                </EditableWithToolBar>
+              </TextContainer>
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            {content.imagePosition === "left" ? textSection : imageSection}
-          </Grid>
-        </Grid>
+        </div>
       </div>
     )
   );
 });
 
 const json = {
-  imagePosition: "right",
+  layout: {
+    imagePosition: "right",
+    backgroundColor: "#ffffff",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    paddingRight: "",
+    paddingLeft: "",
+    marginTop: "",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+  },
   name: "",
   title: {
     editorState: makeEditorState("Headline Content 1"),
@@ -123,16 +123,6 @@ const json = {
     backgroundPositionY: "center",
     backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
-  },
-  layout: {
-    paddingTop: "20px",
-    paddingBottom: "20px",
-    paddingRight: "",
-    paddingLeft: "",
-    marginTop: "",
-    marginBottom: "",
-    marginLeft: "",
-    marginRight: "",
   },
 };
 

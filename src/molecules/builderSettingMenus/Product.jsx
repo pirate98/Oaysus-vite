@@ -1,7 +1,7 @@
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import {
-  Background,
+  BackgroundButtons,
   BackgroundWithImage,
   Border,
   Discount,
@@ -15,6 +15,7 @@ import {
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import {
+  ColorSelector,
   ImageDisplayType,
   Position,
   ProductImageAlignment,
@@ -43,9 +44,16 @@ export function Product() {
 
   return (
     <SettingSectionContainer>
-      <EditWrapper>
+      <EditWrapper module="layout">
         <SettingSection title={"Layout"}>
-          <ProductImageAlignment />
+          <SettingFieldContainer>
+            <ProductImageAlignment />
+            <ColorSelector
+              title={"Background"}
+              name="backgroundColor"
+              defaultValue={component[layout]?.backgroundColor}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <SettingSection title={"Product Selected"}>
@@ -59,6 +67,7 @@ export function Product() {
               allowImageUpload={component["imageDisplayType"] === "custom"}
               module={"image"}
               data={component["image"]}
+              title={"Background"}
             />
             {/* <SettingFieldContainer>
             <Position module={"image"} data={component["image"]} />
@@ -107,12 +116,8 @@ export function Product() {
       <EditWrapper module={buyButton}>
         <SettingSection title={"Buy Button"}>
           <Style data={component[buyButton]} />
-          <Background
-            data={component[buyButton]}
-            image={false}
-            title={"BACKGROUND"}
-          />
-          <SettingFieldContainer title={"Size"}>
+          <BackgroundButtons data={component[buyButton]} title={"BACKGROUND"} />
+          <SettingFieldContainer title={"SIZE"}>
             <SettingField fieldName={"Width"}>
               <PxInput
                 placeholder="Enter size"
@@ -133,9 +138,8 @@ export function Product() {
       <EditWrapper module={declineButton}>
         <SettingSection title={"Decline Button"}>
           <Style data={component[declineButton]} />
-          <Background
+          <BackgroundButtons
             data={component[declineButton]}
-            image={false}
             title={"BACKGROUND"}
           />
           <SettingFieldContainer title={"SIZE"}>

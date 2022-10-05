@@ -3,14 +3,8 @@ import {
   SettingSection,
   SettingSectionContainer,
 } from "../../atoms";
-import { Slider } from "../builderSettingFields";
-import {
-  Margin,
-  Style,
-  Padding,
-  Background,
-  Border,
-} from "../builderSettingFieldGroups";
+import { ColorSelector, Slider } from "../builderSettingFields";
+import { Margin, Style, Padding, Border } from "../builderSettingFieldGroups";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";
@@ -29,10 +23,13 @@ export function CallToAction() {
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background
-            data={selectedPageComponent["background"]}
-            module={"background"}
-          />
+          <SettingFieldContainer>
+            <ColorSelector
+              title={"Color"}
+              name="backgroundColor"
+              defaultValue={selectedPageComponent["background"]}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"subTitle"}>

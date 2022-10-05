@@ -11,46 +11,47 @@ const fn = forwardRef(({ content, className }, ref) => {
 
   return (
     <div
-      className={
-        classes.componentContainer + (className ? ` ${className}` : "")
-      }
+      className={classes.componentContainer}
+      style={{ backgroundColor: styles?.layout?.backgroundColor }}
       ref={ref}
     >
-      <div
-        className={classes.offer}
-        style={{ ...styles.background, ...styles.layout }}
-      >
-        <Grid
-          justifyContent={"center"}
-          container
-          sx={{
-            whiteSpace: "pre-wrap",
-            ...styles.title,
-            display: content.title.visibility ? "inherit" : "none",
-          }}
+      <div className={classes.box}>
+        <div
+          className={classes.offer}
+          style={{ ...styles.layout, ...styles.background }}
         >
-          <Grid item>
-            <EditableWithToolBar
-              name="title"
-              module="title"
-              data-oa-type="text"
-              type="h3"
-            >
-              {content?.title?.editorState}
-            </EditableWithToolBar>
+          <Grid
+            justifyContent={"center"}
+            container
+            sx={{
+              whiteSpace: "pre-wrap",
+              ...styles.title,
+              display: content.title.visibility ? "inherit" : "none",
+            }}
+          >
+            <Grid item>
+              <EditableWithToolBar
+                name="title"
+                module="title"
+                data-oa-type="text"
+                type="h3"
+              >
+                {content?.title?.editorState}
+              </EditableWithToolBar>
+            </Grid>
+            <Grid item>
+              <p
+                module="countdown"
+                data-oa-type="duration"
+                style={{
+                  display: content.countdown.visibility ? "inherit" : "none",
+                }}
+              >
+                {content.countdown && content.countdown.duration + ":00"}
+              </p>
+            </Grid>
           </Grid>
-          <Grid item>
-            <p
-              module="countdown"
-              data-oa-type="duration"
-              style={{
-                display: content.countdown.visibility ? "inherit" : "none",
-              }}
-            >
-              {content.countdown && content.countdown.duration + ":00"}
-            </p>
-          </Grid>
-        </Grid>
+        </div>
       </div>
     </div>
   );
@@ -58,6 +59,18 @@ const fn = forwardRef(({ content, className }, ref) => {
 
 const json = {
   name: "",
+  layout: {
+    paddingTop: "37px",
+    paddingRight: "10px",
+    paddingBottom: "37px",
+    paddingLeft: "10px",
+    marginTop: "20px",
+    marginBottom: "20px",
+    marginLeft: "",
+    marginRight: "",
+    borderColor: "#008060",
+    backgroundColor: "#ffffff",
+  },
   title: {
     editorState: makeEditorState("Exclusive offer expires in: "),
     fontFamily: "Roboto",
@@ -86,17 +99,6 @@ const json = {
     backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-  },
-  layout: {
-    paddingTop: "37px",
-    paddingRight: "10px",
-    paddingBottom: "37px",
-    paddingLeft: "10px",
-    marginTop: "20px",
-    marginBottom: "20px",
-    marginLeft: "",
-    marginRight: "",
-    borderColor: "#008060",
   },
 };
 

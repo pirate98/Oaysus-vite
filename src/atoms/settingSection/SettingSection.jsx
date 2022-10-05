@@ -9,6 +9,7 @@ export function SettingSection({ title, children }) {
   return (
     <section className={classes.section}>
       <HiddenWrapperButton
+        className={classes.titleBar}
         fullWidth
         onClick={() => setSectionOpen(!sectionOpen)}
       >

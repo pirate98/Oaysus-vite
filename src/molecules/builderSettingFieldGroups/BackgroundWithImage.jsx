@@ -6,20 +6,20 @@ export function BackgroundWithImage({
   module,
   allowImageUpload = true,
   allowColorChange = true,
-  title = "Image",
+  title = "Color",
 }) {
   return (
     <>
       {allowColorChange && (
         <ColorSelector
-          title={"Color"}
+          title={title}
           name="backgroundColor"
           defaultValue={data.backgroundColor}
         />
       )}
       <>
         {allowImageUpload && (
-          <SettingField fieldName={title}>
+          <SettingField fieldName={"Image"}>
             <ImageUpload name={"backgroundImage"} module={module} />
           </SettingField>
         )}

@@ -20,36 +20,37 @@ const fn = forwardRef(({ content, className }, ref) => {
     //   spacing={2}
     // >
     <div
-      className={
-        classes.componentContainer + (className ? ` ${className}` : "")
-      }
+      className={classes.componentContainer}
+      style={{ backgroundColor: styles?.layout?.backgroundColor }}
       ref={ref}
     >
-      <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
-        <Grid item>
-          <EditableWithToolBar
-            type="h3"
-            className={classes.headline}
-            style={styles.title}
-            module="title"
-            data-oa-type="text"
-          >
-            {content?.title?.editorState}
-          </EditableWithToolBar>
-          <EditableWithToolBar
-            type="p"
-            style={styles.description}
-            module="description"
-            data-oa-type="text"
-          >
-            {content?.description?.editorState}
-          </EditableWithToolBar>
-        </Grid>
-        <Grid item sx={{ width: "208px" }}>
-          <BuilderButton variant="contained" sx={styles.buyButton}>
-            Buy Now
-          </BuilderButton>
-        </Grid>
+      <div className={classes.box}>
+        <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
+          <Grid item>
+            <EditableWithToolBar
+              type="h3"
+              className={classes.headline}
+              style={styles.title}
+              module="title"
+              data-oa-type="text"
+            >
+              {content?.title?.editorState}
+            </EditableWithToolBar>
+            <EditableWithToolBar
+              type="p"
+              style={styles.description}
+              module="description"
+              data-oa-type="text"
+            >
+              {content?.description?.editorState}
+            </EditableWithToolBar>
+          </Grid>
+          <Grid item sx={{ width: "208px" }}>
+            <BuilderButton variant="contained" sx={styles.buyButton}>
+              Buy Now
+            </BuilderButton>
+          </Grid>
+        </div>
       </div>
     </div>
   );
@@ -123,6 +124,7 @@ const json = {
     marginBottom: "20px",
     marginLeft: "",
     marginRight: "",
+    backgroundColor: "#ffffff",
   },
 };
 

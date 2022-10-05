@@ -1,4 +1,5 @@
 const allowedFields = [
+  "&:hover",
   "color",
   "backgroundColor",
   "background",

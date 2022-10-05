@@ -14,108 +14,115 @@ import { ImageSelector } from "./ImageSelector";
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
-  const [value, setValue] = useState(2);
-
   return (
-    <div className={classes.componentContainer}>
-      <Grid
-        // item
-        container
-        ref={ref}
-        columnSpacing={4}
-        className={className ? ` ${className}` : ""}
-        sx={{ ...styles.layout }}
-      >
+    <div
+      className={classes.componentContainer}
+      style={{ backgroundColor: styles?.layout?.backgroundColor }}
+      ref={ref}
+    >
+      <div className={classes.box}>
         <Grid
-          item
-          xs={6}
-          className={content.imagePosition === "right" ? classes.order1 : ""}
+          // item
+          container
+          columnSpacing={4}
+          // className={className ? ` ${className}` : ""}
+          sx={{ ...styles.layout }}
         >
-          <ImageSelector content={content} style={styles.image} />
+          <Grid
+            item
+            xs={6}
+            className={
+              content?.layout?.imagePosition === "right" ? classes.order1 : ""
+            }
+          >
+            <ImageSelector content={content} style={styles.image} />
+          </Grid>
+          <Grid item xs={6} container spacing={2} alignContent="baseline">
+            <Grid item sx={{ marginBottom: "2px" }}>
+              <TextContainer>
+                <EditableWithToolBar
+                  // hidden={true}
+                  style={{
+                    ...styles.title,
+                  }}
+                  module="title"
+                  type="h3"
+                >
+                  {content?.title?.editorState}
+                </EditableWithToolBar>
+                <Grid
+                  container
+                  sx={{
+                    display: content?.reviews?.visibility ? "flex" : "none",
+                  }}
+                >
+                  <Rating
+                    name="read-only"
+                    value={content?.reviews?.rating}
+                    readOnly
+                  />
+                  {/* <p className={classes.starText}>5.0 Best Seller</p> */}
+                </Grid>
+                <EditableWithToolBar
+                  // hidden={true}
+                  style={{
+                    ...styles.description,
+                  }}
+                  name="description"
+                  module="description"
+                  data-oa-type="text"
+                  type="p"
+                >
+                  {content.description?.editorState}
+                </EditableWithToolBar>
+              </TextContainer>
+            </Grid>
+            <Grid item xs={12}>
+              <Stack distribution="fill" vertical spacing="tight">
+                <Stack distribution="equalSpacing">
+                  <Text color="subdued" fontWeight="regular">
+                    Subtotal
+                  </Text>
+                  <Text color="subdued" fontWeight="regular">
+                    $ 20.00
+                  </Text>
+                </Stack>
+                <Stack distribution="equalSpacing">
+                  <Text color="subdued" fontWeight="regular">
+                    Taxes
+                  </Text>
+                  <Text color="subdued" fontWeight="regular">
+                    N/A
+                  </Text>
+                </Stack>
+                <div className={classes.divider}></div>
+                <Stack distribution="equalSpacing">
+                  <Text fontWeight="regular">Total</Text>
+                  <Text fontWeight="regular">$ 20.00</Text>
+                </Stack>
+              </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              {/* <ButtonGroup fullWidth> */}
+              <BuilderButton sx={{ ...styles.buyButton }}>
+                Buy Now
+              </BuilderButton>
+              <BuilderButton sx={{ ...styles.declineButton }}>
+                Decline this offer
+              </BuilderButton>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={6} container spacing={2} alignContent="baseline">
-          <Grid item sx={{ marginBottom: "2px" }}>
-            <TextContainer>
-              <EditableWithToolBar
-                // hidden={true}
-                style={{
-                  ...styles.title,
-                }}
-                module="title"
-                type="h3"
-              >
-                {content?.title?.editorState}
-              </EditableWithToolBar>
-              <Grid
-                container
-                sx={{
-                  display: content?.reviews?.visibility ? "flex" : "none",
-                }}
-              >
-                <Rating
-                  name="read-only"
-                  value={content?.reviews?.rating}
-                  readOnly
-                />
-                {/* <p className={classes.starText}>5.0 Best Seller</p> */}
-              </Grid>
-              <EditableWithToolBar
-                // hidden={true}
-                style={{
-                  ...styles.description,
-                }}
-                name="description"
-                module="description"
-                data-oa-type="text"
-                type="p"
-              >
-                {content.description?.editorState}
-              </EditableWithToolBar>
-            </TextContainer>
-          </Grid>
-          <Grid item xs={12}>
-            <Stack distribution="fill" vertical spacing="tight">
-              <Stack distribution="equalSpacing">
-                <Text color="subdued" fontWeight="regular">
-                  Subtotal
-                </Text>
-                <Text color="subdued" fontWeight="regular">
-                  $ 20.00
-                </Text>
-              </Stack>
-              <Stack distribution="equalSpacing">
-                <Text color="subdued" fontWeight="regular">
-                  Taxes
-                </Text>
-                <Text color="subdued" fontWeight="regular">
-                  N/A
-                </Text>
-              </Stack>
-              <div className={classes.divider}></div>
-              <Stack distribution="equalSpacing">
-                <Text fontWeight="regular">Total</Text>
-                <Text fontWeight="regular">$ 20.00</Text>
-              </Stack>
-            </Stack>
-          </Grid>
-          <Grid item xs={12}>
-            {/* <ButtonGroup fullWidth> */}
-            <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
-            <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
-              Decline this offer
-            </BuilderButton>
-          </Grid>
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 });
 
 const json = {
   name: "",
-  imagePosition: "left",
   imageDisplayType: "single",
   layout: {
+    imagePosition: "left", // not css?
     paddingTop: "42px",
     paddingRight: "",
     paddingBottom: "20px",
@@ -124,6 +131,7 @@ const json = {
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
+    backgroundColor: "#ffffff",
   },
   reviews: {
     visibility: true,
@@ -137,6 +145,7 @@ const json = {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+    backgroundColor: "#e0e0e0",
   },
   images: [
     "url(/mockData/flowers.jpg)",
@@ -200,6 +209,10 @@ const json = {
     borderColor: "#008060",
     color: "#ffffff",
     backgroundColor: "#008060",
+
+    "&:hover": {
+      backgroundColor: "#008060",
+    },
   },
   declineButton: {
     marginBottom: "10px",
@@ -209,11 +222,15 @@ const json = {
     lineHeight: "20px",
     borderRadius: "4px",
     borderStyle: "solid",
-    borderWidth: "0px",
+    borderWidth: "1px",
 
     color: "#000000",
     borderColor: "#babfc3",
     backgroundColor: "#ffffff",
+
+    "&:hover": {
+      backgroundColor: "#f6f6f7",
+    },
   },
 };
 

@@ -11,11 +11,10 @@ const fn = forwardRef(({ content, className }, ref) => {
       ref={ref}
       className={classes.w100 + (className ? ` ${className}` : "")}
       style={{
-        backgroundImage:
-          content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
-        backgroundSize: false ? "cover" : "unset",
         ...styles.sizing,
         ...styles.background,
+        backgroundImage:
+          content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
       }}
     ></div>
   );

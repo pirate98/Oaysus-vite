@@ -5,7 +5,6 @@ import {
   Visibility,
   VideoURL,
   CountDown,
-  Background,
   BackgroundWithImage,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";

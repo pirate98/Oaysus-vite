@@ -11,27 +11,20 @@ const styles = {
   },
 };
 
-export const BuilderButton = styled((props) => {
-  const { color, children } = props;
-
-  const mutableProps = { ...props };
-  delete mutableProps.color;
-
-  return (
-    <PlainButton
-      variant="contained"
-      sx={{
-        "&":
-          color === "white"
-            ? { ...styles.whiteButton, "&:hover": { ...styles.whiteButton } }
-            : {},
-      }}
-      {...mutableProps}
-    >
-      {children}
-    </PlainButton>
-  );
-})({
+export const BuilderButton = styled(({ color, children, ...rest }) => (
+  <PlainButton
+    variant="contained"
+    sx={{
+      "&":
+        color === "white"
+          ? { ...styles.whiteButton, "&:hover": { ...styles.whiteButton } }
+          : {},
+    }}
+    {...rest}
+  >
+    {children}
+  </PlainButton>
+))({
   height: "44px",
   fontFamily: variables.fontFamily,
   fontSize: "16px",
@@ -41,7 +34,7 @@ export const BuilderButton = styled((props) => {
   color: "white",
   width: "100%",
   "&:hover": {
-    backgroundColor: variables.shopifyGreen,
+    backgroundColor: "variables.shopifyGreen",
     // borderColor: "black",
   },
 });

@@ -21,7 +21,9 @@ export function ImageAlignment() {
 
   const component = useGetSelectedPageComponent();
 
-  const { imagePosition } = component;
+  const {
+    layout: { imagePosition },
+  } = component;
 
   return (
     <div className={classes.container}>

@@ -15,6 +15,7 @@ export function ImageSelector({ content, style }) {
           className={classes.imageEmpty}
           style={{
             ...style,
+            backgroundImage: content?.backgroundPreview,
           }}
         ></div>
       )}

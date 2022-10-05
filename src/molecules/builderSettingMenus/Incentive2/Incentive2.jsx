@@ -1,4 +1,8 @@
-import { SettingSection, SettingSectionContainer } from "../../../atoms";
+import {
+  SettingFieldContainer,
+  SettingSection,
+  SettingSectionContainer,
+} from "../../../atoms";
 
 import {
   Margin,
@@ -6,10 +10,11 @@ import {
   Padding,
   Visibility,
   CountDown,
-  Background,
+  BackgroundButtons,
 } from "../../builderSettingFieldGroups";
 import { EditWrapper } from "../EditWrapper";
 import { useGetSelectedPageComponent } from "../../../hooks";
+import { ColorSelector } from "../../builderSettingFields";
 
 export function Incentive2() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -31,14 +36,26 @@ export function Incentive2() {
       </EditWrapper>
       <EditWrapper module={"background"}>
         <SettingSection title={"Background"}>
-          <Background
-            data={selectedPageComponent["background"]}
-            module={"background"}
-          />
+          <SettingFieldContainer title={"Title"}>
+            <ColorSelector
+              title={"Color"}
+              name="backgroundColor"
+              defaultValue={
+                selectedPageComponent["background"]["backgroundColor"]
+              }
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout & Spacing"}>
+          <SettingFieldContainer>
+            <ColorSelector
+              title={"Background"}
+              name="backgroundColor"
+              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
+            />
+          </SettingFieldContainer>
           <Margin data={selectedPageComponent["layout"]} />
           <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>

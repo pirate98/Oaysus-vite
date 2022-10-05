@@ -4,7 +4,7 @@ export * from "./Style";
 export * from "./VideoURL";
 export * from "../builderSettingFields/Visibility";
 export * from "./CountDown";
-export * from "./Background";
+export * from "./BackgroundButtons";
 export * from "./BackgroundWithImage";
 export * from "./Border";
 export * from "./Discount";

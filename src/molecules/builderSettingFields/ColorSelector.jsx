@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
+import { SettingField } from "../../atoms";
 
 import classes from "./.module.scss";
 
@@ -15,8 +16,7 @@ export function ColorSelector({ name, title, defaultValue = "#000000" }) {
   };
 
   return (
-    <div className={classes.singleAttribute}>
-      <p>{title}</p>
+    <SettingField fieldName={title}>
       <div className={classes.colorInputContainer}>
         <label htmlFor={colorInputId}>
           <span
@@ -38,6 +38,6 @@ export function ColorSelector({ name, title, defaultValue = "#000000" }) {
           className={classes.inputColor}
         />
       </div>
-    </div>
+    </SettingField>
   );
 }

@@ -2,14 +2,19 @@
 
 .componentContainer {
   // width: auto !important;
-  margin: 0 6rem !important;
   // display: flex;
   justify-content: center;
   // overflow: auto;
   display: inline-block;
   flex-grow: 1;
   // width: 100%;
+}
+
+.box {
   max-width: 710px;
+  margin: 0 auto !important;
+  display: flex;
+  justify-content: center;
 }
 
 .buyBox {
@@ -155,4 +160,8 @@
     width: 24px;
     height: auto;
   }
+}
+
+.order1 {
+  order: 1;
 }

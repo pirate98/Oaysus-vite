@@ -6,7 +6,11 @@ import {
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ImageAlignment, Position } from "../builderSettingFields";
+import {
+  ColorSelector,
+  ImageAlignment,
+  Position,
+} from "../builderSettingFields";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { builderSettings } from "../../data/builderSettings";
@@ -18,9 +22,18 @@ export function Content1() {
 
   return (
     <SettingSectionContainer>
-      <EditWrapper>
+      <EditWrapper module={"layout"}>
         <SettingSection title={"Layout"}>
-          <ImageAlignment />
+          <SettingFieldContainer>
+            <ImageAlignment />
+            <ColorSelector
+              title={"Background"}
+              name="backgroundColor"
+              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
+            />
+          </SettingFieldContainer>
+          <Margin data={selectedPageComponent["layout"]} />
+          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"title"}>
@@ -52,12 +65,6 @@ export function Content1() {
               data={selectedPageComponent[background]}
             />
           </SettingFieldContainer>
-        </SettingSection>
-      </EditWrapper>
-      <EditWrapper module={"layout"}>
-        <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponent["layout"]} />
-          <Padding data={selectedPageComponent["layout"]} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
