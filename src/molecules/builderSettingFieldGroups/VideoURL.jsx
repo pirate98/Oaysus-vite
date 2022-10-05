@@ -5,7 +5,7 @@ export function VideoURL() {
   return (
     <SettingFieldContainer title={""}>
       <p className={classes.p}>YouTube URL</p>
-      <Input fullWidth />
+      <Input name={"url"} fullWidth />
     </SettingFieldContainer>
   );
 }

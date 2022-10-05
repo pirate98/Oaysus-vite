@@ -9,6 +9,8 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import { EditWrapper } from "./EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
+import { ColorSelector } from "../builderSettingFields";
+import { SettingFieldContainer } from "../../atoms";
 
 export function Video() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -26,6 +28,17 @@ export function Video() {
       <EditWrapper module={"video"}>
         <SettingSection title={"Video URL"}>
           <VideoURL data={selectedPageComponent["video"]} />
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"layout"}>
+        <SettingSection title={"Layout"}>
+          <SettingFieldContainer>
+            <ColorSelector
+              title={"Background"}
+              name="backgroundColor"
+              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
