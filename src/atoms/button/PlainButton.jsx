@@ -22,5 +22,6 @@ export const PlainButton = styled((props) => (
 
   "&:hover": {
     background: variables.secondaryHover,
+    boxShadow: "none",
   },
 });

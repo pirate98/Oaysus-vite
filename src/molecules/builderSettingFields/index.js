@@ -3,7 +3,7 @@ export * from "./Distances";
 export * from "./ImageUpload";
 export * from "./Slider";
 export * from "./BackgroundPosition";
-export * from "./ButtonGroupTemplate";
+export * from "./templates/ButtonGroupTemplate";
 export * from "./Alignment";
 export * from "./FontFamily";
 export * from "./FontWeight";

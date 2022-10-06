@@ -1,4 +1,6 @@
 import {
+  PxInput,
+  SettingField,
   SettingFieldContainer,
   SettingSection,
   SettingSectionContainer,
@@ -37,19 +39,18 @@ export function Action() {
       <EditWrapper module={"buyButton"}>
         <SettingSection title={"Buy Button"}>
           <Style
-            background
+            buttonBackground
             module={"buyButton"}
             data={selectedPageComponent["buyButton"]}
           />
           <SettingFieldContainer title={"SIZE"}>
-            <Slider
-              title={"Width"}
-              defaultValue={removePx(
-                selectedPageComponent["buyButton"]["width"]
-              )}
-              module={"buyButton"}
-              name={"width"}
-            />
+            <SettingField fieldName={"Width"}>
+              <PxInput
+                placeholder="Enter size"
+                value={removePx(selectedPageComponent["buyButton"]["width"])}
+                name={"width_px"}
+              />
+            </SettingField>
           </SettingFieldContainer>
           <Border
             title={"BORDER"}

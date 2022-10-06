@@ -34,7 +34,7 @@ export const BuilderButton = styled(({ color, children, ...rest }) => (
   color: "white",
   width: "100%",
   "&:hover": {
-    backgroundColor: "variables.shopifyGreen",
+    backgroundColor: variables.primaryHover,
     // borderColor: "black",
   },
 });

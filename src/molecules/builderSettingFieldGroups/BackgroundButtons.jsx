@@ -1,18 +1,20 @@
 import { SettingFieldContainer } from "../../atoms";
 import { ColorSelector } from "../builderSettingFields";
 
-export function BackgroundButtons({ data, title }) {
+export function BackgroundButtons({ data, title, module }) {
   return (
     <SettingFieldContainer title={title}>
       <ColorSelector
         title={"Color"}
         name="backgroundColor"
-        defaultValue={data.backgroundColor}
+        value={data.backgroundColor}
+        module={module}
       />
       <ColorSelector
         title={"Hover Color"}
         name={["&:hover", "backgroundColor"]}
-        defaultValue={data["&:hover"]?.backgroundColor}
+        value={data["&:hover"]?.backgroundColor}
+        module={module}
       />
     </SettingFieldContainer>
   );

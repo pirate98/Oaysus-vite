@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 
 import { EditableWithToolBar } from "../../wrappers";
 import classes from "./.module.scss";
@@ -101,6 +100,10 @@ const json = {
     borderWidth: "0",
     borderRadius: "",
     borderColor: "#000000",
+
+    "&:hover": {
+      backgroundColor: variables.primaryHover,
+    },
   },
 };
 

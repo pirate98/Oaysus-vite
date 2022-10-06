@@ -49,7 +49,7 @@ export function Request() {
         <SettingSection title={"Buy Button"}>
           <Style
             weight
-            background
+            buttonBackground
             data={selectedPageComponent["buyButton"]}
             module={"buyButton"}
           />

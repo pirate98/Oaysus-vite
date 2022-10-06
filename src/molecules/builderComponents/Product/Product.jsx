@@ -10,6 +10,7 @@ import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 import { ImageSelector } from "./ImageSelector";
+import variables from "../../../assets/css/_variables.module.scss";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -211,7 +212,7 @@ const json = {
     backgroundColor: "#008060",
 
     "&:hover": {
-      backgroundColor: "#008060",
+      backgroundColor: variables.primaryHover,
     },
   },
   declineButton: {

@@ -1,4 +1,4 @@
-import { ButtonGroupTemplate } from "./ButtonGroupTemplate";
+import { ButtonGroupTemplate } from "./templates/ButtonGroupTemplate";
 
 export function BackgroundPosition({ data = {} }) {
   // console.log({ data });

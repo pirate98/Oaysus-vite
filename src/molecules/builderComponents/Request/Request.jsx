@@ -6,6 +6,7 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { BuilderButton } from "../../../atoms";
 import { EditableWithToolBar } from "../../wrappers";
+import variables from "../../../assets/css/_variables.module.scss";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -95,12 +96,6 @@ const json = {
     marginRight: "",
     visibility: true,
   },
-  // background: {
-  //   backgroundColor: "#008060",
-  //   backgroundImage: "url(/mockData/flowers.jpg)",
-  //   backgroundSize: "contain",
-  //   backgroundRepeat: "no-repeat",
-  // },
   border: {
     borderStyle: "solid",
     borderWidth: "0",
@@ -109,11 +104,22 @@ const json = {
   },
   size: { width: "" },
   buyButton: {
-    fontFamily: "Roboto",
-    fontWeight: "400",
     marginBottom: "20px",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "20px",
+    borderRadius: "4px",
+    borderStyle: "solid",
+    borderWidth: "0px",
+
+    borderColor: "#008060",
+    color: "#ffffff",
     backgroundColor: "#008060",
-    color: "white",
+
+    "&:hover": {
+      backgroundColor: variables.primaryHover,
+    },
   },
   layout: {
     paddingTop: "",
