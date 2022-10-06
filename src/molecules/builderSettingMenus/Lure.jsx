@@ -2,7 +2,7 @@ import {
   SettingFieldContainer,
   SettingSection,
   SettingSectionContainer,
-} from "../../../atoms";
+} from "../../atoms";
 
 import {
   Margin,
@@ -12,12 +12,12 @@ import {
   CountDown,
   BackgroundButtons,
   Layout,
-} from "../../builderSettingFieldGroups";
-import { EditWrapper } from "../../wrappers";
-import { useGetSelectedPageComponent } from "../../../hooks";
-import { ColorSelector } from "../../builderSettingFields";
+} from "../builderSettingFieldGroups";
+import { EditWrapper } from "../wrappers";
+import { useGetSelectedPageComponent } from "../../hooks";
+import { ColorSelector } from "../builderSettingFields";
 
-export function Incentive2() {
+export function Lure() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (

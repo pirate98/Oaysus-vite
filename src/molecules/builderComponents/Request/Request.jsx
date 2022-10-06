@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { BuilderButton } from "../../../atoms";
-import { EditableWithToolBar } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -130,4 +130,4 @@ const json = {
 
 Object.defineProperty(fn, "json", { value: json });
 
-export const Content2 = fn;
+export const Request = fn;

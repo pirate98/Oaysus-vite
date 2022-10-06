@@ -1,4 +1,4 @@
-export function CallToAction({
+export function Action({
   primary = "#F2F2F2",
   secondary = "#BDBDBD",
   primaryHover = "#ffffff",

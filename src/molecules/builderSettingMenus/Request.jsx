@@ -17,7 +17,7 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { removePx } from "../helpers/builder";
 
-export function Content2() {
+export function Request() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (

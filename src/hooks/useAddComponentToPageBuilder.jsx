@@ -23,7 +23,7 @@ export const useAddComponentToPageBuilder = () => {
     );
 
     let newPage = [...pageComponents];
-    // console.log(builderComponents["Incentive1"].json);
+    // console.log(builderComponents["Exclusive"].json);
     const numerizedName = numerateTheName(newPage, componentName);
 
     newPage.splice(blankComponentIndex, 1, {

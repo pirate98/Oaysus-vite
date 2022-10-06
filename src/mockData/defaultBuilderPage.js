@@ -2,16 +2,16 @@ import * as builderComponents from "../molecules/builderComponents";
 import { numerateTheName } from "../molecules/helpers/builder";
 
 const componentsToAddOnInitialLoad = [
-  "Incentive1",
+  "Exclusive",
   "Banner",
   // "Blank",
   "Product",
-  "Content1",
-  "Content1",
-  "Incentive2",
+  "Feature",
+  "Feature",
+  "Lure",
   "Video",
-  "Content2",
-  "CallToAction",
+  "Request",
+  "Action",
 ];
 
 export default () => {

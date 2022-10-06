@@ -1,4 +1,4 @@
-export function Incentive1({
+export function Lure({
   primary = "#008060",
   secondary = "white",
   hover = false,
@@ -19,18 +19,18 @@ export function Incentive1({
         fill={hover ? secondary : primary}
       />
       <rect
-        x="27"
-        y="7"
-        width="40.25"
-        height="5.25"
+        x="11"
+        y="11"
+        width="47"
+        height="5"
         rx="1"
         fill={hover ? primary : secondary}
       />
       <rect
-        x="32.25"
-        y="15.75"
-        width="29.75"
-        height="5.25"
+        x="65"
+        y="11"
+        width="19"
+        height="5"
         rx="1"
         fill={hover ? primary : secondary}
       />

@@ -4,7 +4,7 @@ import classes from "./.module.scss";
 
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { Grid } from "@mui/material";
-import { EditableWithToolBar } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -131,4 +131,4 @@ const json = {
 
 Object.defineProperty(fn, "json", { value: json });
 
-export const Incentive1 = fn;
+export const Exclusive = fn;

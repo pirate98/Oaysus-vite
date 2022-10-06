@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-import { EditableWithToolBar } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers";
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
@@ -106,4 +106,4 @@ const json = {
 
 Object.defineProperty(fn, "json", { value: json });
 
-export const CallToAction = fn;
+export const Action = fn;

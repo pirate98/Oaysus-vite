@@ -22,14 +22,14 @@ export function BuilderMenu() {
     _selectedPageComponentName;
 
   const componentFunctionNames = [
-    "Incentive1",
-    "Incentive2",
+    "Exclusive",
+    "Lure",
     "Banner",
-    "Content1",
-    "Content2",
+    "Feature",
+    "Request",
     "Product",
     "Video",
-    "CallToAction",
+    "Action",
   ];
 
   return selectedPageComponentName ? (

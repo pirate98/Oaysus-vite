@@ -18,7 +18,7 @@ import { builderSettings } from "../../data/builderSettings";
 import { SettingFieldContainer } from "../../atoms";
 const { image } = builderSettings?.fieldNames;
 
-export function Content1() {
+export function Feature() {
   const component = useGetSelectedPageComponent();
 
   return (

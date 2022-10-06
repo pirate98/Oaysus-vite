@@ -17,7 +17,7 @@ const {
   fieldNames: { layout, title, subTitle, countdown },
 } = builderSettings;
 
-export function Incentive1() {
+export function Exclusive() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (

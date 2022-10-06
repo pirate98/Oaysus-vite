@@ -48,6 +48,7 @@ export function Style({
         defaultValue={data["color"]}
         name={"color"}
         title={"Font Color"}
+        module={module}
       />
     </SettingFieldContainer>
   );

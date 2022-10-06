@@ -15,7 +15,7 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";
 import { EditWrapper } from "../wrappers";
 
-export function CallToAction() {
+export function Action() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (

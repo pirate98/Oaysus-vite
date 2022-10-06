@@ -5,7 +5,7 @@ import { TextContainer } from "@shopify/polaris";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
-import { EditableWithToolBar } from "../../wrappers/";
+import { EditableWithToolBar } from "../../wrappers";
 
 const fn = forwardRef(({ content, className, ...rest }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -129,4 +129,4 @@ const json = {
 
 Object.defineProperty(fn, "json", { value: json });
 
-export const Content1 = fn;
+export const Feature = fn;
