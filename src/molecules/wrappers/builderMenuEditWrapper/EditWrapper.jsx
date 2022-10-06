@@ -23,14 +23,6 @@ export function EditWrapper({ children, ...props }) {
     // console.log({ module, key, value });
     if (!key) return;
 
-    if (key.includes("&")) {
-      const [key1, key2] = key.split(",");
-
-      key = key1;
-      // move handling this to redux later
-      value = { [key2]: value };
-    }
-
     if (key.includes("px")) {
       value += "px";
       key = key.split("_")[0];

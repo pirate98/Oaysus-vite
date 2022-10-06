@@ -54,7 +54,8 @@ export function FontWeight({ defaultValue, module }) {
 
     // If new font family doesnt have selected weight update the weight
     const fontWeightExists = fontWeightList.some(
-      (_fontWeight) => _fontWeight.toString() === fontWeight.toString()
+      (_fontWeight) =>
+        _fontWeight && _fontWeight?.toString() === fontWeight?.toString()
     );
 
     // console.log({ fontWeightList, fontWeight });

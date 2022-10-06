@@ -40,7 +40,7 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
         >
           <span
             className={classes.colorPicker}
-            style={{ backgroundColor: value }}
+            style={{ backgroundColor: internalValue }}
           ></span>
         </label>
         <input

@@ -22,7 +22,8 @@ export function Border({ title = "MARGIN", data, module }) {
       <ColorSelector
         title={"Color"}
         name="borderColor"
-        defaultValue={data.borderColor}
+        module={module}
+        value={data.borderColor}
       />
     </SettingFieldContainer>
   );

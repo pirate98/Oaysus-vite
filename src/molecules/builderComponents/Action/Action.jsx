@@ -37,7 +37,7 @@ const fn = forwardRef(({ content, className }, ref) => {
             </EditableWithToolBar>
           </Grid>
           <Grid item>
-            <div className={classes.textGreen} style={{ ...styles.money }}>
+            <div className={classes.textGreen} style={{ ...styles.subTitle }}>
               &nbsp;for $20.00
             </div>
           </Grid>
@@ -67,7 +67,7 @@ const json = {
     visibility: true,
     textAlign: "center",
   },
-  money: {
+  subTitle: {
     fontFamily: "Roboto",
     lineHeight: "20px",
     fontSize: "24px",

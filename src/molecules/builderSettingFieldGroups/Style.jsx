@@ -52,7 +52,7 @@ export function Style({
         </div>
         {/* {!alignment && <Alignment />} */}
         <ColorSelector
-          defaultValue={data["color"]}
+          value={data["color"]}
           name={"color"}
           title={"Font Color"}
           module={module}
