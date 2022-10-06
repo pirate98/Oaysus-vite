@@ -16,7 +16,11 @@ const fn = forwardRef(({ content, className }, ref) => {
           classes.incentiveContainer + (className ? ` ${className}` : "")
         }
         ref={ref}
-        style={{ ...styles.background, ...styles.layout }}
+        style={{
+          ...styles.background,
+          ...styles.layout,
+          backgroundImage: content?.backgroundPreview,
+        }}
       >
         <EditableWithToolBar
           // hidden={true}
