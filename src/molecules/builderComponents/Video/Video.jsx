@@ -49,6 +49,7 @@ const fn = forwardRef(({ content }, ref) => {
                   ? false
                   : 'url("/image/play.svg"), url("/image/empty-video.svg")',
                 backgroundSize: false ? "cover" : "unset",
+                paddingBottom: "56.25%",
               }}
             ></div>
           )}
