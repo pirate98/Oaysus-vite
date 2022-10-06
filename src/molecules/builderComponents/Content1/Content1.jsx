@@ -123,6 +123,7 @@ const json = {
     backgroundPositionY: "center",
     backgroundSize: "auto",
     backgroundRepeat: "no-repeat",
+    backgroundColor: "#e0e0e0",
   },
 };
 
