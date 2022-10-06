@@ -2,9 +2,10 @@ import { SettingSectionContainer } from "../../atoms/settingSection/SettingSecti
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import {
   BackgroundButtons,
-  BackgroundWithImage,
+  ProductBackgroundImage,
   Border,
   Discount,
+  Layout,
   Margin,
   Padding,
   Quantity,
@@ -12,12 +13,12 @@ import {
   Style,
   Visibility,
 } from "../builderSettingFieldGroups";
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import {
   ColorSelector,
   ImageDisplayType,
-  Position,
+  BackgroundPosition,
   ProductImageAlignment,
   ProductSelect,
   Slider,
@@ -44,18 +45,6 @@ export function Product() {
 
   return (
     <SettingSectionContainer>
-      <EditWrapper module="layout">
-        <SettingSection title={"Layout"}>
-          <SettingFieldContainer>
-            <ProductImageAlignment />
-            <ColorSelector
-              title={"Background"}
-              name="backgroundColor"
-              defaultValue={component[layout]?.backgroundColor}
-            />
-          </SettingFieldContainer>
-        </SettingSection>
-      </EditWrapper>
       <SettingSection title={"Product Selected"}>
         <ProductSelect />
       </SettingSection>
@@ -63,14 +52,14 @@ export function Product() {
         <SettingSection title={"Product Image"}>
           <SettingFieldContainer>
             <ImageDisplayType />
-            <BackgroundWithImage
+            <ProductBackgroundImage
               allowImageUpload={component["imageDisplayType"] === "custom"}
               module={"image"}
               data={component["image"]}
               title={"Background"}
             />
             {/* <SettingFieldContainer>
-            <Position module={"image"} data={component["image"]} />
+            <BackgroundPosition module={"image"} data={component["image"]} />
           </SettingFieldContainer> */}
           </SettingFieldContainer>
           <Border title={"BORDER"} module={"image"} data={component["image"]} />
@@ -154,6 +143,15 @@ export function Product() {
           <Border data={component[declineButton]} title={"BORDER"} />
           <Margin data={component[declineButton]} />
           <Padding data={component[declineButton]} />
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module="layout">
+        <SettingSection title={"Layout"}>
+          <Layout>
+            <SettingFieldContainer>
+              <ProductImageAlignment />
+            </SettingFieldContainer>
+          </Layout>
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

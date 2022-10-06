@@ -1,8 +1,18 @@
-import { Margin, Style, Padding, Border } from "../builderSettingFieldGroups";
+import {
+  Margin,
+  Style,
+  Padding,
+  Border,
+  Layout,
+} from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ColorSelector, Position, Slider } from "../builderSettingFields";
-import { EditWrapper } from "./EditWrapper";
+import {
+  ColorSelector,
+  BackgroundPosition,
+  Slider,
+} from "../builderSettingFields";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { removePx } from "../helpers/builder";
@@ -64,16 +74,8 @@ export function Content2() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
-        <SettingSection title={"Layout & Spacing"}>
-          <SettingFieldContainer>
-            <ColorSelector
-              title={"Background"}
-              name="backgroundColor"
-              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
-            />
-          </SettingFieldContainer>
-          <Margin data={selectedPageComponent["layout"]} />
-          <Padding data={selectedPageComponent["layout"]} />
+        <SettingSection title={"Layout"}>
+          <Layout />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

@@ -1,10 +1,9 @@
-import { SettingFieldContainer } from "../../../atoms";
-import classes from "./.module.scss";
-import { ProductAlignLeft, ProductAlignRight } from "../../builderButtons";
 import { useState } from "react";
+
+import classes from "./AlignImageTemplate.module.scss";
 import { useGetSelectedPageComponent } from "../../../hooks";
 
-export function ProductImageAlignment() {
+export function AlignImageTemplate({ LeftImage, RightImage }) {
   const [hoveredLabel, setHoveredLabel] = useState(undefined);
 
   const handleMouseOut = () => setHoveredLabel(undefined);
@@ -27,7 +26,7 @@ export function ProductImageAlignment() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseOut}
         >
-          <ProductAlignLeft
+          <LeftImage
             hover={hoveredLabel === "imageLeft" || imagePosition === "left"}
           />
         </label>
@@ -46,7 +45,7 @@ export function ProductImageAlignment() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseOut}
         >
-          <ProductAlignRight
+          <RightImage
             hover={hoveredLabel === "imageRight" || imagePosition === "right"}
           />
         </label>

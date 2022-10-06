@@ -1,6 +1,6 @@
 import { ButtonGroupTemplate } from "./ButtonGroupTemplate";
 
-export function Position({ data = {} }) {
+export function BackgroundPosition({ data = {} }) {
   // console.log({ data });
   const handleClick = (e) => e.target.blur();
 

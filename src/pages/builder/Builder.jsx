@@ -7,7 +7,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
-import { Components } from "../../organisms/builderComponents/Components";
+import { BuilderMenu } from "../../organisms/builderMenu/BuilderMenu";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import {
   setSelectedPageComponentName,
@@ -55,7 +55,7 @@ export default function Builder() {
               ))}
             </div>
           )}
-          {activeMenu === 0 ? <Components /> : <Templates />}
+          {activeMenu === 0 ? <BuilderMenu /> : <Templates />}
         </section>
         <main className={classes.main}>
           <section className={classes.rightSection}>

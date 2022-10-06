@@ -5,24 +5,25 @@ import {
   Visibility,
   VideoURL,
   CountDown,
-  BackgroundWithImage,
+  ProductBackgroundImage,
+  Layout,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { builderSettings } from "../../data/builderSettings";
-import { SettingFieldContainer } from "../../atoms";
+const {
+  fieldNames: { layout, title, subTitle, countdown },
+} = builderSettings;
 
 export function Incentive1() {
   const selectedPageComponent = useGetSelectedPageComponent();
-  const { title, subTitle, background, layout, countdown } =
-    builderSettings.fieldNames;
 
   return (
     <SettingSectionContainer>
       <EditWrapper module={title}>
-        <SettingSection title={"Title text"}>
+        <SettingSection title={"Title"}>
           <Style data={selectedPageComponent[title]} module={"title"} />
           <Margin data={selectedPageComponent[title]} />
           <Padding data={selectedPageComponent[title]} />
@@ -43,20 +44,9 @@ export function Incentive1() {
           <Visibility data={selectedPageComponent[countdown]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={background}>
-        <SettingSection title={"Background"}>
-          <SettingFieldContainer>
-            <BackgroundWithImage
-              data={selectedPageComponent[background]}
-              module={background}
-            />
-          </SettingFieldContainer>
-        </SettingSection>
-      </EditWrapper>
       <EditWrapper module={layout}>
-        <SettingSection title={"Layout & Spacing"}>
-          <Margin data={selectedPageComponent[layout]} />
-          <Padding data={selectedPageComponent[layout]} />
+        <SettingSection title={"Layout"}>
+          <Layout showImageUpload={true} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

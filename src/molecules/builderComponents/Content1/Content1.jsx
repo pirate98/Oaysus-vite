@@ -28,7 +28,7 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
               <div
                 className={classes.image1}
                 style={{
-                  ...styles.background,
+                  ...styles.image,
                   backgroundImage:
                     content?.backgroundPreview ||
                     (content?.images
@@ -118,7 +118,7 @@ const json = {
     marginRight: "",
     visibility: true,
   },
-  background: {
+  image: {
     backgroundPositionX: "center",
     backgroundPositionY: "center",
     backgroundSize: "auto",

@@ -1,15 +1,25 @@
+import { useCallback } from "react";
+import { useEffect } from "react";
+import { useMemo } from "react";
 import { PxInput } from "../../atoms";
 import { removePx } from "../helpers/builder";
 import classes from "./.module.scss";
 
 export function Distances({ data = {}, type }) {
+  useEffect(() => {
+    // console.log({ data });
+  }, [data]);
+
   return (
     <>
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
           <PxInput
-            value={removePx(data[`${type}Top`])}
+            value={useMemo(() => {
+              // console.log(data.marginTop);
+              return removePx(data[`${type}Top`]);
+            }, [data])}
             small
             name={`${type}Top_px`}
           />

@@ -9,5 +9,7 @@ export function useGetSelectedPageComponent() {
     (comp) => comp.name === selectedPageComponentName
   );
 
+  // console.log(component[0].name);
+
   return component[0] || {};
 }

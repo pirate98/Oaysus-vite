@@ -1,6 +1,7 @@
 const builderSettings = {
   fieldNames: {
     background: "background",
+    image: "image",
     layout: "layout",
     title: "title",
     subTitle: "subTitle",

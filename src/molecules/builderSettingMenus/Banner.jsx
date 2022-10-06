@@ -1,16 +1,17 @@
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import {
   PxInput,
   SettingField,
   SettingSectionContainer,
   SettingSection,
-  SettingFieldContainer,
 } from "../../atoms";
-import { BackgroundWithImage } from "../builderSettingFieldGroups/BackgroundWithImage";
-import { builderSettings } from "../../data/builderSettings";
 import { removePx } from "../helpers/builder";
-const { background } = builderSettings?.fieldNames;
+import { builderSettings } from "../../data/builderSettings";
+import { Layout } from "../builderSettingFieldGroups";
+const {
+  fieldNames: { layout, title, subTitle, countdown },
+} = builderSettings;
 // console.log({ background });
 export function Banner() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -26,23 +27,11 @@ export function Banner() {
               name={"height_px"}
             />
           </SettingField>
-          {/* <Slider
-            title={"Height"}
-            name="height"
-            defaultValue={selectedPageComponent["sizing"]["height"]}
-            module={"sizing"}
-            max={500}
-          /> */}
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={background}>
-        <SettingSection title={"Background"}>
-          <SettingFieldContainer>
-            <BackgroundWithImage
-              module={background}
-              data={selectedPageComponent[background]}
-            />
-          </SettingFieldContainer>
+      <EditWrapper module={layout}>
+        <SettingSection title={"Layout"}>
+          <Layout showImageUpload={true} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

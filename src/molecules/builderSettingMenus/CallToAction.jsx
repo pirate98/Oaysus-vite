@@ -4,10 +4,16 @@ import {
   SettingSectionContainer,
 } from "../../atoms";
 import { ColorSelector, Slider } from "../builderSettingFields";
-import { Margin, Style, Padding, Border } from "../builderSettingFieldGroups";
-import { EditWrapper } from "./EditWrapper";
+import {
+  Margin,
+  Style,
+  Padding,
+  Border,
+  Layout,
+} from "../builderSettingFieldGroups";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { removePx } from "../helpers/builder";
+import { EditWrapper } from "../wrappers";
 
 export function CallToAction() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -19,17 +25,6 @@ export function CallToAction() {
           <Style data={selectedPageComponent["title"]} module={"title"} />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />
-        </SettingSection>
-      </EditWrapper>
-      <EditWrapper module={"background"}>
-        <SettingSection title={"Background"}>
-          <SettingFieldContainer>
-            <ColorSelector
-              title={"Color"}
-              name="backgroundColor"
-              defaultValue={selectedPageComponent["background"]}
-            />
-          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"subTitle"}>
@@ -63,6 +58,11 @@ export function CallToAction() {
           />
           <Margin data={selectedPageComponent["buyButton"]} />
           <Padding data={selectedPageComponent["buyButton"]} />
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"layout"}>
+        <SettingSection title={"Layout"}>
+          <Layout />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

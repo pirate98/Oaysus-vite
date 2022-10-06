@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { updatePageComponents } from "../../pages/builder/builderSlice";
+import { updatePageComponents } from "../../../pages/builder/builderSlice";
 
 export function EditWrapper({ children, ...props }) {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export function EditWrapper({ children, ...props }) {
 
     const { module } = props;
     let { name: key, value } = target;
-    console.log({ module, key, value });
+    // console.log({ module, key, value });
     if (!key) return;
 
     if (key.includes("&")) {
@@ -59,16 +59,14 @@ export function EditWrapper({ children, ...props }) {
   };
 
   return (
-    <>
-      <div
-        {...props}
-        onChange={handleChange}
-        onKeyUp={handleChange}
-        onBlur={handleChange}
-        // onMouseDownCapture={handleChange}
-      >
-        {children}
-      </div>
-    </>
+    <div
+      {...props}
+      onChange={handleChange}
+      onKeyUp={handleChange}
+      // onBlur={handleChange}
+      // onMouseDownCapture={handleChange}
+    >
+      {children}
+    </div>
   );
 }

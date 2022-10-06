@@ -28,43 +28,45 @@ export function ImageUpload({ name, module }) {
   };
 
   return (
-    <div className={classes.setting}>
-      <HiddenWrapperButton
-        name={name}
-        // temporary method to test background image
-        // onClick={(e) => console.log(e.currentTarget.blur())}
-      >
-        <div
-          className={
-            component?.backgroundPreview
-              ? classes.imagePreviewActive
-              : classes.imagePreview
-          }
-          style={{
-            backgroundImage: component?.backgroundPreview || "",
+    <SettingField fieldName={"Image"}>
+      <div className={classes.setting}>
+        <HiddenWrapperButton
+          name={name}
+          // temporary method to test background image
+          // onClick={(e) => console.log(e.currentTarget.blur())}
+        >
+          <div
+            className={
+              component?.backgroundPreview
+                ? classes.imagePreviewActive
+                : classes.imagePreview
+            }
+            style={{
+              backgroundImage: component?.backgroundPreview || "",
+            }}
+          ></div>
+        </HiddenWrapperButton>
+        <label
+          htmlFor="uploadImage"
+          onClickCapture={(e) => {
+            e.stopPropagation();
+            e.currentTarget.click();
+            // handleClick();
           }}
-        ></div>
-      </HiddenWrapperButton>
-      <label
-        htmlFor="uploadImage"
-        onClickCapture={(e) => {
-          e.stopPropagation();
-          e.currentTarget.click();
-          // handleClick();
-        }}
-        className={classes.w100}
-      >
-        <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
-          Upload Image
-        </PlainButton>
-      </label>
-      <input
-        id="uploadImage"
-        name="uploadImage"
-        onChange={handleImageLoad}
-        type="file"
-        hidden
-      />
-    </div>
+          className={classes.w100}
+        >
+          <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
+            Upload Image
+          </PlainButton>
+        </label>
+        <input
+          id="uploadImage"
+          name="uploadImage"
+          onChange={handleImageLoad}
+          type="file"
+          hidden
+        />
+      </div>
+    </SettingField>
   );
 }

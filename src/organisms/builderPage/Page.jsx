@@ -21,6 +21,7 @@ export function Page() {
   // console.log({ pageComponents });
 
   const handleClickOnComponent = (componentName) => {
+    console.log({ componentName });
     if (selectedPageComponentName === componentName) return;
 
     dispatch(setSelectedPageComponentName(componentName));

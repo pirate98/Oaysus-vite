@@ -4,10 +4,11 @@ import {
   Padding,
   Visibility,
   VideoURL,
+  Layout,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { ColorSelector } from "../builderSettingFields";
 import { SettingFieldContainer } from "../../atoms";
@@ -32,13 +33,7 @@ export function Video() {
       </EditWrapper>
       <EditWrapper module={"layout"}>
         <SettingSection title={"Layout"}>
-          <SettingFieldContainer>
-            <ColorSelector
-              title={"Background"}
-              name="backgroundColor"
-              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
-            />
-          </SettingFieldContainer>
+          <Layout />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

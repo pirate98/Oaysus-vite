@@ -17,7 +17,6 @@ const fn = forwardRef(({ content, className }, ref) => {
         }
         ref={ref}
         style={{
-          ...styles.background,
           ...styles.layout,
           backgroundImage: content?.backgroundPreview,
         }}
@@ -112,15 +111,13 @@ const json = {
     duration: "5",
     visibility: true,
   },
-  background: {
+  layout: {
     backgroundPositionX: "center",
     backgroundPositionY: "center",
     backgroundColor: "#008060",
     backgroundImage: "",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-  },
-  layout: {
     paddingTop: "20px",
     paddingRight: "10px",
     paddingBottom: "20px",

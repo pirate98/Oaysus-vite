@@ -12,7 +12,7 @@ const fn = forwardRef(({ content, className }, ref) => {
       className={classes.w100 + (className ? ` ${className}` : "")}
       style={{
         ...styles.sizing,
-        ...styles.background,
+        ...styles.layout,
         backgroundImage:
           content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
       }}
@@ -23,8 +23,8 @@ const fn = forwardRef(({ content, className }, ref) => {
 const json = {
   sizing: { height: "240px" },
   backgroundPreview: null,
-  background: {
-    backgroundColor: "rgba(224, 224, 224, 1)",
+  layout: {
+    backgroundColor: "#e0e0e0",
     backgroundPositionX: "center",
     backgroundPositionY: "center",
     backgroundSize: "auto",

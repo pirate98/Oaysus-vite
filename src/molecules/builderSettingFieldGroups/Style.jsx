@@ -26,7 +26,7 @@ export function Style({
         />
       )}
       {/* {styling && <FontStyles module={module} />} */}
-      <FontFamily defaultValue={data["fontFamily"]} />
+      <FontFamily defaultValue={data["fontFamily"]} module={module} />
       {weight && <FontWeight module={module} />}
       <SettingField fieldName={"Line Height"}>
         <PxInput

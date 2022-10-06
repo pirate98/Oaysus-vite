@@ -2,69 +2,55 @@ import {
   Margin,
   Style,
   Padding,
-  BackgroundWithImage,
+  ProductBackgroundImage,
+  Layout,
 } from "../builderSettingFieldGroups";
 import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
 import { SettingSection } from "../../atoms/settingSection/SettingSection";
 import {
   ColorSelector,
   ImageAlignment,
-  Position,
+  BackgroundPosition,
 } from "../builderSettingFields";
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers/builderMenuEditWrapper/EditWrapper";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { builderSettings } from "../../data/builderSettings";
 import { SettingFieldContainer } from "../../atoms";
-const { background } = builderSettings?.fieldNames;
+const { image } = builderSettings?.fieldNames;
 
 export function Content1() {
-  const selectedPageComponent = useGetSelectedPageComponent();
+  const component = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
-      <EditWrapper module={"layout"}>
-        <SettingSection title={"Layout"}>
-          <SettingFieldContainer>
-            <ImageAlignment />
-            <ColorSelector
-              title={"Background"}
-              name="backgroundColor"
-              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
-            />
-          </SettingFieldContainer>
-          <Margin data={selectedPageComponent["layout"]} />
-          <Padding data={selectedPageComponent["layout"]} />
-        </SettingSection>
-      </EditWrapper>
       <EditWrapper module={"title"}>
         <SettingSection title={"Title text"}>
-          <Style
-            weight
-            data={selectedPageComponent["title"]}
-            module={"title"}
-          />
-          <Margin data={selectedPageComponent["title"]} />
-          <Padding data={selectedPageComponent["title"]} />
+          <Style weight data={component["title"]} module={"title"} />
+          <Margin data={component["title"]} />
+          <Padding data={component["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
-          <Style
-            data={selectedPageComponent["description"]}
-            module={"description"}
-          />
-          <Margin data={selectedPageComponent["description"]} />
-          <Padding data={selectedPageComponent["description"]} />
+          <Style data={component["description"]} module={"description"} />
+          <Margin data={component["description"]} />
+          <Padding data={component["description"]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={background}>
+      <EditWrapper module={image}>
         <SettingSection title={"Product Image"}>
           <SettingFieldContainer>
-            <BackgroundWithImage
-              module={background}
-              data={selectedPageComponent[background]}
-            />
+            <ProductBackgroundImage module={image} data={component[image]} />
           </SettingFieldContainer>
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"layout"}>
+        <SettingSection title={"Layout"}>
+          <Layout module={"layout"}>
+            <SettingFieldContainer>
+              <ImageAlignment />
+            </SettingFieldContainer>
+          </Layout>
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

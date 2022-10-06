@@ -8,7 +8,7 @@ import { BuilderButtonWrapper } from "../../molecules/wrappers";
 import { EditBox } from "../../molecules/editBox/EditBox";
 import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
 
-export function Components() {
+export function BuilderMenu() {
   const dispatch = useDispatch();
   const {
     builder: { hoveredComponent, selectedPageComponentName },

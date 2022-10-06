@@ -1,7 +1,11 @@
 import { SettingField, SettingFieldContainer } from "../../atoms";
-import { ColorSelector, ImageUpload, Position } from "../builderSettingFields";
+import {
+  ColorSelector,
+  ImageUpload,
+  BackgroundPosition,
+} from "../builderSettingFields";
 
-export function BackgroundWithImage({
+export function ProductBackgroundImage({
   data,
   module,
   allowImageUpload = true,
@@ -19,11 +23,9 @@ export function BackgroundWithImage({
       )}
       <>
         {allowImageUpload && (
-          <SettingField fieldName={"Image"}>
-            <ImageUpload name={"backgroundImage"} module={module} />
-          </SettingField>
+          <ImageUpload name={"backgroundImage"} module={module} />
         )}
-        <Position data={data} />
+        <BackgroundPosition data={data} />
       </>
     </>
   );

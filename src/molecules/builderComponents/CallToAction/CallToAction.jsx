@@ -16,7 +16,7 @@ const fn = forwardRef(({ content, className }, ref) => {
     <div
       className={classes.callToAction + (className ? ` ${className}` : "")}
       ref={ref}
-      style={{ ...styles.background, ...styles.border }}
+      style={{ ...styles.layout, ...styles.border }}
     >
       <div className={classes.width}>
         <Grid
@@ -83,7 +83,7 @@ const json = {
     marginRight: "",
     visibility: true,
   },
-  background: {
+  layout: {
     backgroundColor: "#f2f2f2",
     backgroundImage: "",
     backgroundSize: "contain",

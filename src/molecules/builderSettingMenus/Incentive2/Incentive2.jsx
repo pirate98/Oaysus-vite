@@ -11,8 +11,9 @@ import {
   Visibility,
   CountDown,
   BackgroundButtons,
+  Layout,
 } from "../../builderSettingFieldGroups";
-import { EditWrapper } from "../EditWrapper";
+import { EditWrapper } from "../../wrappers";
 import { useGetSelectedPageComponent } from "../../../hooks";
 import { ColorSelector } from "../../builderSettingFields";
 
@@ -48,16 +49,8 @@ export function Incentive2() {
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>
-        <SettingSection title={"Layout & Spacing"}>
-          <SettingFieldContainer>
-            <ColorSelector
-              title={"Background"}
-              name="backgroundColor"
-              defaultValue={selectedPageComponent["layout"]?.backgroundColor}
-            />
-          </SettingFieldContainer>
-          <Margin data={selectedPageComponent["layout"]} />
-          <Padding data={selectedPageComponent["layout"]} />
+        <SettingSection title={"Layout"}>
+          <Layout />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>
