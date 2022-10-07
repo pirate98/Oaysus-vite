@@ -14,6 +14,7 @@ import { updatePageComponents } from "../../../pages/builder/builderSlice";
 import classes from "./.module.scss";
 import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
 import { componentsData } from "../../../data/componentsData";
+import { useCallback } from "react";
 
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -63,9 +64,17 @@ export function EditableWithToolBar({
     },
   };
 
+  const [intervalId, setIntervalId] = useState(undefined);
+
+  const debounceHandler = (...args) => {
+    clearTimeout(intervalId);
+
+    const _intervalId = setTimeout(() => dispatch.apply(this, args), 500);
+    setIntervalId(_intervalId);
+  };
+
   function onChangeLexical(editorState) {
-    console.log("module");
-    dispatch(
+    debounceHandler(
       updatePageComponents({
         module,
         key: "editorState",
@@ -109,7 +118,7 @@ export function EditableWithToolBar({
             {/* <ToolbarPlugin /> */}
             <RichTextPlugin
               contentEditable={<ContentEditable />}
-              placeholder={<div>Enter some text...</div>}
+              // placeholder={<div>Enter some text...</div>}
             />
             <OnChangePlugin onChange={onChangeLexical} />
             {/* <HistoryPlugin />
