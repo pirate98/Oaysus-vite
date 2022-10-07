@@ -12,7 +12,7 @@ export function EditWrapper({ children, ...props }) {
   } = useSelector((state) => state);
 
   const handleChange = (e) => {
-    console.warn("editWrapper");
+    // console.warn("editWrapper");
 
     let { target } = e;
 
@@ -20,7 +20,7 @@ export function EditWrapper({ children, ...props }) {
 
     const { module } = props;
     let { name: key, value } = target;
-    console.log({ module, key, value });
+    // console.log({ module, key, value });
     if (!key) return;
 
     if (key.includes("px")) {
