@@ -23,7 +23,7 @@ export function Lure() {
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
-        <SettingSection title={"Title text"}>
+        <SettingSection title={"Title"}>
           <Style data={selectedPageComponent["title"]} module={"title"} />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />

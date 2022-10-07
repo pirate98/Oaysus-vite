@@ -23,7 +23,7 @@ export function Request() {
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
-        <SettingSection title={"Title text"}>
+        <SettingSection title={"Title"}>
           <Style
             weight
             alignment
