@@ -1,7 +1,7 @@
 import { SettingFieldContainer, Switch2 } from "../../atoms";
 import classes from "./.module.scss";
 
-export function Visibility({ data, text = "Show content" }) {
+export function Visibility({ data, text = "Show Content" }) {
   return (
     <SettingFieldContainer title={"VISIBILITY"}>
       <div className={classes.flexRow}>
