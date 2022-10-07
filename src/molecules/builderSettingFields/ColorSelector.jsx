@@ -50,6 +50,12 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
     setInternalValue(value);
   };
 
+  const handleTextChange = ({ target }) => {
+    console.log(target);
+    const { value } = target;
+    dispatch(updatePageComponents({ module, key: name, value }));
+  };
+
   useEffect(() => setInternalValue(value), [value]);
 
   return (
@@ -72,7 +78,7 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
           name={name}
           className={classes.input}
           value={value}
-          // onChange={handleTextChange}
+          onChange={handleTextChange}
         />
         <ClickAwayListener
           onClickAway={(e) => {
