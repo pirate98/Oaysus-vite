@@ -1,5 +1,10 @@
 @import "type", "overrides";
 
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
 body {
   @extend .defaultFont;
   // overflow-x: hidden;

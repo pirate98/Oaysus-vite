@@ -34,7 +34,7 @@ const fn = forwardRef(({ content }, ref) => {
               <iframe
                 className={classes.iframe}
                 src={`https://www.youtube.com/embed/${content?.video?.url}`}
-                frameborder="0"
+                frameBorder="0"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 title="video"

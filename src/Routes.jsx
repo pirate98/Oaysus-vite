@@ -14,18 +14,20 @@ import { Routes as ReactRouterRoutes, Route, Navigate } from "react-router-dom";
  *
  * @return {Routes} `<Routes/>` from React Router, with a `<Route/>` for each file in `pages`
  */
-export default function Routes({ pages, mainPage }) {
+export default function Routes({ pages, mainPage, children }) {
+  console.log(pages);
   const routes = useRoutes(pages);
   const routeComponents = routes.map(({ path, component: Component }) => (
     <Route key={path} path={path} element={<Component />} />
   ));
-
+  console.log(routeComponents);
   const NotFound = routes.find(({ path }) => path === "/notFound").component;
 
   return (
     <ReactRouterRoutes>
       <Route path="/" element={<Navigate to={mainPage} />} />
       {routeComponents}
+      {children}
       <Route path="*" element={<NotFound />} />
     </ReactRouterRoutes>
   );
@@ -37,12 +39,17 @@ function useRoutes(pages) {
       let path = key
         .replace("./pages", "")
         .replace(/\.(t|j)sx?$/, "")
+        // .replace(/\/[A-Z].+.jsx/g, "")
         /**
          * Replace /index with /
          */
         // .replace(/\/index$/i, "/")
         // remove folder paths
-        .replace(/.+\//i, "/")
+        /**
+         * remains only
+         * /settings/billing or /settings
+         */
+        .replace(/.+?\//i, "/")
         /**
          * Only lowercase the first letter. This allows the developer to use camelCase
          * dynamic paths while ensuring their standard routes are normalized to lowercase.
@@ -58,7 +65,7 @@ function useRoutes(pages) {
       }
 
       if (!pages[key].default) {
-        // console.warn(`${key} doesn't export a default React component`);
+        console.warn(`${key} doesn't export a default React component`);
       }
 
       return {

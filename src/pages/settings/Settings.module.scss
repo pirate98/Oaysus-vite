@@ -1,0 +1,21 @@
+@import "../../assets//css/variables.module", "../../assets/css/classes.module";
+
+.layout {
+  background-color: $backgroundColor;
+}
+
+.nav {
+  padding: 40px 52px;
+
+  .h1Custom {
+    @extend .h1;
+
+    margin-bottom: 32px;
+  }
+
+  .h2Custom {
+    @extend .h2;
+
+    margin-bottom: 20px;
+  }
+}
