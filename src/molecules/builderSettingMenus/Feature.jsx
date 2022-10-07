@@ -24,7 +24,7 @@ export function Feature() {
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
-        <SettingSection title={"Title text"}>
+        <SettingSection title={"Title"}>
           <Style weight data={component["title"]} module={"title"} />
           <Margin data={component["title"]} />
           <Padding data={component["title"]} />

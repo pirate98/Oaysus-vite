@@ -23,14 +23,14 @@ export function Action() {
   return (
     <SettingSectionContainer>
       <EditWrapper module={"title"}>
-        <SettingSection title={"Title text"}>
+        <SettingSection title={"Title"}>
           <Style data={selectedPageComponent["title"]} module={"title"} />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"subTitle"}>
-        <SettingSection title={"Sub title money"}>
+        <SettingSection title={"Value Label"}>
           <Style module={"subTitle"} data={selectedPageComponent["subTitle"]} />
           <Margin data={selectedPageComponent["subTitle"]} />
           <Padding data={selectedPageComponent["subTitle"]} />
