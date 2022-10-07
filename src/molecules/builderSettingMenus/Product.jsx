@@ -104,7 +104,7 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={buyButton}>
         <SettingSection title={"Buy Button"}>
-          <Style data={component[buyButton]} />
+          <Style module={buyButton} data={component[buyButton]} />
           <BackgroundButtons data={component[buyButton]} title={"BACKGROUND"} />
           <SettingFieldContainer title={"SIZE"}>
             <SettingField fieldName={"Width"}>
@@ -126,7 +126,7 @@ export function Product() {
       </EditWrapper>
       <EditWrapper module={declineButton}>
         <SettingSection title={"Decline Button"}>
-          <Style data={component[declineButton]} />
+          <Style module={declineButton} data={component[declineButton]} />
           <BackgroundButtons
             data={component[declineButton]}
             title={"BACKGROUND"}
