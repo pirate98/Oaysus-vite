@@ -25,7 +25,7 @@ export function ProductBackgroundImage({
         {allowImageUpload && (
           <ImageUpload name={"backgroundImage"} module={module} />
         )}
-        <BackgroundPosition data={data} />
+        <BackgroundPosition data={data} module={module} />
       </>
     </>
   );
