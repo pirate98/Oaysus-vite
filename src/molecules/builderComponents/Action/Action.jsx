@@ -73,6 +73,7 @@ const json = {
   },
   subTitle: {
     fontFamily: "Roboto",
+    fontWeight: "400",
     lineHeight: "20px",
     fontSize: "24px",
     color: variables.shopifyGreen,
