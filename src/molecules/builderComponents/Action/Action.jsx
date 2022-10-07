@@ -15,7 +15,10 @@ const fn = forwardRef(({ content, className }, ref) => {
     <div
       className={classes.callToAction + (className ? ` ${className}` : "")}
       ref={ref}
-      style={{ ...styles.layout, ...styles.border }}
+      style={{
+        backgroundColor: styles?.layout?.backgroundColor,
+        ...styles.border,
+      }}
     >
       <div className={classes.width}>
         <Grid
@@ -24,6 +27,7 @@ const fn = forwardRef(({ content, className }, ref) => {
           justifyContent={"start"}
           alignItems={"center"}
           spacing={1}
+          sx={{ ...styles.layout, backgroundColor: "inherit" }}
         >
           <Grid item>
             <EditableWithToolBar

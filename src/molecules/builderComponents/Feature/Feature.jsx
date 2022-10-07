@@ -17,7 +17,11 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
         ref={ref}
       >
         <div className={classes.box}>
-          <Grid container columnSpacing={4} sx={{ ...styles.layout }}>
+          <Grid
+            container
+            columnSpacing={4}
+            sx={{ ...styles.layout, backgroundColor: "inherit" }}
+          >
             <Grid
               item
               xs={6}

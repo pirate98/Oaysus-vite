@@ -19,7 +19,6 @@ export function Layout({
   return (
     <>
       {children}
-      <p>{component[layout].paddingLeft}</p>
       <SettingFieldContainer title="BACKGROUND">
         <ColorSelector
           title={"Color"}

@@ -27,7 +27,7 @@ const fn = forwardRef(({ content, className }, ref) => {
           container
           columnSpacing={4}
           // className={className ? ` ${className}` : ""}
-          sx={{ ...styles.layout }}
+          sx={{ ...styles.layout, backgroundColor: "inherit" }}
         >
           <Grid
             item
