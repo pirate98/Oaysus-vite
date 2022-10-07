@@ -10,6 +10,26 @@ import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "./.module.scss";
 import { useCallback } from "react";
 
+function RGBAToHexA(r, g, b, a) {
+  r = r?.toString(16);
+  g = g?.toString(16);
+  b = b?.toString(16);
+  a = Math.round(a * 255)?.toString(16);
+
+  if (r.length == 1) r = "0" + r;
+  if (g.length == 1) g = "0" + g;
+  if (b.length == 1) b = "0" + b;
+  if (a.length == 1) a = "0" + a;
+
+  return "#" + r + g + b + a;
+}
+
+function convertRGBToHex(reactColorEvent) {
+  const { r, g, b, a } = reactColorEvent.rgb;
+
+  return RGBAToHexA(r, g, b, a);
+}
+
 export function ColorSelector({ module, name, title, value = "#000000" }) {
   const [open, setOpen] = useState();
   const [internalValue, setInternalValue] = useState();
@@ -21,13 +41,13 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    console.log(e);
-    const { hex } = e;
-    dispatch(updatePageComponents({ module, key: name, value: hex }));
+    const value = convertRGBToHex(e);
+    dispatch(updatePageComponents({ module, key: name, value }));
   };
 
-  const handleInternalChange = ({ hex }) => {
-    setInternalValue(hex);
+  const handleInternalChange = (e) => {
+    const value = convertRGBToHex(e);
+    setInternalValue(value);
   };
 
   useEffect(() => setInternalValue(value), [value]);
