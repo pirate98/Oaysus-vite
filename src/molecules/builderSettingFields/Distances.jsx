@@ -16,10 +16,7 @@ export function Distances({ data = {}, type }) {
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
           <PxInput
-            value={useMemo(() => {
-              // console.log(data.marginTop);
-              return removePx(data[`${type}Top`]);
-            }, [data])}
+            value={removePx(data[`${type}Top`])}
             small
             name={`${type}Top_px`}
           />

@@ -1,3 +1,4 @@
+import { useGetSelectedPageComponent } from "../../hooks";
 import {
   ColorSelector,
   ImageUpload,
@@ -5,10 +6,14 @@ import {
 } from "../builderSettingFields";
 
 export function BackgroundImage({ data, module }) {
+  const component = useGetSelectedPageComponent();
+
   return (
     <>
       <ImageUpload name={"backgroundImage"} module={module} />
-      <BackgroundPosition data={data} />
+      {component?.backgroundPreview ? (
+        <BackgroundPosition data={data} module={module} />
+      ) : null}
     </>
   );
 }

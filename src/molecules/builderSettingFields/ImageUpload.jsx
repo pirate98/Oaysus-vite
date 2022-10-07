@@ -10,7 +10,7 @@ import { useGetSelectedPageComponent } from "../../hooks";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "./ImageUpload.module.scss";
 
-export function ImageUpload({ name, module }) {
+export function ImageUpload({ name }) {
   const dispatch = useDispatch();
 
   const component = useGetSelectedPageComponent();

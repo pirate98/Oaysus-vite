@@ -1,31 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { SketchPicker } from "react-color";
-
+import { SketchPicker, ChromePicker } from "react-color";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { v4 as uuidv4 } from "uuid";
+
 import { SettingField } from "../../atoms";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
-
 import classes from "./.module.scss";
-import { ClickAwayListener } from "@mui/material";
+import { useCallback } from "react";
 
 export function ColorSelector({ module, name, title, value = "#000000" }) {
   const [open, setOpen] = useState();
-  const [internalValue, setInternalValue] = useState(value);
+  const [internalValue, setInternalValue] = useState();
 
+  // this was used for native color input
   const randomId = uuidv4();
   const colorInputId = `input-color-${randomId}`;
 
   const dispatch = useDispatch();
 
-  const handleChange = ({ hex }) => {
+  const handleChange = (e) => {
+    console.log(e);
+    const { hex } = e;
     dispatch(updatePageComponents({ module, key: name, value: hex }));
   };
 
   const handleInternalChange = ({ hex }) => {
     setInternalValue(hex);
   };
+
+  useEffect(() => setInternalValue(value), [value]);
 
   return (
     <SettingField fieldName={title}>
@@ -44,9 +49,10 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
           ></span>
         </label>
         <input
+          name={name}
           className={classes.input}
           value={value}
-          onChange={handleChange}
+          // onChange={handleTextChange}
         />
         <ClickAwayListener
           onClickAway={(e) => {
@@ -54,7 +60,7 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
           }}
         >
           <div>
-            <SketchPicker
+            <ChromePicker
               id={colorInputId}
               className={open ? classes.inputColorActive : classes.inputColor}
               color={internalValue}
