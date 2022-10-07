@@ -19,6 +19,7 @@ export function ProductBackgroundImage({
           title={title}
           name="backgroundColor"
           defaultValue={data.backgroundColor}
+          module={module}
         />
       )}
       <>
