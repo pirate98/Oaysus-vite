@@ -29,6 +29,11 @@
   margin-bottom: 18px;
 }
 
+.h5Gray {
+  @extend .h5;
+  color: #6d7175;
+}
+
 .price {
   font-size: 24px;
   font-weight: 600;

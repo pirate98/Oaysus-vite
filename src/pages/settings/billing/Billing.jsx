@@ -42,8 +42,8 @@ export default function Billing() {
           {plans.map((plan) => (
             <Grid item sm={12} md={4}>
               <PlanCard>
-                <h5 className={classes.h5}>{plan.title}</h5>
-                <p className={classes.price}>{plan.description}</p>
+                <h5 className={classes.h5Gray}>{plan.title}</h5>
+                <h6 className={classes.price}>{plan.description}</h6>
                 <h5 className={classes.h5}>{plan.promotion}</h5>
               </PlanCard>
             </Grid>
