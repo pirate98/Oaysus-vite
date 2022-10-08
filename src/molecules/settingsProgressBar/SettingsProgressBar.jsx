@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./SettingsProgressBar.module.scss";
 
-const breakPoints = [1000, 2000];
-const completed = 243;
-
-export function SettingsProgressBar() {
+export function SettingsProgressBar({ breakPoints, completed }) {
   const dottedProgressBar = useRef();
   const [breakPointPositions, setBreakPointPositions] = useState([]);
   const [positionOfCompleted, setPositionOfCompleted] = useState(undefined);

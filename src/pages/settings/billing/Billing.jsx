@@ -9,6 +9,7 @@ const plans = [
     title: "CURRENT PLAN",
     description: "$20/MO",
     promotion: "+1% of upsell revenue",
+    active: true,
   },
   {
     title: "TIER 2",
@@ -21,6 +22,9 @@ const plans = [
     promotion: "+0% of upsell revenue",
   },
 ];
+
+const breakPoints = [1000, 2000];
+const completed = 243;
 
 export default function Billing() {
   return (
@@ -37,11 +41,11 @@ export default function Billing() {
         <p>
           Your plan will change once you reach <b>$1,000</b> in sales.
         </p>
-        <SettingsProgressBar />
+        <SettingsProgressBar breakPoints={breakPoints} completed={completed} />
         <Grid container spacing={2}>
           {plans.map((plan) => (
             <Grid item sm={12} md={4}>
-              <PlanCard>
+              <PlanCard active={plan.active}>
                 <h5 className={classes.h5Gray}>{plan.title}</h5>
                 <h6 className={classes.price}>{plan.description}</h6>
                 <h5 className={classes.h5}>{plan.promotion}</h5>

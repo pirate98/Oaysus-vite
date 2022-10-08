@@ -1,5 +1,7 @@
 import classes from "./PlanCard.module.scss";
 
-export function PlanCard({ children }) {
-  return <div className={classes.card}>{children}</div>;
+export function PlanCard({ children, active }) {
+  return (
+    <div className={active ? classes.cardActive : classes.card}>{children}</div>
+  );
 }
