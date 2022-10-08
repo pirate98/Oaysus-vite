@@ -1,15 +1,15 @@
-import { Grid } from "@mui/material";
 import { SettingsCard } from "../../../atoms/cards/settingsCard/SettingsCard";
+import classes from "./General.module.scss";
 
 export default function General() {
   return (
     <>
-      <Grid item>
-        <SettingsCard>ete</SettingsCard>
-      </Grid>
-      <Grid item>
-        <SettingsCard>ete</SettingsCard>
-      </Grid>
+      <SettingsCard>
+        <h3 className={classes.h3Custom}>App status</h3>
+        <p>
+          Oaysus app is currently <b>deactivated.</b>
+        </p>
+      </SettingsCard>
     </>
   );
 }

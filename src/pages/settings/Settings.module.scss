@@ -1,15 +1,52 @@
-@import "../../assets//css/variables.module", "../../assets/css/classes.module";
+@import "../../assets/css/variables.module", "../../assets/css/classes.module",
+  "../../assets/css//type";
 
 .layout {
   background-color: $backgroundColor;
 }
 
+.h3Custom {
+  @extend .h3;
+
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: start;
+}
+
+.h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.h5 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin-bottom: 18px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin-bottom: 24px;
+  color: black !important;
+}
+
 .nav {
   padding: 40px 52px;
+  text-align: start;
 
   .h1Custom {
     @extend .h1;
 
+    font-weight: 600;
+    line-height: 20px;
     margin-bottom: 32px;
   }
 
@@ -17,5 +54,7 @@
     @extend .h2;
 
     margin-bottom: 20px;
+    font-weight: 500;
+    text-align: start;
   }
 }
