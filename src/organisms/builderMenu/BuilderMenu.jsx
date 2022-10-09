@@ -1,12 +1,12 @@
 import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
-import * as builderButtons from "../../molecules/builderButtons";
-import * as builderSettingMenus from "../../molecules/builderSettingMenus";
-import { setHoveredComponent } from "../../pages/builder/builderSlice";
-import { BuilderButtonWrapper } from "../../molecules/wrappers";
-import { EditBox } from "../../molecules/editBox/EditBox";
-import { removeDigitsAndReturnComponentName } from "../../helpers/builder";
+import * as builderButtons from "@/molecules/builderButtons";
+import * as builderSettingMenus from "@/molecules/builderSettingMenus";
+import { setHoveredComponent } from "@/pages/builder/builderSlice";
+import { BuilderButtonWrapper } from "@/molecules/wrappers";
+import { EditBox } from "@/molecules/editBox/EditBox";
+import { removeDigitsAndReturnComponentName } from "@/helpers/builder";
 
 export function BuilderMenu() {
   const dispatch = useDispatch();

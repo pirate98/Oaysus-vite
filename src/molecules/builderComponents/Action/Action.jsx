@@ -9,7 +9,7 @@ import {
   makeEditorState,
 } from "../../../helpers/builder";
 import variables from "../../../assets/css/_variables.module.scss";
-import { AddButton, BuilderButton, PlainButton } from "../../../atoms";
+import { Button } from "@/atoms/button";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -49,7 +49,7 @@ const fn = forwardRef(({ content, className }, ref) => {
             </div>
           </Grid>
         </Grid>
-        <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
+        <Button.Primary sx={{ ...styles.buyButton }}>Buy Now</Button.Primary>
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import { forwardRef } from "react";
 
-import classes from "./.module.scss";
+import { Grid } from "@mui/material";
 
+import classes from "./.module.scss";
+import { EditableWithToolBar } from "../../wrappers";
 import {
   filterOnlyStyleValues,
   makeEditorState,
 } from "../../../helpers/builder";
-import { Grid } from "@mui/material";
-import { EditableWithToolBar } from "../../wrappers";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);

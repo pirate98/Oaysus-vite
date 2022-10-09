@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  HiddenWrapperButton,
-  PlainButton,
-  SettingField,
-  SettingFieldContainer,
-} from "../../atoms";
+
+import { HiddenWrapperButton, SettingField } from "../../atoms";
+import { Button } from "@/atoms/button";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "./ImageUpload.module.scss";
@@ -55,9 +52,9 @@ export function ImageUpload({ name }) {
           }}
           className={classes.w100}
         >
-          <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
+          <Button.BuilderMenu fullWidth color="success">
             Upload Image
-          </PlainButton>
+          </Button.BuilderMenu>
         </label>
         <input
           id="uploadImage"

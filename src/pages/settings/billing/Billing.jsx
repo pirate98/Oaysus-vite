@@ -1,7 +1,9 @@
 import { Grid } from "@mui/material";
-import { BuilderButton, PlanCard, SettingsCard } from "../../../atoms";
-import { SettingsProgressBar } from "../../../molecules/settingsProgressBar/SettingsProgressBar";
-import { SettingsBillingTable } from "../../../organisms/settingsBillingTable/SettingsBillingTable";
+
+import { PlanCard, SettingsCard } from "../../../atoms";
+import { Button } from "@/atoms/button";
+import { SettingsProgressBar } from "@/molecules/settingsProgressBar/SettingsProgressBar";
+import { SettingsBillingTable } from "@/organisms/settingsBillingTable/SettingsBillingTable";
 
 import classes from "./Billing.module.scss";
 
@@ -71,8 +73,8 @@ export default function Billing() {
         </p>
         <SettingsProgressBar breakPoints={breakPoints} completed={completed} />
         <Grid container spacing={2}>
-          {plans.map((plan) => (
-            <Grid item sm={12} md={4}>
+          {plans.map((plan, idx) => (
+            <Grid item sm={12} md={4} key={idx}>
               <PlanCard active={plan.active}>
                 <h5 className={classes.h5Gray}>{plan.title}</h5>
                 <h6 className={classes.price}>{plan.description}</h6>
@@ -89,7 +91,7 @@ export default function Billing() {
             <p>View the historiy of payments made for your Oaysus Upsell App</p>
           </section>
           <section>
-            <BuilderButton color="white">Export</BuilderButton>
+            <Button.Primary color="white">Export</Button.Primary>
           </section>
         </Grid>
         <SettingsBillingTable data={billingData} />

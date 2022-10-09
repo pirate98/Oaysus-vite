@@ -11,7 +11,7 @@ import {
   makeEditorState,
 } from "../../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
-import { BuilderButton } from "../../../atoms";
+import { Button } from "@/atoms/button";
 import { ImageSelector } from "./ImageSelector";
 import variables from "../../../assets/css/_variables.module.scss";
 
@@ -108,12 +108,12 @@ const fn = forwardRef(({ content, className }, ref) => {
             </Grid>
             <Grid item xs={12}>
               {/* <ButtonGroup fullWidth> */}
-              <BuilderButton sx={{ ...styles.buyButton }}>
+              <Button.Primary sx={{ ...styles.buyButton }}>
                 Buy Now
-              </BuilderButton>
-              <BuilderButton sx={{ ...styles.declineButton }}>
+              </Button.Primary>
+              <Button.Primary sx={{ ...styles.declineButton }}>
                 Decline this offer
-              </BuilderButton>
+              </Button.Primary>
             </Grid>
           </Grid>
         </Grid>

@@ -25,6 +25,7 @@ export function SettingsProgressBar({ breakPoints, completed }) {
       {breakPoints.map((point, idx) => {
         return (
           <span
+            key={idx}
             className={classes.circle}
             style={{ left: breakPointPositions[idx] }}
           >
