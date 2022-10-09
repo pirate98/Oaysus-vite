@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import { PlanCard, SettingsCard } from "../../../atoms";
 import { SettingsProgressBar } from "../../../molecules/settingsProgressBar/SettingsProgressBar";
+import { SettingsBillingTable } from "../../../organisms/settingsBillingTable/SettingsBillingTable";
 
 import classes from "./Billing.module.scss";
 
@@ -25,6 +26,33 @@ const plans = [
 
 const breakPoints = [1000, 2000];
 const completed = 243;
+
+const billingData = [
+  {
+    date: "10/10/2022",
+    invoiced: "$35.00",
+    revenue: "$243.23",
+    plan: "Starter",
+  },
+  {
+    date: "10/10/2022",
+    invoiced: "$35.00",
+    revenue: "$243.23",
+    plan: "Starter",
+  },
+  {
+    date: "10/10/2022",
+    invoiced: "$35.00",
+    revenue: "$243.23",
+    plan: "Starter",
+  },
+  {
+    date: "10/10/2022",
+    invoiced: "$35.00",
+    revenue: "$243.23",
+    plan: "Starter",
+  },
+];
 
 export default function Billing() {
   return (
@@ -57,6 +85,7 @@ export default function Billing() {
       <SettingsCard>
         <h3 className={classes.h3Custom}>Billing History</h3>
         <p>View the historiy of payments made for your Oaysus Upsell App</p>
+        <SettingsBillingTable data={billingData} />
       </SettingsCard>
     </>
   );
