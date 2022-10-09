@@ -6,9 +6,13 @@ export function Template({
   name,
   image = "/image/empty-image.svg",
   isActive = false,
+  ...props
 }) {
   return (
-    <div className={isActive ? classes.templateActive : classes.template}>
+    <div
+      {...props}
+      className={isActive ? classes.templateActive : classes.template}
+    >
       <img src={image} className={classes.image} />
       <div className={classes.textBox}>
         <p className={classes.text}>{name}</p>

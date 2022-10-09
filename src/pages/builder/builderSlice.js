@@ -65,6 +65,9 @@ export const builderSlice = createSlice({
     setDraggedComponent: (state, action) => {
       state.draggedComponent = action.payload;
     },
+    setComponentList: (state, action) => {
+      state.componentList = action.payload;
+    },
   },
 });
 
@@ -77,6 +80,7 @@ export const {
   removeComponentFromPage,
   updatePageComponents,
   setDraggedComponent,
+  setComponentList,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;

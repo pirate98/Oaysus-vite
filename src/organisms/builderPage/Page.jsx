@@ -38,10 +38,10 @@ export function Page() {
   };
 
   useEffect(() => {
-    if (pageComponents) return;
+    // if (pageComponents) return;
     const defaultComponents = builderComponentMaker(componentList);
     dispatch(setPageComponents(defaultComponents));
-  }, []);
+  }, [componentList]);
 
   return (
     // <Grid container spacing={2} columnSpacing={4}>
