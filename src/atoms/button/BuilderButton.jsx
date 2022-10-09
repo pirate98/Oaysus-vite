@@ -8,6 +8,9 @@ const styles = {
     backgroundColor: "#ffffff !important",
     color: "#000000",
     border: `1px solid ${variables.secondaryBorder}`,
+    "&:hover": {
+      backgroundColor: `${variables.whiteHover} !important`,
+    },
   },
 };
 
@@ -15,10 +18,7 @@ export const BuilderButton = styled(({ color, children, ...rest }) => (
   <PlainButton
     variant="contained"
     sx={{
-      "&":
-        color === "white"
-          ? { ...styles.whiteButton, "&:hover": { ...styles.whiteButton } }
-          : {},
+      "&": color === "white" ? { ...styles.whiteButton } : {},
     }}
     {...rest}
   >

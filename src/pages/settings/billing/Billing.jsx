@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { PlanCard, SettingsCard } from "../../../atoms";
+import { BuilderButton, PlanCard, SettingsCard } from "../../../atoms";
 import { SettingsProgressBar } from "../../../molecules/settingsProgressBar/SettingsProgressBar";
 import { SettingsBillingTable } from "../../../organisms/settingsBillingTable/SettingsBillingTable";
 
@@ -62,7 +62,7 @@ export default function Billing() {
           Earned upsell revenue during your current billing period:
           <span className={classes.textGreen}> $243.23</span>
         </h3>
-        <p>View the historiy of payments made for your Oaysus Upsell App</p>
+        <p>View the history of payments made for your Oaysus Upsell App</p>
       </SettingsCard>
       <SettingsCard>
         <h3 className={classes.h3Custom}>Payment Plan</h3>
@@ -83,8 +83,15 @@ export default function Billing() {
         </Grid>
       </SettingsCard>
       <SettingsCard>
-        <h3 className={classes.h3Custom}>Billing History</h3>
-        <p>View the historiy of payments made for your Oaysus Upsell App</p>
+        <Grid container justifyContent={"space-between"}>
+          <section>
+            <h3 className={classes.h3Custom}>Billing History</h3>
+            <p>View the historiy of payments made for your Oaysus Upsell App</p>
+          </section>
+          <section>
+            <BuilderButton color="white">Export</BuilderButton>
+          </section>
+        </Grid>
         <SettingsBillingTable data={billingData} />
       </SettingsCard>
     </>
