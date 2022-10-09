@@ -6,7 +6,7 @@ import {
   SettingSectionContainer,
   SettingSection,
 } from "../../atoms";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import { builderSettings } from "../../data/builderSettings";
 import { Layout } from "../builderSettingFieldGroups";
 const {

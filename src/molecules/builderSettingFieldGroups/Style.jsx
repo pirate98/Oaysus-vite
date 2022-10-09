@@ -6,7 +6,7 @@ import {
   FontFamily,
   FontWeight,
 } from "../builderSettingFields";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import { BackgroundButtons } from "./BackgroundButtons";
 
 export function Style({

@@ -6,7 +6,10 @@ import { TextContainer, Stack, Text } from "@shopify/polaris";
 import Rating from "@mui/material/Rating";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import {
+  filterOnlyStyleValues,
+  makeEditorState,
+} from "../../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
 import { ImageSelector } from "./ImageSelector";

@@ -14,7 +14,7 @@ import {
   Layout,
 } from "../builderSettingFieldGroups";
 import { useGetSelectedPageComponent } from "../../hooks";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import { EditWrapper } from "../wrappers";
 
 export function Action() {

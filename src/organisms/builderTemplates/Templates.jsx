@@ -1,6 +1,8 @@
 import { Button } from "@shopify/polaris";
+
 import { Template } from "./Template";
 import classes from "./Templates.module.scss";
+import { builderSettings } from "../../data/builderSettings";
 
 export function Templates() {
   return (
@@ -11,8 +13,9 @@ export function Templates() {
           <Button>Create New</Button>
         </div>
       </section>
-      <Template />
-      <Template isActive={true} />
+      {builderSettings.templates.map((undefined, idx) => (
+        <Template key={idx} isActive={false} name={`Template ${idx + 1}`} />
+      ))}
     </>
   );
 }

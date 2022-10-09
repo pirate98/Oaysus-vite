@@ -26,7 +26,7 @@ import {
 } from "../builderSettingFields";
 import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { builderSettings } from "../../data/builderSettings";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 
 export function Product() {
   const component = useGetSelectedPageComponent();

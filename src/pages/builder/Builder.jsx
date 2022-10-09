@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -8,12 +6,8 @@ import classes from "./Builder.module.scss";
 import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
 import { BuilderMenu } from "../../organisms/builderMenu/BuilderMenu";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import {
-  setSelectedPageComponentName,
-  setActiveMenu,
-  setPageComponents,
-} from "./builderSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedPageComponentName, setActiveMenu } from "./builderSlice";
 import { Templates } from "../../organisms/builderTemplates/Templates";
 
 export default function Builder() {

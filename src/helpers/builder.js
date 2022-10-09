@@ -1,3 +1,5 @@
+import * as builderComponents from "../molecules/builderComponents";
+
 const allowedFields = [
   "&:hover",
   "color",
@@ -142,3 +144,38 @@ export const makeEditorState = (text) => `{"root":{"children":[{"children":\
 [{"detail":0,"format":0,"mode":"normal","style":"","text":"${text}","type":"text","version":1}],\
 "direction":null,"format":"","indent":0,"type":"paragraph","version":1}],\
 "direction":null,"format":"","indent":0,"type":"root","version":1}}`;
+
+export const builderComponentMaker = (componentsToAddOnInitialLoad) => {
+  let componentList = [];
+
+  componentsToAddOnInitialLoad.forEach(function (componentName, idx) {
+    let _componentName = componentName;
+
+    if (componentName.includes("-")) {
+      _componentName = _componentName.split("-");
+      _componentName = _componentName[0];
+    }
+
+    const numericalComponentName = numerateTheName(
+      componentList,
+      _componentName
+    );
+
+    const json = structuredClone(builderComponents[_componentName].json);
+
+    const component = {
+      ...json,
+      name: numericalComponentName,
+    };
+
+    // Detect component names like this: `Feature-switchAlignment` to swtich image position
+    if (componentName.includes("-")) {
+      component.layout.imagePosition = "left";
+    }
+
+    componentList = [...componentList, component];
+  });
+
+  // console.log(componentList);
+  return componentList;
+};

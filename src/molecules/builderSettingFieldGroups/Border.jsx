@@ -1,6 +1,6 @@
 import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { ColorSelector, Slider } from "../builderSettingFields";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 
 export function Border({ title = "MARGIN", data, module }) {
   return (

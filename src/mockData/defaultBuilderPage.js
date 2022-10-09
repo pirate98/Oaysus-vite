@@ -1,5 +1,5 @@
 import * as builderComponents from "../molecules/builderComponents";
-import { numerateTheName } from "../molecules/helpers/builder";
+import { numerateTheName } from "../helpers/builder";
 
 const componentsToAddOnInitialLoad = [
   "Exclusive",

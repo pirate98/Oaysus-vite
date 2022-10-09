@@ -3,6 +3,7 @@ import { Badge } from "../../atoms";
 import constants from "../../data/constants";
 
 export function Template({
+  name,
   image = "/image/empty-image.svg",
   isActive = false,
 }) {
@@ -10,7 +11,7 @@ export function Template({
     <div className={isActive ? classes.templateActive : classes.template}>
       <img src={image} className={classes.image} />
       <div className={classes.textBox}>
-        <p className={classes.text}>Style 1 template</p>
+        <p className={classes.text}>{name}</p>
         <Badge dot={false} variant={isActive ? "green" : "gray"}>
           {isActive ? "Active" : "Inactive"}
         </Badge>

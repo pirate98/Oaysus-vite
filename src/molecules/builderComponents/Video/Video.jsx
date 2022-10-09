@@ -1,7 +1,10 @@
 import { forwardRef } from "react";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import {
+  filterOnlyStyleValues,
+  makeEditorState,
+} from "../../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { Helmet } from "react-helmet";
 

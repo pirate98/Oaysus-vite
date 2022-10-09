@@ -6,7 +6,7 @@ import * as builderSettingMenus from "../../molecules/builderSettingMenus";
 import { setHoveredComponent } from "../../pages/builder/builderSlice";
 import { BuilderButtonWrapper } from "../../molecules/wrappers";
 import { EditBox } from "../../molecules/editBox/EditBox";
-import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
+import { removeDigitsAndReturnComponentName } from "../../helpers/builder";
 
 export function BuilderMenu() {
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ import {
   alignLeft,
   alignRight,
 } from "../../assets/svg";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";

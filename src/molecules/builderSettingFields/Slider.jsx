@@ -1,6 +1,6 @@
 import classes from "./.module.scss";
 import { Slider as SliderInput } from "../../atoms";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
 
