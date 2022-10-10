@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 
 import Billing from "./billing/Billing";
 import General from "./general/General";
@@ -44,7 +44,8 @@ export default function Settings() {
       >
         <Routes>
           <Route path="/billing" element={<Billing />} />
-          <Route path="/*" element={<General />} />
+          <Route path="/general" element={<General />} />
+          <Route path="/*" element={<Navigate to="/settings/general" />} />
         </Routes>
       </Box>
     </Grid>

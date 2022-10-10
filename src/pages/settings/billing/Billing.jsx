@@ -91,7 +91,7 @@ export default function Billing() {
             <p>View the historiy of payments made for your Oaysus Upsell App</p>
           </section>
           <section>
-            <Button.Primary color="white">Export</Button.Primary>
+            <Button.Primary>Export</Button.Primary>
           </section>
         </Grid>
         <SettingsBillingTable data={billingData} />

@@ -13,6 +13,5 @@ export const Primary = styled(({ children, ...rest }) => (
   width: "100%",
   "&:hover": {
     backgroundColor: variables.primaryHover,
-    // borderColor: "black",
   },
 });
