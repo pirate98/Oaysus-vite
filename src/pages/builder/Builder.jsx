@@ -16,7 +16,7 @@ export default function Builder() {
   const buttonContent = (
     <>
       <Button>Preview on store</Button>
-      <Button primary>Save</Button>
+      <Button primary>Save template</Button>
     </>
   );
 

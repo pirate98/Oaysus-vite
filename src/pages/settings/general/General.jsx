@@ -7,7 +7,7 @@ export default function General() {
   return (
     <>
       <SettingsCard>
-        <Grid container justifyContent={"space-between"}>
+        <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <div>
             <h3 className={classes.h3Custom}>App status</h3>
             <p>
