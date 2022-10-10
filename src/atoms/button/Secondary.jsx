@@ -15,14 +15,3 @@ export const Secondary = styled(({ children, ...rest }) => (
     backgroundColor: `${variables.whiteHover} !important`,
   },
 });
-
-// {
-//   backgroundColor: "#ffffff !important",
-//   color: "#000000",
-//   border: "1px solid",
-//   borderColor: variables.secondaryBorder,
-
-//   "&:hover": {
-//     borderColor: variables.secondaryBorder,
-//   },
-// }

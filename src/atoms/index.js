@@ -3,7 +3,6 @@ export * from "./badge/Badge";
 export * from "./select/CustomSelect";
 export * from "./select/SelectForBuilder";
 export * from "./select/Select";
-export * from "./button/AddButton";
 export * from "./button/HiddenWrapperButton";
 export * from "./buttonGroup/ButtonGroup";
 export * from "./buttonGroup/ButtonGroupTight";

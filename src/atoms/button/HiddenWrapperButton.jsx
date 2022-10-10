@@ -1,4 +1,4 @@
-import classes from "../../assets/css/_classes.module.scss";
+import classes from "@/assets/css/_classes.module.scss";
 
 export function HiddenWrapperButton({
   children,
