@@ -15,12 +15,12 @@ const plans = [
   {
     title: "TIER 2",
     description: "$40/MO",
-    promotion: "+0.5% of upsell revenue",
+    promotion: "+1% of upsell revenue",
   },
   {
     title: "TIER 3",
     description: "$60/MO",
-    promotion: "+0% of upsell revenue",
+    promotion: "+1% of upsell revenue",
   },
 ];
 
