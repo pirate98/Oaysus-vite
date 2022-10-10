@@ -1,4 +1,5 @@
 const allowedFields = [
+  "&:hover",
   "color",
   "backgroundColor",
   "background",
@@ -118,7 +119,7 @@ export const removeDigitsAndReturnComponentName = (name, nameSuffix = "") => {
   return nameUpperCased + nameSuffix;
 };
 
-// Return Incentive1_xx from Incentive1
+// Return Incentive1_xx from Exclusive
 export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
   const biggestNumeratorFromNames = pageComponents.reduce((prev, cur) => {
     if (!cur.name.includes(name)) return prev;

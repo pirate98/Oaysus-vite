@@ -1,18 +1,37 @@
+import { useGetSelectedPageComponent } from "../../hooks";
+import { Margin } from "./Margin";
+import { Padding } from "./Padding";
+import { builderSettings } from "../../data/builderSettings";
+import { ColorSelector } from "../builderSettingFields";
 import { SettingFieldContainer } from "../../atoms";
-import classes from "./.module.scss";
-import { layoutLeft, layoutRight } from "../../assets/svg";
+import { BackgroundImage } from "./BackgroundImage";
+const {
+  fieldNames: { layout },
+} = builderSettings;
 
-export function Layout() {
+export function Layout({
+  children,
+  showColorSelector = true,
+  showImageUpload = false,
+}) {
+  const component = useGetSelectedPageComponent();
+  // console.log(component?.name, component[layout]?.backgroundColor);
   return (
-    <SettingFieldContainer className={classes.layout}>
-      <div>
-        <img src={layoutLeft} />
-        <p>Left</p>
-      </div>
-      <div>
-        <img src={layoutRight} />
-        <p>Right</p>
-      </div>
-    </SettingFieldContainer>
+    <>
+      {children}
+      <SettingFieldContainer title="BACKGROUND">
+        <ColorSelector
+          title={"Color"}
+          name="backgroundColor"
+          module={layout}
+          value={component[layout]?.backgroundColor}
+        />
+        {showImageUpload && (
+          <BackgroundImage data={component[layout]} module={layout} />
+        )}
+      </SettingFieldContainer>
+      <Margin data={component[layout]} />
+      <Padding data={component[layout]} />
+    </>
   );
 }

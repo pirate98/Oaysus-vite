@@ -1,27 +1,29 @@
-import { SettingFieldContainer } from "../../atoms";
+import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
 import { ColorSelector, Slider } from "../builderSettingFields";
+import { removePx } from "../helpers/builder";
 
 export function Border({ title = "MARGIN", data, module }) {
   return (
     <SettingFieldContainer title={title}>
-      <Slider
-        module={module}
-        title={"Width"}
-        max={10}
-        name="borderWidth"
-        defaultValue={data.borderWidth}
-      />
-      <Slider
-        module={module}
-        title={"Radius"}
-        max={100}
-        name="borderRadius"
-        defaultValue={data.borderRadius}
-      />
+      <SettingField fieldName={"Width"}>
+        <PxInput
+          placeholder="Enter size"
+          value={removePx(data["borderWidth"])}
+          name={"borderWidth_px"}
+        />
+      </SettingField>
+      <SettingField fieldName={"Radius"}>
+        <PxInput
+          placeholder="Enter size"
+          value={removePx(data["borderRadius"])}
+          name={"borderRadius_px"}
+        />
+      </SettingField>
       <ColorSelector
         title={"Color"}
         name="borderColor"
-        defaultValue={data.borderColor}
+        module={module}
+        value={data.borderColor}
       />
     </SettingFieldContainer>
   );

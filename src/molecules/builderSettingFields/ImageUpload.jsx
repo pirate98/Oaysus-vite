@@ -1,51 +1,72 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HiddenWrapperButton, PlainButton } from "../../atoms";
+import {
+  HiddenWrapperButton,
+  PlainButton,
+  SettingField,
+  SettingFieldContainer,
+} from "../../atoms";
+import { useGetSelectedPageComponent } from "../../hooks";
 import { updatePageComponents } from "../../pages/builder/builderSlice";
-import classes from "./.module.scss";
+import classes from "./ImageUpload.module.scss";
 
-export function ImageUpload({ name, module }) {
+export function ImageUpload({ name }) {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const component = useGetSelectedPageComponent();
+
+  const handleImageLoad = (e) => {
+    console.log(e.target);
+    const path = `url(${window.URL.createObjectURL(e?.target?.files[0])})`;
+
     dispatch(
       updatePageComponents({
-        module,
-        key: "backgroundImage",
-        value: [
-          "url(/mockData/flowers.jpg)",
-          "url(/mockData/puppy.jpg)",
-          "url(/mockData/strategy.jpg)",
-        ][Math.floor(Math.random() * 3)],
+        key: "backgroundPreview",
+        value: path,
       })
     );
   };
 
   return (
-    <div className={classes.singleAttribute}>
-      <p>Image</p>
+    <SettingField fieldName={"Image"}>
       <div className={classes.setting}>
         <HiddenWrapperButton
           name={name}
           // temporary method to test background image
           // onClick={(e) => console.log(e.currentTarget.blur())}
         >
-          <div className={classes.imagePreview}></div>
+          <div
+            className={
+              component?.backgroundPreview
+                ? classes.imagePreviewActive
+                : classes.imagePreview
+            }
+            style={{
+              backgroundImage: component?.backgroundPreview || "",
+            }}
+          ></div>
         </HiddenWrapperButton>
         <label
           htmlFor="uploadImage"
           onClickCapture={(e) => {
             e.stopPropagation();
             e.currentTarget.click();
-            handleClick();
+            // handleClick();
           }}
           className={classes.w100}
         >
-          <PlainButton fullWidth color="success" sx={{ fontSize: "14px" }}>
+          <PlainButton fullWidth color="success" sx={{ fontSize: "12px" }}>
             Upload Image
           </PlainButton>
         </label>
-        <input id="uploadImage" name="uploadImage" type="file" hidden />
+        <input
+          id="uploadImage"
+          name="uploadImage"
+          onChange={handleImageLoad}
+          type="file"
+          hidden
+        />
       </div>
-    </div>
+    </SettingField>
   );
 }

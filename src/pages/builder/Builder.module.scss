@@ -10,6 +10,7 @@
 }
 
 .leftSection {
+  z-index: 1;
   position: fixed;
   top: $navHeight;
   bottom: 0;
@@ -74,4 +75,8 @@
 .rightSection {
   margin-left: $leftMenuWidth;
   background-color: rgb(255, 255, 255); // white;
+  width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
 }

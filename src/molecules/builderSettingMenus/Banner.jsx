@@ -1,33 +1,37 @@
-import { SettingSectionContainer } from "../../atoms/settingSection/SettingSectionContainer";
-import { SettingSection } from "../../atoms/settingSection/SettingSection";
-import { ImageUpload, Slider } from "../builderSettingFields";
-
-import { EditWrapper } from "./EditWrapper";
+import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
-
-const changeHandlerMaker = (module) => (name, value) => {
-  return { module, name, value };
-};
-
+import {
+  PxInput,
+  SettingField,
+  SettingSectionContainer,
+  SettingSection,
+} from "../../atoms";
+import { removePx } from "../helpers/builder";
+import { builderSettings } from "../../data/builderSettings";
+import { Layout } from "../builderSettingFieldGroups";
+const {
+  fieldNames: { layout, title, subTitle, countdown },
+} = builderSettings;
+// console.log({ background });
 export function Banner() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
     <SettingSectionContainer>
-      <EditWrapper>
+      <EditWrapper module={"sizing"}>
         <SettingSection title={"Sizing"}>
-          <Slider
-            title={"Height"}
-            name="height"
-            defaultValue={selectedPageComponent["sizing"]["height"]}
-            module={"sizing"}
-            max={500}
-          />
+          <SettingField fieldName={"Height"}>
+            <PxInput
+              placeholder="Enter size"
+              value={removePx(selectedPageComponent["sizing"]["height"])}
+              name={"height_px"}
+            />
+          </SettingField>
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"background"}>
-        <SettingSection title={"Background"}>
-          <ImageUpload />
+      <EditWrapper module={layout}>
+        <SettingSection title={"Layout"}>
+          <Layout showImageUpload={true} />
         </SettingSection>
       </EditWrapper>
     </SettingSectionContainer>

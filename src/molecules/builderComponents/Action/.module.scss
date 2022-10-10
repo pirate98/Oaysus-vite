@@ -1,0 +1,35 @@
+@import "../../../assets/css/type", "../../../assets/css/classes.module";
+
+.callToAction {
+  // margin-top: 40px;
+  min-height: 104px;
+  background: #f2f2f2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // padding: 0 6rem !important;
+  flex-grow: 1;
+}
+
+.width {
+  width: 710px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headline {
+  @extend .defaultFont;
+  // font-weight: 600;
+  // margin-bottom: 21px;
+  // font-size: 24px;
+  // line-height: 20px;
+}
+
+.blankElement {
+  width: 100%;
+  background: #00806029;
+  height: 50px;
+  border: 10px solid white;
+}

@@ -2,13 +2,19 @@
 
 .componentContainer {
   // width: auto !important;
-  margin: 0 6rem !important;
   // display: flex;
   justify-content: center;
   // overflow: auto;
   display: inline-block;
   flex-grow: 1;
   // width: 100%;
+}
+
+.box {
+  max-width: 710px;
+  margin: 0 auto !important;
+  display: flex;
+  justify-content: center;
 }
 
 .buyBox {
@@ -97,13 +103,13 @@
   // }
 }
 
-.imageZone {
-  background: rgba(224, 224, 224, 1);
-  height: 240px;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+// .imageZone {
+//   background: rgba(224, 224, 224, 1);
+//   height: 240px;
+//   width: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
 
 .headline {
   @extend .defaultFont;
@@ -154,4 +160,8 @@
     width: 24px;
     height: auto;
   }
+}
+
+.order1 {
+  order: 1;
 }

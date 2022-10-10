@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import { Input } from "./Input";
 import classes from "./.module.scss";
 import { inputWidth } from "../../assets/css/_variables.module.scss";
-import { useState } from "react";
-import { errorTextID } from "@shopify/polaris";
+
+import { useEffect } from "react";
 
 export function PxInput({ placeholder, small = false, ...args }) {
   const [value, setValue] = useState(args.value || "");
@@ -22,6 +24,10 @@ export function PxInput({ placeholder, small = false, ...args }) {
     }
   };
 
+  useEffect(() => {
+    setValue(args.value || "");
+  }, [args]);
+
   const handleChange = (e) => {
     // e.preventDefault();
     setValue(e.target.value);
@@ -35,7 +41,7 @@ export function PxInput({ placeholder, small = false, ...args }) {
       }}
       {...args}
       endAdornment={<p className={classes.px}>px</p>}
-      placeholder={placeholder || (!value.length ? "0" : "")}
+      placeholder={placeholder || (!value?.length ? "0" : "")}
       onKeyDown={handleKeyDown}
       onKeyUp={keyUpHandler}
       value={value}

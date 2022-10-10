@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import Grid from "@mui/material/Grid";
 
 import { DropZoneWrapper } from "../../molecules/builderComponents";
 import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
@@ -20,14 +21,15 @@ export function Page() {
   // console.log({ pageComponents });
 
   const handleClickOnComponent = (componentName) => {
+    console.log({ componentName });
     if (selectedPageComponentName === componentName) return;
 
     dispatch(setSelectedPageComponentName(componentName));
   };
 
   return (
-    <div>
-      {/* <Grid container spacing={2} columnSpacing={4}> */}
+    // <Grid container spacing={2} columnSpacing={4}>
+    <>
       {pageComponents &&
         pageComponents.length &&
         pageComponents.map((component, idx) => {
@@ -57,7 +59,7 @@ export function Page() {
             </Fragment>
           );
         })}
-      {/* </Grid> */}
-    </div>
+    </>
+    // </Grid>
   );
 }

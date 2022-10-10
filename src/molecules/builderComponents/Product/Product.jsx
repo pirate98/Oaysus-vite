@@ -1,110 +1,129 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { TextContainer, Stack, Text } from "@shopify/polaris";
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating";
 
 import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers/";
 import { BuilderButton } from "../../../atoms";
+import { ImageSelector } from "./ImageSelector";
+import variables from "../../../assets/css/_variables.module.scss";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
-    <Grid
-      item
-      container
+    <div
+      className={classes.componentContainer}
+      style={{ backgroundColor: styles?.layout?.backgroundColor }}
       ref={ref}
-      columnSpacing={1}
-      className={
-        classes.componentContainer + (className ? ` ${className}` : "")
-      }
-      sx={{ ...styles.layout }}
     >
-      <Grid item xs={6}>
-        <img className={classes.image1} src={"/image/guy_1.jpg"} />
-      </Grid>
-      <Grid item xs={6} container spacing={2} alignContent="baseline">
-        <Grid item sx={{ marginBottom: "2px" }}>
-          <TextContainer>
-            <EditableWithToolBar
-              // hidden={true}
-              style={{
-                ...styles.product,
-              }}
-              // name="product"
-              // module="product"
-              // data-oa-type="text"
-              module="product"
-              type="h3"
-            >
-              {content?.product?.editorState}
-            </EditableWithToolBar>
-            <Grid container>
-              <ReactStars
-                count={5}
-                // onChange={ratingChanged}
-                size={22}
-                activeColor="rgba(248, 152, 29, 1)"
-              />
-              <p className={classes.starText}>5.0 Best Seller</p>
+      <div className={classes.box}>
+        <Grid
+          // item
+          container
+          columnSpacing={4}
+          // className={className ? ` ${className}` : ""}
+          sx={{ ...styles.layout, backgroundColor: "inherit" }}
+        >
+          <Grid
+            item
+            xs={6}
+            className={
+              content?.layout?.imagePosition === "right" ? classes.order1 : ""
+            }
+          >
+            <ImageSelector content={content} style={styles.image} />
+          </Grid>
+          <Grid item xs={6} container spacing={2} alignContent="baseline">
+            <Grid item sx={{ marginBottom: "2px" }}>
+              <TextContainer>
+                <EditableWithToolBar
+                  // hidden={true}
+                  style={{
+                    ...styles.title,
+                  }}
+                  module="title"
+                  type="h3"
+                >
+                  {content?.title?.editorState}
+                </EditableWithToolBar>
+                <Grid
+                  container
+                  sx={{
+                    display: content?.reviews?.visibility ? "flex" : "none",
+                  }}
+                >
+                  <Rating
+                    name="read-only"
+                    value={content?.reviews?.rating}
+                    readOnly
+                  />
+                  {/* <p className={classes.starText}>5.0 Best Seller</p> */}
+                </Grid>
+                <EditableWithToolBar
+                  // hidden={true}
+                  style={{
+                    ...styles.description,
+                  }}
+                  name="description"
+                  module="description"
+                  data-oa-type="text"
+                  type="p"
+                >
+                  {content.description?.editorState}
+                </EditableWithToolBar>
+              </TextContainer>
             </Grid>
-            <EditableWithToolBar
-              // hidden={true}
-              style={{
-                ...styles.description,
-              }}
-              name="description"
-              module="description"
-              data-oa-type="text"
-              type="p"
-            >
-              {content.description?.editorState}
-            </EditableWithToolBar>
-          </TextContainer>
+            <Grid item xs={12}>
+              <Stack distribution="fill" vertical spacing="tight">
+                <Stack distribution="equalSpacing">
+                  <Text color="subdued" fontWeight="regular">
+                    Subtotal
+                  </Text>
+                  <Text color="subdued" fontWeight="regular">
+                    $ 20.00
+                  </Text>
+                </Stack>
+                <Stack distribution="equalSpacing">
+                  <Text color="subdued" fontWeight="regular">
+                    Taxes
+                  </Text>
+                  <Text color="subdued" fontWeight="regular">
+                    N/A
+                  </Text>
+                </Stack>
+                <div className={classes.divider}></div>
+                <Stack distribution="equalSpacing">
+                  <Text fontWeight="regular">Total</Text>
+                  <Text fontWeight="regular">$ 20.00</Text>
+                </Stack>
+              </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              {/* <ButtonGroup fullWidth> */}
+              <BuilderButton sx={{ ...styles.buyButton }}>
+                Buy Now
+              </BuilderButton>
+              <BuilderButton sx={{ ...styles.declineButton }}>
+                Decline this offer
+              </BuilderButton>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Stack distribution="fill" vertical spacing="tight">
-            <Stack distribution="equalSpacing">
-              <Text color="subdued" fontWeight="semibold">
-                Subtotal
-              </Text>
-              <Text color="subdued" fontWeight="semibold">
-                $ 20.00
-              </Text>
-            </Stack>
-            <Stack distribution="equalSpacing">
-              <Text color="subdued" fontWeight="semibold">
-                Taxes
-              </Text>
-              <Text color="subdued" fontWeight="semibold">
-                N/A
-              </Text>
-            </Stack>
-            <div className={classes.divider}></div>
-            <Stack distribution="equalSpacing">
-              <Text fontWeight="semibold">Total</Text>
-              <Text fontWeight="semibold">$ 20.00</Text>
-            </Stack>
-          </Stack>
-        </Grid>
-        <Grid item>
-          {/* <ButtonGroup fullWidth> */}
-          <BuilderButton sx={{ ...styles.buyButton }}>Buy Now</BuilderButton>
-          <BuilderButton color={"white"} sx={{ ...styles.declineButton }}>
-            Decline this offer
-          </BuilderButton>
-        </Grid>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 });
 
 const json = {
   name: "",
+  imageDisplayType: "single",
   layout: {
+    imagePosition: "left", // not css?
     paddingTop: "42px",
     paddingRight: "",
     paddingBottom: "20px",
@@ -113,9 +132,34 @@ const json = {
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
+    backgroundColor: "#ffffff",
   },
-  reviews: {},
-  product: {
+  reviews: {
+    visibility: true,
+    rating: 2,
+  },
+  image: {
+    border: "1px solid #e0e0e0",
+    borderRadius: "6px",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundColor: "#e0e0e0",
+  },
+  images: [
+    "url(/mockData/flowers.jpg)",
+    "url(/mockData/puppy.jpg)",
+    "url(/mockData/strategy.jpg)",
+    "url(/image/guy_1.jpg)",
+    "url(/mockData/ayak.jpg)",
+    "url(/mockData/strategy.jpg)",
+    "url(/image/guy_1.jpg)",
+    "url(/mockData/ayak.jpg)",
+  ],
+  customImages: [],
+  title: {
     editorState: makeEditorState("Test T-shirt"),
     color: "#000000",
     fontFamily: "Roboto",
@@ -141,22 +185,12 @@ const json = {
     marginLeft: "",
     marginRight: "",
   },
-  title: {
-    editorState: makeEditorState(""),
-    fontFamily: "Roboto",
-    lineHeight: "20px",
-    fontSize: "24px",
-    fontWeight: 600,
-    fontColor: "#000000",
-    margin: "0 0 21px 0",
-    visibility: true,
-  },
   subTitle: {
     editorState: makeEditorState(""),
     price: 20,
     fontFamily: "Roboto",
     lineHeight: "20px",
-    fontWeight: 400,
+    fontWeight: "400",
     fontSize: "16px",
     fontColor: "#000000",
     padding: 0,
@@ -165,9 +199,39 @@ const json = {
   },
   buyButton: {
     marginBottom: "10px",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "20px",
+    borderRadius: "4px",
+    borderStyle: "solid",
+    borderWidth: "0px",
+
+    borderColor: "#008060",
+    color: "#ffffff",
+    backgroundColor: "#008060",
+
+    "&:hover": {
+      backgroundColor: variables.primaryHover,
+    },
   },
   declineButton: {
     marginBottom: "10px",
+    fontFamily: "Roboto",
+    fontSize: "16px",
+    fontWeight: "400",
+    lineHeight: "20px",
+    borderRadius: "4px",
+    borderStyle: "solid",
+    borderWidth: "1px",
+
+    color: "#000000",
+    borderColor: "#babfc3",
+    backgroundColor: "#ffffff",
+
+    "&:hover": {
+      backgroundColor: "#f6f6f7",
+    },
   },
 };
 

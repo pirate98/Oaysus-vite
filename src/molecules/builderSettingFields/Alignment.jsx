@@ -1,4 +1,4 @@
-import { ButtonGroupTemplate } from "./ButtonGroupTemplate";
+import { ButtonGroupTemplate } from "./templates/ButtonGroupTemplate";
 import { alignCenter, alignLeft, alignRight } from "../../assets/svg";
 
 const buttons = [

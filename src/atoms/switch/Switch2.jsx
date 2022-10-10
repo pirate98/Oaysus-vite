@@ -42,7 +42,7 @@ export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
     boxShadow: "none",
   },
   "& .MuiSwitch-track": {
-    width: "39.4px",
+    width: "40px",
     height: "24px",
     borderRadius: 26 / 2,
     backgroundColor: disabledColor,

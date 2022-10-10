@@ -38,8 +38,18 @@ export const builderSlice = createSlice({
       const component = state.selectedPageComponentName;
       if (!component) return;
 
-      const { module, key, value } = action.payload;
-      // console.log({ component, module, key, value });
+      let { module, key, value } = action.payload;
+
+      // handle pseudo classes
+      if (typeof key !== "string") {
+        const [key1, key2] = key;
+
+        key = key1;
+        // move handling this to redux later
+        value = { [key2]: value };
+      }
+
+      console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 

@@ -1,0 +1,18 @@
+@import "../../../assets/css/type", "../../../assets/css/classes.module",
+  "../.module.scss";
+
+.offer {
+  @extend .border1;
+  border: none !important;
+  background: rgba(0, 128, 96, 1);
+  border-color: rgba(0, 128, 96, 1);
+  min-height: 104px;
+  // min-height: 104px;
+  height: auto;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}

@@ -17,9 +17,8 @@ export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
   const handleChange = (e) => {
     e.stopPropagation();
 
-    // console.log("slider");
     const { name: key, value } = e.target;
-
+    console.log({ module, key });
     dispatch(
       updatePageComponents({
         module,

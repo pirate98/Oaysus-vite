@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Autocomplete } from "../../atoms";
 import { useGetFontsQuery } from "../../data/googleAPI";
+import { updatePageComponents } from "../../pages/builder/builderSlice";
 import classes from "../builderSettingFields/.module.scss";
 
-export function FontFamily({ defaultValue }) {
+export function FontFamily({ defaultValue, module }) {
+  const dispatch = useDispatch();
+
   const { data, error } = useGetFontsQuery();
   const textFieldRef = useRef();
   // console.log({ data, error });
@@ -19,7 +23,11 @@ export function FontFamily({ defaultValue }) {
   // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
     // console.log({ valueUpdatedTo: value });
-    textFieldRef.current.blur();
+    // textFieldRef.current.blur();
+    if (!value) return;
+    dispatch(
+      updatePageComponents({ module, key: "fontFamily", value: inputValue })
+    );
   }, [value]);
 
   return (
