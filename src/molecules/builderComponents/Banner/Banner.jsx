@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 import classes from "../.module.scss";
-import { filterOnlyStyleValues } from "../../helpers/builder";
+import { filterOnlyStyleValues } from "../../../helpers/builder";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);

@@ -3,7 +3,10 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import {
+  filterOnlyStyleValues,
+  makeEditorState,
+} from "../../../helpers/builder";
 import { BuilderButton } from "../../../atoms";
 import { EditableWithToolBar } from "../../wrappers";
 import variables from "../../../assets/css/_variables.module.scss";

@@ -3,7 +3,10 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import {
+  filterOnlyStyleValues,
+  makeEditorState,
+} from "../../../helpers/builder";
 import { EditableWithToolBar } from "../../wrappers";
 
 const fn = forwardRef(({ content, className }, ref) => {

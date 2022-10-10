@@ -2,7 +2,10 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-import { filterOnlyStyleValues, makeEditorState } from "../../helpers/builder";
+import {
+  filterOnlyStyleValues,
+  makeEditorState,
+} from "../../../helpers/builder";
 import { Grid } from "@mui/material";
 import { EditableWithToolBar } from "../../wrappers";
 

@@ -22,7 +22,7 @@ import {
   getIndexes,
   numerateTheName,
   removeDigitsAndReturnComponentName,
-} from "../../helpers/builder";
+} from "../../../helpers/builder";
 import {
   setPageComponents,
   setSelectedPageComponentName,

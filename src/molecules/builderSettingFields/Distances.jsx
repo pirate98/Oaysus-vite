@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { PxInput } from "../../atoms";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 import classes from "./.module.scss";
 
 export function Distances({ data = {}, type }) {

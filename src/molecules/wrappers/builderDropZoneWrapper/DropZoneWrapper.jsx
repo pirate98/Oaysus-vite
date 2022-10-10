@@ -5,7 +5,7 @@ import { useDrop } from "react-dnd";
 
 import { setPageComponents } from "../../../pages/builder/builderSlice";
 import componentsData from "../../../data/componentsData";
-import { getIndexes, numerateTheName } from "../../helpers/builder";
+import { getIndexes, numerateTheName } from "../../../helpers/builder";
 import * as builderComponents from "../../builderComponents";
 // import { useAddComponentToPageBuilder } from "../../../hooks";
 

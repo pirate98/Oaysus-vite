@@ -13,7 +13,7 @@ export function GoogleFonts() {
   useEffect(() => {
     const _fonts = [];
 
-    pageComponents.forEach((component) => {
+    pageComponents?.forEach((component) => {
       for (const module in component) {
         for (const key in component[module]) {
           const value = component[module][key];

@@ -15,7 +15,7 @@ import {
 import { EditWrapper } from "../wrappers";
 import { useGetSelectedPageComponent } from "../../hooks";
 import { PxInput, SettingField, SettingFieldContainer } from "../../atoms";
-import { removePx } from "../helpers/builder";
+import { removePx } from "../../helpers/builder";
 
 export function Request() {
   const selectedPageComponent = useGetSelectedPageComponent();

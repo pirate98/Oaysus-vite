@@ -1,21 +1,31 @@
 import { Fragment } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import Grid from "@mui/material/Grid";
 
 import { DropZoneWrapper } from "../../molecules/builderComponents";
-import { removeDigitsAndReturnComponentName } from "../../molecules/helpers/builder";
+import {
+  builderComponentMaker,
+  removeDigitsAndReturnComponentName,
+} from "../../helpers/builder";
 import { ComponentToolBar } from "../../molecules/wrappers/builderComponentToolBar/ComponentToolBar";
-import { setSelectedPageComponentName } from "../../pages/builder/builderSlice";
+import {
+  setPageComponents,
+  setSelectedPageComponentName,
+} from "../../pages/builder/builderSlice";
 import classes from "./Page.module.scss";
 import * as builderComponents from "../../molecules/builderComponents";
-import { DragWrapper } from "../../molecules/wrappers/builderDragWrapper/DragWrapper";
+import { useEffect } from "react";
 
 export function Page() {
   const dispatch = useDispatch();
 
   const {
-    builder: { pageComponents, selectedPageComponentName, draggedComponent },
+    builder: {
+      pageComponents,
+      selectedPageComponentName,
+      draggedComponent,
+      componentList,
+    },
   } = useSelector((state) => state);
 
   // console.log({ pageComponents });
@@ -26,6 +36,12 @@ export function Page() {
 
     dispatch(setSelectedPageComponentName(componentName));
   };
+
+  useEffect(() => {
+    // if (pageComponents) return;
+    const defaultComponents = builderComponentMaker(componentList);
+    dispatch(setPageComponents(defaultComponents));
+  }, [componentList]);
 
   return (
     // <Grid container spacing={2} columnSpacing={4}>
