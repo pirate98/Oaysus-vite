@@ -42,16 +42,18 @@ const Navigation = () => {
       </div>
       <span className={classes.buttonGroup}>
         {pageButtons}
-        <Button
-          icon={
-            <Icon
-              source={() => createElement("img", { src: svgSettings })}
-              color="base"
-            />
-          }
-        >
-          Settings
-        </Button>
+        <NavLink to="/settings">
+          <Button
+            icon={
+              <Icon
+                source={() => createElement("img", { src: svgSettings })}
+                color="base"
+              />
+            }
+          >
+            Settings
+          </Button>
+        </NavLink>
       </span>
     </section>
   );

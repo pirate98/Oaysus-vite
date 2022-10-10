@@ -1,10 +1,12 @@
 @use "sass:color";
 
+$backgroundColor: #f9f7fa;
 $shopifyGreen: #008060;
 $primaryColor: $shopifyGreen;
 $primaryHover: #006e52;
 $secondaryHover: rgb(237 235 235);
 $secondaryBorder: rgb(186 191 195);
+$whiteHover: rgba(246, 246, 247, 1);
 $primaryActive: adjust-color(
   adjust-color($shopifyGreen, $lightness: 65%),
   $blackness: 10%
@@ -38,6 +40,7 @@ $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   secondaryHover: $secondaryHover;
   secondaryBorder: $secondaryBorder;
   primaryActive: $primaryActive;
+  whiteHover: $whiteHover;
   fontFamily: $fontFamily;
   selectShadow: $selectShadow;
 }

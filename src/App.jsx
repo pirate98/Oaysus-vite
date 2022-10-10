@@ -4,6 +4,8 @@ import "./assets/css/app.scss";
 import Upsells from "./pages/upsells/Upsells";
 import Navigation from "./organisms/navigation/Navigation";
 import { GoogleFonts } from "./services";
+import Settings from "./pages/settings/Settings";
+import { Route } from "react-router-dom";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -22,7 +24,9 @@ export default function App() {
           /> */}
 
       <Navigation />
-      <Routes pages={pages} mainPage={"/upsells"}></Routes>
+      <Routes pages={pages} mainPage={"/upsells"}>
+        <Route path="/settings/*" element={<Settings />} />
+      </Routes>
       <GoogleFonts />
       {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
