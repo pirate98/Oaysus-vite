@@ -9,8 +9,14 @@ import {
   inputBorderFocused,
 } from "@/assets/css/_variables.module.scss";
 
-export const Select = styled(({ options, ...props }) => (
-  <MuiSelect {...props}>
+export const Select = styled(({ options, size, ...props }) => (
+  <MuiSelect
+    {...props}
+    sx={{
+      "&": { width: inputWidth, height: "36px" },
+      textAlign: "start",
+    }}
+  >
     {options &&
       options.map((option, idx) => (
         <MenuItem
@@ -25,7 +31,6 @@ export const Select = styled(({ options, ...props }) => (
       ))}
   </MuiSelect>
 ))({
-  "&": { width: inputWidth },
   background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
   borderRadius: "4px",

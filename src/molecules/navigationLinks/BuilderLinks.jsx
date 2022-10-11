@@ -1,9 +1,8 @@
-import { Button } from "@shopify/polaris";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-
-import classes from "./.module.scss";
 import { NavLink } from "react-router-dom";
 import { Grid } from "@mui/material";
+
+import { Button } from "@/atoms/button";
+import classes from "./.module.scss";
 
 export function BuilderLinks() {
   return (
@@ -11,14 +10,13 @@ export function BuilderLinks() {
       <section className={classes.leftSection}>
         <NavLink to="/" className={classes.navLink}>
           <Grid container alignItems={"center"}>
-            <ArrowBackIosNewIcon sx={{ height: "15px" }} />
-            <p>Exit Builder</p>
+            <Button.Back>Exit Builder</Button.Back>
           </Grid>
         </NavLink>
       </section>
       <section className={classes.buttonGroup}>
-        <Button>Preview on store</Button>
-        <Button primary>Save template</Button>
+        <Button.Secondary size={"sm"}>Preview on store</Button.Secondary>
+        <Button.Primary size={"sm"}>Save template</Button.Primary>
       </section>
     </>
   );

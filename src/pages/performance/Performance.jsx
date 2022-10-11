@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 
-import { Divider, Select } from "@/atoms";
+import { Divider, Select, Page } from "@/atoms";
 import { Card } from "@/atoms/cards";
 import classes from "./Performance.module.scss";
 import {
@@ -25,7 +25,7 @@ const selectOptions = [
 
 export default function Performance() {
   return (
-    <div className={classes.page}>
+    <Page>
       <h1 className={classes.h1}>Performance</h1>
       <Select
         options={selectOptions}
@@ -77,6 +77,6 @@ export default function Performance() {
           </Card.Performance>
         </Grid>
       </Grid>
-    </div>
+    </Page>
   );
 }
