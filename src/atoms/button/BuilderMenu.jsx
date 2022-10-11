@@ -7,6 +7,7 @@ export const BuilderMenu = styled((props) => <Button {...props} />)({
   height: "auto",
   minHeight: "36px",
   fontSize: "12px",
+  padding: "unset",
   "&:hover": {
     background: variables.secondaryHover,
   },

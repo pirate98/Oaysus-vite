@@ -3,7 +3,15 @@
 .setting {
   width: $inputWidth;
   display: flex;
-  gap: 8px;
+  gap: 11px;
+  align-items: center;
+
+  svg {
+    height: 18px;
+    min-width: 16px;
+    margin-right: 3px;
+    cursor: pointer;
+  }
 
   .imagePreview {
     min-width: 36px;
