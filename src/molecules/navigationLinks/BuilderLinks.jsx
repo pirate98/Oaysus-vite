@@ -9,7 +9,7 @@ export function BuilderLinks() {
   return (
     <>
       <section className={classes.leftSection}>
-        <NavLink to="/">
+        <NavLink to="/" className={classes.navLink}>
           <Grid container alignItems={"center"}>
             <ArrowBackIosNewIcon sx={{ height: "15px" }} />
             <p>Exit Builder</p>
