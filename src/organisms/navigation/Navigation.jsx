@@ -1,61 +1,28 @@
-import { createElement } from "react";
-
-import { Image, Button, Icon } from "@shopify/polaris";
-import { NavLink } from "react-router-dom";
+import { Image } from "@shopify/polaris";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { logo, upsells, performance, svgSettings } from "../../assets/svg";
+import { logo } from "@/assets/svg";
 import classes from "./Navigation.module.scss";
+import { MainLinks, BuilderLinks } from "@/molecules/navigationLinks/";
 
 const Navigation = () => {
   const {
     navigation: { pageButtons },
   } = useSelector((state) => state);
 
+  const location = useLocation();
+  const builderIsLoaded = location.pathname.startsWith("/builder");
+
   return (
-    <section className={classes.container}>
-      <Image className={classes.logo} source={logo} alt="Oaysus" />
-      <div className={classes.navLinks}>
-        <NavLink
-          to="/upsells"
-          className={({ isActive }) =>
-            isActive ? classes.navLinkActive : classes.navLink
-          }
-        >
-          <Image source={upsells} alt="Upsells" width={11} />
-          <p>View Upsells</p>
-        </NavLink>
-        <NavLink
-          to="/performance"
-          className={({ isActive }) =>
-            isActive ? classes.navLinkActive : classes.navLink
-          }
-        >
-          <Image
-            className={classes.navIcon}
-            source={performance}
-            alt="Upsells"
-            width={11}
-          />
-          <p>Performance</p>
-        </NavLink>
+    <div className={classes.container}>
+      <NavLink to="/">
+        <Image className={classes.logo} source={logo} alt="Oaysus" />
+      </NavLink>
+      <div className={classes.linkContainer}>
+        {builderIsLoaded ? <BuilderLinks /> : <MainLinks />}
       </div>
-      <span className={classes.buttonGroup}>
-        {pageButtons}
-        <NavLink to="/settings">
-          <Button
-            icon={
-              <Icon
-                source={() => createElement("img", { src: svgSettings })}
-                color="base"
-              />
-            }
-          >
-            Settings
-          </Button>
-        </NavLink>
-      </span>
-    </section>
+    </div>
   );
 };
 

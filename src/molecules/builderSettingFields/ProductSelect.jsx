@@ -1,9 +1,9 @@
-import { BuilderButton } from "../../atoms";
+import { Button } from "@/atoms/button";
 
 export function ProductSelect() {
   return (
-    <BuilderButton sx={{ height: "36px", fontSize: "14px" }}>
+    <Button.Primary sx={{ height: "36px", fontSize: "14px" }}>
       Select Product
-    </BuilderButton>
+    </Button.Primary>
   );
 }

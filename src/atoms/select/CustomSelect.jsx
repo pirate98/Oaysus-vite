@@ -42,7 +42,8 @@ const StyledButton = styled("button")(
   line-height: 18px;
   box-sizing: border-box;
   white-space: nowrap;
-  display: flex;  
+  display: flex;
+  align-items: center;
   
   text-align: left;
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};

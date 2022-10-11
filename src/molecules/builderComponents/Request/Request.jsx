@@ -7,7 +7,7 @@ import {
   filterOnlyStyleValues,
   makeEditorState,
 } from "../../../helpers/builder";
-import { BuilderButton } from "../../../atoms";
+import { Button } from "@/atoms/button";
 import { EditableWithToolBar } from "../../wrappers";
 import variables from "../../../assets/css/_variables.module.scss";
 
@@ -50,9 +50,9 @@ const fn = forwardRef(({ content, className }, ref) => {
             </EditableWithToolBar>
           </Grid>
           <Grid item sx={{ width: "208px" }}>
-            <BuilderButton variant="contained" sx={styles.buyButton}>
+            <Button.Primary variant="contained" sx={styles.buyButton} fullWidth>
               Buy Now
-            </BuilderButton>
+            </Button.Primary>
           </Grid>
         </div>
       </div>

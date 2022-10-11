@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 
 import Billing from "./billing/Billing";
 import General from "./general/General";
@@ -10,19 +10,21 @@ export default function Settings() {
   return (
     <Grid container flexDirection={"row"}>
       <nav className={classes.nav}>
-        <h1 className={classes.h1Custom}>Settings</h1>
-        <NavLink
-          to={"/settings/general"}
-          className={({ isActive }) => (isActive ? classes.textGreen : null)}
-        >
-          <h2 className={classes.h2Custom}>General</h2>
-        </NavLink>
-        <NavLink
-          to={"/settings/billing"}
-          className={({ isActive }) => (isActive ? classes.textGreen : null)}
-        >
-          <h2 className={classes.h2Custom}>Billing</h2>
-        </NavLink>
+        <h1 className={classes.h1}>Settings</h1>
+        <Box sx={{ marginTop: "16px", display: "inline-block" }}>
+          <NavLink
+            to={"/settings/general"}
+            className={({ isActive }) => (isActive ? classes.textGreen : null)}
+          >
+            <h2 className={classes.h2}>General</h2>
+          </NavLink>
+          <NavLink
+            to={"/settings/billing"}
+            className={({ isActive }) => (isActive ? classes.textGreen : null)}
+          >
+            <h2 className={classes.h2}>Billing</h2>
+          </NavLink>
+        </Box>
       </nav>
       <Box
         sx={{
@@ -44,7 +46,8 @@ export default function Settings() {
       >
         <Routes>
           <Route path="/billing" element={<Billing />} />
-          <Route path="/*" element={<General />} />
+          <Route path="/general" element={<General />} />
+          <Route path="/*" element={<Navigate to="/settings/general" />} />
         </Routes>
       </Box>
     </Grid>

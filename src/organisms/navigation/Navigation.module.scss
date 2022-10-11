@@ -10,64 +10,16 @@
   align-items: center;
   height: $navHeight;
   z-index: 1000;
+
+  .linkContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .logo {
   margin-right: 3rem;
   height: 26px;
   width: auto;
-}
-
-.navLinks {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navLink {
-  display: flex;
-  align-items: center;
-  color: #000000;
-  text-decoration: none;
-  opacity: 0.4;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 19px;
-
-  img {
-    margin-right: 0.3rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  &:hover {
-    opacity: 1;
-    color: inherit;
-  }
-}
-
-.navLinkActive {
-  @extend .navLink;
-  opacity: 1;
-
-  &:hover {
-    color: inherit;
-  }
-}
-
-.buttonGroup {
-  flex-grow: 1;
-  text-align: end;
-
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 8px;
-
-  img {
-    vertical-align: middle;
-  }
 }

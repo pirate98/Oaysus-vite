@@ -21,3 +21,6 @@ export { ReactComponent as ToolbarDelete } from "./toolbarDelete.svg";
 export { ReactComponent as ToolbarDrag } from "./toolbarDrag.svg";
 export { ReactComponent as SwiperPrev } from "./swiperPrev.svg";
 export { ReactComponent as SwiperNext } from "./swiperNext.svg";
+export { ReactComponent as AddPlus } from "./addPlus.svg";
+export { ReactComponent as Delete } from "./delete.svg";
+export { ReactComponent as Calendar } from "./calendar.svg";
