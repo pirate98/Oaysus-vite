@@ -13,15 +13,6 @@ import { Templates } from "../../organisms/builderTemplates/Templates";
 export default function Builder() {
   const dispatch = useDispatch();
 
-  const buttonContent = (
-    <>
-      <Button>Preview on store</Button>
-      <Button primary>Save template</Button>
-    </>
-  );
-
-  usePageButtons({ content: buttonContent });
-
   const {
     builder: { activeMenu, selectedPageComponentName, page },
   } = useSelector((state) => state);
