@@ -68,7 +68,9 @@ export function AverageOrder() {
       <h2 className={classes.h2Thick}>Average Order Value</h2>
       <h1 className={classes.h1}>{formatAmountToCurrency(0)}</h1>
       <section className={classes.chartContainer}>
-        <h3 className={classes.h3 + " " + classes.textGray}>AOV OVER TIME</h3>
+        <h3 className={classes.h3Performance + " " + classes.textGray}>
+          AOV OVER TIME
+        </h3>
         <div className={classes.canvas}>
           <Line options={options} data={data} />
         </div>

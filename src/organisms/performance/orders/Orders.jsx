@@ -65,7 +65,7 @@ export function Orders() {
       <h2 className={classes.h2Thick}>Orders</h2>
       <h1 className={classes.h1}>{formatAmountToCurrency(0)}</h1>
       <section className={classes.chartContainer}>
-        <h3 className={classes.h3 + " " + classes.textGray}>
+        <h3 className={classes.h3Performance + " " + classes.textGray}>
           ORDERS OVER TIME
         </h3>
         <Line options={options} data={data} />
