@@ -23,3 +23,4 @@ export * from "./settingSection/SettingSectionContainer";
 export * from "./slider/Slider";
 export * from "./cards/settingsCard/SettingsCard";
 export * from "./cards/planCard/PlanCard";
+export * from "./divider/Divider";

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { formatAmountToCurrency } from "../../helpers";
 import classes from "./SettingsProgressBar.module.scss";
 
 export function SettingsProgressBar({ breakPoints, completed }) {
@@ -29,7 +30,7 @@ export function SettingsProgressBar({ breakPoints, completed }) {
             className={classes.circle}
             style={{ left: breakPointPositions[idx] }}
           >
-            <p className={classes.p}>${point}</p>
+            <p className={classes.p}>{formatAmountToCurrency(point)}</p>
           </span>
         );
       })}
@@ -37,7 +38,7 @@ export function SettingsProgressBar({ breakPoints, completed }) {
         className={classes.circleGreen}
         style={{ left: positionOfCompleted }}
       >
-        <p className={classes.p}>${completed}</p>
+        <p className={classes.p}>{formatAmountToCurrency(completed)}</p>
       </span>
       <span
         className={classes.progressGreen}

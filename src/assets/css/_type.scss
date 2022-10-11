@@ -4,6 +4,10 @@
   color: $shopifyGreen;
 }
 
+.textGray {
+  color: rgba(109, 113, 117, 1);
+}
+
 .defaultFont {
   font-family: $fontFamily;
 }
@@ -11,28 +15,48 @@
 .h1 {
   @extend .defaultFont;
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-
   color: #1f2123;
+
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.h1Big {
+  @extend .h1;
+
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
 }
 
 .h2 {
+  @extend .defaultFont;
+  line-height: 20px;
+  letter-spacing: 0px;
+
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: start;
+}
+
+.h2Thick {
   @extend .defaultFont;
   font-size: 18px;
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0px;
-  text-align: center;
+  text-align: left;
+  margin-bottom: 16px;
 }
 
 .h3 {
   font-size: 15px;
-  font-weight: 500;
   line-height: 20px;
   letter-spacing: 0px;
-  text-align: center;
+  text-align: start;
+  font-weight: 600;
 }
 
 .h4 {

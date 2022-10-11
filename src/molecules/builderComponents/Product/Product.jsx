@@ -108,10 +108,10 @@ const fn = forwardRef(({ content, className }, ref) => {
             </Grid>
             <Grid item xs={12}>
               {/* <ButtonGroup fullWidth> */}
-              <Button.Primary sx={{ ...styles.buyButton }}>
+              <Button.Primary sx={{ ...styles.buyButton }} fullWidth>
                 Buy Now
               </Button.Primary>
-              <Button.Primary sx={{ ...styles.declineButton }}>
+              <Button.Primary sx={{ ...styles.declineButton }} fullWidth>
                 Decline this offer
               </Button.Primary>
             </Grid>

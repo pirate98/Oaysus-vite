@@ -1,20 +1,19 @@
 import { useEffect } from "react";
 
-import { Icon, Text, Page, Layout, Grid, Button } from "@shopify/polaris";
+import { Icon, Page, Layout, Grid, Button } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
-import { TitleBar } from "@shopify/app-bridge-react";
 
-import { ProductCard, PlainCard } from "../../atoms";
-import { Header } from "../../organisms/upsellHeader/Header";
+import { ProductCard, PlainCard } from "@/atoms";
+import { Header } from "@/organisms/upsellHeader/Header";
 import classes from "./Upsells.module.scss";
-import { useGetSeedDataQuery } from "../../data/backendApi";
+import { useGetSeedDataQuery } from "@/data/backendApi";
 
 export default function Upsells() {
   const { data } = useGetSeedDataQuery();
 
-  useEffect(() => {
-    console.log({ data });
-  }, [data]);
+  // useEffect(() => {
+  //   console.log({ data });
+  // }, [data]);
 
   return (
     <Page fullWidth>

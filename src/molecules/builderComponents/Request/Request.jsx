@@ -50,7 +50,7 @@ const fn = forwardRef(({ content, className }, ref) => {
             </EditableWithToolBar>
           </Grid>
           <Grid item sx={{ width: "208px" }}>
-            <Button.Primary variant="contained" sx={styles.buyButton}>
+            <Button.Primary variant="contained" sx={styles.buyButton} fullWidth>
               Buy Now
             </Button.Primary>
           </Grid>

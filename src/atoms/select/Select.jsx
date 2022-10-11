@@ -7,29 +7,24 @@ import {
   inputPadding,
   inputFontSize,
   inputBorderFocused,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
-export const Select = styled((props) => {
-  let customProps = { ...props };
-  delete customProps.options;
-
-  return (
-    <MuiSelect {...customProps}>
-      {props.options &&
-        props.options.map((option, idx) => (
-          <MenuItem
-            key={idx}
-            value={option.value}
-            sx={{
-              fontSize: inputFontSize,
-            }}
-          >
-            {option.label}
-          </MenuItem>
-        ))}
-    </MuiSelect>
-  );
-})({
+export const Select = styled(({ options, ...props }) => (
+  <MuiSelect {...props}>
+    {options &&
+      options.map((option, idx) => (
+        <MenuItem
+          key={idx}
+          value={option.value}
+          sx={{
+            fontSize: inputFontSize,
+          }}
+        >
+          {option.label}
+        </MenuItem>
+      ))}
+  </MuiSelect>
+))({
   "&": { width: inputWidth },
   background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",

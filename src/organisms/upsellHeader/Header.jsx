@@ -18,7 +18,7 @@ const styles = {
 export function Header() {
   return (
     <section>
-      <h1 className={classes.h1}>Upsell Funnels</h1>
+      <h1 className={classes.h1Big}>Upsell Funnels</h1>
       <div className={classes.infoContainer}>
         <div className={classes.badgeContainer}>
           <Badge dotHalf={true}>4 Total</Badge>

@@ -10,7 +10,7 @@ export const Primary = styled(({ children, ...rest }) => (
 ))({
   backgroundColor: variables.shopifyGreen,
   color: "white",
-  width: "100%",
+  // width: "100%",
   "&:hover": {
     backgroundColor: variables.primaryHover,
   },
