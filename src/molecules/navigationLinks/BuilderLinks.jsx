@@ -11,8 +11,8 @@ export function BuilderLinks() {
         <Button.Back>Exit Builder</Button.Back>
       </section>
       <section className={classes.buttonGroup}>
-        <Button.Secondary size={"sm"}>Preview on store</Button.Secondary>
-        <Button.Primary size={"sm"}>Save template</Button.Primary>
+        <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
+        <Button.Primary size={"sm"}>Save Template</Button.Primary>
       </section>
     </>
   );
