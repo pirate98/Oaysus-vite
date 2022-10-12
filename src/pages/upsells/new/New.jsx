@@ -7,6 +7,7 @@ import classes from "./New.module.scss";
 import { CategoryTrigger, EditPen } from "@/assets/svg";
 import { UpsellNew } from "../../../templates/upsellNew/UpsellNew";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function New() {
   const editableElement = useRef();
@@ -16,6 +17,10 @@ export default function New() {
     const editableEl = editableElement.current;
     editableEl.focus();
   };
+
+  const {
+    upsells: { testTrigger },
+  } = useSelector((state) => state);
 
   return (
     <UpsellNew
@@ -40,7 +45,11 @@ export default function New() {
           <p>Select specific conditions that trigger your upsells</p>
         </div>
         <Link to="/upsells/trigger">
-          <Button.Primary>Select Trigger</Button.Primary>
+          {testTrigger ? (
+            <Button.Primary>Edit Trigger</Button.Primary>
+          ) : (
+            <Button.Primary>Select Trigger</Button.Primary>
+          )}
         </Link>
       </Card.Settings>
     </UpsellNew>

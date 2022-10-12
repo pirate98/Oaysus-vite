@@ -7,6 +7,7 @@ export function UpsellNew({
   backButtonText,
   children,
   rightButtonText,
+  rightButtonOnClick,
   bottomButtonText,
   bottomButtonOnClick,
 }) {
@@ -24,7 +25,9 @@ export function UpsellNew({
           </Button.Upsell>
         </section>
         <div>
-          <Button.Primary>{rightButtonText}</Button.Primary>
+          <Button.Primary onClick={rightButtonOnClick}>
+            {rightButtonText}
+          </Button.Primary>
         </div>
       </Grid>
     </Page>
