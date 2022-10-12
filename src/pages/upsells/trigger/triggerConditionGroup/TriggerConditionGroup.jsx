@@ -42,14 +42,14 @@ export function TriggerConditionGroup({ triggerGroup, groupId }) {
 const conditionOptions = [
   { label: "Product", value: "product" },
   {
-    label: "Product variant",
+    label: "Product Variant",
     value: "product_variant",
   },
   { label: "Collection", value: "collection" },
-  { label: "Any product", value: "any_product" },
-  { label: "Item quantity", value: "item_quantity" },
-  { label: "Total value", value: "total_value" },
-  { label: "Customer location", value: "customer_location" },
+  { label: "Any Product", value: "any_product" },
+  { label: "Item Quantity", value: "item_quantity" },
+  { label: "Total Value", value: "total_value" },
+  { label: "Customer Location", value: "customer_location" },
 ];
 
 const operatorOptions = [
