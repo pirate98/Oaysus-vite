@@ -1,10 +1,25 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 import { Button } from "@/atoms/button";
 import classes from "./.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { addUpsell } from "../../pages/upsells/upsellsSlice";
 
 export function BuilderLinks() {
+  const {
+    builder: { pageComponents },
+  } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleSave = () => {
+    dispatch(addUpsell(pageComponents));
+    navigate("/upsells/new");
+  };
+
   return (
     <>
       <section className={classes.leftSection}>
@@ -12,7 +27,9 @@ export function BuilderLinks() {
       </section>
       <section className={classes.buttonGroup}>
         <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
-        <Button.Primary size={"sm"}>Save Template</Button.Primary>
+        <Button.Primary onClick={handleSave} size={"sm"}>
+          Save Template
+        </Button.Primary>
       </section>
     </>
   );

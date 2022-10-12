@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 
 import classes from "../.module.scss";
 import { filterOnlyStyleValues } from "../../../helpers/builder";
+import { componentsData } from "@/data/componentsData";
 
 const fn = forwardRef(({ content, className }, ref) => {
   const styles = filterOnlyStyleValues(content);
@@ -14,7 +15,8 @@ const fn = forwardRef(({ content, className }, ref) => {
         ...styles.sizing,
         ...styles.layout,
         backgroundImage:
-          content?.backgroundPreview || 'url("/image/empty-image-dark.svg")',
+          content?.backgroundPreview ||
+          `url(${componentsData.PLACEHOLDER_IMAGE_URL})`,
       }}
     ></div>
   );

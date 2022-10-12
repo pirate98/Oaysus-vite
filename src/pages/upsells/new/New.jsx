@@ -1,13 +1,14 @@
 import { useRef } from "react";
 
-import Grid from "@mui/material/Grid";
-
-import { EditableElement, Page, Card, Divider, Button } from "@/atoms";
-import classes from "./New.module.scss";
-import { CategoryTrigger, EditPen } from "@/assets/svg";
-import { UpsellNew } from "../../../templates/upsellNew/UpsellNew";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+import { EditableElement } from "@/atoms";
+import classes from "./New.module.scss";
+import { EditPen } from "@/assets/svg";
+import { UpsellNew } from "@/templates/upsellNew/UpsellNew";
+import { TriggerCard } from "./triggerCard/TriggerCard";
+import { BuilderCard } from "./builderCard/BuilderCard";
 
 export default function New() {
   const editableElement = useRef();
@@ -18,14 +19,15 @@ export default function New() {
     editableEl.focus();
   };
 
-  const {
-    upsells: { testTrigger },
-  } = useSelector((state) => state);
+  const navigate = useNavigate();
 
   return (
     <UpsellNew
       backButtonText={"Upsells"}
       bottomButtonText="Create Upsell"
+      bottomButtonOnClick={() => {
+        navigate("/builder");
+      }}
       rightButtonText={"Publish Upsell"}
     >
       <div className={classes.editHeader}>
@@ -38,20 +40,8 @@ export default function New() {
         </EditableElement>
         <EditPen className={classes.editPen} onClick={handleEditPenClick} />
       </div>
-      <Card.Settings className={classes.cardFlex}>
-        <CategoryTrigger />
-        <div className={classes.textContainer}>
-          <h2 className={classes.customH2}>Entry trigger</h2>
-          <p>Select specific conditions that trigger your upsells</p>
-        </div>
-        <Link to="/upsells/trigger">
-          {testTrigger ? (
-            <Button.Primary>Edit Trigger</Button.Primary>
-          ) : (
-            <Button.Primary>Select Trigger</Button.Primary>
-          )}
-        </Link>
-      </Card.Settings>
+      <TriggerCard />
+      <BuilderCard />
     </UpsellNew>
   );
 }

@@ -1,0 +1,17 @@
+@import "@/assets/css/type";
+
+.customH2 {
+  @extend .h2;
+
+  margin-bottom: 8px;
+}
+
+.cardFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.textContainer {
+  flex-grow: 1;
+  margin: 0 24px;
+}

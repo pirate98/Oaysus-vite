@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   triggers: [[{ condition: "product" }]],
+  upsells: [],
 };
 
 export const upsellsSlice = createSlice({
@@ -30,6 +31,9 @@ export const upsellsSlice = createSlice({
     testTrigger: (state) => {
       state.testTrigger = state.triggers;
     },
+    addUpsell: (state, action) => {
+      state.upsells.push(action.payload);
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   updateTrigger,
   deleteTrigger,
   testTrigger,
+  addUpsell,
 } = upsellsSlice.actions;
 
 export default upsellsSlice.reducer;
