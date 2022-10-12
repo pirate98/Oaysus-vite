@@ -1,11 +1,11 @@
-import constants from "../../data/constants";
+import { CONSTANT } from "@/data/constants";
 import classes from "./.module.scss";
 
 export function ImageAtRight({
-  primary = constants.COLOR_GRAY,
-  secondary = constants.COLOR_DARK_GRAY,
+  primary = CONSTANT.COLOR_GRAY,
+  secondary = CONSTANT.COLOR_DARK_GRAY,
   primaryHover = "#ffffff",
-  secondaryHover = constants.COLOR_MAIN,
+  secondaryHover = CONSTANT.COLOR_MAIN,
   hover = false,
 }) {
   const hoverStyle = {

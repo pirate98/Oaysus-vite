@@ -1,8 +1,7 @@
 import classes from "@/assets/css/_classes.module.scss";
 
-export function HiddenWrapperButton({
+export function HiddenWrapper({
   children,
-  onClick,
   className = "",
   fullWidth = false,
   ...args
@@ -10,7 +9,6 @@ export function HiddenWrapperButton({
   return (
     <button
       {...args}
-      onClick={onClick}
       className={
         classes.btnClean +
         (className ? ` ${className}` : "") +

@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import classes from "./EditBox.module.scss";
 import { ReactComponent as EditIcon } from "../../assets/svg/editIcon.svg";
 import { setSelectedPageComponentName } from "../../pages/builder/builderSlice";
-import { HiddenWrapperButton } from "../../atoms";
+import { HiddenWrapper } from "../../atoms";
 
 export function EditBox({ title, subTitle = "Editing" }) {
   const dispatch = useDispatch();
@@ -20,12 +20,12 @@ export function EditBox({ title, subTitle = "Editing" }) {
         <p className={classes.title}>{title}</p>
         <p className={classes.subTitle}>{subTitle}</p>
       </Grid>
-      <HiddenWrapperButton
+      <HiddenWrapper
         className={classes.iconWrapper}
         onClick={() => dispatch(setSelectedPageComponentName(0))}
       >
         <EditIcon />
-      </HiddenWrapperButton>
+      </HiddenWrapper>
     </div>
   );
 }

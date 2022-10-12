@@ -1,36 +1,26 @@
 @import "@/assets/css/type";
 
-.left {
-  margin-top: 12px;
-  margin-right: 80px;
-}
-
 .customH2 {
   @extend .h2;
 
   margin-bottom: 8px;
 }
 
-.middle {
+.editHeader {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.cardFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.textContainer {
   flex-grow: 1;
-  margin: 36px 80px;
-
-  .editHeader {
-    margin-bottom: 12px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .cardFlex {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .textContainer {
-    flex-grow: 1;
-    margin: 0 24px;
-  }
+  margin: 0 24px;
 }
 
 .editPen {

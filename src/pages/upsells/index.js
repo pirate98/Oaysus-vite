@@ -1,3 +1,2 @@
-import { New } from "./new/New";
-
-export const Upsells = { New };
+export * from "./new/New";
+export * from "./trigger/Trigger";

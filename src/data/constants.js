@@ -1,6 +1,6 @@
 import variables from "../assets/css/_variables.module.scss";
 
-export default {
+export const CONSTANT = {
   INPUT_WIDTH: "190px",
   COLOR_MAIN: variables.shopifyGreen,
   COLOR_GRAY: "#F2F2F2",

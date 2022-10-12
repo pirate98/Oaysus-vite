@@ -1,26 +1,30 @@
-import { NavLink } from "react-router-dom";
+import Box from "@mui/material/Box";
 
-import { Primary } from "../Primary";
 import { AddPlus } from "@/assets/svg";
 import classes from "./Upsell.module.scss";
-import { Card } from "@/atoms";
+import { HiddenWrapper } from "../HiddenWrapper";
+import { CONSTANT } from "@/data/constants";
 
-export function Upsell({ children, to = "/" }) {
+export function Upsell({ children, ...args }) {
   return (
-    <div className={classes.upsellBtnContainer}>
-      <NavLink to={to} className={classes.link}>
-        <Primary
+    <div {...args} className={classes.upsellBtnContainer}>
+      <HiddenWrapper className={classes.link}>
+        <Box
           sx={{
-            padding: 0,
             height: "30px",
-            minWidth: "30px",
+            width: "30px",
             margin: "auto",
+            display: "grid",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "4px",
+            backgroundColor: CONSTANT.COLOR_MAIN,
           }}
         >
           <AddPlus />
-        </Primary>
+        </Box>
         <p className={classes.text}>{children}</p>
-      </NavLink>
+      </HiddenWrapper>
     </div>
   );
 }

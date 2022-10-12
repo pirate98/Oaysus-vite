@@ -53,7 +53,7 @@ export function ImageDisplayType({ className }) {
 
   return (
     <SettingField fieldName={"Type"}>
-      <Select
+      <Select.Primary
         onChange={handleChange}
         options={options}
         value={component?.imageDisplayType || ""}

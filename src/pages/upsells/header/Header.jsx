@@ -40,7 +40,7 @@ export function Header() {
           <input placeholder="Search" className={classes.input} />
         </section>
         <section className={classes.filterContainer}>
-          <Select size={"sm"} options={options}></Select>
+          <Select.Primary size={"sm"} options={options} />
           <NavLink to="/upsells/new">
             <Button.Primary size={"sm"}>
               <AddPlus />

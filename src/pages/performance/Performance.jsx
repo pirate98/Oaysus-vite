@@ -21,17 +21,20 @@ const selectOptions = [
     label: "Last day",
     value: 1,
   },
+  {
+    label: "Last dayasdnsdmflksmlkds",
+    value: 1,
+  },
 ];
 
 export default function Performance() {
   return (
     <Page>
       <h1 className={classes.h1}>Performance</h1>
-      <Select
+      <Select.Small
         options={selectOptions}
         sx={{
           "&": {
-            width: "auto",
             marginBottom: "16px",
           },
         }}

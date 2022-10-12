@@ -1,6 +1,5 @@
 import classes from "./Templates.module.scss";
 import { Badge } from "../../atoms";
-import constants from "../../data/constants";
 
 export function Template({
   name,
