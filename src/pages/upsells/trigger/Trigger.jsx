@@ -39,7 +39,9 @@ export function Trigger() {
         return (
           <Fragment key={uuidv4()}>
             <TriggerConditionGroup groupId={idx} triggerGroup={triggerGroup} />
-            {idx !== triggers.length - 1 ? <Divider.And /> : null}
+            {idx !== triggers.length - 1 ? (
+              <Divider.WithText text="And" />
+            ) : null}
           </Fragment>
         );
       })}
