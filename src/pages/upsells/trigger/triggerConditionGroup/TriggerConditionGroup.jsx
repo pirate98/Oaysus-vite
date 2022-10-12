@@ -30,6 +30,7 @@ export function TriggerConditionGroup({ triggerGroup, groupId }) {
           handleDelete={() =>
             dispatch(deleteTrigger({ groupId, conditionId: idx }))
           }
+          showDelete={triggerGroup.length > 1}
           handleOr={() => dispatch(addOrTrigger({ id: groupId }))}
           showOr={idx === triggerGroup.length - 1}
         />

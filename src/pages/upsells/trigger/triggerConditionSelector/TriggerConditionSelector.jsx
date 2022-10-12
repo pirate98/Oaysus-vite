@@ -1,4 +1,4 @@
-import { Button, Card, Select } from "@/atoms";
+import { Button, Card, Input, Select } from "@/atoms";
 import classes from "./.module.scss";
 import { DeleteConditionSvg } from "../../../../assets/svg";
 
@@ -10,6 +10,7 @@ export function TriggerConditionSelector({
   onChange,
   conditionId,
   handleDelete,
+  showDelete,
   handleOr,
   showOr,
 }) {
@@ -17,11 +18,13 @@ export function TriggerConditionSelector({
     <Card.Settings>
       <h2 className={classes.customH2}>
         Condition #{conditionId + 1}
-        <span className={classes.deleteSvg}>
-          <Button.HiddenWrapper onClick={handleDelete}>
-            <DeleteConditionSvg />
-          </Button.HiddenWrapper>
-        </span>
+        {showDelete ? (
+          <span className={classes.deleteSvg}>
+            <Button.HiddenWrapper onClick={handleDelete}>
+              <DeleteConditionSvg />
+            </Button.HiddenWrapper>
+          </span>
+        ) : null}
       </h2>
       <div className={classes.inputContainer}>
         <p>If</p>{" "}
@@ -30,7 +33,7 @@ export function TriggerConditionSelector({
           value={conditionValue || conditionOptions[0]?.value || ""}
           name="condition"
           onChange={onChange}
-          // sx={{ flexGrow: 1 }}
+          sx={{ flexGrow: 1, maxWidth: "300px" }}
         />{" "}
         {conditionValue !== "any_product" ? (
           <>
@@ -39,6 +42,7 @@ export function TriggerConditionSelector({
               value={operatorValue || operatorOptions[0]?.value || ""}
               onChange={onChange}
               name="operator"
+              sx={{ flexGrow: 1 }}
             />
             {conditionValue === "product" ? (
               <Button.Primary size="sm" sx={{ flexGrow: 1 }}>
@@ -60,7 +64,14 @@ export function TriggerConditionSelector({
                 Select Location)
               </Button.Primary>
             ) : null}
-            <Button.Gray size="sm">Edit Product(s)</Button.Gray>
+            {conditionValue === "item_quantity" ||
+            conditionValue === "total_value" ? (
+              <Input />
+            ) : (
+              <Button.Gray size="sm" sx={{ flexGrow: 1 }}>
+                Edit Product(s)
+              </Button.Gray>
+            )}
           </>
         ) : null}
       </div>

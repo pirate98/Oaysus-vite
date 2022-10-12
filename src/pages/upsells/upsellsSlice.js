@@ -27,10 +27,18 @@ export const upsellsSlice = createSlice({
         (con, idx) => idx !== conditionId
       );
     },
+    testTrigger: (state) => {
+      state.testTrigger = state.triggers;
+    },
   },
 });
 
-export const { addOrTrigger, addAndTrigger, updateTrigger, deleteTrigger } =
-  upsellsSlice.actions;
+export const {
+  addOrTrigger,
+  addAndTrigger,
+  updateTrigger,
+  deleteTrigger,
+  testTrigger,
+} = upsellsSlice.actions;
 
 export default upsellsSlice.reducer;
