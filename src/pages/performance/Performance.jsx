@@ -59,7 +59,7 @@ export default function Performance() {
           </Card.Performance>
         </Grid>
       </Grid>
-      <Divider />
+      <Divider.Horizontal />
       <h1 className={classes.h1}>Top Performing Funnels</h1>
       <Grid
         container

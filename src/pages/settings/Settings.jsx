@@ -20,7 +20,7 @@ export default function Settings() {
                 isActive ? classes.textGreen : null
               }
             >
-              <h2 className={classes.h2}>General</h2>
+              <h2 className={classes.h2Custom}>General</h2>
             </NavLink>
             <NavLink
               to={"/settings/billing"}
@@ -28,13 +28,12 @@ export default function Settings() {
                 isActive ? classes.textGreen : null
               }
             >
-              <h2 className={classes.h2}>Billing</h2>
+              <h2 className={classes.h2Custom}>Billing</h2>
             </NavLink>
           </Box>
         </nav>
         <Box
           sx={{
-            paddingLeft: "80px",
             flexGrow: 1,
             "& > div": {
               marginBottom: "24px",

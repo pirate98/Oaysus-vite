@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Icon, Page, Layout, Grid, Button } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
 
-import { ProductCard, PlainCard } from "@/atoms";
+import { ProductCard, Card } from "@/atoms";
 import { Header } from "@/pages/upsells/header/Header";
 import classes from "./Upsells.module.scss";
 import { useGetSeedDataQuery } from "@/data/backendApi";
@@ -38,13 +38,13 @@ export default function Upsells() {
             </Grid.Cell>
             <Grid.Cell>
               <NavLink to="/upsells/new">
-                <PlainCard>
+                <Card.Dotted>
                   <Button
                     icon={<Icon source={MobilePlusMajor} color="base" />}
                     primary
                   ></Button>
                   <p className={classes.p}>Add Upsell</p>
-                </PlainCard>
+                </Card.Dotted>
               </NavLink>
             </Grid.Cell>
           </Grid>

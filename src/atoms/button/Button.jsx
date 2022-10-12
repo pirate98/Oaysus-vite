@@ -10,7 +10,7 @@ export const Button = styled(({ size, ...props }) => (
     sx={{
       height: size === "sm" ? "36px" : "44px",
       fontSize: size === "sm" ? "14px" : "16px",
-      padding: size === "sm" ? "0 22px" : "0.5rem 1.5rem",
+      padding: size === "sm" ? "0 22px" : "12px 24px",
     }}
   />
 ))({
@@ -23,6 +23,7 @@ export const Button = styled(({ size, ...props }) => (
   textTransform: "none",
   display: "flex",
   gap: "11px",
+  whiteSpace: "nowrap",
 
   "&:hover": {
     boxShadow: "none",

@@ -1,9 +1,7 @@
-import { Button } from "@shopify/polaris";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
-import { usePageButtons } from "../../hooks";
 import { Page } from "../../organisms/builderPage/Page";
 import { BuilderMenu } from "../../organisms/builderMenu/BuilderMenu";
 import { useDispatch, useSelector } from "react-redux";

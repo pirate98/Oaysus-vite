@@ -1,0 +1,27 @@
+@import "@/assets/css/variables.module";
+
+.upsellBtnContainer {
+  padding: 15px 5px;
+  display: flex;
+
+  .text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    margin-top: 11px;
+  }
+
+  .link {
+    width: min-content;
+    margin: auto;
+
+    &:hover {
+      button {
+        background-color: $primaryHover;
+      }
+    }
+  }
+}

@@ -5,6 +5,18 @@
   background-color: $backgroundColor;
 }
 
+.nav {
+  // padding: 40px 52px;
+  text-align: start;
+  margin-right: 132px;
+}
+
+.h2Custom {
+  @extend .h2;
+
+  font-size: 14px;
+}
+
 .h3Custom {
   @extend .h3;
 
@@ -41,9 +53,4 @@
   letter-spacing: 0px;
   margin-bottom: 24px;
   color: black;
-}
-
-.nav {
-  // padding: 40px 52px;
-  text-align: start;
 }

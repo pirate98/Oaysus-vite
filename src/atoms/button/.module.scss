@@ -1,0 +1,25 @@
+.navLink {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.4;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+
+  img {
+    margin-right: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    opacity: 1;
+    color: inherit;
+  }
+}
