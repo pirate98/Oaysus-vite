@@ -14,6 +14,7 @@ import { faker } from "@faker-js/faker";
 
 import { formatAmountToCurrency } from "@/helpers";
 import classes from "../.module.scss";
+import { CONSTANT } from "../../../data/constants";
 
 ChartJS.register(
   CategoryScale,
@@ -50,7 +51,7 @@ export const data = {
       data: Array.from(Array(6).keys()).map(() =>
         faker.datatype.number({ min: 0, max: 1000 })
       ),
-      borderColor: "rgb(255, 99, 132)",
+      borderColor: CONSTANT.GRAPH_LINE_COLOR,
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
     // {
