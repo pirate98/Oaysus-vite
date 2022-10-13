@@ -1,1 +1,1 @@
-export * from "./getProductImage";
+export * from "./getProductInfo";

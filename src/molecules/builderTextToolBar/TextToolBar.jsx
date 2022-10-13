@@ -1,5 +1,6 @@
+import { useCallback, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { $getSelection } from "lexical";
 import { FORMAT_TEXT_COMMAND } from "lexical";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 
@@ -10,68 +11,47 @@ import {
   alignCenter,
   alignLeft,
   alignRight,
-} from "../../assets/svg";
-import { removePx } from "../../helpers/builder";
-import { useGetSelectedPageComponent } from "../../hooks";
-import { useDispatch } from "react-redux";
-import { updatePageComponents } from "../../pages/builder/builderSlice";
-import { ButtonGroupTight } from "../../atoms";
-import { useCallback, useEffect, useState } from "react";
-
-const BOLD_THRESHOLD = 400;
-const BOLD = 600;
+} from "@/assets/svg";
+import { useGetSelectedPageComponent } from "@/hooks";
+import { updatePageComponents } from "@/pages/builder/builderSlice";
+import { ButtonGroupTight } from "@/atoms";
+import { useUpdateToolBar } from "./hooks/useUpdateToolBar";
 
 export function TextToolBar({ module, elementToFocus, ...args }) {
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
-  const { fontWeight, textAlign } =
+  const { textAlign } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
+
+  const { isBold, isItalic, isUnderline, updateToolBar } = useUpdateToolBar();
 
   const [editor] = useLexicalComposerContext();
 
-  const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
+  const handleStyleChange = useCallback(
+    (command) => {
+      editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
+    },
+    [editor]
+  );
 
-  const handleStyleChange = (command) => {
-    editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
-  };
+  const handleAlign = useCallback(
+    (value) => {
+      dispatch(
+        updatePageComponents({
+          module,
+          key: "textAlign",
+          value,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const onChangeLexical = () => {
-    const editorState = editor.getEditorState();
-    // console.log("selecting..");
-    editorState.read(() => {
-      updateToolBar();
-    });
-    // console.log("changing..")
-  };
-
-  const updateToolBar = useCallback(() => {
-    const selection = $getSelection();
-
-    // Update text format
-    setIsBold(selection.hasFormat("bold"));
-    setIsItalic(selection.hasFormat("italic"));
-    setIsUnderline(selection.hasFormat("underline"));
-  }, [editor]);
-
-  const handleAlign = (value) => {
-    // console.log({ module });
-    dispatch(
-      updatePageComponents({
-        module,
-        key: "textAlign",
-        value,
-      })
-    );
-  };
-
-  const handleMouseUp = () => {
-    // console.log(elementToFocus.current);
+  const handleMouseUp = useCallback(() => {
     elementToFocus?.current?.focus();
-  };
+  }, [elementToFocus]);
 
   const buttons = [
     {
@@ -112,12 +92,25 @@ export function TextToolBar({ module, elementToFocus, ...args }) {
     },
   ];
 
+  const memoizedButtons = useMemo(
+    () => buttons,
+    [
+      isBold,
+      isItalic,
+      isUnderline,
+      textAlign,
+      handleAlign,
+      handleMouseUp,
+      handleStyleChange,
+    ]
+  );
   // const alignmentButtons = [];
+  // console.log("toolbar reloaded");
 
   return (
     <section className={args.className}>
-      <ButtonGroupTight buttons={buttons} divider={3} />
-      <OnChangePlugin onChange={onChangeLexical} />
+      <ButtonGroupTight buttons={memoizedButtons} divider={3} />
+      <OnChangePlugin onChange={updateToolBar} />
     </section>
   );
 }

@@ -9,6 +9,10 @@
 .cardFlex {
   display: flex;
   flex-direction: row;
+
+  svg {
+    min-width: 30px;
+  }
 }
 
 .textContainer {

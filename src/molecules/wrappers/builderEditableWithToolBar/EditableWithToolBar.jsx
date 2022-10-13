@@ -15,25 +15,10 @@ import classes from "./.module.scss";
 import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
 import { componentsData } from "../../../data/componentsData";
 import { useCallback } from "react";
+import { $getRoot } from "lexical";
+import { useDebounceHandler } from "../../../hooks";
 
-function MyCustomAutoFocusPlugin() {
-  const [editor] = useLexicalComposerContext();
-
-  useEffect(() => {
-    // Focus the editor when the effect fires!
-    editor.focus();
-  }, [editor]);
-
-  return null;
-}
-
-export function EditableWithToolBar({
-  style,
-  module,
-  type,
-  className,
-  children,
-}) {
+export function EditableWithToolBar({ style, module, className, children }) {
   const dispatch = useDispatch();
 
   const {
@@ -64,17 +49,24 @@ export function EditableWithToolBar({
     },
   };
 
-  const [intervalId, setIntervalId] = useState(undefined);
-
-  const debounceHandler = (...args) => {
-    clearTimeout(intervalId);
-
-    const _intervalId = setTimeout(() => dispatch.apply(this, args), 500);
-    setIntervalId(_intervalId);
-  };
+  const editorDebounce = useDebounceHandler(dispatch);
+  const textDebounce = useDebounceHandler(dispatch);
 
   function onChangeLexical(editorState) {
-    debounceHandler(
+    editorState.read(() => {
+      const text = $getRoot().getTextContent(false);
+      // console.log(text);
+
+      textDebounce(
+        updatePageComponents({
+          module,
+          key: "text",
+          value: text,
+        })
+      );
+    });
+
+    editorDebounce(
       updatePageComponents({
         module,
         key: "editorState",
@@ -115,7 +107,6 @@ export function EditableWithToolBar({
             // style={style}
           >
             {/* <EditableElement type={type}>{children}</EditableElement> */}
-            {/* <ToolbarPlugin /> */}
             <RichTextPlugin
               contentEditable={<ContentEditable />}
               // placeholder={<div>Enter some text...</div>}
@@ -142,4 +133,15 @@ export function EditableWithToolBar({
       </LexicalComposer>
     </>
   );
+}
+
+function MyCustomAutoFocusPlugin() {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    // Focus the editor when the effect fires!
+    editor.focus();
+  }, [editor]);
+
+  return null;
 }

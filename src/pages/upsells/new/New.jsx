@@ -1,7 +1,6 @@
 import { useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { EditableElement } from "@/atoms";
 import classes from "./New.module.scss";
