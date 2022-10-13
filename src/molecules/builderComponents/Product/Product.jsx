@@ -164,6 +164,7 @@ const json = {
   customImages: [],
   title: {
     editorState: makeEditorState("Test T-shirt"),
+    text: "Test T-shirt",
     color: "#000000",
     fontFamily: "Roboto",
     fontWeight: "400",

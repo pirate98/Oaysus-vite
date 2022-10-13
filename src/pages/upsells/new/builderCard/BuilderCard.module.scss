@@ -3,12 +3,19 @@
 .customH2 {
   @extend .h2;
 
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
-.cardFlex {
+.builderCard {
   display: flex;
   flex-direction: row;
+  padding: 24px;
+
+  .editMenu {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }
 }
 
 .upsellRight {
@@ -33,5 +40,21 @@
 
   img {
     width: 36px;
+  }
+}
+
+.editableUpsellTitle {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+
+  h2 {
+    padding: 6px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
   }
 }

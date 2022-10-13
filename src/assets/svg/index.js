@@ -27,3 +27,4 @@ export { ReactComponent as Calendar } from "./calendar.svg";
 export { ReactComponent as EditPen } from "./editPen.svg";
 export { ReactComponent as CategoryTrigger } from "./categoryTrigger.svg";
 export { ReactComponent as DeleteConditionSvg } from "./deleteCondition.svg";
+export { ReactComponent as MenuHorizontalDotSvg } from "./menuHorizontalDot.svg";

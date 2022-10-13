@@ -1,13 +1,13 @@
 export const getProductInfo = (componentList) => {
   let productImageUrl;
-  let titleEditorState;
+  let titleText;
 
   for (const component of componentList) {
-    titleEditorState = component?.title?.editorState || titleEditorState;
+    titleText = component?.title?.text || titleText;
 
     if (!component.name?.startsWith("Product")) continue;
     productImageUrl = component.backgroundPreview;
   }
 
-  return { productImageUrl, titleEditorState };
+  return { productImageUrl, titleText };
 };

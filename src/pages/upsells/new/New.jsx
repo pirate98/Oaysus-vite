@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import { EditableElement } from "@/atoms";
@@ -8,16 +6,9 @@ import { EditPen } from "@/assets/svg";
 import { UpsellNew } from "@/templates/upsellNew/UpsellNew";
 import { TriggerCard } from "./triggerCard/TriggerCard";
 import { BuilderCard } from "./builderCard/BuilderCard";
+import { EditableTitle } from "@/molecules";
 
 export default function New() {
-  const editableElement = useRef();
-
-  const handleEditPenClick = () => {
-    // console.log(editableElement.current);
-    const editableEl = editableElement.current;
-    editableEl.focus();
-  };
-
   const navigate = useNavigate();
 
   return (
@@ -29,16 +20,11 @@ export default function New() {
       }}
       rightButtonText={"Publish Upsell"}
     >
-      <div className={classes.editHeader}>
-        <EditableElement
-          className={classes.h1}
-          type={"h1"}
-          ref={editableElement}
-        >
-          {"New upsell #1"}
-        </EditableElement>
-        <EditPen className={classes.editPen} onClick={handleEditPenClick} />
-      </div>
+      <EditableTitle
+        className={classes.editable}
+        type="h1"
+        text="New upsell #1"
+      />
       <TriggerCard />
       <BuilderCard />
     </UpsellNew>

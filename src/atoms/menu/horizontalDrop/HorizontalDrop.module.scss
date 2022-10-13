@@ -1,0 +1,14 @@
+.container {
+  background: rgba(239, 240, 241, 1);
+  width: 24px;
+  height: 24px;
+  display: grid;
+
+  svg {
+    margin: auto;
+  }
+
+  &:hover {
+    background: rgba(217, 217, 217, 1);
+  }
+}
