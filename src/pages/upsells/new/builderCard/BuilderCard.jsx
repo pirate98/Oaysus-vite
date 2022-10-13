@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import classes from "./BuilderCard.module.scss";
 import componentsData from "@/data/componentsData";
 import { getProductInfo } from "@/helpers";
 import { EditableTitle } from "@/molecules";
+import { useMemo } from "react";
 
 export function BuilderCard() {
   const {
@@ -33,7 +34,7 @@ export function BuilderCard() {
           <div className={classes.editMenuContainer}>
             <Select.Upsell options={selectOptions()} />
           </div>
-          <Grid container>
+          <Grid container columns={{ xs: 2 }} rowSpacing={2} columnSpacing={4}>
             <Grid item>
               <Grid container sx={{ gap: "16px" }}>
                 <div
@@ -58,11 +59,7 @@ export function BuilderCard() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid
-              item
-              sx={{ margin: "0 0 0 40px", display: "flex" }}
-              alignItems="center"
-            >
+            <Grid item sx={{ display: "flex" }} alignItems="center">
               <Grid container>
                 <Grid
                   item
