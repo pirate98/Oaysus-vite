@@ -1,8 +1,10 @@
 .container {
   background: rgba(239, 240, 241, 1);
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: grid;
+  padding: 0;
+  border-radius: 4px;
 
   svg {
     margin: auto;

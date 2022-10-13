@@ -8,6 +8,14 @@
   color: rgba(109, 113, 117, 1);
 }
 
+.textRed {
+  color: red;
+
+  &:hover {
+    color: red !important;
+  }
+}
+
 .defaultFont {
   font-family: $fontFamily;
 }

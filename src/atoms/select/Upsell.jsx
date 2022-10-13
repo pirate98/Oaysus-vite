@@ -11,6 +11,8 @@ import { styled } from "@mui/system";
 
 import styles from "./CustomSelect.module.scss";
 import cssVariables from "../../assets/css/_variables.module.scss";
+import { Menu } from "../menu";
+import { MenuHorizontalDotSvg } from "../../assets/svg";
 
 const blue = {
   100: "#DAECFF",
@@ -44,10 +46,10 @@ const StyledButton = styled("button")(
   white-space: nowrap;
   display: flex;
   align-items: center;
-  
+
   text-align: left;
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  
+
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
 
   transition-property: all;
@@ -79,84 +81,81 @@ const StyledButton = styled("button")(
   `
 );
 
-const StyledListbox = styled("ul")(
-  ({ theme }) => `
-  min-width: 120px;
-  font-size: 0.875rem;
-  box-sizing: border-box;
-  padding: 6px;
-  margin: 6px 0 12px 0;
-  border-radius: 12px;
-  overflow: auto;
-  outline: 0px;
-  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  box-shadow: 0px 4px 30px ${
-    theme.palette.mode === "dark" ? grey[900] : grey[200]
-  };
-`
-);
+const StyledListbox = styled("ul")(({ theme }) => ({
+  marginTop: "4px",
+  background: "#FFFFFF",
+  border: "1px solid #BABFC3",
+  boxShadow: "0px 30px 45px rgba(0, 0, 0, 0.12)",
+  borderRadius: "8px",
+  padding: "16px",
+}));
 
-export const StyledOption = styled(OptionUnstyled)(
-  ({ theme }) => `
-  list-style: none;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
+export const StyledOption = styled((props) => {
+  return <li {...props} />;
+})(({ theme }) => ({
+  listStyle: "none",
+  padding: "8px",
+  borderRadius: "8px",
+  cursor: "pointer",
+  width: "100%",
+  whiteSpace: "nowrap",
 
-  &:last-of-type {
-    border-bottom: none;
-  }
+  "&:last-of-type": {
+    borderBottom: "none",
+  },
 
-  &.${optionUnstyledClasses.selected} {
-    background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
-  }
+  [`&.${optionUnstyledClasses.selected}`]: {
+    backgroundColor: `${theme.palette.mode === "dark" ? blue[900] : "white"}`,
+    color: `${theme.palette.mode === "dark" ? blue[100] : "unset"}`,
+  },
 
-  &.${optionUnstyledClasses.highlighted} {
-    background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-    cursor: pointer;
-  }
+  [`&.${optionUnstyledClasses.highlighted}`]: {
+    backgroundColor: `${theme.palette.mode === "dark" ? grey[800] : grey[100]}`,
+    color: `${theme.palette.mode === "dark" ? grey[300] : grey[900]}`,
+    cursor: "pointer",
+  },
 
-  &.${optionUnstyledClasses.highlighted}.${optionUnstyledClasses.selected} {
-    background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
-  }
+  [`&.${optionUnstyledClasses.highlighted}.${optionUnstyledClasses.selected}`]:
+    {
+      backgroundColor: `${theme.palette.mode === "dark" ? blue[900] : "white"}`,
+      color: `${theme.palette.mode === "dark" ? blue[100] : "unset"}`,
+    },
 
-  &.${optionUnstyledClasses.disabled} {
-    color: ${theme.palette.mode === "dark" ? grey[700] : grey[400]};
-  }
+  [`&.${optionUnstyledClasses.disabled}`]: {
+    color: `${theme.palette.mode === "dark" ? grey[700] : grey[400]}`,
+  },
 
-  &:hover:not(.${optionUnstyledClasses.disabled}) {
-    background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  }
-  `
-);
+  [`&:hover:not(.${optionUnstyledClasses.disabled})`]: {
+    backgroundColor: `${theme.palette.mode === "dark" ? grey[800] : grey[100]}`,
+    color: `${theme.palette.mode === "dark" ? grey[300] : "unset"}`,
+  },
+}));
 
 const StyledPopper = styled(PopperUnstyled)`
   z-index: 2;
   display: flex;
   justify-content: center;
-  cursor: pointer;
+  cursor: ';
 `;
 
-export const CustomSelect = forwardRef(function CustomSelect(props, ref) {
+export const Upsell = forwardRef(function CustomSelect(props, ref) {
   const components = {
-    Root: StyledButton,
+    // Root: StyledButton,
+    Root: Menu.HorizontalDrop,
+    // Root: "div",
+    // Root: MenuHorizontalDotSvg,
     Listbox: StyledListbox,
     Popper: StyledPopper,
     ...props.components,
   };
 
   return (
-    <SelectUnstyled
-      ref={ref}
-      components={components}
-      className={styles.border1}
-      {...props}
-    />
+    <SelectUnstyled ref={ref} components={components} {...props}>
+      {props?.options?.map((option, idx) => (
+        <StyledOption className={option.className} key={idx}>
+          {option.label}
+        </StyledOption>
+      ))}
+    </SelectUnstyled>
   );
 });

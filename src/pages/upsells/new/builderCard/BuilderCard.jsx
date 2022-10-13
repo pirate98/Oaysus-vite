@@ -1,9 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
 
-import { Card, Divider, Menu } from "@/atoms";
+import { Card, CustomSelect, Divider, Menu, Select } from "@/atoms";
 import classes from "./BuilderCard.module.scss";
 
 import componentsData from "@/data/componentsData";
@@ -30,7 +30,9 @@ export function BuilderCard() {
           }
         />
         <Card.Settings className={classes.builderCard}>
-          <Menu.HorizontalDrop className={classes.editMenu} />
+          <div className={classes.editMenuContainer}>
+            <Select.Upsell options={selectOptions()} />
+          </div>
           <Grid container>
             <Grid item>
               <Grid container sx={{ gap: "16px" }}>
@@ -103,3 +105,14 @@ export function BuilderCard() {
     );
   });
 }
+
+const selectOptions = () => {
+  return [
+    { label: "Preview on store", value: "" },
+    { label: "Rename trigger", value: "" },
+    { label: "Edit offer page", value: "" },
+    { label: "Create split test", value: "" },
+    { label: "Change product", value: "" },
+    { label: "Delete offer", value: "", className: classes.textRed },
+  ];
+};
