@@ -39,7 +39,7 @@
 }
 
 .buttonGroup {
-  flex-grow: 1;
+  // flex-grow: 1;
   text-align: end;
 
   display: flex;
@@ -55,4 +55,9 @@
 .leftSection {
   display: flex;
   align-items: center;
+}
+
+.screenButtons {
+  display: flex;
+  gap: 17px;
 }

@@ -28,3 +28,6 @@ export { ReactComponent as EditPen } from "./editPen.svg";
 export { ReactComponent as CategoryTrigger } from "./categoryTrigger.svg";
 export { ReactComponent as DeleteConditionSvg } from "./deleteCondition.svg";
 export { ReactComponent as MenuHorizontalDotSvg } from "./menuHorizontalDot.svg";
+export { ReactComponent as ScreenDesktopSvg } from "./screenDesktop.svg";
+export { ReactComponent as ScreenTabletSvg } from "./screenTablet.svg";
+export { ReactComponent as ScreenMobileSvg } from "./screenMobile.svg";

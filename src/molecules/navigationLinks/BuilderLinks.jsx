@@ -1,10 +1,14 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/atoms/button";
 import classes from "./.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addUpsell } from "../../pages/upsells/upsellsSlice";
+import { addUpsell } from "@/pages/upsells/upsellsSlice";
+import {
+  ScreenDesktopSvg,
+  ScreenMobileSvg,
+  ScreenTabletSvg,
+} from "@/assets/svg";
 
 export function BuilderLinks() {
   const {
@@ -24,6 +28,17 @@ export function BuilderLinks() {
     <>
       <section className={classes.leftSection}>
         <Button.Back>Exit Builder</Button.Back>
+      </section>
+      <section className={classes.screenButtons}>
+        <Button.HiddenWrapper>
+          <ScreenDesktopSvg />
+        </Button.HiddenWrapper>
+        <Button.HiddenWrapper>
+          <ScreenTabletSvg />
+        </Button.HiddenWrapper>
+        <Button.HiddenWrapper>
+          <ScreenMobileSvg />
+        </Button.HiddenWrapper>
       </section>
       <section className={classes.buttonGroup}>
         <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
