@@ -22,7 +22,13 @@ export function SettingsBillingTable({ data }) {
             <td>{billing.revenue}</td>
             <td>{billing.plan}</td>
           </tr>
-        ))}
+        )) && (
+          <tr>
+            <td colSpan={4} className={classes.noTransaction}>
+              No posted transactions
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

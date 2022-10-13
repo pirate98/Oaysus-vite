@@ -56,12 +56,12 @@ export function TriggerConditionSelector({
             ) : null}
             {conditionValue === "collection" ? (
               <Button.Primary size="sm" sx={{ flexGrow: 1 }}>
-                Select Collection)
+                Select Collection
               </Button.Primary>
             ) : null}
             {conditionValue === "customer_location" ? (
               <Button.Primary size="sm" sx={{ flexGrow: 1 }}>
-                Select Location)
+                Select Location
               </Button.Primary>
             ) : null}
             {conditionValue === "item_quantity" ||

@@ -7,18 +7,28 @@ import { CategoryTrigger } from "@/assets/svg";
 
 export function TriggerCard() {
   const {
-    upsells: { testTrigger },
+    upsells: { testTrigger, triggers },
   } = useSelector((state) => state);
+
+  const thereIsTrigger = Object.keys(triggers[0][0])?.length;
 
   return (
     <Card.Settings className={classes.cardFlex}>
       <CategoryTrigger />
       <div className={classes.textContainer}>
         <h2 className={classes.customH2}>Entry trigger</h2>
-        <p>Select specific conditions that trigger your upsells</p>
+        {thereIsTrigger ? (
+          <p className={classes.h4Muted}>
+            Order total value is more than [usd]
+          </p>
+        ) : (
+          <p className={classes.h4Muted}>
+            Select specific conditions that trigger your upsells
+          </p>
+        )}
       </div>
       <Link to="/upsells/trigger">
-        {testTrigger ? (
+        {thereIsTrigger ? (
           <Button.Primary>Edit Trigger</Button.Primary>
         ) : (
           <Button.Primary>Select Trigger</Button.Primary>

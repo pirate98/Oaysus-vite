@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  triggers: [[{ condition: "product" }]],
+  triggers: [[{}]],
   upsells: [],
 };
 
@@ -11,10 +11,10 @@ export const upsellsSlice = createSlice({
   reducers: {
     addOrTrigger: (state, action) => {
       const { id } = action.payload;
-      state.triggers[id].push({ condition: "product" });
+      state.triggers[id].push({});
     },
     addAndTrigger: (state) => {
-      state.triggers.push([{ condition: "product" }]);
+      state.triggers.push([{}]);
       // state.triggers = [...state.triggers, [{}]];
     },
     updateTrigger: (state, action) => {
