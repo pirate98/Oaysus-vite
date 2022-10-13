@@ -9,7 +9,7 @@ import { updatePageComponents } from "@/pages/builder/builderSlice";
 import classes from "./ImageUpload.module.scss";
 import { Delete } from "@/assets/svg";
 
-export function ImageUpload({ name }) {
+export function ImageUpload({ module }) {
   const dispatch = useDispatch();
 
   const component = useGetSelectedPageComponent();
@@ -30,6 +30,14 @@ export function ImageUpload({ name }) {
   const [imageToDisplay, setImageToDisplay] = useState(undefined);
 
   const handleDelete = () => {
+    dispatch(
+      updatePageComponents({
+        module,
+        key: "backgroundSize",
+        value: "auto",
+      })
+    );
+
     dispatch(
       updatePageComponents({
         key: "backgroundPreview",

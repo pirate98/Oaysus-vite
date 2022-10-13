@@ -4,14 +4,19 @@ import Grid from "@mui/material/Grid";
 import { TextContainer } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import {
-  filterOnlyStyleValues,
-  makeEditorState,
-} from "../../../helpers/builder";
-import { EditableWithToolBar } from "../../wrappers";
+import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
+import { EditableWithToolBar } from "@/molecules/wrappers";
+import { componentsData } from "@/data/componentsData";
 
 const fn = forwardRef(({ content, className, ...rest }, ref) => {
   const styles = filterOnlyStyleValues(content);
+
+  const productBackgroundImage =
+    content?.backgroundPreview ||
+    (content?.images
+      ? `url(${content.images[0]?.url})`
+      : `url(${componentsData.PLACEHOLDER_IMAGE_URL})`);
+
   return (
     content && (
       <div
@@ -36,11 +41,7 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
                 className={classes.image1}
                 style={{
                   ...styles.image,
-                  backgroundImage:
-                    content?.backgroundPreview ||
-                    (content?.images
-                      ? `url(${content.images[0]?.url})`
-                      : 'url("/image/empty-image-dark.svg")'),
+                  backgroundImage: productBackgroundImage,
                 }}
               ></div>
             </Grid>
@@ -49,17 +50,14 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
                 <EditableWithToolBar
                   type="h3"
                   style={{ ...styles.title }}
-                  // name="title"
                   module="title"
                   data-oa-type="text"
                 >
                   {content?.title?.editorState}
                 </EditableWithToolBar>
-
                 <EditableWithToolBar
                   type="p"
                   style={{ ...styles.description }}
-                  // name="title"
                   module="description"
                   data-oa-type="text"
                 >
