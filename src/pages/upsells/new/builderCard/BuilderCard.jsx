@@ -34,7 +34,7 @@ export function BuilderCard() {
           <div className={classes.editMenuContainer}>
             <Select.Upsell options={selectOptions()} />
           </div>
-          <Grid container columns={{ xs: 2 }} rowSpacing={2} columnSpacing={4}>
+          <Grid container columns={{ xs: 2 }} rowSpacing={2} columnSpacing={1}>
             <Grid item>
               <Grid container sx={{ gap: "16px" }}>
                 <div
@@ -59,11 +59,25 @@ export function BuilderCard() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sx={{ display: "flex" }} alignItems="center">
-              <Grid container>
+            <Grid
+              item
+              sx={{ display: "flex", flexGrow: 1 }}
+              alignItems="center"
+              justifyContent={"center"}
+            >
+              <Grid
+                container
+                sx={{ maxWidth: "560px", minWidth: "440px" }}
+                columns={{ xs: 4 }}
+              >
                 <Grid
                   item
-                  sx={{ padding: "0 36px", borderRight: "1px solid #BABFC3" }}
+                  sx={{
+                    borderRight: "1px solid #BABFC3",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                  xs={1}
                 >
                   <div>
                     <h4 className={classes.h4_2}>Views</h4>
@@ -72,7 +86,12 @@ export function BuilderCard() {
                 </Grid>
                 <Grid
                   item
-                  sx={{ padding: "0 36px", borderRight: "1px solid #BABFC3" }}
+                  sx={{
+                    borderRight: "1px solid #BABFC3",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                  xs={1}
                 >
                   <div>
                     <h4 className={classes.h4_2}>Conversion</h4>
@@ -81,14 +100,23 @@ export function BuilderCard() {
                 </Grid>
                 <Grid
                   item
-                  sx={{ padding: "0 36px", borderRight: "1px solid #BABFC3" }}
+                  sx={{
+                    borderRight: "1px solid #BABFC3",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                  xs={1}
                 >
                   <div>
                     <h4 className={classes.h4_2}>Total $</h4>
                     <p className={classes.h4Muted}>$0.00</p>
                   </div>
                 </Grid>
-                <Grid item sx={{ padding: "0 36px" }}>
+                <Grid
+                  item
+                  xs={1}
+                  sx={{ display: "flex", justifyContent: "center" }}
+                >
                   <div>
                     <h4 className={classes.h4_2}>$ / Visit</h4>
                     <p className={classes.h4Muted}>$0.00</p>
