@@ -12,7 +12,7 @@ export function Template({
       {...props}
       className={isActive ? classes.templateActive : classes.template}
     >
-      <img src={image} className={classes.image} />
+      {/* <img src={image} className={classes.image} /> */}
       <div className={classes.textBox}>
         <p className={classes.text}>{name}</p>
         <Badge dot={false} variant={isActive ? "green" : "gray"}>
