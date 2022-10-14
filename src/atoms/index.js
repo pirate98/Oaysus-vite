@@ -26,3 +26,4 @@ export * from "./cards";
 export * from "./divider";
 export * from "./select";
 export * from "./menu";
+export * from "./typography";

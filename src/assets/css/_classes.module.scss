@@ -1,3 +1,5 @@
+@import "variables.module";
+
 .border1 {
   border: 1px solid rgba(201, 204, 207, 1) !important;
   border-radius: 4px !important;
@@ -25,4 +27,122 @@
 
 .zIndex1200 {
   z-index: 1200;
+}
+
+.defaultFont {
+  font-family: $fontFamily;
+}
+
+.defaultLineHeight {
+  line-height: $lineHeight;
+}
+
+.text_primary {
+  color: $primaryColor;
+}
+
+.text_green {
+  color: #008060;
+}
+
+.text_muted {
+  color: #6d7175;
+}
+
+.text_red {
+  color: red;
+
+  &:hover {
+    color: red !important;
+  }
+}
+
+.font_weight_500 {
+  font-weight: 500;
+}
+
+.font_weight_600 {
+  font-weight: 600;
+}
+
+.font_weight_700 {
+  font-weight: 700;
+}
+
+.line_height_18 {
+  line-height: 18px;
+}
+
+.line_height_24 {
+  line-height: 24px;
+}
+
+.line_height_29 {
+  line-height: 29px;
+}
+
+.margin_bottom_4 {
+  margin-bottom: 4px;
+}
+
+.margin_bottom_8 {
+  margin-bottom: 8px;
+}
+
+.margin_bottom_12 {
+  margin-bottom: 12px;
+}
+
+.margin_bottom_16 {
+  margin-bottom: 16px;
+}
+
+.margin_bottom_18 {
+  margin-bottom: 18px;
+}
+
+.margin_bottom_20 {
+  margin-bottom: 20px;
+}
+
+.h1 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 24px;
+}
+
+.h2 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 20px;
+}
+
+.h3 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 18px;
+}
+
+.h4 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 16px;
+}
+
+.h5 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 15px;
+}
+
+.h6 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 14px;
+}
+
+.h7 {
+  @extend .defaultFont;
+  @extend .defaultLineHeight;
+  font-size: 12px;
 }

@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 
-import { Button, Card } from "@/atoms";
+import { Button, Card, H1, H2, H5 } from "@/atoms";
 import { SettingsProgressBar } from "@/organisms/settings/settingsProgressBar/SettingsProgressBar";
 import { SettingsBillingTable } from "@/organisms/";
 
@@ -59,14 +59,16 @@ export default function Billing() {
   return (
     <>
       <Card.Settings>
-        <h3 className={classes.h3Custom}>
+        <H2 weight={600} mb={12}>
           Earned upsell revenue during your current billing period:
-          <span className={classes.textGreen}> $243.23</span>
-        </h3>
+          <span className={"text_green"}> $243.23</span>
+        </H2>
         <p>View the history of payments made for your Oaysus Upsell App</p>
       </Card.Settings>
       <Card.Settings>
-        <h3 className={classes.h3Custom}>Payment Plan</h3>
+        <H2 weight={600} mb={12}>
+          Payment Plan
+        </H2>
         <p>
           Your plan will change once you reach <b>$1,000</b> in sales.
         </p>
@@ -75,9 +77,15 @@ export default function Billing() {
           {plans.map((plan, idx) => (
             <Grid item sm={12} md={4} key={idx}>
               <Card.Plan active={plan.active}>
-                <h5 className={classes.h5Gray}>{plan.title}</h5>
-                <h6 className={classes.price}>{plan.description}</h6>
-                <h5 className={classes.h5}>{plan.promotion}</h5>
+                <H5 mb={18} color={"muted"} weight={600}>
+                  {plan.title}
+                </H5>
+                <H1 weight={600} mb={24}>
+                  {plan.description}
+                </H1>
+                <H5 weight={600} mb={4}>
+                  {plan.promotion}
+                </H5>
               </Card.Plan>
             </Grid>
           ))}
@@ -86,7 +94,9 @@ export default function Billing() {
       <Card.Settings>
         <Grid container justifyContent={"space-between"}>
           <section>
-            <h3 className={classes.h3Custom}>Billing History</h3>
+            <H2 weight={600} mb={12}>
+              Billing History
+            </H2>
             <p>View the historiy of payments made for your Oaysus Upsell App</p>
           </section>
           <section>
