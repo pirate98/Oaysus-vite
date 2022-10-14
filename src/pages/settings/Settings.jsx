@@ -55,13 +55,5 @@ const styles = {
       marginBottom: "24px",
     },
     width: "min-content",
-    "& p": {
-      color: "rgba(109, 113, 117, 1)",
-      fontSize: "18px",
-      fontWeight: "400",
-      lineHeight: "20px",
-      letterSpacing: "0px",
-      marginBottom: "12px",
-    },
   },
 };

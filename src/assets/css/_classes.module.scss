@@ -37,6 +37,10 @@
   line-height: $lineHeight;
 }
 
+.defaultFontWeight {
+  font-weight: 400;
+}
+
 .text_primary {
   color: $primaryColor;
 }
@@ -57,18 +61,6 @@
   }
 }
 
-.font_weight_500 {
-  font-weight: 500;
-}
-
-.font_weight_600 {
-  font-weight: 600;
-}
-
-.font_weight_700 {
-  font-weight: 700;
-}
-
 .line_height_18 {
   line-height: 18px;
 }
@@ -81,68 +73,75 @@
   line-height: 29px;
 }
 
-.margin_bottom_4 {
-  margin-bottom: 4px;
+@mixin font_attribute_x($attribute, $count) {
+  @for $i from 1 through $count {
+    $value: $i * 100;
+
+    .font_#{$attribute}_#{$value} {
+      font-#{$attribute}: #{$value};
+    }
+  }
 }
 
-.margin_bottom_8 {
-  margin-bottom: 8px;
+@include font_attribute_x(weight, 10);
+
+@mixin margin_side_x($side, $count) {
+  @for $i from 1 through $count {
+    $value: $i * 2;
+
+    .margin_#{$side}_#{$value} {
+      margin-#{$side}: #{$value}px;
+    }
+  }
 }
 
-.margin_bottom_12 {
-  margin-bottom: 12px;
-}
-
-.margin_bottom_16 {
-  margin-bottom: 16px;
-}
-
-.margin_bottom_18 {
-  margin-bottom: 18px;
-}
-
-.margin_bottom_20 {
-  margin-bottom: 20px;
-}
+@include margin_side_x(bottom, 10);
 
 .h1 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 24px;
 }
 
 .h2 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 20px;
 }
 
 .h3 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 18px;
 }
 
 .h4 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 16px;
 }
 
 .h5 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 15px;
 }
 
 .h6 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 14px;
 }
 
 .h7 {
   @extend .defaultFont;
+  @extend .defaultFontWeight;
   @extend .defaultLineHeight;
   font-size: 12px;
 }
