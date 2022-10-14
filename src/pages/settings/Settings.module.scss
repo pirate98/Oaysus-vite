@@ -1,5 +1,5 @@
-@import "../../assets/css/variables.module", "../../assets/css/classes.module",
-  "../../assets/css/type";
+@import "@/assets/css/variables.module", "@/assets/css/classes.module",
+  "@/assets/css/type";
 
 .layout {
   background-color: $backgroundColor;
@@ -9,12 +9,6 @@
   // padding: 40px 52px;
   text-align: start;
   margin-right: 132px;
-}
-
-.h2Custom {
-  @extend .h2;
-
-  font-size: 14px;
 }
 
 .h3Custom {

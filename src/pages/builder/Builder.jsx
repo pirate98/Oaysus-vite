@@ -2,11 +2,14 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
-import { Page } from "../../organisms/builderPage/Page";
-import { BuilderMenu } from "../../organisms/builderMenu/BuilderMenu";
+import {
+  BuilderSideBarComponents,
+  BuilderSideBarTemplates,
+  BuilderComposition,
+} from "@/organisms/";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPageComponentName, setActiveMenu } from "./builderSlice";
-import { Templates } from "../../organisms/builderTemplates/Templates";
+import { H5 } from "@/atoms";
 
 export default function Builder() {
   const dispatch = useDispatch();
@@ -14,8 +17,6 @@ export default function Builder() {
   const {
     builder: { activeMenu, selectedPageComponentName, page },
   } = useSelector((state) => state);
-
-  const leftMenu = [{ title: "Components" }, { title: "Templates" }];
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -32,17 +33,23 @@ export default function Builder() {
                   }}
                   className={activeMenu === idx ? classes.divActive : ""}
                 >
-                  <p>{menu.title}</p>
+                  <H5 className={classes.title} color={"muted"}>
+                    {menu.title}
+                  </H5>
                   <span></span>
                 </div>
               ))}
             </div>
           )}
-          {activeMenu === 0 ? <BuilderMenu /> : <Templates />}
+          {activeMenu === 0 ? (
+            <BuilderSideBarComponents />
+          ) : (
+            <BuilderSideBarTemplates />
+          )}
         </section>
         <main className={classes.main}>
           <section className={classes.rightSection}>
-            <Page pageContent={page} />
+            <BuilderComposition pageContent={page} />
             {/* <PageDemo /> */}
           </section>
         </main>
@@ -50,3 +57,5 @@ export default function Builder() {
     </DndProvider>
   );
 }
+
+const leftMenu = [{ title: "Components" }, { title: "Templates" }];

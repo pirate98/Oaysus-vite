@@ -9,8 +9,8 @@ import {
   Sales,
   TopFunnels,
   TopUpsell,
-} from "../../organisms/performance";
-import { Revenue } from "../../organisms/performance/Revenue";
+} from "@/organisms/performance";
+import { Revenue } from "@/organisms/performance/Revenue";
 
 const selectOptions = [
   {

@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
-import { Button } from "../../../atoms/button";
-import { SettingsCard } from "../../../atoms/cards/settingsCard/SettingsCard";
-import classes from "./General.module.scss";
+import { Button } from "@/atoms/button";
+import { SettingsCard } from "@/atoms/cards/settingsCard/SettingsCard";
+import { H2, H3 } from "@/atoms";
 
 export default function General() {
   return (
@@ -9,10 +9,12 @@ export default function General() {
       <SettingsCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <div>
-            <h3 className={classes.h3Custom}>App status</h3>
-            <p>
+            <H2 weight={600} mb={12}>
+              App status
+            </H2>
+            <H3 color={"muted"} mb={12}>
               Oaysus app is currently <b>deactivated.</b>
-            </p>
+            </H3>
           </div>
           <div>
             <Button.Primary>Activate</Button.Primary>

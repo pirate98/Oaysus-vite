@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { EditableElement } from "@/atoms";
 import classes from "./New.module.scss";
 import { EditPen } from "@/assets/svg";
-import { UpsellNew } from "@/templates/upsellNew/UpsellNew";
-import { TriggerCard } from "./triggerCard/TriggerCard";
-import { BuilderCard } from "./builderCard/BuilderCard";
+import { UpsellsNew } from "@/templates/upsellsNew/UpsellsNew";
+import { TriggerCard } from "@/organisms/upsells/triggerCard/TriggerCard";
+import { BuilderCard } from "@/organisms/upsells/builderCard/BuilderCard";
 import { EditableTitle } from "@/molecules";
 
 export default function New() {
   const navigate = useNavigate();
 
   return (
-    <UpsellNew
+    <UpsellsNew
       backButtonText={"Upsells"}
       bottomButtonText="Create Upsell"
       bottomButtonOnClick={() => {
@@ -27,6 +27,6 @@ export default function New() {
       />
       <TriggerCard />
       <BuilderCard />
-    </UpsellNew>
+    </UpsellsNew>
   );
 }

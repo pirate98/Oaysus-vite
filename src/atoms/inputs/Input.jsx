@@ -6,24 +6,25 @@ import {
   inputPadding,
   inputFontSize,
   inputBorderFocused,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
-export const Input = styled((props) => {
+export const Input = styled(({ small, fullWidth, ...props }) => {
   return (
     <MuiInput
       {...props}
       sx={{
-        width: props.fullWidth ? "100%" : inputWidth,
+        width: fullWidth ? "100%" : inputWidth,
+        minWidth: small ? "80px" : inputWidth,
+        width: small ? "80px" : inputWidth,
+        background: "white",
+        input: {
+          padding: inputPadding,
+          fontSize: inputFontSize,
+        },
+        "&.MuiOutlinedInput-root.Mui-focused fieldset": {
+          borderColor: inputBorderFocused,
+        },
       }}
     />
   );
-})({
-  background: "white",
-  input: {
-    padding: inputPadding,
-    fontSize: inputFontSize,
-  },
-  "&.MuiOutlinedInput-root.Mui-focused fieldset": {
-    borderColor: inputBorderFocused,
-  },
-});
+})({});

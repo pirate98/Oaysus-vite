@@ -1,12 +1,12 @@
 import { styled } from "@mui/system";
 
-import { Button } from "./Button";
+import { ButtonBase } from "./ButtonBase";
 import variables from "@/assets/css/_variables.module.scss";
 
 export const Primary = styled(({ children, ...rest }) => (
-  <Button variant="contained" {...rest}>
+  <ButtonBase variant="contained" {...rest}>
     {children}
-  </Button>
+  </ButtonBase>
 ))({
   backgroundColor: variables.shopifyGreen,
   color: "white",

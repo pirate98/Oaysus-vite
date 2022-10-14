@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { getIndexes, numerateTheName } from "../molecules/helpers/builder";
-import { setPageComponents } from "../pages/builder/builderSlice";
-import componentsData from "../data/componentsData";
-import * as builderComponents from "../molecules/builderComponents";
+import { getIndexes, numerateTheName } from "@/molecules/helpers/builder";
+import { setPageComponents } from "@/pages/builder/builderSlice";
+import componentsData from "@/data/componentsData";
+import * as builderComponents from "@/organisms/builder/builderComponents";
 
 export const useAddComponentToPageBuilder = () => {
   const dispatch = useDispatch();

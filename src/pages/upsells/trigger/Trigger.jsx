@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 import { Divider } from "@/atoms";
-import { UpsellNew } from "@/templates/upsellNew/UpsellNew";
+import { UpsellsNew } from "@/templates/upsellsNew/UpsellsNew";
 import classes from "./Trigger.module.scss";
 import { addAndTrigger, testTrigger } from "../upsellsSlice";
-import { TriggerConditionGroup } from "./triggerConditionGroup/TriggerConditionGroup";
+import { TriggerConditionGroup } from "../../../organisms/upsells/triggerConditionGroup/TriggerConditionGroup";
 import { useNavigate } from "react-router-dom";
 
-export function Trigger() {
+export default function Trigger() {
   const {
     upsells: { triggers },
   } = useSelector((state) => state);
@@ -27,7 +27,7 @@ export function Trigger() {
   };
 
   return (
-    <UpsellNew
+    <UpsellsNew
       backButtonText={"Back"}
       bottomButtonText="Add Condition"
       bottomButtonOnClick={handleClickBottomButton}
@@ -45,6 +45,6 @@ export function Trigger() {
           </Fragment>
         );
       })}
-    </UpsellNew>
+    </UpsellsNew>
   );
 }

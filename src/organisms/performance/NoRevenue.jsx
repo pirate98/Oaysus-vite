@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Button } from "../../atoms/button";
+import { Button } from "@/atoms/button";
 
 import classes from "./.module.scss";
 

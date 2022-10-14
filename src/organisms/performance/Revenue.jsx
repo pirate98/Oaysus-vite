@@ -1,4 +1,4 @@
-import { formatAmountToCurrency } from "../../helpers";
+import { formatAmountToCurrency } from "@/helpers";
 import classes from "./.module.scss";
 import { NoRevenue } from "./NoRevenue";
 

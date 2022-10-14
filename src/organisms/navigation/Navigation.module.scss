@@ -1,4 +1,4 @@
-@import "../../assets/css/type";
+@import "@/assets/css/type";
 
 .container {
   position: sticky;
@@ -15,6 +15,7 @@
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }
 

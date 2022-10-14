@@ -1,4 +1,4 @@
-import * as builderComponents from "../molecules/builderComponents";
+import * as builderComponents from "@/organisms/builder/builderComponents";
 
 const allowedFields = [
   "&:hover",

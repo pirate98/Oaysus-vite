@@ -4,7 +4,7 @@ import { Icon, Page, Layout, Grid, Button } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
 
 import { ProductCard, Card } from "@/atoms";
-import { Header } from "@/pages/upsells/organisms/header/Header";
+import { Header } from "@/organisms/upsells/header/Header";
 import classes from "./Upsells.module.scss";
 import { useGetSeedDataQuery } from "@/data/backendApi";
 import { NavLink } from "react-router-dom";
