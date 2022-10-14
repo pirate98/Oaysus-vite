@@ -43,7 +43,7 @@ export function BuilderLinks() {
       <section className={classes.buttonGroup}>
         <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
         <Button.Primary onClick={handleSave} size={"sm"}>
-          Save Template
+          Save Offer
         </Button.Primary>
       </section>
     </>
