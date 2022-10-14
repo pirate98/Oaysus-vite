@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updatePageComponents } from "@/pages/builder/builderSlice";
+import { useDebounceHandler } from "../../../../hooks";
 
 export function EditWrapper({ children, ...props }) {
   const dispatch = useDispatch();
@@ -50,11 +51,13 @@ export function EditWrapper({ children, ...props }) {
     );
   };
 
+  const debounceHandler = useDebounceHandler(handleChange);
+
   return (
     <div
       {...props}
-      onChange={handleChange}
-      onKeyUp={handleChange}
+      onChange={debounceHandler}
+      onKeyUp={debounceHandler}
       // onBlur={handleChange}
       // onMouseDownCapture={handleChange}
     >

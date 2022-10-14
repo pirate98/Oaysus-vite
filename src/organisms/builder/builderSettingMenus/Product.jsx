@@ -24,9 +24,10 @@ import {
   Slider,
   StarRating,
 } from "@/organisms/builder/builderSettingFields";
-import { PxInput, SettingField, SettingFieldContainer } from "@/atoms";
+import { SettingField, SettingFieldContainer } from "@/atoms";
 import { builderSettings } from "@/data/builderSettings";
 import { removePx } from "@/helpers/builder";
+import { InputWithKeyControls } from "../../../molecules";
 
 export function Product() {
   const component = useGetSelectedPageComponent();
@@ -108,7 +109,8 @@ export function Product() {
           <BackgroundButtons data={component[buyButton]} title={"BACKGROUND"} />
           <SettingFieldContainer title={"SIZE"}>
             <SettingField fieldName={"Width"}>
-              <PxInput
+              <InputWithKeyControls
+                endAdornment={"px"}
                 placeholder="Enter size"
                 value={removePx(component[buyButton]?.width)}
                 name={"width_px"}
@@ -133,11 +135,12 @@ export function Product() {
           />
           <SettingFieldContainer title={"SIZE"}>
             <SettingField fieldName={"Width"}>
-              <PxInput
+              <InputWithKeyControls
                 placeholder="Enter size"
                 value={removePx(component[declineButton]?.width)}
                 name={"width_px"}
-              />
+                endAdornment={"px"}
+              ></InputWithKeyControls>
             </SettingField>
           </SettingFieldContainer>
           <Border data={component[declineButton]} title={"BORDER"} />

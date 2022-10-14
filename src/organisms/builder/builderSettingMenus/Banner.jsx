@@ -1,11 +1,7 @@
 import { EditWrapper } from "@/organisms/builder/wrappers";
+import { InputWithKeyControls } from "@/molecules";
 import { useGetSelectedPageComponent } from "@/hooks";
-import {
-  PxInput,
-  SettingField,
-  SettingSectionContainer,
-  SettingSection,
-} from "@/atoms";
+import { SettingField, SettingSectionContainer, SettingSection } from "@/atoms";
 import { removePx } from "@/helpers/builder";
 import { builderSettings } from "@/data/builderSettings";
 import { Layout } from "@/organisms/builder/builderSettingFieldGroups";
@@ -21,7 +17,8 @@ export function Banner() {
       <EditWrapper module={"sizing"}>
         <SettingSection title={"Sizing"}>
           <SettingField fieldName={"Height"}>
-            <PxInput
+            <InputWithKeyControls
+              endAdornment={"px"}
               placeholder="Enter size"
               value={removePx(selectedPageComponent["sizing"]["height"])}
               name={"height_px"}

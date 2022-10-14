@@ -1,4 +1,5 @@
-import { MinInput, SettingFieldContainer } from "@/atoms";
+import { SettingFieldContainer } from "@/atoms";
+import { InputWithKeyControls } from "@/molecules";
 import classes from "./.module.scss";
 
 export function CountDown({ data }) {
@@ -6,7 +7,11 @@ export function CountDown({ data }) {
     <SettingFieldContainer>
       <div className={classes.singleAttribute}>
         <p>Duration</p>
-        <MinInput defaultValue={data.duration} name={"duration"} />
+        <InputWithKeyControls
+          endAdornment={"min"}
+          defaultValue={data.duration}
+          name={"duration"}
+        />
       </div>
     </SettingFieldContainer>
   );

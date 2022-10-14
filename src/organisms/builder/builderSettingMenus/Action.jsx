@@ -1,10 +1,10 @@
 import {
-  PxInput,
   SettingField,
   SettingFieldContainer,
   SettingSection,
   SettingSectionContainer,
 } from "@/atoms";
+import { InputWithKeyControls } from "@/molecules";
 import {
   Margin,
   Style,
@@ -44,7 +44,8 @@ export function Action() {
           />
           <SettingFieldContainer title={"SIZE"}>
             <SettingField fieldName={"Width"}>
-              <PxInput
+              <InputWithKeyControls
+                endAdornment={"px"}
                 placeholder="Enter size"
                 value={removePx(selectedPageComponent["buyButton"]["width"])}
                 name={"width_px"}

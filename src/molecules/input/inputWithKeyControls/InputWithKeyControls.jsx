@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { Input } from "./Input";
-import classes from "./.module.scss";
-import { inputWidth } from "@/assets/css/_variables.module.scss";
+import { Input } from "@/atoms/inputs/Input";
+import classes from "./InputWithKeyControls.module.scss";
 
-import { useEffect } from "react";
-
-export function PxInput({ placeholder, small = false, ...args }) {
+export function InputWithKeyControls({ placeholder, endAdornment, ...args }) {
   const [value, setValue] = useState(args.value || "");
 
   const handleKeyDown = (e) =>
@@ -24,9 +21,9 @@ export function PxInput({ placeholder, small = false, ...args }) {
     }
   };
 
-  useEffect(() => {
-    setValue(args.value || "");
-  }, [args]);
+  // useEffect(() => {
+  //   setValue(args.value || "");
+  // }, [args]);
 
   const handleChange = (e) => {
     // e.preventDefault();
@@ -35,12 +32,8 @@ export function PxInput({ placeholder, small = false, ...args }) {
 
   return (
     <Input
-      sx={{
-        minWidth: small ? "80px" : inputWidth,
-        width: small ? "80px" : inputWidth,
-      }}
       {...args}
-      endAdornment={<p className={classes.px}>px</p>}
+      endAdornment={<p className={classes.end}>{endAdornment}</p>}
       placeholder={placeholder || (!value?.length ? "0" : "")}
       onKeyDown={handleKeyDown}
       onKeyUp={keyUpHandler}

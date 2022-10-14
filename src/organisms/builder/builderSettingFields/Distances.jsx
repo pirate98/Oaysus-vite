@@ -1,9 +1,8 @@
-import { useCallback } from "react";
 import { useEffect } from "react";
-import { useMemo } from "react";
-import { PxInput } from "@/atoms";
+
 import { removePx } from "@/helpers/builder";
 import classes from "./.module.scss";
+import { InputWithKeyControls } from "@/molecules";
 
 export function Distances({ data = {}, type }) {
   useEffect(() => {
@@ -15,7 +14,8 @@ export function Distances({ data = {}, type }) {
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Top</p>
-          <PxInput
+          <InputWithKeyControls
+            endAdornment={"px"}
             value={removePx(data[`${type}Top`])}
             small
             name={`${type}Top_px`}
@@ -23,7 +23,8 @@ export function Distances({ data = {}, type }) {
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Right</p>
-          <PxInput
+          <InputWithKeyControls
+            endAdornment={"px"}
             small
             name={`${type}Right_px`}
             value={removePx(data[`${type}Right`])}
@@ -33,7 +34,8 @@ export function Distances({ data = {}, type }) {
       <div className={classes.doubleAttribute}>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Bottom</p>
-          <PxInput
+          <InputWithKeyControls
+            endAdornment={"px"}
             small
             name={`${type}Bottom_px`}
             value={removePx(data[`${type}Bottom`])}
@@ -41,7 +43,8 @@ export function Distances({ data = {}, type }) {
         </div>
         <div className={classes.innerDoubleAttribute}>
           <p className={classes.p}>Left</p>
-          <PxInput
+          <InputWithKeyControls
+            endAdornment={"px"}
             small
             name={`${type}Left_px`}
             value={removePx(data[`${type}Left`])}

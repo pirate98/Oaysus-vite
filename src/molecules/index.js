@@ -6,3 +6,4 @@ export * from "./imageAlignButtons/ProductAlignLeft";
 export * from "./imageAlignButtons/ProductAlignRight";
 export * from "./buttonGroup/ButtonGroup";
 export * from "./buttonGroup/ButtonGroupTight";
+export * from "./input";

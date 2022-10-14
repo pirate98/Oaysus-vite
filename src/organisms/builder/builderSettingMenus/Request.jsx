@@ -9,8 +9,9 @@ import { SettingSectionContainer } from "@/atoms/settingSection/SettingSectionCo
 import { SettingSection } from "@/atoms/settingSection/SettingSection";
 import { EditWrapper } from "@/organisms/builder/wrappers";
 import { useGetSelectedPageComponent } from "@/hooks";
-import { PxInput, SettingField } from "@/atoms";
+import { SettingField } from "@/atoms";
 import { removePx } from "@/helpers/builder";
+import { InputWithKeyControls } from "@/molecules";
 
 export function Request() {
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -55,7 +56,8 @@ export function Request() {
       <EditWrapper module={"size"}>
         <SettingSection title={"Size"}>
           <SettingField fieldName={"Width"}>
-            <PxInput
+            <InputWithKeyControls
+              endAdornment={"px"}
               placeholder="Enter size"
               value={removePx(selectedPageComponent["size"]["width"])}
               name={"width_px"}
