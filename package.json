@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "patch": ".\\patch.bat"
+    "patch": ".\\patch.bat",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -48,12 +49,27 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
     "history": "^5.3.0",
     "jsdom": "^19.0.0",
     "prettier": "^2.6.0",
+    "prop-types": "^15.8.1",
     "sass": "^1.54.7",
     "vi-fetch": "^0.6.1",
     "vite": "^3.1.0",
-    "vite-plugin-svgr": "^2.2.1"
+    "vite-plugin-svgr": "^2.2.1",
+    "webpack": "^5.74.0"
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   }
 }

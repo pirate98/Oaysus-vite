@@ -12,7 +12,7 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 // import { ReactComponent as ContentCopySvg } from "@/assets/svg/contentCopy.svg";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
 import classes from "./.module.scss";
-import { TextToolBar } from "../../../../molecules/builderTextToolBar/TextToolBar";
+import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
 import { componentsData } from "@/data/componentsData";
 import { useCallback } from "react";
 import { $getRoot } from "lexical";

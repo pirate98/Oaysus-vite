@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { default as MuiButtonGroup } from "@mui/material/ButtonGroup";
 
-import { Button } from "../button";
+import { Button } from "@/atoms/button";
 import {
   inputWidth,
   secondaryHover,

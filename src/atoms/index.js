@@ -1,10 +1,9 @@
-export { ProductsCard } from "./ProductsCard";
 export * from "./badge/Badge";
 export * from "./select/CustomSelect";
 export * from "./select/SelectForBuilder";
 export * from "./button/HiddenWrapper";
-export * from "./buttonGroup/ButtonGroup";
-export * from "./buttonGroup/ButtonGroupTight";
+export * from "../molecules/buttonGroup/ButtonGroup";
+export * from "../molecules/buttonGroup/ButtonGroupTight";
 export * from "./cards/ProductCard";
 export * from "./switch/Switch";
 export * from "./switch/Switch2";
