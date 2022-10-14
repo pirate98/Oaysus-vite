@@ -1,5 +1,5 @@
 import { Image } from "@shopify/polaris";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { logo } from "@/assets/svg";
@@ -16,9 +16,9 @@ const Navigation = () => {
 
   return (
     <div className={classes.container}>
-      <NavLink to="/">
+      <Link to="/" className={classes.logoLink}>
         <Image className={classes.logo} source={logo} alt="Oaysus" />
-      </NavLink>
+      </Link>
       <div className={classes.linkContainer}>
         {builderIsLoaded ? <BuilderLinks /> : <MainLinks />}
       </div>

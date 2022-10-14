@@ -6,6 +6,8 @@ import Navigation from "./organisms/navigation/Navigation";
 import { GoogleFonts } from "./services";
 import Settings from "./pages/settings/Settings";
 import { Route } from "react-router-dom";
+import New from "./pages/upsells/new/New";
+import { Trigger } from "./pages/upsells";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -26,6 +28,8 @@ export default function App() {
       <Navigation />
       <Routes pages={pages} mainPage={"/upsells"}>
         <Route path="/settings/*" element={<Settings />} />
+        <Route path="/upsells/new" element={<New />} />
+        <Route path="/upsells/trigger" element={<Trigger />} />
       </Routes>
       <GoogleFonts />
       {/* <link rel="preconnect" href="https://fonts.googleapis.com" />

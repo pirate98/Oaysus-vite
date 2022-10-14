@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { Icon, Page, Layout, Grid, Button } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
 
-import { ProductCard, PlainCard } from "@/atoms";
-import { Header } from "@/organisms/upsellHeader/Header";
+import { ProductCard, Card } from "@/atoms";
+import { Header } from "@/pages/upsells/organisms/header/Header";
 import classes from "./Upsells.module.scss";
 import { useGetSeedDataQuery } from "@/data/backendApi";
+import { NavLink } from "react-router-dom";
 
 export default function Upsells() {
   const { data } = useGetSeedDataQuery();
@@ -36,13 +37,15 @@ export default function Upsells() {
               <ProductCard imageSource='url("/image/guy_2.webp")' />
             </Grid.Cell>
             <Grid.Cell>
-              <PlainCard>
-                <Button
-                  icon={<Icon source={MobilePlusMajor} color="base" />}
-                  primary
-                ></Button>
-                <p className={classes.p}>Add Upsell</p>
-              </PlainCard>
+              <NavLink to="/upsells/new">
+                <Card.Dotted>
+                  <Button
+                    icon={<Icon source={MobilePlusMajor} color="base" />}
+                    primary
+                  ></Button>
+                  <p className={classes.p}>Add Upsell</p>
+                </Card.Dotted>
+              </NavLink>
             </Grid.Cell>
           </Grid>
         </Layout.Section>

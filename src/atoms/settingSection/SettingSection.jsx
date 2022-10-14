@@ -1,14 +1,14 @@
 import classes from "./SettingSection.module.scss";
 import { ReactComponent as ArrowUp } from "../../assets/svg/arrowUp.svg";
 import { useState } from "react";
-import { HiddenWrapperButton } from "../button/HiddenWrapperButton";
+import { HiddenWrapper } from "../button/HiddenWrapper";
 
 export function SettingSection({ title, children }) {
   const [sectionOpen, setSectionOpen] = useState(true);
 
   return (
     <section className={classes.section}>
-      <HiddenWrapperButton
+      <HiddenWrapper
         className={classes.titleBar}
         fullWidth
         onClick={() => setSectionOpen(!sectionOpen)}
@@ -17,7 +17,7 @@ export function SettingSection({ title, children }) {
           <p className={classes.title}>{title}</p>
           <ArrowUp />
         </div>
-      </HiddenWrapperButton>
+      </HiddenWrapper>
       {sectionOpen ? children : ""}
     </section>
   );

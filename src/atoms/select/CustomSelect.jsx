@@ -95,7 +95,7 @@ const StyledListbox = styled("ul")(
   box-shadow: 0px 4px 30px ${
     theme.palette.mode === "dark" ? grey[900] : grey[200]
   };
-  `
+`
 );
 
 export const StyledOption = styled(OptionUnstyled)(

@@ -2,7 +2,7 @@ import { useMemo, useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { HiddenWrapperButton, SettingField } from "@/atoms";
+import { HiddenWrapper, SettingField } from "@/atoms";
 import { Button } from "@/atoms/button";
 import { useGetSelectedPageComponent } from "@/hooks";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
@@ -45,7 +45,7 @@ export function ImageUpload({ name }) {
   return (
     <SettingField fieldName={"Image"}>
       <div className={classes.setting}>
-        <HiddenWrapperButton name={name}>
+        <HiddenWrapper name={name}>
           <div
             className={
               imageToDisplay ? classes.imagePreviewActive : classes.imagePreview
@@ -54,7 +54,7 @@ export function ImageUpload({ name }) {
               backgroundImage: imageToDisplay || "",
             }}
           ></div>
-        </HiddenWrapperButton>
+        </HiddenWrapper>
         {imageToDisplay ? <Delete onClick={handleDelete} /> : null}
         <label
           htmlFor="uploadImage"

@@ -5,6 +5,7 @@ export const componentsData = {
   },
   BLANK_COMPONENT_NAME: "blank",
   EDITABLE_CLASS: "editableContainer",
+  PLACEHOLDER_IMAGE_URL: "/image/empty-image-dark.svg",
 };
 
 export default componentsData;

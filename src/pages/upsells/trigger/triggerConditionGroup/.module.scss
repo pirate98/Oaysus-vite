@@ -1,0 +1,23 @@
+// .triggerContainer {
+//   &::after {
+//     content: "hi";
+//   }
+// }
+
+.triggerOrContainer {
+  > * {
+    border-radius: 0 !important;
+    border-bottom: 1.2px solid rgba(246, 246, 247, 1);
+
+    &:first-of-type {
+      border-top-left-radius: 8px !important;
+      border-top-right-radius: 8px !important;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 8px !important;
+      border-bottom-right-radius: 8px !important;
+      border-bottom: unset;
+    }
+  }
+}

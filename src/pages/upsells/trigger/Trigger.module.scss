@@ -1,0 +1,8 @@
+@import "@/assets/css/type";
+
+.customH1 {
+  @extend .h1;
+
+  text-align: center;
+  margin-bottom: 48px;
+}

@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 
-import { Divider, Select } from "@/atoms";
+import { Divider, Select, Page } from "@/atoms";
 import { Card } from "@/atoms/cards";
 import classes from "./Performance.module.scss";
 import {
@@ -21,17 +21,20 @@ const selectOptions = [
     label: "Last day",
     value: 1,
   },
+  {
+    label: "Last dayasdnsdmflksmlkds",
+    value: 1,
+  },
 ];
 
 export default function Performance() {
   return (
-    <div className={classes.page}>
+    <Page>
       <h1 className={classes.h1}>Performance</h1>
-      <Select
+      <Select.Small
         options={selectOptions}
         sx={{
           "&": {
-            width: "auto",
             marginBottom: "16px",
           },
         }}
@@ -59,7 +62,7 @@ export default function Performance() {
           </Card.Performance>
         </Grid>
       </Grid>
-      <Divider />
+      <Divider.Horizontal />
       <h1 className={classes.h1}>Top Performing Funnels</h1>
       <Grid
         container
@@ -77,6 +80,6 @@ export default function Performance() {
           </Card.Performance>
         </Grid>
       </Grid>
-    </div>
+    </Page>
   );
 }

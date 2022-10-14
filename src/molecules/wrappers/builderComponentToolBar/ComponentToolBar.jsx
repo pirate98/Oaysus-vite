@@ -17,7 +17,7 @@ import {
   ToolbarDelete,
   ToolbarDrag,
 } from "../../../assets/svg";
-import { HiddenWrapperButton } from "../../../atoms";
+import { HiddenWrapper } from "../../../atoms";
 import {
   getIndexes,
   numerateTheName,
@@ -190,13 +190,13 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
                 (componentIsOnTop ? classes.zIndex1200 : classes.zIndex2)
               }
             >
-              <HiddenWrapperButton>
+              <HiddenWrapper>
                 <ToolbarArrowUp onClick={moveUp} />
-              </HiddenWrapperButton>
-              <HiddenWrapperButton>
+              </HiddenWrapper>
+              <HiddenWrapper>
                 <ToolbarArrowDown onClick={moveDown} />
-              </HiddenWrapperButton>
-              <HiddenWrapperButton>
+              </HiddenWrapper>
+              <HiddenWrapper>
                 <DragWrapper
                   componentRef={componentRef}
                   onDrag={onDrag}
@@ -206,13 +206,13 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
                     <ToolbarDrag />
                   </RefWrapper>
                 </DragWrapper>
-              </HiddenWrapperButton>
-              <HiddenWrapperButton>
+              </HiddenWrapper>
+              <HiddenWrapper>
                 <ToolBarCopy onClick={copy} />
-              </HiddenWrapperButton>
-              <HiddenWrapperButton>
+              </HiddenWrapper>
+              <HiddenWrapper>
                 <ToolbarDelete onClick={deleteComponent} />
-              </HiddenWrapperButton>
+              </HiddenWrapper>
             </section>
           )}
         </section>

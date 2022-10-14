@@ -1,24 +1,35 @@
-import { Button } from "@shopify/polaris";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-
-import classes from "./.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 
+import { Button } from "@/atoms/button";
+import classes from "./.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { addUpsell } from "../../pages/upsells/upsellsSlice";
+
 export function BuilderLinks() {
+  const {
+    builder: { pageComponents },
+  } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleSave = () => {
+    dispatch(addUpsell(pageComponents));
+    navigate("/upsells/new");
+  };
+
   return (
     <>
       <section className={classes.leftSection}>
-        <NavLink to="/" className={classes.navLink}>
-          <Grid container alignItems={"center"}>
-            <ArrowBackIosNewIcon sx={{ height: "15px" }} />
-            <p>Exit Builder</p>
-          </Grid>
-        </NavLink>
+        <Button.Back>Exit Builder</Button.Back>
       </section>
       <section className={classes.buttonGroup}>
-        <Button>Preview on store</Button>
-        <Button primary>Save template</Button>
+        <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
+        <Button.Primary onClick={handleSave} size={"sm"}>
+          Save Offer
+        </Button.Primary>
       </section>
     </>
   );

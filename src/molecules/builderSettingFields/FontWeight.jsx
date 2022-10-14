@@ -103,7 +103,7 @@ export function FontWeight({ defaultValue, module }) {
   return (
     <div className={fieldClasses.singleAttribute}>
       <p>Font Weight</p>
-      <Select
+      <Select.Primary
         onChange={changeHandler}
         value={(options && fontWeight) || ""}
         options={options}

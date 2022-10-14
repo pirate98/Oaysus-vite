@@ -3,13 +3,12 @@ import { styled } from "@mui/system";
 import MenuItem from "@mui/material/MenuItem";
 
 import {
-  inputWidth,
   inputPadding,
   inputFontSize,
   inputBorderFocused,
 } from "@/assets/css/_variables.module.scss";
 
-export const Select = styled(({ options, ...props }) => (
+export const SelectBase = styled(({ options, ...props }) => (
   <MuiSelect {...props}>
     {options &&
       options.map((option, idx) => (
@@ -25,7 +24,7 @@ export const Select = styled(({ options, ...props }) => (
       ))}
   </MuiSelect>
 ))({
-  "&": { width: inputWidth },
+  textAlign: "start",
   background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",
   borderRadius: "4px",

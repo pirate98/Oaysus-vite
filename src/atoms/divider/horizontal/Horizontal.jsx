@@ -1,5 +1,5 @@
 import classes from "./.module.scss";
 
-export function Divider() {
+export function Horizontal() {
   return <div className={classes.divider}></div>;
 }
