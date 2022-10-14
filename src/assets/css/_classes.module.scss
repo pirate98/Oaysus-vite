@@ -73,17 +73,18 @@
   line-height: 29px;
 }
 
-@mixin font_attribute_x($attribute, $count) {
-  @for $i from 1 through $count {
-    $value: $i * 100;
+@mixin font_attribute_x($attribute, $begin, $count, $multiplier, $unit) {
+  @for $i from $begin through $count {
+    $value: $i * $multiplier;
 
     .font_#{$attribute}_#{$value} {
-      font-#{$attribute}: #{$value};
+      font-#{$attribute}: #{$value}#{$unit};
     }
   }
 }
 
-@include font_attribute_x(weight, 10);
+@include font_attribute_x(weight, 4, 10, 100, "");
+@include font_attribute_x(size, 12, 24, 1, px);
 
 @mixin margin_side_x($side, $count) {
   @for $i from 1 through $count {
@@ -96,52 +97,3 @@
 }
 
 @include margin_side_x(bottom, 10);
-
-.h1 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 24px;
-}
-
-.h2 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 20px;
-}
-
-.h3 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 18px;
-}
-
-.h4 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 16px;
-}
-
-.h5 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 15px;
-}
-
-.h6 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 14px;
-}
-
-.h7 {
-  @extend .defaultFont;
-  @extend .defaultFontWeight;
-  @extend .defaultLineHeight;
-  font-size: 12px;
-}
