@@ -13,22 +13,28 @@ export function UpsellsNew({
 }) {
   return (
     <Page>
-      <Grid container wrap="nowrap">
-        <section className={classes.left}>
-          <Button.Back>{backButtonText}</Button.Back>
-        </section>
-        <section className={classes.middle}>
-          {children}
-          <Divider.Vertical />
-          <Button.Upsell onClick={bottomButtonOnClick}>
-            {bottomButtonText}
-          </Button.Upsell>
-        </section>
-        <div>
-          <Button.Primary onClick={rightButtonOnClick}>
-            {rightButtonText}
-          </Button.Primary>
-        </div>
+      <Grid container wrap="nowrap" columnSpacing={5}>
+        <Grid item xs={2}>
+          <section className={classes.left}>
+            <Button.Back>{backButtonText}</Button.Back>
+          </section>
+        </Grid>
+        <Grid item xs={8}>
+          <section className={classes.middle}>
+            {children}
+            <Divider.Vertical />
+            <Button.Upsell onClick={bottomButtonOnClick}>
+              {bottomButtonText}
+            </Button.Upsell>
+          </section>
+        </Grid>
+        <Grid item xs={2} sx={{ display: "flex", justifyContent: "end" }}>
+          <section>
+            <Button.Primary onClick={rightButtonOnClick}>
+              {rightButtonText}
+            </Button.Primary>
+          </section>
+        </Grid>
       </Grid>
     </Page>
   );
