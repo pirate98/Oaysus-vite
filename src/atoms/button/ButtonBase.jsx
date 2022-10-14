@@ -3,7 +3,7 @@ import { default as MuiButton } from "@mui/material/Button";
 
 import variables from "@/assets/css/_variables.module.scss";
 
-export const Button = styled(({ size, ...props }) => (
+export const ButtonBase = styled(({ size, ...props }) => (
   <MuiButton
     variant="outlined"
     {...props}
