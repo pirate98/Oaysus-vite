@@ -15,6 +15,7 @@ export const ButtonBase = styled(({ size, ...props }) => (
   />
 ))({
   fontFamily: variables.fontFamily,
+  minWidth: "unset",
   boxShadow: "none",
   fontWeight: 400,
   lineHeight: "20px",
