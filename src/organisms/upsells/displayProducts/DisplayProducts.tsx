@@ -2,9 +2,13 @@ import { Icon, Grid } from "@shopify/polaris";
 import { MobilePlusMajor } from "@shopify/polaris-icons";
 import { NavLink } from "react-router-dom";
 
-import { ProductCard, Card, Button, H7 } from "@/atoms";
+import { ProductCard, Card, Button, P } from "@/atoms";
 
-export function DisplayProducts({ products }) {
+interface Props {
+  products?: Record<any, any>[];
+}
+
+export function DisplayProducts({ products }: Props) {
   return (
     <Grid columns={{ xs: 1, sm: 2, md: 3, lg: 5, xl: 5 }}>
       <Grid.Cell>
@@ -25,7 +29,7 @@ export function DisplayProducts({ products }) {
             <Button.Primary sx={styles.button}>
               <MobilePlusMajor />
             </Button.Primary>
-            <H7 height={18}>Add Upsell</H7>
+            <P height={18}>Add Upsell</P>
           </Card.Dotted>
         </NavLink>
       </Grid.Cell>

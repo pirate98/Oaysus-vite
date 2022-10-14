@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import builderReducer from "@/pages/builder/builderSlice";
 import upsellsReducer from "@/pages/upsells/upsellsSlice";
-import { googleApi } from "./googleAPI";
+import { googleApi } from "./googleApi";
 import { backendApi } from "./backendApi";
 
 export const store = configureStore({
@@ -48,4 +48,4 @@ export const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store>;
+export type RootState = ReturnType<typeof store.getState>;

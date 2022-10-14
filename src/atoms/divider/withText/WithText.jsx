@@ -7,7 +7,7 @@ export function WithText({ textElement }) {
         <div className={classes.verticalDivider}></div>
       </section>
       {/* <p className={classes.p}>{text}</p> */}
-      {textElement}
+      <section className={classes.text}>{textElement}</section>
       <section className={classes.container}>
         <div className={classes.verticalDivider}></div>
       </section>

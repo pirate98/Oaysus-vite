@@ -3,6 +3,15 @@ import Grid from "@mui/material/Grid";
 import { Page, Divider, Button } from "@/atoms";
 import classes from "./UpsellsNewTemplate.module.scss";
 
+interface Props {
+  backButtonText?: string;
+  children?: React.ReactNode;
+  rightButtonText?: string;
+  rightButtonOnClick?: () => void;
+  bottomButtonText?: string;
+  bottomButtonOnClick?: () => void;
+}
+
 export function UpsellsNewTemplate({
   backButtonText,
   children,
@@ -10,7 +19,7 @@ export function UpsellsNewTemplate({
   rightButtonOnClick,
   bottomButtonText,
   bottomButtonOnClick,
-}) {
+}: Props) {
   return (
     <Page>
       <Grid container wrap="nowrap" columnSpacing={5}>

@@ -6,7 +6,7 @@ import Navigation from "./organisms/navigation/Navigation";
 import { GoogleFonts } from "./services";
 import Settings from "./pages/settings/Settings";
 import { Route } from "react-router-dom";
-import New from "./pages/upsells/new/New";
+import New from "./pages/upsells/new/New.tsx";
 import Trigger from "./pages/upsells/trigger/Trigger";
 
 export default function App() {
