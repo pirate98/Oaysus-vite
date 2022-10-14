@@ -7,9 +7,10 @@ import { setPageComponents } from "@/pages/builder/builderSlice";
 import componentsData from "@/data/componentsData";
 import { getIndexes, numerateTheName } from "@/helpers/builder";
 import * as builderComponents from "../../builderComponents";
+import { RootState } from "../../../../data/store";
 // import { useAddComponentToPageBuilder } from "@/hooks";
 
-function canElementDropTop(element, mouseYPosition) {
+function canElementDropTop(element: any, mouseYPosition: number) {
   const clientRects = element.getClientRects();
   const elTop = clientRects[0].top;
 
@@ -20,7 +21,13 @@ function canElementDropTop(element, mouseYPosition) {
   return mouseYPosition <= elTop + elHeight / 2;
 }
 
-export function DropZoneWrapper({ moduleContent, children, className }) {
+interface Props {
+  moduleContent?: Record<any, any>;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export function DropZoneWrapper({ moduleContent, children, className }: Props) {
   const dispatch = useDispatch();
   const refForHookAccess = useRef();
 
@@ -28,9 +35,9 @@ export function DropZoneWrapper({ moduleContent, children, className }) {
 
   const {
     builder: { pageComponents },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
-  const moveComponent = (componentName) => {
+  const moveComponent = (componentName: string) => {
     if (!componentName) return;
 
     const { componentIndex, blankComponentIndex } = getIndexes(
@@ -48,7 +55,7 @@ export function DropZoneWrapper({ moduleContent, children, className }) {
     dispatch(setPageComponents(mutablePageComponents));
   };
 
-  const addComponentToPageBuilder = (componentName) => {
+  const addComponentToPageBuilder = (componentName: string) => {
     if (!componentName) return;
 
     const { undefined, blankComponentIndex } = getIndexes(

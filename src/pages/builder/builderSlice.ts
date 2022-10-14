@@ -9,6 +9,7 @@ type State = {
   componentList: string[];
   pageComponents: Record<any, any>[];
   draggedComponent?: string;
+  page?: Record<any, any>[];
 };
 
 const initialState: State = {

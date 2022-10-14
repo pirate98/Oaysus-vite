@@ -14,8 +14,13 @@ import {
 } from "@/pages/builder/builderSlice";
 import classes from "./BuilderComposition.module.scss";
 import * as builderComponents from "@/organisms/builder/builderComponents";
+import { RootState } from "@/data/store";
 
-export function BuilderComposition({ pageContent }) {
+interface Props {
+  pageContent?: Record<any, any>[];
+}
+
+export function BuilderComposition({ pageContent }: Props) {
   const dispatch = useDispatch();
 
   const {
@@ -25,11 +30,11 @@ export function BuilderComposition({ pageContent }) {
       draggedComponent,
       componentList,
     },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   // console.log({ pageComponents });
 
-  const handleClickOnComponent = (componentName) => {
+  const handleClickOnComponent = (componentName: string) => {
     console.log({ componentName });
     if (selectedPageComponentName === componentName) return;
 
@@ -48,10 +53,12 @@ export function BuilderComposition({ pageContent }) {
       {pageComponents &&
         pageComponents.length &&
         pageComponents.map((component, idx) => {
+          const componentName = removeDigitsAndReturnComponentName(
+            component.name
+          ) as keyof typeof builderComponents | undefined;
+
           const DynamicComponent =
-            builderComponents[
-              removeDigitsAndReturnComponentName(component.name)
-            ];
+            componentName && builderComponents[componentName];
 
           return (
             <Fragment key={`${component.name}-idx`}>
@@ -61,14 +68,16 @@ export function BuilderComposition({ pageContent }) {
                 }
               >
                 <DropZoneWrapper moduleContent={component}>
-                  <DynamicComponent
-                    content={component}
-                    className={
-                      draggedComponent === component.name
-                        ? classes.dragging
-                        : ""
-                    }
-                  />
+                  {DynamicComponent && (
+                    <DynamicComponent
+                      content={component}
+                      className={
+                        draggedComponent === component.name
+                          ? classes.dragging
+                          : ""
+                      }
+                    />
+                  )}
                 </DropZoneWrapper>
               </ComponentToolBar>
             </Fragment>

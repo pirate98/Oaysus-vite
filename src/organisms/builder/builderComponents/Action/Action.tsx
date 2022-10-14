@@ -7,8 +7,9 @@ import classes from "./.module.scss";
 import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
 import variables from "@/assets/css/_variables.module.scss";
 import { Button } from "@/atoms/button";
+import { BuilderComponentProps } from "../builderComponent.type";
 
-const fn = forwardRef(({ content, className }, ref) => {
+const fn = forwardRef(({ content, className }: BuilderComponentProps, ref) => {
   const styles = filterOnlyStyleValues(content);
 
   return (
