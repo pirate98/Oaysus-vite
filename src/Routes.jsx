@@ -15,12 +15,12 @@ import { Routes as ReactRouterRoutes, Route, Navigate } from "react-router-dom";
  * @return {Routes} `<Routes/>` from React Router, with a `<Route/>` for each file in `pages`
  */
 export default function Routes({ pages, mainPage, children }) {
-  console.log(pages);
+  // console.log(pages);
   const routes = useRoutes(pages);
   const routeComponents = routes.map(({ path, component: Component }) => (
     <Route key={path} path={path} element={<Component />} />
   ));
-  console.log(routeComponents);
+  // console.log(routeComponents);
   const NotFound = routes.find(({ path }) => path === "/notFound").component;
 
   return (

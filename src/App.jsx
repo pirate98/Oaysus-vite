@@ -7,7 +7,7 @@ import { GoogleFonts } from "./services";
 import Settings from "./pages/settings/Settings";
 import { Route } from "react-router-dom";
 import New from "./pages/upsells/new/New";
-import { Trigger } from "./pages/upsells";
+import Trigger from "./pages/upsells/trigger/Trigger";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route

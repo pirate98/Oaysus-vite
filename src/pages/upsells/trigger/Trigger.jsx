@@ -10,7 +10,7 @@ import { addAndTrigger, testTrigger } from "../upsellsSlice";
 import { TriggerConditionGroup } from "../../../organisms/upsells/triggerConditionGroup/TriggerConditionGroup";
 import { useNavigate } from "react-router-dom";
 
-export function Trigger() {
+export default function Trigger() {
   const {
     upsells: { triggers },
   } = useSelector((state) => state);

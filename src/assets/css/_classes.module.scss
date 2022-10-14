@@ -41,36 +41,25 @@
   font-weight: 400;
 }
 
-.text_primary {
-  color: $primaryColor;
-}
+$colors: (
+  "primary": $primaryColor,
+  "green": #008060,
+  "muted": #6d7175,
+  "red": red,
+);
 
-.text_green {
-  color: #008060;
-}
-
-.text_muted {
-  color: #6d7175;
-}
-
-.text_red {
-  color: red;
-
-  &:hover {
-    color: red !important;
+@each $name, $color in $colors {
+  .text_#{$name} {
+    color: $color;
   }
 }
 
-.line_height_18 {
-  line-height: 18px;
-}
+$lineHeights: (18, 24, 29);
 
-.line_height_24 {
-  line-height: 24px;
-}
-
-.line_height_29 {
-  line-height: 29px;
+@each $height in $lineHeights {
+  .line_height_#{$height} {
+    line-height: #{$height}px;
+  }
 }
 
 @mixin font_attribute_x($attribute, $begin, $count, $multiplier, $unit) {
@@ -84,6 +73,7 @@
 }
 
 @include font_attribute_x(weight, 4, 10, 100, "");
+
 @include font_attribute_x(size, 12, 24, 1, px);
 
 @mixin margin_side_x($side, $count) {
