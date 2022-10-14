@@ -1,12 +1,11 @@
 import Routes from "./Routes";
 import { AppBridgeProvider, QueryProvider } from "./services/providers";
 import "./assets/css/app.scss";
-import Upsells from "./pages/upsells/Upsells";
 import Navigation from "./organisms/navigation/Navigation";
 import { GoogleFonts } from "./services";
 import Settings from "./pages/settings/Settings";
 import { Route } from "react-router-dom";
-import New from "./pages/upsells/new/New.tsx";
+import New from "./pages/upsells/new/New";
 import Trigger from "./pages/upsells/trigger/Trigger";
 
 export default function App() {
