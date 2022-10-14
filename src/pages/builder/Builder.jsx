@@ -2,11 +2,13 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import classes from "./Builder.module.scss";
-import { Page } from "../../organisms/builderPage/Page";
-import { BuilderMenu } from "../../organisms/builderMenu/BuilderMenu";
+import {
+  BuilderSideBarComponents,
+  BuilderSideBarTemplates,
+  BuilderComposition,
+} from "@/organisms/";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPageComponentName, setActiveMenu } from "./builderSlice";
-import { Templates } from "../../organisms/builderTemplates/Templates";
 
 export default function Builder() {
   const dispatch = useDispatch();
@@ -38,11 +40,15 @@ export default function Builder() {
               ))}
             </div>
           )}
-          {activeMenu === 0 ? <BuilderMenu /> : <Templates />}
+          {activeMenu === 0 ? (
+            <BuilderSideBarComponents />
+          ) : (
+            <BuilderSideBarTemplates />
+          )}
         </section>
         <main className={classes.main}>
           <section className={classes.rightSection}>
-            <Page pageContent={page} />
+            <BuilderComposition pageContent={page} />
             {/* <PageDemo /> */}
           </section>
         </main>

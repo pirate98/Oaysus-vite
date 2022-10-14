@@ -2,14 +2,14 @@ import { default as MuiAutocomplete } from "@mui/material/Autocomplete";
 import { styled } from "@mui/system";
 import TextField from "@mui/material/TextField";
 
-import { inputWidth } from "../../assets/css/_variables.module.scss";
-import { ReactComponent as SelectIcon } from "../../assets/svg/selectListBtn.svg";
+import { inputWidth } from "@/assets/css/_variables.module.scss";
+import { ReactComponent as SelectIcon } from "@/assets/svg/selectListBtn.svg";
 import {
   inputPadding,
   inputFontSize,
   inputBorderFocused,
   selectShadow,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
 export const Autocomplete = styled((props) => (
   <MuiAutocomplete

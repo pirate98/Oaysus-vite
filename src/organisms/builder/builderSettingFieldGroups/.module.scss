@@ -1,0 +1,29 @@
+@import "@/assets/css/classes.module", "@/assets/css/variables.module";
+
+.singleAttribute {
+  font-family: $fontFamily;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.flexRow {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.p {
+  margin-bottom: 4px;
+}
+
+.layout {
+  justify-content: space-around;
+  align-content: center;
+  display: flex;
+
+  p {
+    text-align: center;
+  }
+}

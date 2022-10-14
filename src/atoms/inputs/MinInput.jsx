@@ -1,6 +1,6 @@
 import { Input } from "./Input";
 import classes from "./.module.scss";
-import { inputWidth } from "../../assets/css/_variables.module.scss";
+import { inputWidth } from "@/assets/css/_variables.module.scss";
 
 export function MinInput({ small = false, ...args }) {
   return (

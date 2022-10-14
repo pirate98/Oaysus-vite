@@ -1,4 +1,4 @@
-import variables from "../assets/css/_variables.module.scss";
+import variables from "@/assets/css/_variables.module.scss";
 
 export const CONSTANT = {
   INPUT_WIDTH: "190px",

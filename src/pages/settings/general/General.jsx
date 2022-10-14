@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import { Button } from "../../../atoms/button";
-import { SettingsCard } from "../../../atoms/cards/settingsCard/SettingsCard";
+import { Button } from "@/atoms/button";
+import { SettingsCard } from "@/atoms/cards/settingsCard/SettingsCard";
 import classes from "./General.module.scss";
 
 export default function General() {

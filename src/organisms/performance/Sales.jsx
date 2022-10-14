@@ -14,7 +14,7 @@ import { faker } from "@faker-js/faker";
 
 import { formatAmountToCurrency } from "@/helpers";
 import classes from "./.module.scss";
-import { CONSTANT } from "../../data/constants";
+import { CONSTANT } from "@/data/constants";
 
 ChartJS.register(
   CategoryScale,

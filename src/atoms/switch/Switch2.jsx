@@ -4,7 +4,7 @@ import { styled } from "@mui/system";
 import {
   disabledColor,
   shopifyGreen,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
 export const Switch2 = styled(MuiSwitch)(({ theme }) => ({
   width: 42,

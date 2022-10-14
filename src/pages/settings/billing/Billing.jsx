@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 
 import { Button, Card } from "@/atoms";
-import { SettingsProgressBar } from "@/molecules/settingsProgressBar/SettingsProgressBar";
-import { SettingsBillingTable } from "@/organisms/settingsBillingTable/SettingsBillingTable";
+import { SettingsProgressBar } from "@/organisms/settings/settingsProgressBar/SettingsProgressBar";
+import { SettingsBillingTable } from "@/organisms/";
 
 import classes from "./Billing.module.scss";
 

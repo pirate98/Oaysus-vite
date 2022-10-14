@@ -1,4 +1,4 @@
-import { builderSettings } from "../../data/builderSettings";
+import { builderSettings } from "@/data/builderSettings";
 
 import { createSlice } from "@reduxjs/toolkit";
 

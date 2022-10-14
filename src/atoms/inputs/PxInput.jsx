@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Input } from "./Input";
 import classes from "./.module.scss";
-import { inputWidth } from "../../assets/css/_variables.module.scss";
+import { inputWidth } from "@/assets/css/_variables.module.scss";
 
 import { useEffect } from "react";
 

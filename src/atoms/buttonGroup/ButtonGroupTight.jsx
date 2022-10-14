@@ -4,7 +4,7 @@ import { styled } from "@mui/system";
 
 import { Button } from "../button";
 import { default as MuiButtonGroup } from "@mui/material/ButtonGroup";
-import variables from "../../assets/css/_variables.module.scss";
+import variables from "@/assets/css/_variables.module.scss";
 import { memo } from "react";
 
 export const ButtonGroupTight = memo(

@@ -1,16 +1,14 @@
 import { Image } from "@shopify/polaris";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { logo } from "@/assets/svg";
 import classes from "./Navigation.module.scss";
-import { MainLinks, BuilderLinks } from "@/molecules/navigationLinks/";
+import {
+  MainLinks,
+  BuilderLinks,
+} from "@/organisms/navigation/navigationLinks";
 
 const Navigation = () => {
-  const {
-    navigation: { pageButtons },
-  } = useSelector((state) => state);
-
   const location = useLocation();
   const builderIsLoaded = location.pathname.startsWith("/builder");
 

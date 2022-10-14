@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import navigationReducer from "../organisms/navigation/navigationSlice";
-import builderReducer from "../pages/builder/builderSlice";
+import navigationReducer from "@/organisms/navigation/navigationSlice";
+import builderReducer from "@/pages/builder/builderSlice";
 import upsellsReducer from "@/pages/upsells/upsellsSlice";
 import { googleApi } from "./googleAPI";
 import { backendApi } from "./backendApi";

@@ -10,9 +10,9 @@ import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled } from "@mui/system";
 
 import styles from "./CustomSelect.module.scss";
-import cssVariables from "../../assets/css/_variables.module.scss";
+import cssVariables from "@/assets/css/_variables.module.scss";
 import { Menu } from "../menu";
-import { MenuHorizontalDotSvg } from "../../assets/svg";
+import { MenuHorizontalDotSvg } from "@/assets/svg";
 
 const blue = {
   100: "#DAECFF",

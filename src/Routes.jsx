@@ -26,8 +26,8 @@ export default function Routes({ pages, mainPage, children }) {
   return (
     <ReactRouterRoutes>
       <Route path="/" element={<Navigate to={mainPage} />} />
-      {routeComponents}
       {children}
+      {routeComponents}
       <Route path="*" element={<NotFound />} />
     </ReactRouterRoutes>
   );

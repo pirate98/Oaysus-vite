@@ -6,7 +6,7 @@ import {
   inputPadding,
   inputFontSize,
   inputBorderFocused,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
 export const Input = styled((props) => {
   return (

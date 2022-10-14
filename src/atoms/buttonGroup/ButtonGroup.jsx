@@ -5,7 +5,7 @@ import { Button } from "../button";
 import {
   inputWidth,
   secondaryHover,
-} from "../../assets/css/_variables.module.scss";
+} from "@/assets/css/_variables.module.scss";
 
 export const ButtonGroup = styled((props) => (
   <MuiButtonGroup {...props} variant="outlined">
