@@ -1,4 +1,4 @@
-// copied card style from Polaris
+@import "@/assets/css/variables.module";
 
 .card {
   background-color: var(--p-surface);
@@ -11,7 +11,7 @@
 
   :hover {
     button {
-      background: var(--pc-button-color-hover);
+      background: $primaryHover;
       border-color: transparent;
       color: var(--pc-button-text);
     }

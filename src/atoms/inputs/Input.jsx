@@ -13,9 +13,8 @@ export const Input = styled(({ small, fullWidth, ...props }) => {
     <MuiInput
       {...props}
       sx={{
-        width: fullWidth ? "100%" : inputWidth,
+        width: fullWidth ? "100%" : small ? "80px" : inputWidth,
         minWidth: small ? "80px" : inputWidth,
-        width: small ? "80px" : inputWidth,
         background: "white",
         input: {
           padding: inputPadding,

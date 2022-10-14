@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 import { Divider } from "@/atoms";
-import { UpsellsNew } from "@/templates/upsellsNew/UpsellsNew";
+import { UpsellsNewTemplate } from "@/templates/upsellsNew/UpsellsNewTemplate";
 import classes from "./Trigger.module.scss";
 import { addAndTrigger, testTrigger } from "../upsellsSlice";
 import { TriggerConditionGroup } from "../../../organisms/upsells/triggerConditionGroup/TriggerConditionGroup";
@@ -27,7 +27,7 @@ export default function Trigger() {
   };
 
   return (
-    <UpsellsNew
+    <UpsellsNewTemplate
       backButtonText={"Back"}
       bottomButtonText="Add Condition"
       bottomButtonOnClick={handleClickBottomButton}
@@ -45,6 +45,6 @@ export default function Trigger() {
           </Fragment>
         );
       })}
-    </UpsellsNew>
+    </UpsellsNewTemplate>
   );
 }

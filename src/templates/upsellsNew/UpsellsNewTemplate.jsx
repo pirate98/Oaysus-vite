@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Grid";
 
 import { Page, Divider, Button } from "@/atoms";
-import classes from "./UpsellsNew.module.scss";
+import classes from "./UpsellsNewTemplate.module.scss";
 
-export function UpsellsNew({
+export function UpsellsNewTemplate({
   backButtonText,
   children,
   rightButtonText,

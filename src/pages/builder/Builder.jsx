@@ -6,7 +6,7 @@ import {
   BuilderSideBarComponents,
   BuilderSideBarTemplates,
   BuilderComposition,
-} from "@/organisms/";
+} from "@/organisms/builder";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPageComponentName, setActiveMenu } from "./builderSlice";
 import { H5 } from "@/atoms";

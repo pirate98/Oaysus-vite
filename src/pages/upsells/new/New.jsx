@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import { EditableElement } from "@/atoms";
 import classes from "./New.module.scss";
-import { EditPen } from "@/assets/svg";
-import { UpsellsNew } from "@/templates/upsellsNew/UpsellsNew";
+import { UpsellsNewTemplate } from "@/templates";
 import { TriggerCard } from "@/organisms/upsells/triggerCard/TriggerCard";
 import { BuilderCard } from "@/organisms/upsells/builderCard/BuilderCard";
 import { EditableTitle } from "@/molecules";
@@ -12,7 +10,7 @@ export default function New() {
   const navigate = useNavigate();
 
   return (
-    <UpsellsNew
+    <UpsellsNewTemplate
       backButtonText={"Upsells"}
       bottomButtonText="Create Upsell"
       bottomButtonOnClick={() => {
@@ -27,6 +25,6 @@ export default function New() {
       />
       <TriggerCard />
       <BuilderCard />
-    </UpsellsNew>
+    </UpsellsNewTemplate>
   );
 }

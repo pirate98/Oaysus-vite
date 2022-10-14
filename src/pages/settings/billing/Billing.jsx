@@ -1,8 +1,10 @@
 import { Grid } from "@mui/material";
 
 import { Button, Card, H1, H2, H5, H3 } from "@/atoms";
-import { SettingsProgressBar } from "@/organisms/settings/settingsProgressBar/SettingsProgressBar";
-import { SettingsBillingTable } from "@/organisms/";
+import {
+  SettingsProgressBar,
+  SettingsBillingTable,
+} from "@/organisms/settings";
 
 export default function Billing() {
   return (
