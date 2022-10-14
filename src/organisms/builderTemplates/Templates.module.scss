@@ -19,9 +19,11 @@
 
 .template {
   cursor: pointer;
+  border-top: 1px solid rgba(240, 240, 240, 1);
   height: 82px;
   padding: 11px 10px;
   display: flex;
+  background: #fff;
 
   .image {
     width: 60px;
