@@ -8,7 +8,6 @@ import Settings from "./pages/settings/Settings";
 import { Route } from "react-router-dom";
 import New from "./pages/upsells/new/New";
 import Trigger from "./pages/upsells/trigger/Trigger";
-import { Hi } from "./Hi";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route

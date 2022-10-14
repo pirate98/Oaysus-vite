@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import navigationReducer from "@/organisms/navigation/navigationSlice";
 import builderReducer from "@/pages/builder/builderSlice";
 import upsellsReducer from "@/pages/upsells/upsellsSlice";
 import { googleApi } from "./googleAPI";
@@ -8,7 +7,6 @@ import { backendApi } from "./backendApi";
 
 export const store = configureStore({
   reducer: {
-    navigation: navigationReducer,
     builder: builderReducer,
     upsells: upsellsReducer,
     [googleApi.reducerPath]: googleApi.reducer,
@@ -37,15 +35,17 @@ export const store = configureStore({
     //     ? { ...action, data: "<<LONG_BLOB>>" }
     //     : action;
     // },
-    stateSanitizer: (state) => {
-      if (state.navigation.pageButtons) {
-        const navigation = {
-          ...state.navigation,
-          pageButtons: "<<LONG_BLOB>>",
-        };
-        return { ...state, navigation };
-      }
-      return state;
-    },
+    // stateSanitizer: (state) => {
+    //   if (state.navigation.pageButtons) {
+    //     const navigation = {
+    //       ...state.navigation,
+    //       pageButtons: "<<LONG_BLOB>>",
+    //     };
+    //     return { ...state, navigation };
+    //   }
+    //   return state;
+    // },
   },
 });
+
+export type RootState = ReturnType<typeof store>;

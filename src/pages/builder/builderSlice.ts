@@ -2,11 +2,21 @@ import { builderSettings } from "@/data/builderSettings";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+type State = {
+  hoveredComponent?: string;
+  activeMenu: number;
+  selectedPageComponentName?: string;
+  componentList: string[];
+  pageComponents: Record<any, any>[];
+  draggedComponent?: string;
+};
+
+const initialState: State = {
   activeMenu: 0,
   // pageComponents: boilerPlate,
   selectedPageComponentName: undefined,
   componentList: builderSettings.templates[0],
+  pageComponents: [],
 };
 
 export const builderSlice = createSlice({
@@ -27,8 +37,8 @@ export const builderSlice = createSlice({
     },
 
     removeComponentFromPage: (state, action) => {
-      const pageComponentsWithoutGivenName = state.pageComponents.filter(
-        (comp) => comp.name !== action.payload
+      const pageComponentsWithoutGivenName = state.pageComponents?.filter(
+        (comp: Record<any, any>) => comp.name !== action.payload
       );
 
       state.pageComponents = pageComponentsWithoutGivenName;
@@ -55,6 +65,8 @@ export const builderSlice = createSlice({
       const componentToUpdate = _pageComponents.find(
         (comp) => comp.name === component
       );
+
+      if (!componentToUpdate) return;
 
       if (module && module.length) {
         componentToUpdate[module][key] = value;

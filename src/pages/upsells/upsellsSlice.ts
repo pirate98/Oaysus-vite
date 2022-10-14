@@ -1,6 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+type Trigger = Record<any, any>;
+type TypeTriggers = Trigger[];
+
+type State = {
+  triggers: TypeTriggers[];
+  upsells: Record<any, any>[][];
+  testTrigger?: TypeTriggers;
+};
+
+const initialState: State = {
   triggers: [[{}]],
   upsells: [],
 };
@@ -25,13 +34,13 @@ export const upsellsSlice = createSlice({
       const { groupId, conditionId } = action.payload;
       console.log({ groupId, conditionId });
       state.triggers[groupId] = state.triggers[groupId].filter(
-        (con, idx) => idx !== conditionId
+        (undefined, idx: number) => idx !== conditionId
       );
     },
     testTrigger: (state) => {
       state.testTrigger = state.triggers;
     },
-    addUpsell: (state, action) => {
+    addUpsell: (state, action: { payload: Record<any, any>[] }) => {
       state.upsells.push(action.payload);
     },
   },

@@ -15,7 +15,7 @@ import {
 import classes from "./BuilderComposition.module.scss";
 import * as builderComponents from "@/organisms/builder/builderComponents";
 
-export function BuilderComposition() {
+export function BuilderComposition({ pageContent }) {
   const dispatch = useDispatch();
 
   const {

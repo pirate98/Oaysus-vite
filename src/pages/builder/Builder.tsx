@@ -10,13 +10,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPageComponentName, setActiveMenu } from "./builderSlice";
 import { H5 } from "@/atoms";
+import { RootState } from "../../data/store";
 
 export default function Builder() {
   const dispatch = useDispatch();
 
   const {
     builder: { activeMenu, selectedPageComponentName, page },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   return (
     <DndProvider backend={HTML5Backend}>

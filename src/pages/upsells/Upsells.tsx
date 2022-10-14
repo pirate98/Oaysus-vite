@@ -10,7 +10,7 @@ import { useGetSeedDataQuery } from "@/data/backendApi";
 import { NavLink } from "react-router-dom";
 
 export default function Upsells() {
-  const { data } = useGetSeedDataQuery();
+  const { data } = useGetSeedDataQuery(null);
 
   // useEffect(() => {
   //   console.log({ data });
