@@ -28,6 +28,9 @@ export function TriggerConditionSelector({
   handleOr,
   showOr,
 }: Props) {
+  const conditionDefault = conditionOptions && conditionOptions[0]?.value;
+  const operatorDefault = operatorOptions && operatorOptions[0]?.value;
+
   return (
     <Card.Settings>
       <h2 className={classes.customH2}>
@@ -44,7 +47,7 @@ export function TriggerConditionSelector({
         <p>If</p>{" "}
         <Select.Primary
           options={conditionOptions}
-          value={conditionValue || conditionOptions?[0]?.value || ""}
+          value={conditionValue || conditionDefault || ""}
           name="condition"
           onChange={onChange}
           sx={{ flexGrow: 1, maxWidth: "300px" }}
@@ -53,7 +56,7 @@ export function TriggerConditionSelector({
           <>
             <Select.Small
               options={operatorOptions}
-              value={operatorValue || operatorOptions?[0].value || ""}
+              value={operatorValue || operatorDefault || ""}
               onChange={onChange}
               name="operator"
               sx={{ flexGrow: 1 }}
