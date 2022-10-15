@@ -1,10 +1,14 @@
 import { SettingSection } from "@/atoms";
 import { Visibility } from "@/organisms/builder/builderSettingFields";
 
-export function Savings() {
+interface Props {
+  data: Record<any, any>;
+}
+
+export function Savings({ data }: Props) {
   return (
     <SettingSection title={"Savings Label"}>
-      <Visibility text="Show savings" />
+      <Visibility data={data} text="Show savings" />
     </SettingSection>
   );
 }

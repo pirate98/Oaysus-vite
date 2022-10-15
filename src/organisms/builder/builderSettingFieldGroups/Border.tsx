@@ -5,15 +5,22 @@ import {
 } from "@/organisms/builder/builderSettingFields";
 import { removePx } from "@/helpers/builder";
 import { InputWithKeyControls } from "@/molecules";
+import { BuilderModule } from "@/types/BuilderModule.type";
 
-export function Border({ title = "MARGIN", data, module }) {
+interface Props {
+  data?: Record<any, any>;
+  module: BuilderModule;
+  title: string;
+}
+
+export function Border({ title = "MARGIN", data, module }: Props) {
   return (
     <SettingFieldContainer title={title}>
       <SettingField fieldName={"Width"}>
         <InputWithKeyControls
           endAdornment={"px"}
           placeholder="Enter size"
-          value={removePx(data["borderWidth"])}
+          value={removePx(data && data["borderWidth"])}
           name={"borderWidth_px"}
         />
       </SettingField>
@@ -21,7 +28,7 @@ export function Border({ title = "MARGIN", data, module }) {
         <InputWithKeyControls
           endAdornment={"px"}
           placeholder="Enter size"
-          value={removePx(data["borderRadius"])}
+          value={removePx(data && data["borderRadius"])}
           name={"borderRadius_px"}
         />
       </SettingField>
@@ -29,7 +36,7 @@ export function Border({ title = "MARGIN", data, module }) {
         title={"Color"}
         name="borderColor"
         module={module}
-        value={data.borderColor}
+        value={data?.borderColor}
       />
     </SettingFieldContainer>
   );

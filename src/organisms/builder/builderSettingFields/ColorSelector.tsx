@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { SketchPicker, ChromePicker } from "react-color";
@@ -8,49 +8,42 @@ import { v4 as uuidv4 } from "uuid";
 import { SettingField } from "@/atoms";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
 import classes from "./.module.scss";
-import { useCallback } from "react";
+import { BuilderModule } from "@/types/BuilderModule.type";
+import { convertRGBToHex } from "@/helpers";
 
-function RGBAToHexA(r, g, b, a) {
-  r = r?.toString(16);
-  g = g?.toString(16);
-  b = b?.toString(16);
-  a = Math.round(a * 255)?.toString(16);
-
-  if (r.length == 1) r = "0" + r;
-  if (g.length == 1) g = "0" + g;
-  if (b.length == 1) b = "0" + b;
-  if (a.length == 1) a = "0" + a;
-
-  return "#" + r + g + b + a;
+interface Props {
+  module: BuilderModule;
+  name?: string;
+  title?: string;
+  value?: string;
 }
 
-function convertRGBToHex(reactColorEvent) {
-  const { r, g, b, a } = reactColorEvent.rgb;
-
-  return RGBAToHexA(r, g, b, a);
-}
-
-export function ColorSelector({ module, name, title, value = "#000000" }) {
-  const [open, setOpen] = useState();
-  const [internalValue, setInternalValue] = useState();
+export function ColorSelector({
+  module,
+  name,
+  title,
+  value = "#000000",
+}: Props) {
+  const [open, setOpen] = useState<boolean>();
+  const [internalValue, setInternalValue] = useState<string>();
 
   // this was used for native color input
   const randomId = uuidv4();
-  const colorInputId = `input-color-${randomId}`;
+  // const colorInputId = `input-color-${randomId}`;
 
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const value = convertRGBToHex(e);
     dispatch(updatePageComponents({ module, key: name, value }));
   };
 
-  const handleInternalChange = (e) => {
+  const handleInternalChange = (e: any) => {
     const value = convertRGBToHex(e);
     setInternalValue(value);
   };
 
-  const handleTextChange = ({ target }) => {
+  const handleTextChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     console.log(target);
     const { value } = target;
     dispatch(updatePageComponents({ module, key: name, value }));
@@ -63,7 +56,7 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
       <div className={classes.colorInputContainer}>
         <label
           id="colorPickerLabel"
-          htmlFor={colorInputId}
+          // htmlFor={colorInputId}
           onClickCapture={(e) => {
             e.stopPropagation();
             setOpen(!open);
@@ -87,7 +80,7 @@ export function ColorSelector({ module, name, title, value = "#000000" }) {
         >
           <div>
             <ChromePicker
-              id={colorInputId}
+              // id={colorInputId}
               className={open ? classes.inputColorActive : classes.inputColor}
               color={internalValue}
               onChangeComplete={handleChange}

@@ -8,30 +8,37 @@ import {
 } from "@/organisms/builder/builderSettingFields";
 import { removePx } from "@/helpers/builder";
 import { BackgroundButtons } from "./BackgroundButtons";
+import { BuilderModule } from "@/types/BuilderModule.type";
+
+interface Props {
+  background?: boolean;
+  weight?: boolean;
+  data: Record<any, any>;
+  module: BuilderModule;
+  buttonBackground?: boolean;
+}
 
 export function Style({
-  background = false,
-  styling = false,
+  background,
   weight = true,
-  alignment = false,
   data = {},
   module,
-  buttonBackground = false,
-}) {
+  buttonBackground,
+}: Props) {
   return (
     <>
       {buttonBackground ? (
         <BackgroundButtons data={data} title={"BACKGROUND"} module={module} />
       ) : null}
       <SettingFieldContainer title={"STYLE"}>
-        {background && (
+        {/* {background && (
           <ColorSelector
-            defaultValue={data["backgroundColor"]}
+            defaultValue={data && data["backgroundColor"]}
             name={"backgroundColor"}
             title={"Background"}
             module={module}
           />
-        )}
+        )} */}
         {/* {styling && <FontStyles module={module} />} */}
         <FontFamily defaultValue={data["fontFamily"]} module={module} />
         {weight && <FontWeight module={module} />}

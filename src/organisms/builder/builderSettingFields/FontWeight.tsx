@@ -3,19 +3,25 @@ import { useState, useEffect } from "react";
 import { Select } from "@/atoms";
 import fieldClasses from "../builderSettingFields/.module.scss";
 import { ReactComponent as SelectIcon } from "@/assets/svg/selectListBtn.svg";
-import { useGetFontsQuery } from "@/data/googleAPI";
+import { useGetFontsQuery } from "@/data/googleApi";
 import { useGetSelectedPageComponent } from "@/hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
+import { BuilderModule } from "@/types/BuilderModule.type";
+import { Option } from "@/atoms/select/select.types";
 
-export function FontWeight({ defaultValue, module }) {
-  const [options, setOptions] = useState(null);
+interface Props {
+  module: BuilderModule;
+}
+
+export function FontWeight({ module }: Props) {
+  const [options, setOptions] = useState<Option[]>();
 
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
 
-  const { data: fontFamilyData } = useGetFontsQuery();
+  const { data: fontFamilyData } = useGetFontsQuery(null);
   // console.log({ selectedPageComponent, module });
   const { fontFamily, fontWeight } =
     (selectedPageComponent && selectedPageComponent[module]) || {};
@@ -25,8 +31,8 @@ export function FontWeight({ defaultValue, module }) {
 
     const filterResult =
       fontFamilyData &&
-      fontFamilyData.filter((_fontFamily) => {
-        return _fontFamily.family === fontFamily;
+      fontFamilyData.filter((_fontFamily: any) => {
+        return _fontFamily?.family === fontFamily;
       });
 
     // console.log({ filterResult });
@@ -35,10 +41,10 @@ export function FontWeight({ defaultValue, module }) {
 
     const onlyNumericalVariants = (fontStyle = "regular") => {
       const filtered = filterResult[0].variants.filter(
-        (variant) => /^[0-9]+$/i.test(variant) || variant === fontStyle
+        (variant: string) => /^[0-9]+$/i.test(variant) || variant === fontStyle
       );
 
-      return filtered.map((variant) =>
+      return filtered.map((variant: string) =>
         variant === fontStyle ? "400" : variant
       );
     };
@@ -47,14 +53,17 @@ export function FontWeight({ defaultValue, module }) {
     const fontWeightList = onlyNumericalVariants();
 
     setOptions(
-      fontWeightList.map((variant) => {
-        return { value: variant, label: fontWeightMap[variant] };
+      fontWeightList.map((variant: number) => {
+        return {
+          value: variant,
+          label: fontWeightMap[variant],
+        };
       })
     );
 
     // If new font family doesnt have selected weight update the weight
     const fontWeightExists = fontWeightList.some(
-      (_fontWeight) =>
+      (_fontWeight: string) =>
         _fontWeight && _fontWeight?.toString() === fontWeight?.toString()
     );
 
@@ -64,7 +73,7 @@ export function FontWeight({ defaultValue, module }) {
       let value = fontWeightList[0];
 
       if (fontWeight) {
-        const nearestWeight = fontWeightList.reduce((prev, cur) => {
+        const nearestWeight = fontWeightList.reduce((prev: any, cur: any) => {
           return cur === fontWeight || cur < fontWeight ? cur : prev;
         });
 
@@ -81,14 +90,14 @@ export function FontWeight({ defaultValue, module }) {
     }
   }, [fontFamily, fontFamilyData]);
 
-  const changeHandler = (e) => {
+  const changeHandler = (e: any) => {
     // console.log({ e: e.target });
     e.stopPropagation();
     const { value } = e.target;
     dispatch(updatePageComponents({ module, key: "fontWeight", value }));
   };
 
-  const fontWeightMap = {
+  const fontWeightMap: Record<number, string> = {
     100: "Thin",
     200: "Extra Light",
     300: "Light",

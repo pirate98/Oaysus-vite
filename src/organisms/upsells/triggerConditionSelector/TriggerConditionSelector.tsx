@@ -2,13 +2,14 @@ import { Button, Card, Input, Select } from "@/atoms";
 import classes from "./.module.scss";
 import { DeleteConditionSvg } from "@/assets/svg";
 import { Option } from "@/atoms/select/select.types";
+import { ChangeEvent } from "react";
 
 interface Props {
   conditionOptions?: Option[];
   operatorOptions?: Option[];
   conditionValue?: string;
   operatorValue?: string;
-  onChange?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   conditionId: number;
   handleDelete?: () => void;
   showDelete?: boolean;

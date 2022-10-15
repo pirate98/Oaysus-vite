@@ -6,7 +6,7 @@ import {
 import { BuilderModule } from "@/types/BuilderModule.type";
 
 interface Props {
-  data?: Record<any, any>;
+  data: Record<any, any>;
   module: BuilderModule;
 }
 

@@ -1,8 +1,13 @@
 import { Input, Select, SettingField, SettingFieldContainer } from "@/atoms";
 import { Visibility } from "@/organisms/builder/builderSettingFields";
+import { BuilderModule } from "@/types/BuilderModule.type";
 
-export function Discount() {
-  const options = [{ label: "Fixed amount" }];
+interface Props {
+  data: Record<any, any>;
+}
+
+export function Discount({ data }: Props) {
+  const options = [{ label: "Fixed amount", value: "" }];
 
   return (
     <>
@@ -14,7 +19,7 @@ export function Discount() {
           <Input placeholder={""} />
         </SettingField>
       </SettingFieldContainer>
-      <Visibility text={"Show discount"} />
+      <Visibility data={data} text={"Show discount"} />
     </>
   );
 }
