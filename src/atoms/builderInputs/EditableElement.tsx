@@ -2,11 +2,16 @@ import { forwardRef } from "react";
 
 import classes from "./.module.scss";
 
-export const EditableElement = forwardRef((props, ref) => {
+interface Props {
+  type: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export const EditableElement = forwardRef((props: Props, ref) => {
   const { children, className } = props;
   const propsCopy = { ...props };
   delete propsCopy.children;
-  delete propsCopy.editControls;
 
   const Type = props.type;
   // console.log({ className });
@@ -14,13 +19,12 @@ export const EditableElement = forwardRef((props, ref) => {
     <Type
       ref={ref}
       {...propsCopy}
-      className={classes.clean + " " + (className ? className : "")}
+      // @ts-ignore:next-line
+      className={classes.clean + (className ? ` ${className}` : ``)}
       defaultValue={children}
       contentEditable={true}
       suppressContentEditableWarning={true}
       dangerouslySetInnerHTML={{ __html: children }}
-    >
-      {/* {children} */}
-    </Type>
+    />
   );
 });

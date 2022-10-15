@@ -90,7 +90,7 @@ const StyledListbox = styled("ul")(({ theme }) => ({
   padding: "16px",
 }));
 
-export const StyledOption = styled((props) => {
+export const StyledOption = styled((props: any) => {
   return <li {...props} />;
 })(({ theme }) => ({
   listStyle: "none",
@@ -138,7 +138,12 @@ const StyledPopper = styled(PopperUnstyled)`
   cursor: ';
 `;
 
-export const Upsell = forwardRef(function CustomSelect(props, ref) {
+interface Props {
+  components?: (React.ElementType<any> | string)[];
+  options: Record<any, any>[];
+}
+
+export const Upsell = forwardRef(function CustomSelect(props: Props, ref) {
   const components = {
     // Root: StyledButton,
     Root: Menu.HorizontalDrop,

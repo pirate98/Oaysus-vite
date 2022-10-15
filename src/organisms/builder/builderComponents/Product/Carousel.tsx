@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { SwiperSlide, Swiper } from "swiper/react";
+import { FreeMode, Navigation, Thumbs, Swiper as SwiperClass } from "swiper";
 
 import classes from "./.module.scss";
 import { SwiperPrev, SwiperNext } from "@/assets/svg";
@@ -13,9 +13,14 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { useEffect } from "react";
 
-export function Carousel({ images, imageStyle }) {
+interface Props {
+  images?: string[];
+  imageStyle?: Record<any, any>;
+}
+
+export function Carousel({ images, imageStyle }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [swiper, setSwiper] = useState(null);
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   useEffect(() => {
     console.log(thumbsSwiper, "thumbs");
@@ -31,11 +36,12 @@ export function Carousel({ images, imageStyle }) {
         onSwiper={(swiper) => setSwiper(swiper)}
         modules={[Thumbs]}
         thumbs={{
+          // @ts-ignore
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         // navigation={true}
       >
-        {images.map((url, idx) => {
+        {images?.map((url, idx) => {
           return (
             <SwiperSlide key={idx} className={classes.w100}>
               {/* {({ isActive }) =>
@@ -62,15 +68,15 @@ export function Carousel({ images, imageStyle }) {
           // spaceBetween={10}
           modules={[Thumbs]}
           watchSlidesProgress={true}
-          onSwiper={setThumbsSwiper}
+          // onSwiper={setThumbsSwiper}
           slidesPerView={5}
           threshold={10}
           // slidesPerGroup={1}
           // freeMode={true}
           className={classes.swiperThumbs}
-          thumbsContainerClass={classes.swiperWrapper}
+          // thumbsContainerClass={classes.swiperWrapper}
         >
-          {images.map((url, idx) => {
+          {images?.map((url, idx) => {
             return (
               <SwiperSlide key={idx}>
                 <div

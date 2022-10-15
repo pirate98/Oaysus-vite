@@ -10,11 +10,12 @@ import componentsData from "@/data/componentsData";
 import { getProductInfo } from "@/helpers";
 import { EditableTitle } from "@/molecules";
 import { useMemo } from "react";
+import { RootState } from "../../../data/store";
 
 export function BuilderCard() {
   const {
     upsells: { upsells },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   return upsells.map((upsell, idx) => {
     const { productImageUrl, titleText } = getProductInfo(upsell);

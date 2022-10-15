@@ -4,21 +4,22 @@ import Grid from "@mui/material/Grid";
 import { TextContainer } from "@shopify/polaris";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
 import { EditableWithToolBar } from "@/organisms/builder/wrappers";
 import { componentsData } from "@/data/componentsData";
+import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
+import { BuilderComponentProps } from "../types/builderComponent.type";
 
-const fn = forwardRef(({ content, className, ...rest }, ref) => {
-  const styles = filterOnlyStyleValues(content);
+const fn = forwardRef<HTMLDivElement>(
+  ({ content, className }: BuilderComponentProps, ref) => {
+    const styles = filterOnlyStyleValues(content);
 
-  const productBackgroundImage =
-    content?.backgroundPreview ||
-    (content?.images
-      ? `url(${content.images[0]?.url})`
-      : `url(${componentsData.PLACEHOLDER_IMAGE_URL})`);
+    const productBackgroundImage =
+      content?.backgroundPreview ||
+      (content?.images
+        ? `url(${content.images[0]?.url})`
+        : `url(${componentsData.PLACEHOLDER_IMAGE_URL})`);
 
-  return (
-    content && (
+    return (
       <div
         className={classes.componentContainer}
         style={{ backgroundColor: styles?.layout?.backgroundColor }}
@@ -28,7 +29,7 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
           <Grid
             container
             columnSpacing={4}
-            sx={{ ...styles.layout, backgroundColor: "inherit" }}
+            sx={{ ...styles?.layout, backgroundColor: "inherit" }}
           >
             <Grid
               item
@@ -40,7 +41,7 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
               <div
                 className={classes.image1}
                 style={{
-                  ...styles.image,
+                  ...styles?.image,
                   backgroundImage: productBackgroundImage,
                 }}
               ></div>
@@ -48,16 +49,14 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
             <Grid item sx={{ marginBottom: "2px" }} xs={6}>
               <TextContainer>
                 <EditableWithToolBar
-                  type="h3"
-                  style={{ ...styles.title }}
+                  style={{ ...styles?.title }}
                   module="title"
                   data-oa-type="text"
                 >
                   {content?.title?.editorState}
                 </EditableWithToolBar>
                 <EditableWithToolBar
-                  type="p"
-                  style={{ ...styles.description }}
+                  style={{ ...styles?.description }}
                   module="description"
                   data-oa-type="text"
                 >
@@ -68,9 +67,9 @@ const fn = forwardRef(({ content, className, ...rest }, ref) => {
           </Grid>
         </div>
       </div>
-    )
-  );
-});
+    );
+  }
+);
 
 const json = {
   layout: {

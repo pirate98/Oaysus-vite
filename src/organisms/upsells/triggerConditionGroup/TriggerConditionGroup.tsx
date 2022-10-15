@@ -1,19 +1,27 @@
 import { useDispatch } from "react-redux";
-
 import { v4 as uuidv4 } from "uuid";
 
 import {
   addOrTrigger,
   deleteTrigger,
   updateTrigger,
-} from "../../../pages/upsells/upsellsSlice";
+} from "@/pages/upsells/upsellsSlice";
 import { TriggerConditionSelector } from "../triggerConditionSelector/TriggerConditionSelector";
 import classes from "./.module.scss";
+import { ChangeEvent } from "react";
 
-export function TriggerConditionGroup({ triggerGroup, groupId }) {
+interface Props {
+  triggerGroup?: Record<any, any>[];
+  groupId?: number;
+}
+
+export function TriggerConditionGroup({ triggerGroup, groupId }: Props) {
   const dispatch = useDispatch();
 
-  const handleChange = ({ target }, id) => {
+  const handleChange = (
+    { target }: ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
     console.log(target.value, target.name);
     const { name: key, value } = target;
     dispatch(updateTrigger({ groupId, conditionId: id, key, value }));
@@ -21,7 +29,7 @@ export function TriggerConditionGroup({ triggerGroup, groupId }) {
 
   return (
     <section className={classes.triggerOrContainer}>
-      {triggerGroup.map((trigger, idx) => (
+      {triggerGroup?.map((trigger, idx) => (
         <TriggerConditionSelector
           key={idx}
           // key={uuidv4()}
@@ -30,7 +38,9 @@ export function TriggerConditionGroup({ triggerGroup, groupId }) {
           operatorOptions={operatorOptions}
           conditionValue={trigger.condition}
           operatorValue={trigger.operator}
-          onChange={(event) => handleChange(event, idx)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            handleChange(event, idx)
+          }
           handleDelete={() =>
             dispatch(deleteTrigger({ groupId, conditionId: idx }))
           }

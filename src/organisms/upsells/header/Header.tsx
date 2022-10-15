@@ -6,23 +6,6 @@ import svgSearch from "@/assets/svg/search.svg";
 import { Button } from "@/atoms/button";
 import { AddPlus } from "@/assets/svg";
 
-const styles = {
-  addButton: {
-    padding: "0 16px",
-    width: "unset",
-    fontSize: "14px",
-    svg: {
-      marginRight: "8px",
-    },
-  },
-};
-
-const options = [
-  { label: "Last 30 Days", value: 30 },
-  { label: "Last 20 Days", value: 20 },
-  { label: "Last 10 Days", value: 10 },
-];
-
 export function Header() {
   return (
     <div>
@@ -30,7 +13,7 @@ export function Header() {
         <section>
           <h1 className={classes.h1Big}>Upsell Funnels</h1>
           <div className={classes.badgeContainer}>
-            <Badge dotHalf={true}>4 Total</Badge>
+            <Badge full={false}>4 Total</Badge>
             <Badge variant="green">3 Active</Badge>
             <Badge variant="gray">1 Inactive</Badge>
           </div>
@@ -52,3 +35,20 @@ export function Header() {
     </div>
   );
 }
+
+const styles = {
+  addButton: {
+    padding: "0 16px",
+    width: "unset",
+    fontSize: "14px",
+    svg: {
+      marginRight: "8px",
+    },
+  },
+};
+
+const options = [
+  { label: "Last 30 Days", value: 30 },
+  { label: "Last 20 Days", value: 20 },
+  { label: "Last 10 Days", value: 10 },
+];

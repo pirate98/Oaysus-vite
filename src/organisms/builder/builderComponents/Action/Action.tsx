@@ -4,54 +4,57 @@ import Grid from "@mui/material/Grid";
 
 import { EditableWithToolBar } from "../../wrappers";
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
 import variables from "@/assets/css/_variables.module.scss";
 import { Button } from "@/atoms/button";
-import { BuilderComponentProps } from "../builderComponent.type";
+import { BuilderComponentProps } from "../types/builderComponent.type";
+import { filterOnlyStyleValues, makeEditorState } from "@/helpers";
 
-const fn = forwardRef(({ content, className }: BuilderComponentProps, ref) => {
-  const styles = filterOnlyStyleValues(content);
+const fn = forwardRef<HTMLDivElement>(
+  ({ content, className }: BuilderComponentProps, ref) => {
+    const styles = filterOnlyStyleValues(content);
 
-  return (
-    <div
-      className={classes.callToAction + (className ? ` ${className}` : "")}
-      ref={ref}
-      style={{
-        backgroundColor: styles?.layout?.backgroundColor,
-        ...styles.border,
-      }}
-    >
-      <div className={classes.width}>
-        <Grid
-          container
-          flexDirection={"row"}
-          justifyContent={"start"}
-          alignItems={"center"}
-          spacing={1}
-          sx={{ ...styles.layout, backgroundColor: "inherit" }}
-        >
-          <Grid item>
-            <EditableWithToolBar
-              name="title"
-              module="title"
-              data-oa-type="text"
-              type="h3"
-              style={{ ...styles.title }}
-            >
-              {content?.title?.editorState}
-            </EditableWithToolBar>
+    return (
+      <div
+        className={classes.callToAction + (className ? ` ${className}` : "")}
+        ref={ref}
+        style={{
+          backgroundColor: styles?.layout?.backgroundColor,
+          ...styles?.border,
+        }}
+      >
+        <div className={classes.width}>
+          <Grid
+            container
+            flexDirection={"row"}
+            justifyContent={"start"}
+            alignItems={"center"}
+            spacing={1}
+            sx={{ ...styles?.layout, backgroundColor: "inherit" }}
+          >
+            <Grid item>
+              <EditableWithToolBar
+                module="title"
+                data-oa-type="text"
+                style={{ ...styles?.title }}
+              >
+                {content?.title?.editorState}
+              </EditableWithToolBar>
+            </Grid>
+            <Grid item>
+              <div
+                className={classes.textGreen}
+                style={{ ...styles?.subTitle }}
+              >
+                &nbsp;for $20.00
+              </div>
+            </Grid>
           </Grid>
-          <Grid item>
-            <div className={classes.textGreen} style={{ ...styles.subTitle }}>
-              &nbsp;for $20.00
-            </div>
-          </Grid>
-        </Grid>
-        <Button.Primary sx={{ ...styles.buyButton }}>Buy Now</Button.Primary>
+          <Button.Primary sx={{ ...styles?.buyButton }}>Buy Now</Button.Primary>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 const json = {
   title: {

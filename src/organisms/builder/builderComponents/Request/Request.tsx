@@ -3,59 +3,66 @@ import { forwardRef } from "react";
 import Grid from "@mui/material/Grid";
 
 import classes from "./.module.scss";
-import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
 import { Button } from "@/atoms/button";
 import { EditableWithToolBar } from "../../wrappers";
 import variables from "@/assets/css/_variables.module.scss";
+import { BuilderComponentProps } from "../types/builderComponent.type";
+import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
 
-const fn = forwardRef(({ content, className }, ref) => {
-  const styles = filterOnlyStyleValues(content);
+const fn = forwardRef<HTMLDivElement>(
+  ({ content, className }: BuilderComponentProps, ref) => {
+    const styles = filterOnlyStyleValues(content);
 
-  return (
-    // <Grid
-    //   item
-    //   container
-    //   ref={ref}
-    //   className={classes.componentContainer}
-    //   // columnSpacing={2}
-    //   spacing={2}
-    // >
-    <div
-      className={classes.componentContainer}
-      style={{ backgroundColor: styles?.layout?.backgroundColor }}
-      ref={ref}
-    >
-      <div className={classes.box}>
-        <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
-          <Grid item>
-            <EditableWithToolBar
-              type="h3"
-              className={classes.headline}
-              style={styles.title}
-              module="title"
-              data-oa-type="text"
-            >
-              {content?.title?.editorState}
-            </EditableWithToolBar>
-            <EditableWithToolBar
-              type="p"
-              style={styles.description}
-              module="description"
-              data-oa-type="text"
-            >
-              {content?.description?.editorState}
-            </EditableWithToolBar>
-          </Grid>
-          <Grid item sx={{ width: "208px" }}>
-            <Button.Primary variant="contained" sx={styles.buyButton} fullWidth>
-              Buy Now
-            </Button.Primary>
-          </Grid>
+    return (
+      // <Grid
+      //   item
+      //   container
+      //   ref={ref}
+      //   className={classes.componentContainer}
+      //   // columnSpacing={2}
+      //   spacing={2}
+      // >
+      <div
+        className={classes.componentContainer}
+        style={{ backgroundColor: styles?.layout?.backgroundColor }}
+        ref={ref}
+      >
+        <div className={classes.box}>
+          <div style={{ ...styles.layout, ...styles.border, ...content.size }}>
+            <Grid item>
+              <EditableWithToolBar
+                type="h3"
+                className={classes.headline}
+                style={styles.title}
+                module="title"
+                data-oa-type="text"
+              >
+                {content?.title?.editorState}
+              </EditableWithToolBar>
+              <EditableWithToolBar
+                type="p"
+                style={styles.description}
+                module="description"
+                data-oa-type="text"
+              >
+                {content?.description?.editorState}
+              </EditableWithToolBar>
+            </Grid>
+            <Grid item sx={{ width: "208px" }}>
+              <Button.Primary
+                variant="contained"
+                sx={styles.buyButton}
+                fullWidth
+              >
+                Buy Now
+              </Button.Primary>
+            </Grid>
+          </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 const json = {
   name: "",

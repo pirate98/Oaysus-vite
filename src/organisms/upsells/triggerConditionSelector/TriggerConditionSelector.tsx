@@ -1,6 +1,20 @@
 import { Button, Card, Input, Select } from "@/atoms";
 import classes from "./.module.scss";
 import { DeleteConditionSvg } from "@/assets/svg";
+import { Option } from "@/atoms/select/select.types";
+
+interface Props {
+  conditionOptions?: Option[];
+  operatorOptions?: Option[];
+  conditionValue?: string;
+  operatorValue?: string;
+  onChange?: () => void;
+  conditionId: number;
+  handleDelete?: () => void;
+  showDelete?: boolean;
+  handleOr?: () => void;
+  showOr?: boolean;
+}
 
 export function TriggerConditionSelector({
   conditionOptions,
@@ -13,7 +27,7 @@ export function TriggerConditionSelector({
   showDelete,
   handleOr,
   showOr,
-}) {
+}: Props) {
   return (
     <Card.Settings>
       <h2 className={classes.customH2}>
@@ -30,7 +44,7 @@ export function TriggerConditionSelector({
         <p>If</p>{" "}
         <Select.Primary
           options={conditionOptions}
-          value={conditionValue || conditionOptions[0]?.value || ""}
+          value={conditionValue || conditionOptions?[0]?.value || ""}
           name="condition"
           onChange={onChange}
           sx={{ flexGrow: 1, maxWidth: "300px" }}
@@ -39,7 +53,7 @@ export function TriggerConditionSelector({
           <>
             <Select.Small
               options={operatorOptions}
-              value={operatorValue || operatorOptions[0]?.value || ""}
+              value={operatorValue || operatorOptions?[0].value || ""}
               onChange={onChange}
               name="operator"
               sx={{ flexGrow: 1 }}

@@ -4,33 +4,32 @@ import { Grid } from "@mui/material";
 
 import classes from "./.module.scss";
 import { EditableWithToolBar } from "../../wrappers";
-import { filterOnlyStyleValues, makeEditorState } from "@/helpers/builder";
+import { BuilderComponentProps } from "../types/builderComponent.type";
+import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
 
-const fn = forwardRef(({ content, className }, ref) => {
-  const styles = filterOnlyStyleValues(content);
+const fn = forwardRef<HTMLDivElement>(
+  ({ content, className }: BuilderComponentProps, ref) => {
+    const styles = filterOnlyStyleValues(content);
 
-  return (
-    content && (
+    return (
       <div
         className={
           classes.incentiveContainer + (className ? ` ${className}` : "")
         }
         ref={ref}
         style={{
-          ...styles.layout,
+          ...styles?.layout,
           backgroundImage: content?.backgroundPreview,
         }}
       >
         <EditableWithToolBar
           // hidden={true}
           style={{
-            ...styles.title,
-            display: content.title.visibility ? "inherit" : "none",
+            ...styles?.title,
+            display: content?.title.visibility ? "inherit" : "none",
           }}
-          name="title"
           module="title"
           data-oa-type="text"
-          type="h3"
           className={classes.title}
         >
           {content?.title?.editorState}
@@ -40,36 +39,30 @@ const fn = forwardRef(({ content, className }, ref) => {
           container
           sx={{
             whiteSpace: "pre-wrap",
-            ...styles.subTitle,
-            display: content.subTitle.visibility ? "inherit" : "none",
+            ...styles?.subTitle,
+            display: content?.subTitle.visibility ? "inherit" : "none",
           }}
         >
           <Grid item>
-            <EditableWithToolBar
-              name="subTitle"
-              module="subTitle"
-              data-oa-type="text"
-              type="p"
-            >
+            <EditableWithToolBar module="subTitle" data-oa-type="text">
               {content?.subTitle?.editorState}
             </EditableWithToolBar>
           </Grid>
           <Grid item>
             <p
-              module="countdown"
               data-oa-type="duration"
               style={{
-                display: content.countdown.visibility ? "inherit" : "none",
+                display: content?.countdown.visibility ? "inherit" : "none",
               }}
             >
-              {content.countdown && content.countdown.duration + ":00"}
+              {content?.countdown && content?.countdown.duration + ":00"}
             </p>
           </Grid>
         </Grid>
       </div>
-    )
-  );
-});
+    );
+  }
+);
 
 const json = {
   name: "",

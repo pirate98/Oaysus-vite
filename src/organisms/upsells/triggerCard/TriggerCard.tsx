@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import { Card, Button } from "@/atoms";
 import classes from "./TriggerCard.module.scss";
 import { CategoryTrigger } from "@/assets/svg";
+import { RootState } from "@/data/store";
 
 export function TriggerCard() {
   const {
     upsells: { testTrigger, triggers },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   const thereIsTrigger = Object.keys(triggers[0][0])?.length;
 

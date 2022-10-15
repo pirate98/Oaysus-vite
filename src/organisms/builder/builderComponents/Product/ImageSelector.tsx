@@ -2,7 +2,12 @@ import classes from "./.module.scss";
 import { Carousel } from "./Carousel";
 import { builderSettings } from "@/data/builderSettings";
 
-export function ImageSelector({ content, style }) {
+interface Props {
+  content?: Record<any, any>;
+  style?: Record<any, any>;
+}
+
+export function ImageSelector({ content, style }: Props) {
   return (
     <>
       {builderSettings?.imageDisplayTypes?.carousel ===

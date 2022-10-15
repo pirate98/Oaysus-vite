@@ -9,6 +9,11 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
   },
+  css: {
+    modules: {
+      // generateScopedName: (name, fn, css) => `${name}_${fn}_${css}`,
+    },
+  },
 });
 
 // import { defineConfig } from "vite";

@@ -1,4 +1,4 @@
-import { default as MuiSelect } from "@mui/material/Select";
+import { default as MuiSelect, SelectProps } from "@mui/material/Select";
 import { styled } from "@mui/system";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -7,11 +7,16 @@ import {
   inputFontSize,
   inputBorderFocused,
 } from "@/assets/css/_variables.module.scss";
+import { Option } from "./select.types";
 
-export const SelectBase = styled(({ options, ...props }) => (
+type Props = {
+  options?: Option[];
+} & SelectProps;
+
+export const SelectBase = styled(({ options, ...props }: Props) => (
   <MuiSelect {...props}>
     {options &&
-      options.map((option, idx) => (
+      options?.map((option, idx) => (
         <MenuItem
           key={idx}
           value={option.value}

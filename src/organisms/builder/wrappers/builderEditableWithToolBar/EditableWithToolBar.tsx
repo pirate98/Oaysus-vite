@@ -15,19 +15,33 @@ import classes from "./.module.scss";
 import { TextToolBar } from "../../builderTextToolBar/TextToolBar";
 import { componentsData } from "@/data/componentsData";
 import { useCallback } from "react";
-import { $getRoot } from "lexical";
+import { $getRoot, EditorState } from "lexical";
 import { useDebounceHandler } from "@/hooks";
+import { RootState } from "@/data/store";
+import classNames from "classnames";
 
-export function EditableWithToolBar({ style, module, className, children }) {
+interface Props {
+  style?: Record<any, any>;
+  module: string;
+  className?: string;
+  children?: string;
+}
+
+export function EditableWithToolBar({
+  style,
+  module,
+  className,
+  children,
+}: Props) {
   const dispatch = useDispatch();
 
   const {
     builder: { pageComponents, selectedPageComponentName },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
 
-  function onError(error) {
+  function onError(error: any) {
     console.error(error);
   }
 
@@ -52,9 +66,9 @@ export function EditableWithToolBar({ style, module, className, children }) {
   const editorDebounce = useDebounceHandler(dispatch);
   const textDebounce = useDebounceHandler(dispatch);
 
-  function onChangeLexical(editorState) {
+  function onChangeLexical(editorState: EditorState) {
     editorState.read(() => {
-      const text = $getRoot().getTextContent(false);
+      const text = $getRoot().getTextContent();
       // console.log(text);
 
       textDebounce(
@@ -75,29 +89,33 @@ export function EditableWithToolBar({ style, module, className, children }) {
     );
   }
 
-  const handleLexicalBlur = (e) => console.log({ lexicalBlur: e });
+  const handleLexicalBlur = (e: any) => console.log({ lexicalBlur: e });
 
-  const elementToFocus = useRef();
+  const elementToFocus = useRef<HTMLDivElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     // console.log(e.currentTarget);
     setIsFocused(false);
   };
   // console.log({ style });
+  const toolBarClassNames = classNames(classes.styleBar, {
+    [classes.zIndex3000]: componentIsOnTop,
+  });
+
   return (
     <>
-      <LexicalComposer initialConfig={initialConfig} onBlur={handleLexicalBlur}>
+      <LexicalComposer initialConfig={initialConfig}>
         <div
           className={classes.textInput + " " + (className ? className : "")}
           style={style}
         >
           <div
             ref={elementToFocus}
-            tabIndex="-1"
+            tabIndex={-1}
             // classname is used to traverse parents in dom
             className={
               classes.editWrapper + " " + componentsData.EDITABLE_CLASS
@@ -109,7 +127,7 @@ export function EditableWithToolBar({ style, module, className, children }) {
             {/* <EditableElement type={type}>{children}</EditableElement> */}
             <RichTextPlugin
               contentEditable={<ContentEditable />}
-              // placeholder={<div>Enter some text...</div>}
+              placeholder={<div></div>}
             />
             <OnChangePlugin onChange={onChangeLexical} />
             {/* <HistoryPlugin />
@@ -120,10 +138,7 @@ export function EditableWithToolBar({ style, module, className, children }) {
             >
               {/* <span><ContentCopySvg /></span> */}
               <TextToolBar
-                className={
-                  classes.styleBar +
-                  (componentIsOnTop ? " " + classes.zIndex3000 : "")
-                }
+                className={toolBarClassNames}
                 module={module}
                 elementToFocus={elementToFocus}
               />

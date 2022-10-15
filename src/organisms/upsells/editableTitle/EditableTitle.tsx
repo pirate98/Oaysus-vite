@@ -4,12 +4,18 @@ import { Button, EditableElement } from "@/atoms";
 import classes from "./.module.scss";
 import { EditPen } from "@/assets/svg";
 
-export const EditableTitle = ({ className, type, text }) => {
-  const editableElement = useRef();
+interface Props {
+  className?: string;
+  type: string;
+  text?: string;
+}
+
+export const EditableTitle = ({ className, type, text }: Props) => {
+  const editableElement = useRef<HTMLDivElement>();
 
   const handleEditPenClick = () => {
     const editableEl = editableElement.current;
-    editableEl.focus();
+    editableEl?.focus();
   };
 
   return (

@@ -1,7 +1,12 @@
 import styles from "./Badge.module.scss";
 import { SvgDot } from "./SvgDot";
 
-export function Badge({ children = "badge", dot = true, variant = "blue" }) {
+export function Badge({
+  children = "badge",
+  dot = true,
+  variant = "blue",
+  ...props
+}) {
   let color;
 
   switch (variant) {
@@ -18,7 +23,7 @@ export function Badge({ children = "badge", dot = true, variant = "blue" }) {
 
   return (
     <div className={styles.div} style={{ backgroundColor: color }}>
-      {dot ? <SvgDot variant={variant} /> : ""}
+      {dot ? <SvgDot variant={variant} {...props} /> : ""}
       <span className={styles.text}>{children}</span>
     </div>
   );
