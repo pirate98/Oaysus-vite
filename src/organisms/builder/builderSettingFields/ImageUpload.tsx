@@ -1,21 +1,26 @@
 import { useMemo, useEffect, useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { HiddenWrapper, SettingField } from "@/atoms";
+import { SettingField } from "@/atoms";
 import { Button } from "@/atoms/button";
 import { useGetSelectedPageComponent } from "@/hooks";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
 import classes from "./ImageUpload.module.scss";
 import { Delete } from "@/assets/svg";
+import { BuilderModule } from "@/types/BuilderModule.type";
 
-export function ImageUpload({ module }) {
+interface Props {
+  module: BuilderModule;
+}
+
+export function ImageUpload({ module }: Props) {
   const dispatch = useDispatch();
 
   const component = useGetSelectedPageComponent();
   const memoComponent = useMemo(() => component, [component]);
 
-  const handleImageLoad = (e) => {
+  const handleImageLoad = (e: any) => {
     // console.log(e.target);
     const path = `url(${window.URL.createObjectURL(e?.target?.files[0])})`;
 
@@ -53,7 +58,7 @@ export function ImageUpload({ module }) {
   return (
     <SettingField fieldName={"Image"}>
       <div className={classes.setting}>
-        <HiddenWrapper name={name}>
+        <Button.HiddenWrapper>
           <div
             className={
               imageToDisplay ? classes.imagePreviewActive : classes.imagePreview
@@ -62,7 +67,7 @@ export function ImageUpload({ module }) {
               backgroundImage: imageToDisplay || "",
             }}
           ></div>
-        </HiddenWrapper>
+        </Button.HiddenWrapper>
         {imageToDisplay ? <Delete onClick={handleDelete} /> : null}
         <label
           htmlFor="uploadImage"

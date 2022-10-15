@@ -2,7 +2,18 @@ import classes from "./SettingsBillingTable.module.scss";
 
 const columnNames = ["Date", "Invoiced", "Revenue", "Plan"];
 
-export function SettingsBillingTable({ data }) {
+type Billing = {
+  date: string;
+  invoiced: boolean;
+  revenue: string;
+  plan: string;
+};
+
+interface Props {
+  data: Billing[];
+}
+
+export function SettingsBillingTable({ data }: Props) {
   return (
     <table className={classes.table}>
       <thead className={classes.thead}>

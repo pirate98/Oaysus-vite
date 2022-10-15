@@ -2,15 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { formatAmountToCurrency } from "@/helpers";
 import classes from "./SettingsProgressBar.module.scss";
 
-export function SettingsProgressBar({ breakPoints, completed }) {
-  const dottedProgressBar = useRef();
-  const [breakPointPositions, setBreakPointPositions] = useState([]);
-  const [positionOfCompleted, setPositionOfCompleted] = useState(undefined);
+interface Props {
+  breakPoints: number[];
+  completed?: number;
+}
+
+export function SettingsProgressBar({ breakPoints, completed = 0 }: Props) {
+  const dottedProgressBar = useRef<HTMLSpanElement>(null);
+  const [breakPointPositions, setBreakPointPositions] = useState<number[]>([]);
+  const [positionOfCompleted, setPositionOfCompleted] = useState<number>();
 
   useEffect(() => {
-    console.log(dottedProgressBar.current.scrollWidth);
-    const { scrollWidth } = dottedProgressBar.current;
-    const breakPointsSum = breakPoints.reduce((prev, cur) => prev + cur);
+    console.log(dottedProgressBar.current?.scrollWidth);
+    const { scrollWidth = 0 } = dottedProgressBar.current || {};
+    const breakPointsSum = breakPoints.reduce(
+      (prev: number, cur: number) => prev + cur
+    );
     console.log({ breakPointsSum });
     const pointToMargin = breakPoints.map(
       (point) => (scrollWidth * point) / breakPointsSum

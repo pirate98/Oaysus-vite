@@ -1,6 +1,12 @@
 import classes from "./SettingFieldContainer.module.scss";
 
-export function SettingFieldContainer({ title = "", children, className }) {
+interface Props {
+  title?: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export function SettingFieldContainer({ title, children, className }: Props) {
   return (
     <div className={classes.container + (className ? ` ${className}` : "")}>
       {title && title.length ? <p className={classes.title}>{title}</p> : ""}

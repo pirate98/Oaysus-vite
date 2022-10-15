@@ -9,11 +9,12 @@ import {
   ScreenMobileSvg,
   ScreenTabletSvg,
 } from "@/assets/svg";
+import { RootState } from "../../../data/store";
 
 export function BuilderLinks() {
   const {
     builder: { pageComponents },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   const dispatch = useDispatch();
 
