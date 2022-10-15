@@ -11,10 +11,11 @@ import { Option } from "./select.types";
 
 type Props = {
   options?: Option[];
+  value?: any;
 } & SelectProps;
 
-export const SelectBase = styled(({ options, ...props }: Props) => (
-  <MuiSelect {...props}>
+export const SelectBase = styled(({ options, value, ...props }: Props) => (
+  <MuiSelect value={value || ""} {...props}>
     {options &&
       options?.map((option, idx) => (
         <MenuItem

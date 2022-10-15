@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import classes from "./.module.scss";
 import { EditableWithToolBar } from "../../wrappers";
 
-import { BuilderComponentProps } from "../types/builderComponent.type";
+import { BuilderComponentProps } from "../../../../types/BuilderComponent.type";
 import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
 
 const fn = forwardRef<HTMLDivElement>(

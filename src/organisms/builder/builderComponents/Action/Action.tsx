@@ -6,7 +6,7 @@ import { EditableWithToolBar } from "../../wrappers";
 import classes from "./.module.scss";
 import variables from "@/assets/css/_variables.module.scss";
 import { Button } from "@/atoms/button";
-import { BuilderComponentProps } from "../types/builderComponent.type";
+import { BuilderComponentProps } from "../../../../types/BuilderComponent.type";
 import { filterOnlyStyleValues, makeEditorState } from "@/helpers";
 
 const fn = forwardRef<HTMLDivElement>(

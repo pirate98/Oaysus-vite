@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import classes from "../.module.scss";
 // import { filterOnlyStyleValues } from "@/helpers/builder";
 import { componentsData } from "@/data/componentsData";
-import { BuilderComponentProps } from "../types/builderComponent.type";
+import { BuilderComponentProps } from "../../../../types/BuilderComponent.type";
 import { filterOnlyStyleValues } from "@/helpers";
 
 const fn = forwardRef<HTMLInputElement>(

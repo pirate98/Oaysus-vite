@@ -10,7 +10,7 @@ import { EditableWithToolBar } from "../../wrappers";
 import { Button } from "@/atoms/button";
 import { ImageSelector } from "./ImageSelector";
 import variables from "@/assets/css/_variables.module.scss";
-import { BuilderComponentProps } from "../types/builderComponent.type";
+import { BuilderComponentProps } from "../../../../types/BuilderComponent.type";
 import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
 
 const fn = forwardRef<HTMLDivElement>(

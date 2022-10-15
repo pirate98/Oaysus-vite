@@ -7,7 +7,7 @@ import classes from "./.module.scss";
 import { EditableWithToolBar } from "@/organisms/builder/wrappers";
 import { componentsData } from "@/data/componentsData";
 import { filterOnlyStyleValues, makeEditorState } from "@/helpers/upsells";
-import { BuilderComponentProps } from "../types/builderComponent.type";
+import { BuilderComponentProps } from "../../../../types/BuilderComponent.type";
 
 const fn = forwardRef<HTMLDivElement>(
   ({ content, className }: BuilderComponentProps, ref) => {
