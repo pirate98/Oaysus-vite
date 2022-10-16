@@ -4,7 +4,12 @@ import { removePx } from "@/helpers/builder";
 import classes from "./.module.scss";
 import { InputWithKeyControls } from "@/molecules";
 
-export function Distances({ data = {}, type }) {
+interface Props {
+  data: Record<any, any>;
+  type: string;
+}
+
+export function Distances({ data = {}, type }: Props) {
   useEffect(() => {
     // console.log({ data });
   }, [data]);

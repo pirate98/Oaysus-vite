@@ -1,13 +1,13 @@
-import { useState, useEffect, InputHTMLAttributes, ChangeEvent } from "react";
+import { useState, ChangeEvent, KeyboardEventHandler } from "react";
 
-import { Input } from "@/atoms/inputs/Input";
+import { Input, OaysusInputProps } from "@/atoms/inputs/Input";
 import classes from "./InputWithKeyControls.module.scss";
 
 type Props = {
   placeholder?: string;
   endAdornment?: string;
   value?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+} & OaysusInputProps;
 
 export function InputWithKeyControls({
   placeholder,
@@ -18,13 +18,16 @@ export function InputWithKeyControls({
 
   const keysToPrevent = ["ArrowUp", "ArrowDown"];
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown: KeyboardEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
     if (keysToPrevent.includes(e.key)) e.preventDefault();
   };
 
-  const keyUpHandler = (e: KeyboardEvent) => {
+  const keyUpHandler: KeyboardEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
     const { key } = e;
-    // console.log({ key });
 
     if (keysToPrevent.includes(key)) {
       let numVal = parseInt(value) || 0;
@@ -34,12 +37,7 @@ export function InputWithKeyControls({
     }
   };
 
-  // useEffect(() => {
-  //   setValue(args.value || "");
-  // }, [args]);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // e.preventDefault();
     setValue(e.target.value);
   };
 
