@@ -1,7 +1,7 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { FORMAT_TEXT_COMMAND } from "lexical";
+import { FORMAT_TEXT_COMMAND, TextFormatType } from "lexical";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 
 import {
@@ -17,7 +17,13 @@ import { updatePageComponents } from "@/pages/builder/builderSlice";
 import { ButtonGroupTight } from "@/atoms";
 import { useUpdateToolBar } from "./hooks/useUpdateToolBar";
 
-export function TextToolBar({ module, elementToFocus, ...args }) {
+interface Props {
+  module: string;
+  className?: string;
+  elementToFocus?: React.RefObject<HTMLDivElement>;
+}
+
+export function TextToolBar({ module, elementToFocus, className }: Props) {
   const dispatch = useDispatch();
 
   const selectedPageComponent = useGetSelectedPageComponent();
@@ -30,14 +36,14 @@ export function TextToolBar({ module, elementToFocus, ...args }) {
   const [editor] = useLexicalComposerContext();
 
   const handleStyleChange = useCallback(
-    (command) => {
+    (command: TextFormatType) => {
       editor.dispatchCommand(FORMAT_TEXT_COMMAND, command);
     },
     [editor]
   );
 
   const handleAlign = useCallback(
-    (value) => {
+    (value: string) => {
       dispatch(
         updatePageComponents({
           module,
@@ -108,7 +114,7 @@ export function TextToolBar({ module, elementToFocus, ...args }) {
   // console.log("toolbar reloaded");
 
   return (
-    <section className={args.className}>
+    <section className={className}>
       <ButtonGroupTight buttons={memoizedButtons} divider={3} />
       <OnChangePlugin onChange={updateToolBar} />
     </section>

@@ -1,4 +1,10 @@
-import { cloneElement, forwardRef, useEffect } from "react";
+import {
+  cloneElement,
+  forwardRef,
+  ReactElement,
+  RefObject,
+  useEffect,
+} from "react";
 
 import { DragPreviewImage, useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,14 +16,22 @@ import {
 } from "@/pages/builder/builderSlice";
 
 import { logo } from "@/assets/svg";
+import { RootState } from "@/data/store";
+
+interface Props {
+  children: ReactElement<any, any>;
+  componentRef: RefObject<HTMLElement>;
+  onDrag: () => void;
+  onDragEnd: () => void;
+}
 
 export const DragWrapper = forwardRef(
-  ({ children, componentRef, onDrag, onDragEnd }, ref) => {
+  ({ children, componentRef, onDrag, onDragEnd }: Props, ref: any) => {
     const dispatch = useDispatch();
 
     const {
       builder: { selectedPageComponentName, draggedComponent },
-    } = useSelector((state) => state);
+    } = useSelector((state: RootState) => state);
 
     const [{ isDragging }, drag, preview] = useDrag({
       type: componentsData.types.BUILDER_COMPONENT_TOOLBAR,
@@ -57,9 +71,9 @@ export const DragWrapper = forwardRef(
       <>
         {/* <DragPreviewImage connect={preview} src={logo} /> */}
         {cloneElement(children, {
-          ref: (el) => {
+          ref: (el: any) => {
             drag(el);
-            ref && ref(el);
+            ref(el);
           },
         })}
       </>

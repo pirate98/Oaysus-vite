@@ -1,17 +1,22 @@
 import {
+  SettingFieldContainer,
+  SettingSection,
+  SettingSectionContainer,
+} from "@/atoms";
+
+import {
   Margin,
   Style,
   Padding,
   Visibility,
-  VideoURL,
+  CountDown,
   Layout,
 } from "@/organisms/builder/builderSettingFieldGroups";
-import { SettingSectionContainer } from "@/atoms/settingSection/SettingSectionContainer";
-import { SettingSection } from "@/atoms/settingSection/SettingSection";
 import { EditWrapper } from "@/organisms/builder/wrappers";
 import { useGetSelectedPageComponent } from "@/hooks";
+import { ColorSelector } from "@/organisms/builder/builderSettingFields";
 
-export function Video() {
+export function Lure() {
   const selectedPageComponent = useGetSelectedPageComponent();
 
   return (
@@ -21,12 +26,24 @@ export function Video() {
           <Style data={selectedPageComponent["title"]} module={"title"} />
           <Margin data={selectedPageComponent["title"]} />
           <Padding data={selectedPageComponent["title"]} />
-          <Visibility data={selectedPageComponent["title"]} />
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"video"}>
-        <SettingSection title={"Video URL"}>
-          <VideoURL data={selectedPageComponent["video"]} />
+      <EditWrapper module={"countdown"}>
+        <SettingSection title={"Countdown"}>
+          <CountDown data={selectedPageComponent["countdown"]} />
+          <Visibility data={selectedPageComponent["countdown"]} />
+        </SettingSection>
+      </EditWrapper>
+      <EditWrapper module={"background"}>
+        <SettingSection title={"Background"}>
+          <SettingFieldContainer title={"Title"}>
+            <ColorSelector
+              module={"background"}
+              title={"Color"}
+              name="backgroundColor"
+              value={selectedPageComponent["background"]["backgroundColor"]}
+            />
+          </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
       <EditWrapper module={"layout"}>

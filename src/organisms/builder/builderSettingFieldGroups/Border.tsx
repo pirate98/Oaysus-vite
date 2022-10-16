@@ -10,7 +10,7 @@ import { BuilderModule } from "@/types/BuilderModule.type";
 interface Props {
   data?: Record<any, any>;
   module: BuilderModule;
-  title: string;
+  title?: string;
 }
 
 export function Border({ title = "MARGIN", data, module }: Props) {

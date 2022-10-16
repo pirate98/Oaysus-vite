@@ -2,35 +2,29 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as builderButtons from "./builderButtons";
+const _builderButtons: Record<any, any> = builderButtons;
 import * as builderSettingMenus from "@/organisms/builder/builderSettingMenus";
+const _builderSettingMenus: Record<string, any> = builderSettingMenus;
 import { setHoveredComponent } from "@/pages/builder/builderSlice";
 import { BuilderButtonWrapper } from "@/organisms/builder/wrappers";
 import { EditBox } from "@/organisms/builder/builderSideBarComponents/editBox/EditBox";
 import { removeDigitsAndReturnComponentName } from "@/helpers/builder";
-
-const componentFunctionNames = [
-  "Exclusive",
-  "Lure",
-  "Banner",
-  "Feature",
-  "Request",
-  "Product",
-  "Video",
-  "Action",
-];
+import { RootState } from "@/data/store";
+import { builderSettings } from "@/data/builderSettings";
+const { sideMenuOrder } = builderSettings;
 
 export function BuilderSideBarComponents() {
   const dispatch = useDispatch();
   const {
     builder: { hoveredComponent, selectedPageComponentName },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   const _selectedPageComponentName = removeDigitsAndReturnComponentName(
     selectedPageComponentName
   );
-  const DynamicComponentMenu =
-    builderSettingMenus[_selectedPageComponentName] ||
-    _selectedPageComponentName;
+  const DynamicComponentMenu = _selectedPageComponentName
+    ? _builderSettingMenus[_selectedPageComponentName]
+    : _selectedPageComponentName;
 
   return selectedPageComponentName ? (
     <>
@@ -49,8 +43,8 @@ export function BuilderSideBarComponents() {
         paddingTop: "0",
       }}
     >
-      {componentFunctionNames.map((component, idx) => {
-        const DynamicComponent = builderButtons[component];
+      {sideMenuOrder.map((component, idx: number) => {
+        const DynamicComponent = _builderButtons[component];
         // console.log({ component });
         return (
           <Grid

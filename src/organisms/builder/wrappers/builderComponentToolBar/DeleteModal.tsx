@@ -21,7 +21,13 @@ const style = {
   p: 4,
 };
 
-export const DeleteModal = memo(({ open, onClose, onApprove }) => {
+interface Props {
+  open: boolean;
+  onClose: () => void;
+  onApprove: () => void;
+}
+
+export const DeleteModal = memo(({ open, onClose, onApprove }: Props) => {
   // console.log("rendering");
   return (
     <Modal

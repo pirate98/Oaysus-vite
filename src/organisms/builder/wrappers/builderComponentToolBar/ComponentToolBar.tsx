@@ -1,9 +1,12 @@
-import {
+import React, {
   cloneElement,
   forwardRef,
   useCallback,
   useMemo,
   useState,
+  MouseEventHandler,
+  ReactElement,
+  JSXElementConstructor,
 } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +21,7 @@ import {
   ToolbarDrag,
 } from "@/assets/svg";
 import { HiddenWrapper } from "@/atoms";
-import {
-  getIndexes,
-  numerateTheName,
-  removeDigitsAndReturnComponentName,
-} from "@/helpers/builder";
+import { removeDigitsAndReturnComponentName } from "@/helpers/builder";
 import {
   setPageComponents,
   setSelectedPageComponentName,
@@ -32,9 +31,16 @@ import { DeleteModal } from "./DeleteModal";
 import { DragWrapper } from "../builderDragWrapper/DragWrapper";
 import { RefWrapper } from "../refWrapper/RefWrapper";
 import { useRef } from "react";
+import { RootState } from "@/data/store";
+import { getIndexes, numerateTheName } from "@/helpers";
 
-export function ComponentToolBar({ children, onMouseDownCapture }) {
-  const componentRef = useRef();
+interface Props {
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
+  onMouseDownCapture?: MouseEventHandler<HTMLElement> | undefined;
+}
+
+export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
+  const componentRef = useRef<HTMLDivElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isComponentVisible, setIsComponentVisible] = useState(true);
@@ -44,7 +50,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
 
   const {
     builder: { pageComponents, selectedPageComponentName },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
 
@@ -62,7 +68,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     const componentsBefore = pageCopy.splice(0, componentIndex);
     const thisComponent = pageCopy.shift();
 
-    componentsBefore.push(pageCopy.shift());
+    componentsBefore.push(pageCopy.shift()!);
 
     const newPage = [...componentsBefore, thisComponent, ...pageCopy];
 
@@ -78,17 +84,17 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     if (componentIndex === 0) return;
 
     const pageCopy = [...pageComponents];
-    const componentsAfter = pageCopy.splice(componentIndex);
+    const componentsAfter = pageCopy.splice(componentIndex!);
     const thisComponent = componentsAfter.shift();
 
-    componentsAfter.unshift(pageCopy.pop());
+    componentsAfter.unshift(pageCopy.pop()!);
 
     const newPage = [...pageCopy, thisComponent, ...componentsAfter];
 
     dispatch(setPageComponents(newPage));
   };
 
-  const copy = ({ target }) => {
+  const copy = () => {
     const componentNameBase = removeDigitsAndReturnComponentName(
       selectedPageComponentName
     );
@@ -104,13 +110,13 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     );
 
     const newModule = {
-      ...pageComponents[componentIndex],
+      ...pageComponents[componentIndex!],
       name: newNumeratizedName,
     };
 
     const newPage = [...pageComponents];
 
-    newPage.splice(componentIndex, 0, newModule);
+    newPage.splice(componentIndex!, 0, newModule);
 
     dispatch(setPageComponents(newPage));
 
@@ -122,7 +128,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     setIsModalOpen(true);
   };
 
-  const clickHandle = ({ target }) => {
+  const clickHandle = ({ target }: any) => {
     // console.log(target);
     const contentIsEditable = target.closest(
       `.${componentsData.EDITABLE_CLASS}`
@@ -152,15 +158,21 @@ export function ComponentToolBar({ children, onMouseDownCapture }) {
     );
 
     const newPage = [...memoPageComponents];
-    newPage.splice(componentIndex, 1);
+    newPage.splice(componentIndex!, 1);
 
     dispatch(setSelectedPageComponentName(undefined));
     dispatch(setPageComponents(newPage));
     setIsModalOpen(false);
   }, [selectedPageComponentName, memoPageComponents]);
 
-  const onDrag = useCallback(() => setIsComponentVisible(false));
-  const onDragEnd = useCallback(() => setIsComponentVisible(true));
+  const onDrag = useCallback(
+    () => setIsComponentVisible(false),
+    [setIsComponentVisible]
+  );
+  const onDragEnd = useCallback(
+    () => setIsComponentVisible(true),
+    [setIsComponentVisible]
+  );
 
   return (
     <>

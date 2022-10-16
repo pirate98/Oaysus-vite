@@ -4,7 +4,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import classes from "./Builder.module.scss";
 import {
   BuilderSideBarComponents,
-  BuilderSideBarTemplates,
+  UserTemplateBox,
   BuilderComposition,
 } from "@/organisms/builder";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,7 +45,7 @@ export default function Builder() {
           {activeMenu === 0 ? (
             <BuilderSideBarComponents />
           ) : (
-            <BuilderSideBarTemplates />
+            <UserTemplateBox />
           )}
         </section>
         <main className={classes.main}>

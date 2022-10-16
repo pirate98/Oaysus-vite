@@ -1,26 +1,29 @@
-import { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import { updatePageComponents } from "@/pages/builder/builderSlice";
-import { useDebounceHandler } from "../../../../hooks";
+import { useDebounceHandler } from "@/hooks";
+import { RootState } from "@/data/store";
+import { ChangeEvent, HTMLProps } from "react";
 
-export function EditWrapper({ children, ...props }) {
+type Props = {
+  children?: React.ReactNode;
+  module: string;
+} & HTMLProps<HTMLDivElement>;
+
+export function EditWrapper({ children, module, ...props }: Props) {
   const dispatch = useDispatch();
 
   const {
     builder: { selectedPageComponentName },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // console.warn("editWrapper");
 
     let { target } = e;
-
     if (!target) return;
-
-    const { module } = props;
-    let { name: key, value } = target;
+    let value: string | boolean = target.value;
+    let { name: key } = target;
     // console.log({ module, key, value });
     if (!key) return;
 
@@ -34,7 +37,7 @@ export function EditWrapper({ children, ...props }) {
       value = e.target.checked;
     }
 
-    if (key === "url") {
+    if (key === "url" && typeof value === "string") {
       value = value.split("=")[1];
     }
 

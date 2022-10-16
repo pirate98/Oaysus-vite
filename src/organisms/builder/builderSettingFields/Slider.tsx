@@ -3,8 +3,23 @@ import { Slider as SliderInput } from "@/atoms";
 import { removePx } from "@/helpers/builder";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
+import { BuilderModule } from "../../../types/BuilderModule.type";
 
-export function Slider({ title, defaultValue = "", name, module, max = 500 }) {
+interface Props {
+  title?: string;
+  defaultValue?: string;
+  name?: string;
+  module?: BuilderModule;
+  max?: number;
+}
+
+export function Slider({
+  title,
+  defaultValue = "",
+  name,
+  module,
+  max = 500,
+}: Props) {
   const dispatch = useDispatch();
 
   const defaultValueString = removePx(defaultValue);

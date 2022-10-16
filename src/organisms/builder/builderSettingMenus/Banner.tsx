@@ -6,7 +6,7 @@ import { removePx } from "@/helpers/builder";
 import { builderSettings } from "@/data/builderSettings";
 import { Layout } from "@/organisms/builder/builderSettingFieldGroups";
 const {
-  fieldNames: { layout, title, subTitle, countdown },
+  fieldNames: { layout },
 } = builderSettings;
 // console.log({ background });
 export function Banner() {

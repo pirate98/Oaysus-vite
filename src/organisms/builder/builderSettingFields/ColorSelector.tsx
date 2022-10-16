@@ -13,7 +13,7 @@ import { convertRGBToHex } from "@/helpers";
 
 interface Props {
   module: BuilderModule;
-  name?: string;
+  name?: string | string[];
   title?: string;
   value?: string;
 }

@@ -1,19 +1,20 @@
 import { Button } from "@shopify/polaris";
 
-import { Template } from "./template/Template";
-import classes from "./BuilderSideBarTemplates.module.scss";
+import { UserTemplate } from "./userTemplate/UserTemplate";
+import classes from "./UserTemplateBox.module.scss";
 import { builderSettings } from "@/data/builderSettings";
 import { useDispatch, useSelector } from "react-redux";
 import { setComponentList } from "@/pages/builder/builderSlice";
+import { RootState } from "@/data/store";
 
-export function BuilderSideBarTemplates() {
+export function UserTemplateBox() {
   const dispatch = useDispatch();
 
   const {
     builder: { componentList },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
-  const handleClick = (idx) => {
+  const handleClick = (idx: number) => {
     dispatch(setComponentList(builderSettings.templates[idx]));
   };
 
@@ -27,7 +28,7 @@ export function BuilderSideBarTemplates() {
       </section>
       {builderSettings.templates.map((template, idx) => {
         return (
-          <Template
+          <UserTemplate
             onClick={() => handleClick(idx)}
             key={idx}
             isActive={

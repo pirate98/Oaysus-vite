@@ -5,15 +5,21 @@ import { builderSettings } from "@/data/builderSettings";
 import { ColorSelector } from "@/organisms/builder/builderSettingFields";
 import { SettingFieldContainer } from "@/atoms";
 import { BackgroundImage } from "./BackgroundImage";
+import { BuilderModule } from "../../../types/BuilderModule.type";
 const {
   fieldNames: { layout },
 } = builderSettings;
 
+interface Props {
+  children?: React.ReactNode;
+  showImageUpload?: boolean;
+}
+
 export function Layout({
   children,
-  showColorSelector = true,
+  // showColorSelector = true,
   showImageUpload = false,
-}) {
+}: Props) {
   const component = useGetSelectedPageComponent();
   // console.log(component?.name, component[layout]?.backgroundColor);
   return (
@@ -23,11 +29,14 @@ export function Layout({
         <ColorSelector
           title={"Color"}
           name="backgroundColor"
-          module={layout}
+          module={layout as BuilderModule}
           value={component[layout]?.backgroundColor}
         />
         {showImageUpload && (
-          <BackgroundImage data={component[layout]} module={layout} />
+          <BackgroundImage
+            data={component[layout]}
+            module={layout as BuilderModule}
+          />
         )}
       </SettingFieldContainer>
       <Margin data={component[layout]} />

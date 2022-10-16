@@ -1,16 +1,26 @@
-import { useRef, useEffect, cloneElement } from "react";
+import {
+  useRef,
+  useEffect,
+  cloneElement,
+  ReactElement,
+  JSXElementConstructor,
+} from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 
 import { setPageComponents } from "@/pages/builder/builderSlice";
 import componentsData from "@/data/componentsData";
-import { getIndexes, numerateTheName } from "@/helpers/builder";
+import { numerateTheName } from "@/helpers/builder";
+import { getIndexes } from "@/helpers";
 import * as builderComponents from "../../builderComponents";
-import { RootState } from "../../../../data/store";
+const _builderComponents: Record<any, any> = builderComponents;
+import { RootState } from "@/data/store";
 // import { useAddComponentToPageBuilder } from "@/hooks";
 
-function canElementDropTop(element: any, mouseYPosition: number) {
+function canElementDropTop(element: any, mouseYPosition: number | undefined) {
+  if (!mouseYPosition) return;
+
   const clientRects = element.getClientRects();
   const elTop = clientRects[0].top;
 
@@ -23,13 +33,13 @@ function canElementDropTop(element: any, mouseYPosition: number) {
 
 interface Props {
   moduleContent?: Record<any, any>;
-  children?: React.ReactNode;
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
   className?: string;
 }
 
 export function DropZoneWrapper({ moduleContent, children, className }: Props) {
   const dispatch = useDispatch();
-  const refForHookAccess = useRef();
+  const refForHookAccess = useRef<HTMLElement>();
 
   // const { addComponentToPageBuilder } = useAddComponentToPageBuilder();
 
@@ -46,6 +56,9 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
       componentsData.BLANK_COMPONENT_NAME
     );
 
+    if (componentIndex === undefined || blankComponentIndex === undefined)
+      return;
+
     const mutablePageComponents = [...pageComponents];
 
     const component = mutablePageComponents.splice(componentIndex, 1);
@@ -58,18 +71,20 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
   const addComponentToPageBuilder = (componentName: string) => {
     if (!componentName) return;
 
-    const { undefined, blankComponentIndex } = getIndexes(
+    const { componentIndex: _, blankComponentIndex } = getIndexes(
       pageComponents,
-      null,
+      undefined,
       componentsData.BLANK_COMPONENT_NAME
     );
+
+    if (blankComponentIndex === undefined) return;
 
     let newPage = [...pageComponents];
     // console.log(builderComponents["Exclusive"].json);
     const numerizedName = numerateTheName(newPage, componentName);
 
     newPage.splice(blankComponentIndex, 1, {
-      ...builderComponents[componentName].json,
+      ..._builderComponents[componentName].json,
       name: numerizedName,
     });
     // console.log({ newPage });
@@ -82,27 +97,29 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
       componentsData.types.BUILDER_COMPONENT,
       componentsData.types.BUILDER_COMPONENT_TOOLBAR,
     ],
-    hover: (item, monitor) => {
+    hover: (item: any, monitor) => {
       if (
-        refForHookAccess.current.className.includes(
+        refForHookAccess?.current?.className?.includes(
           componentsData.BLANK_COMPONENT_NAME
         )
       )
         return;
       // console.log("hovering");
-      if (item.name === moduleContent.name) return; // prevent dropping on itself
+      if (item?.name === moduleContent?.name) return; // prevent dropping on itself
 
       const canDropTop = canElementDropTop(
         refForHookAccess.current,
-        monitor.getClientOffset().y
+        monitor?.getClientOffset()?.y
       );
 
       const { componentIndex, blankComponentIndex } = getIndexes(
         pageComponents,
-        moduleContent.name,
+        moduleContent?.name,
         componentsData.BLANK_COMPONENT_NAME
       );
       // console.log({ canDropTop, blankComponentIndex, componentIndex });
+
+      if (componentIndex === undefined) return;
 
       if (
         (canDropTop && blankComponentIndex === componentIndex - 1) ||
@@ -152,7 +169,7 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
   // console.log(children.props);
   return cloneElement(children, {
     className: children.props.className + (className ? ` ${className}` : ""),
-    ref: (el) => {
+    ref: (el: HTMLElement) => {
       drop(el);
       refForHookAccess.current = el;
     },

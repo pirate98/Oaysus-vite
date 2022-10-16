@@ -16,7 +16,8 @@ import { EditWrapper } from "@/organisms/builder/wrappers/builderMenuEditWrapper
 import { useGetSelectedPageComponent } from "@/hooks";
 import { builderSettings } from "@/data/builderSettings";
 import { SettingFieldContainer } from "@/atoms";
-const { image } = builderSettings?.fieldNames;
+import { BuilderModule } from "../../../types/BuilderModule.type";
+const { image, layout } = builderSettings?.fieldNames;
 
 export function Feature() {
   const component = useGetSelectedPageComponent();
@@ -40,13 +41,16 @@ export function Feature() {
       <EditWrapper module={image}>
         <SettingSection title={"Product Image"}>
           <SettingFieldContainer>
-            <ProductBackgroundImage module={image} data={component[image]} />
+            <ProductBackgroundImage
+              module={image as BuilderModule}
+              data={component[image]}
+            />
           </SettingFieldContainer>
         </SettingSection>
       </EditWrapper>
-      <EditWrapper module={"layout"}>
+      <EditWrapper module={layout as BuilderModule}>
         <SettingSection title={"Layout"}>
-          <Layout module={"layout"}>
+          <Layout>
             <SettingFieldContainer>
               <ImageAlignment />
             </SettingFieldContainer>

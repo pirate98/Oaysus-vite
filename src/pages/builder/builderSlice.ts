@@ -2,14 +2,18 @@ import { builderSettings } from "@/data/builderSettings";
 
 import { createSlice } from "@reduxjs/toolkit";
 
+type PageComponent = {
+  name: string;
+};
+
 type State = {
   hoveredComponent?: string;
   activeMenu: number;
   selectedPageComponentName?: string;
   componentList: string[];
-  pageComponents: Record<any, any>[];
+  pageComponents: (Record<any, any> & PageComponent)[];
   draggedComponent?: string;
-  page?: Record<any, any>[];
+  page?: (Record<any, any> & PageComponent)[];
 };
 
 const initialState: State = {
@@ -59,7 +63,7 @@ export const builderSlice = createSlice({
         value = { [key2]: value };
       }
 
-      // console.log({ component, module, key, value });
+      console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 

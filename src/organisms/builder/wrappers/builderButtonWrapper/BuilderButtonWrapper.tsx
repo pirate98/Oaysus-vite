@@ -7,14 +7,20 @@ import classes from "./.module.scss";
 import componentsData from "@/data/componentsData";
 import { removeComponentFromPage } from "@/pages/builder/builderSlice";
 
+interface Props {
+  children?: React.ReactNode;
+  title: Record<"text" | "hoverColor", string>;
+  hover?: boolean;
+}
+
 export function BuilderButtonWrapper({
   children,
   title = { text: "", hoverColor: "inherit" },
   hover = false,
-}) {
+}: Props) {
   const dispatch = useDispatch();
   // console.log({ title: title.text });
-  const [{ isDragging, extraProps }, drag] = useDrag(() => ({
+  const [{ isDragging }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
     type: componentsData.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods

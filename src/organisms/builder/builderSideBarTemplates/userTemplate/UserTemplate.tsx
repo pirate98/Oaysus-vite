@@ -1,12 +1,18 @@
-import classes from "./Template.module.scss";
+import classes from "./UserTemplate.module.scss";
 import { Badge } from "@/atoms";
+import { InputHTMLAttributes } from "react";
 
-export function Template({
+type Props = {
+  name?: string;
+  isActive?: boolean;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+export function UserTemplate({
   name,
-  image = "/image/empty-image.svg",
+  // image = "/image/empty-image.svg",
   isActive = false,
   ...props
-}) {
+}: Props) {
   return (
     <div
       {...props}

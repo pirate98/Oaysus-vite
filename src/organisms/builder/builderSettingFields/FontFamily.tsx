@@ -2,23 +2,32 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Autocomplete } from "@/atoms";
-import { useGetFontsQuery } from "@/data/googleAPI";
+import { useGetFontsQuery } from "@/data/googleApi";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
 import classes from "../builderSettingFields/.module.scss";
 
-export function FontFamily({ defaultValue, module }) {
+interface Props {
+  defaultValue?: string;
+  module: string;
+}
+
+type Option = Record<any, any>;
+
+export function FontFamily({ defaultValue, module }: Props) {
   const dispatch = useDispatch();
 
-  const { data, error } = useGetFontsQuery();
+  const { data, error } = useGetFontsQuery(null);
   const textFieldRef = useRef();
   // console.log({ data, error });
 
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState<Record<any, any>>();
 
   const _defaultValue =
     defaultValue && defaultValue.split(",") && defaultValue.split(",")[0];
 
-  const [inputValue, setInputValue] = useState(_defaultValue);
+  const [inputValue, setInputValue] = useState<string | undefined>(
+    _defaultValue
+  );
 
   // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
@@ -37,14 +46,14 @@ export function FontFamily({ defaultValue, module }) {
         reference={textFieldRef}
         placeholder="Choose a font"
         value={value}
-        onChange={(event, newValue) => {
+        onChange={(_event: any, newValue: any) => {
           // console.log({ autoCompleteChange: newValue });
           // console.log(textFieldRef);
           setValue(newValue);
           // event.target.blur();
         }}
         inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
+        onInputChange={(_event: any, newInputValue: string) => {
           // console.log({ newInput: newInputValue });
           if (!event) return; //  prevent update on page load
           // if (newInputValue.length === 0) setValue(null);
@@ -53,7 +62,7 @@ export function FontFamily({ defaultValue, module }) {
         name={"fontFamily"}
         // id="controllable-states-demo"
         options={data || []}
-        getOptionLabel={(option) => option.family}
+        getOptionLabel={(option: Option) => option.family}
       />
     </div>
   );

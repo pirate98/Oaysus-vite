@@ -6,13 +6,19 @@ import classes from "./EditBox.module.scss";
 import { ReactComponent as EditIcon } from "@/assets/svg/editIcon.svg";
 import { setSelectedPageComponentName } from "@/pages/builder/builderSlice";
 import { HiddenWrapper } from "@/atoms";
+import { RootState } from "@/data/store";
 
-export function EditBox({ title, subTitle = "Editing" }) {
+interface Props {
+  title?: string;
+  subTitle?: string;
+}
+
+export function EditBox({ title, subTitle = "Editing" }: Props) {
   const dispatch = useDispatch();
 
   const {
     builder: { activeMenu },
-  } = useSelector((state) => state);
+  } = useSelector((state: RootState) => state);
 
   return (
     <div className={classes.editBox}>

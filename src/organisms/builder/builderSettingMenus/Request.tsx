@@ -22,7 +22,6 @@ export function Request() {
         <SettingSection title={"Title"}>
           <Style
             weight
-            alignment
             data={selectedPageComponent["title"]}
             module={"title"}
           />
@@ -33,7 +32,6 @@ export function Request() {
       <EditWrapper module={"description"}>
         <SettingSection title={"Description"}>
           <Style
-            alignment
             data={selectedPageComponent["description"]}
             module={"description"}
           />

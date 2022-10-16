@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
+
 import { Select, SettingField, SettingFieldContainer } from "@/atoms";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
-import classes from "./.module.scss";
 import { builderSettings } from "@/data/builderSettings";
 import { useGetSelectedPageComponent } from "@/hooks";
 
-export function ImageDisplayType({ className }) {
+export function ImageDisplayType() {
   const dispatch = useDispatch();
 
   const component = useGetSelectedPageComponent();
@@ -34,7 +34,7 @@ export function ImageDisplayType({ className }) {
     },
   ];
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     e.stopPropagation();
     // e.preventDefault();
     const { value } = e.target;
