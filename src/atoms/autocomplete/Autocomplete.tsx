@@ -56,7 +56,7 @@ export const Autocomplete = styled(({ options, ...props }: Props) => (
     margin: "3px 0",
     padding: "3px",
   },
-}) as Omit<Mui, "renderInput">;
+}) as unknown as Mui;
 
 const popupIcon = <SelectIcon />;
 
