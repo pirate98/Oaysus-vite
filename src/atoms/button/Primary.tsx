@@ -1,11 +1,12 @@
 import { styled } from "@mui/system";
+import { ButtonProps } from "@mui/material/Button";
 
-import { ButtonBase } from "./buttonBase/ButtonBase";
+import { ButtonBase, ButtonBaseProps } from "./buttonBase/ButtonBase";
 import variables from "@/assets/css/_variables.module.scss";
 
 type Props = {
-  children: string;
-} & typeof ButtonBase;
+  children: string | React.ReactNode;
+} & ButtonBaseProps;
 
 export const Primary = styled(({ children, ...rest }: Props) => (
   <ButtonBase variant="contained" {...rest}>

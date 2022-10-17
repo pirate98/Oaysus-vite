@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import { Badge } from "@/atoms";
+import { Badge, P } from "@/atoms";
 import classes from "./Header.module.scss";
 import svgSearch from "@/assets/svg/search.svg";
 import { Button } from "@/atoms/button";
@@ -26,9 +26,11 @@ export function Header() {
         <section className={classes.filterContainer}>
           <DateSelector />
           <NavLink to="/upsells/new">
-            <Button.Primary size={"sm"}>
-              <AddPlus />
-              Add Upsell
+            <Button.Primary small>
+              <>
+                <AddPlus />
+                <P>Add Upsell</P>
+              </>
             </Button.Primary>
           </NavLink>
         </section>

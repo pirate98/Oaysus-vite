@@ -16,7 +16,7 @@ export * from "./settingSection/SettingFieldContainer";
 export * from "./settingSection/SettingSection";
 export * from "./settingSection/SettingSectionContainer";
 export * from "./slider/Slider";
-export * from "./cards/settings/SettingsCard";
+export * from "./cards/settings/Settings";
 export * from "./divider/horizontal/Horizontal";
 export * from "./page/Page";
 export * from "./button";

@@ -31,7 +31,7 @@ export function UpsellsNav({}) {
     <DynamicPartTemplate
       leftSection={<Button.Back>{backButtonText}</Button.Back>}
       buttonSection={
-        <Button.Primary size={"sm"} onClick={handleRightButton}>
+        <Button.Primary small onClick={handleRightButton}>
           {rightButtonText}
         </Button.Primary>
       }

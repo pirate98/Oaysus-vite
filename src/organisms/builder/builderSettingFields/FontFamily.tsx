@@ -17,7 +17,6 @@ export function FontFamily({ defaultValue, module }: Props) {
   const dispatch = useDispatch();
 
   const { data, error } = useGetFontsQuery(null);
-  const textFieldRef = useRef<HTMLInputElement>(null);
   // console.log({ data, error });
 
   const [value, setValue] = useState<Record<any, any> | null>(null);

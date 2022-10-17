@@ -3,20 +3,20 @@ import { default as MuiButton, ButtonProps } from "@mui/material/Button";
 
 import variables from "@/assets/css/_variables.module.scss";
 
-type Props = {
+export type ButtonBaseProps = ButtonProps & {
   children: React.ReactNode;
-  size?: "sm";
-} & ButtonProps;
+  small?: boolean;
+  sx?: Record<any, any>;
+};
 
-type A = {};
-
-export const ButtonBase = styled(({ size, ...props }: Props) => (
+export const ButtonBase = styled(({ small, sx, ...props }: ButtonBaseProps) => (
   <MuiButton
     {...props}
     sx={{
-      height: size === "sm" ? "36px" : "44px",
-      fontSize: size === "sm" ? "14px" : "16px",
-      padding: size === "sm" ? "0 22px" : "12px 24px",
+      ...sx,
+      height: small ? "36px" : "44px",
+      fontSize: small ? "14px" : "16px",
+      padding: small ? "0 22px" : "12px 24px",
     }}
   />
 ))({

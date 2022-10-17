@@ -44,8 +44,8 @@ export function BuilderNav() {
       }
       buttonSection={
         <>
-          <Button.Secondary size={"sm"}>Preview on Store</Button.Secondary>
-          <Button.Primary onClick={handleSave} size={"sm"}>
+          <Button.Secondary small>Preview on Store</Button.Secondary>
+          <Button.Primary onClick={handleSave} small>
             Save Offer
           </Button.Primary>
         </>
