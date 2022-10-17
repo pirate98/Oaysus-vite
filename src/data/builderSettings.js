@@ -1,6 +1,7 @@
 const builderSettings = {
   fieldNames: {
     background: "background",
+    border: "border",
     image: "image",
     layout: "layout",
     title: "title",
@@ -10,12 +11,24 @@ const builderSettings = {
     disclaimer: "paymentDisclaimer",
     buyButton: "buyButton",
     declineButton: "declineButton",
+    reviews: "reviews",
+    paymentDisclaimer: "paymentDisclaimer",
   },
   imageDisplayTypes: {
     single: "single",
     custom: "custom",
     carousel: "carousel",
   },
+  sideMenuOrder: [
+    "Exclusive",
+    "Lure",
+    "Banner",
+    "Feature",
+    "Request",
+    "Product",
+    "Video",
+    "Action",
+  ],
   templates: [
     [
       "Exclusive",

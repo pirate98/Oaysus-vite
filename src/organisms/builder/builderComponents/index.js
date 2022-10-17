@@ -1,4 +1,4 @@
-export * from "./Feature/Feature.jsx";
+export * from "./Feature/Feature";
 export * from "./Exclusive/Exclusive";
 export * from "../wrappers/builderDropZoneWrapper/DropZoneWrapper";
 export * from "./Blank";
