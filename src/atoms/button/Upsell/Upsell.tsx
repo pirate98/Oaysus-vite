@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react";
+
 import Box from "@mui/material/Box";
 
 import { AddPlus } from "@/assets/svg";
@@ -7,7 +9,7 @@ import { CONSTANT } from "@/data/constants";
 
 type Props = {
   children: React.ReactNode;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
 export function Upsell({ children, ...args }: Props) {
   return (
