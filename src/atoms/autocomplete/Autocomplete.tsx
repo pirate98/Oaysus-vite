@@ -1,6 +1,7 @@
 import {
   default as MuiAutocomplete,
   AutocompleteProps,
+  AutocompleteRenderInputParams,
 } from "@mui/material/Autocomplete";
 import { styled } from "@mui/system";
 import { inputWidth } from "@/assets/css/_variables.module.scss";
@@ -14,9 +15,10 @@ import {
   selectShadow,
 } from "@/assets/css/_variables.module.scss";
 
-type Mui = typeof MuiAutocomplete;
-
-type Props = { options: any[] } & Mui;
+type Props = { options: any[] } & Omit<
+  AutocompleteProps<any, any, any, any>,
+  "renderInput"
+>;
 
 export const Autocomplete = styled(({ options, ...props }: Props) => (
   <MuiAutocomplete
@@ -56,7 +58,7 @@ export const Autocomplete = styled(({ options, ...props }: Props) => (
     margin: "3px 0",
     padding: "3px",
   },
-}) as unknown as Mui;
+});
 
 const popupIcon = <SelectIcon />;
 
