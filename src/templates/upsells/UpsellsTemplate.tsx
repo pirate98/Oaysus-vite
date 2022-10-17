@@ -1,13 +1,15 @@
 import { Page, Layout } from "@shopify/polaris";
-import { Header } from "@/organisms/upsells/header/Header";
 
-export function UpsellsTemplate({ children }: { children: any }) {
+interface Props {
+  children: any;
+  header: React.ReactNode;
+}
+
+export function UpsellsTemplate({ children, header }: Props) {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section>
-          <Header />
-        </Layout.Section>
+        <Layout.Section>{header}</Layout.Section>
         <Layout.Section>{children}</Layout.Section>
       </Layout>
     </Page>

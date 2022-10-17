@@ -63,7 +63,7 @@ export const builderSlice = createSlice({
         value = { [key2]: value };
       }
 
-      console.log({ component, module, key, value });
+      // console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 

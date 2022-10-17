@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-import { Badge, CustomSelect, Select, StyledOption } from "@/atoms";
+import { Badge } from "@/atoms";
 import classes from "./Header.module.scss";
 import svgSearch from "@/assets/svg/search.svg";
 import { Button } from "@/atoms/button";
 import { AddPlus } from "@/assets/svg";
+import { DateSelector } from "@/molecules";
 
 export function Header() {
   return (
@@ -23,7 +24,7 @@ export function Header() {
           <input placeholder="Search" className={classes.input} />
         </section>
         <section className={classes.filterContainer}>
-          <Select.Primary size={"sm"} options={options} value={""} />
+          <DateSelector />
           <NavLink to="/upsells/new">
             <Button.Primary size={"sm"}>
               <AddPlus />
@@ -46,9 +47,3 @@ const styles = {
     },
   },
 };
-
-const options = [
-  { label: "Last 30 Days", value: 30 },
-  { label: "Last 20 Days", value: 20 },
-  { label: "Last 10 Days", value: 10 },
-];
