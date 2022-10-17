@@ -1,4 +1,10 @@
-import { default as MuiAutocomplete } from "@mui/material/Autocomplete";
+import { HTMLInputTypeAttribute } from "react";
+
+import {
+  default as MuiAutocomplete,
+  AutocompleteProps,
+  AutocompleteRenderInputParams,
+} from "@mui/material/Autocomplete";
 import { styled } from "@mui/system";
 import TextField from "@mui/material/TextField";
 
@@ -14,9 +20,9 @@ import {
 type Props = {
   options: any[];
   inputName: string;
-  inputRef?: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement> | null;
   inputPlaceholder?: string;
-} & typeof MuiAutocomplete;
+};
 
 export const Autocomplete = styled(
   ({ options, inputName, inputRef, inputPlaceholder, ...props }: Props) => (

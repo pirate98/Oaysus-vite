@@ -19,7 +19,6 @@ interface Props {
 }
 
 export function Style({
-  background,
   weight = true,
   data = {},
   module,

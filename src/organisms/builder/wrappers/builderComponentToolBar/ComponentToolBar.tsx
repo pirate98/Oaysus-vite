@@ -210,7 +210,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
               </HiddenWrapper>
               <HiddenWrapper>
                 <DragWrapper
-                  componentRef={componentRef}
+                  ref={componentRef}
                   onDrag={onDrag}
                   onDragEnd={onDragEnd}
                 >
