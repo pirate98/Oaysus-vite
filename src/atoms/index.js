@@ -9,7 +9,7 @@ export * from "./switch/Switch";
 export * from "./switch/Switch2";
 export * from "./actionList/ActionList";
 export * from "./builderInputs/EditableElement";
-export * from "./customAutocomplete/Autocomplete";
+export * from "./autocomplete/Autocomplete";
 export * from "./inputs/Input";
 export * from "./settingSection/SettingField";
 export * from "./settingSection/SettingFieldContainer";
