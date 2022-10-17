@@ -4,7 +4,7 @@ import { ButtonBase } from "./buttonBase/ButtonBase";
 import variables from "@/assets/css/_variables.module.scss";
 
 type Props = {
-  children: React.ReactNode;
+  children: string;
 } & typeof ButtonBase;
 
 export const Secondary = styled(({ children, ...rest }: Props) => (

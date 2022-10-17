@@ -11,12 +11,12 @@ export default function New() {
 
   return (
     <UpsellsNewTemplate
-      backButtonText={"Upsells"}
+      // backButtonText={"Upsells"}
       bottomButtonText="Create Upsell"
       bottomButtonOnClick={() => {
         navigate("/builder");
       }}
-      rightButtonText={"Publish Upsell"}
+      // rightButtonText={"Publish Upsell"}
     >
       <EditableTitle
         className={classes.editable}

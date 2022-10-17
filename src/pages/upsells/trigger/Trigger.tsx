@@ -32,8 +32,8 @@ export default function Trigger() {
       backButtonText={"Back"}
       bottomButtonText="Add Condition"
       bottomButtonOnClick={handleClickBottomButton}
-      rightButtonText={"Save trigger"}
-      rightButtonOnClick={handleClickRightButton}
+      // rightButtonText={"Save trigger"}
+      // rightButtonOnClick={handleClickRightButton}
     >
       <h1 className={classes.customH1}>Trigger Conditions</h1>
       {triggers.map((triggerGroup, idx) => {
