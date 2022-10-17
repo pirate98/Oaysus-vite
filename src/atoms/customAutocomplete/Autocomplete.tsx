@@ -11,31 +11,41 @@ import {
   selectShadow,
 } from "@/assets/css/_variables.module.scss";
 
-export const Autocomplete = styled((props) => (
-  <MuiAutocomplete
-    {...props}
-    // blurOnSelect
-    popupIcon={<SelectIcon />}
-    renderInput={(params) => (
-      <TextField
-        name={props.name}
-        {...params}
-        inputRef={props.reference}
-        label=""
-        placeholder={props.placeholder}
-        sx={{
-          "& .MuiInputBase-input.MuiOutlinedInput-input": {
-            padding: inputPadding,
-            fontSize: inputFontSize,
-          },
-          "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: `${inputBorderFocused} !important`,
-          },
-        }}
-      />
-    )}
-  />
-))({
+type Props = {
+  options: any[];
+  inputName: string;
+  inputRef?: React.RefObject<HTMLInputElement>;
+  inputPlaceholder?: string;
+} & typeof MuiAutocomplete;
+
+export const Autocomplete = styled(
+  ({ options, inputName, inputRef, inputPlaceholder, ...props }: Props) => (
+    <MuiAutocomplete
+      options={options}
+      {...props}
+      // blurOnSelect
+      popupIcon={<SelectIcon />}
+      renderInput={(params) => (
+        <TextField
+          name={inputName}
+          {...params}
+          inputRef={inputRef}
+          label=""
+          placeholder={inputPlaceholder}
+          sx={{
+            "& .MuiInputBase-input.MuiOutlinedInput-input": {
+              padding: inputPadding,
+              fontSize: inputFontSize,
+            },
+            "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: `${inputBorderFocused} !important`,
+            },
+          }}
+        />
+      )}
+    />
+  )
+)({
   "&": { width: inputWidth },
   background: "white",
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.05)",

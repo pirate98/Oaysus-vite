@@ -1,6 +1,10 @@
 import classes from "./ActionList.module.scss";
 
-export function ActionList({ items }) {
+interface Props {
+  items: any[];
+}
+
+export function ActionList({ items }: Props) {
   return (
     items &&
     items.length && (

@@ -4,9 +4,13 @@ import { Icon, Button, Card, Stack, Text, Popover } from "@shopify/polaris";
 import { MobileHorizontalDotsMajor } from "@shopify/polaris-icons";
 
 import styles from "./ProductCard.module.scss";
-import { Switch, ActionList } from "../";
+import { Switch, ActionList } from "../..";
 
-export function ProductCard({ imageSource }) {
+interface Props {
+  imageSource: string;
+}
+
+export function ProductCard({ imageSource }: Props) {
   const [active, setActive] = useState(false);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);

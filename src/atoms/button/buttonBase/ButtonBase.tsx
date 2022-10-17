@@ -1,11 +1,17 @@
 import { styled } from "@mui/system";
-import { default as MuiButton } from "@mui/material/Button";
+import { default as MuiButton, ButtonProps } from "@mui/material/Button";
 
 import variables from "@/assets/css/_variables.module.scss";
 
-export const ButtonBase = styled(({ size, ...props }) => (
+type Props = {
+  children: React.ReactNode;
+  size?: "sm";
+} & ButtonProps;
+
+type A = {};
+
+export const ButtonBase = styled(({ size, ...props }: Props) => (
   <MuiButton
-    variant="outlined"
     {...props}
     sx={{
       height: size === "sm" ? "36px" : "44px",

@@ -1,10 +1,14 @@
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 import classes from "./.module.scss";
 
-export function Back({ children, to = "/" }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export function Back({ children }: Props) {
   const navigate = useNavigate();
 
   return (

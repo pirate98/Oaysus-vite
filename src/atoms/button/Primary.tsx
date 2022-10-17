@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 
-import { ButtonBase } from "./ButtonBase";
+import { ButtonBase } from "./buttonBase/ButtonBase";
 import variables from "@/assets/css/_variables.module.scss";
 
 export const Primary = styled(({ children, ...rest }) => (

@@ -1,23 +1,5 @@
 @import "@/assets/css/variables.module";
 
-.card {
-  background-color: var(--p-surface);
-  box-shadow: var(--p-shadow-card);
-  outline: var(--p-border-width-1) solid transparent;
-
-  min-height: 268px;
-  height: 100%;
-  padding: 10px;
-
-  :hover {
-    button {
-      background: $primaryHover;
-      border-color: transparent;
-      color: var(--pc-button-text);
-    }
-  }
-}
-
 .innerContainer {
   display: flex;
   flex-direction: column;
@@ -44,11 +26,5 @@
     bottom: -3px;
     left: -3px;
     right: -3px;
-  }
-}
-
-@media (min-width: 30.625em) {
-  .card {
-    border-radius: var(--p-border-radius-2);
   }
 }

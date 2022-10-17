@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { Button } from "@/atoms/button";
-import { SettingsCard } from "@/atoms/cards/settingsCard/SettingsCard";
+import { SettingsCard } from "@/atoms/cards/settings/SettingsCard";
 import { H2, H3 } from "@/atoms";
 
 export default function General() {
