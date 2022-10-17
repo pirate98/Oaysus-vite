@@ -8,3 +8,4 @@ export * from "./buttonGroup/ButtonGroup";
 export * from "./buttonGroup/ButtonGroupTight";
 export * from "./input";
 export * from "./dateSelector/DateSelector";
+export * from "./card";
