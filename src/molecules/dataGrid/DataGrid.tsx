@@ -10,6 +10,6 @@ export const DataGrid = styled(MuiDataGrid)({
   "svg.MuiSvgIcon-root": {
     // fill: variables.primaryHover,
   },
-  width: "1000px",
+  width: "950px",
   margin: "auto",
 });

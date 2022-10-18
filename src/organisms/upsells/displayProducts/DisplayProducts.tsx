@@ -3,8 +3,8 @@ import { DataGrid } from "@/molecules";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
-  { field: "name", headerName: "Product name", width: 150 },
-  { field: "views", headerName: "Views", width: 120 },
+  { field: "name", headerName: "Product name", width: 200 },
+  { field: "views", headerName: "Views", width: 140 },
   {
     field: "conversion",
     headerName: "Conversion",
