@@ -1,51 +1,59 @@
-import { Icon, Grid } from "@shopify/polaris";
-import { MobilePlusMajor } from "@shopify/polaris-icons";
-import { NavLink } from "react-router-dom";
+import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid } from "@/molecules";
 
-import { ProductCard, Card, Button, P } from "@/atoms";
+const columns: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 90 },
+  { field: "name", headerName: "Product name", width: 150 },
+  { field: "views", headerName: "Views", width: 120 },
+  {
+    field: "conversion",
+    headerName: "Conversion",
+    // type: "number",
+    width: 120,
+  },
+  {
+    field: "total",
+    headerName: "Total $",
+    description: "This column has a value getter and is not sortable.",
+    type: "number",
+    // sortable: false,
+    width: 160,
+    // valueGetter: (params: GridValueGetterParams) =>
+    //   `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  },
+  {
+    field: "visit",
+    headerName: "Visit",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 160,
+    valueGetter: (params: GridValueGetterParams) =>
+      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  },
+];
 
-interface Props {
-  products?: Record<any, any>[];
-}
+const rows = [
+  { id: 1, name: "Snow", views: "2k", conversion: "35%", total: 1200 },
+  { id: 2, name: "Lannister", views: "12k", conversion: "42%", total: 200 },
+  { id: 3, name: "Lannister", views: "5k", conversion: "45%", total: 100 },
+  { id: 4, name: "Stark", views: "3k", conversion: "16%", total: 1700 },
+  { id: 5, name: "Targaryen", views: "8k", conversion: "0%", total: 700 },
+  { id: 6, name: "Melisandre", views: null, conversion: "50%", total: 800 },
+  { id: 7, name: "Clifford", views: "9k", conversion: "44%", total: 80 },
+  { id: 8, name: "Frances", views: "150", conversion: "36%", total: 900 },
+  { id: 9, name: "Roxie", views: "500", conversion: "65%", total: 10 },
+];
 
-export function DisplayProducts({ products }: Props) {
+export function DisplayProducts() {
   return (
-    <Grid columns={{ xs: 1, sm: 2, md: 3, lg: 5, xl: 5 }}>
-      <Grid.Cell>
-        <ProductCard imageSource={"null"} />
-      </Grid.Cell>
-      <Grid.Cell>
-        <ProductCard imageSource='url("/image/guy_1.jpg")' />
-      </Grid.Cell>
-      <Grid.Cell>
-        <ProductCard imageSource={"null"} />
-      </Grid.Cell>
-      <Grid.Cell>
-        <ProductCard imageSource='url("/image/guy_2.webp")' />
-      </Grid.Cell>
-      <Grid.Cell>
-        <NavLink to="/upsells/new">
-          <Card.Dotted>
-            <Button.Primary sx={styles.button}>
-              <MobilePlusMajor />
-            </Button.Primary>
-            <P height={18}>Add Upsell</P>
-          </Card.Dotted>
-        </NavLink>
-      </Grid.Cell>
-    </Grid>
+    <div style={{ height: 400, width: "100%" }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+      />
+    </div>
   );
 }
-
-const styles = {
-  button: {
-    padding: 0,
-    width: "30px",
-    height: "30px",
-    marginBottom: "9px",
-    "& svg": {
-      fill: "white",
-      width: "12px",
-    },
-  },
-};

@@ -9,3 +9,4 @@ export * from "./buttonGroup/ButtonGroupTight";
 export * from "./input";
 export * from "./customDateRangePickerDay/CustomDateRangePickerDay";
 export * from "./card";
+export * from "./dataGrid/DataGrid";
