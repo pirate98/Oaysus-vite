@@ -12,13 +12,13 @@ export function DisplayProducts({ products }: Props) {
   return (
     <Grid columns={{ xs: 1, sm: 2, md: 3, lg: 5, xl: 5 }}>
       <Grid.Cell>
-        <ProductCard imageSource={null} />
+        <ProductCard imageSource={"null"} />
       </Grid.Cell>
       <Grid.Cell>
         <ProductCard imageSource='url("/image/guy_1.jpg")' />
       </Grid.Cell>
       <Grid.Cell>
-        <ProductCard imageSource={null} />
+        <ProductCard imageSource={"null"} />
       </Grid.Cell>
       <Grid.Cell>
         <ProductCard imageSource='url("/image/guy_2.webp")' />

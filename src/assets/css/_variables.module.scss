@@ -9,7 +9,7 @@ $primaryActive: adjust-color(
   $blackness: 10%
 );
 
-$secondaryHover: rgb(237 235 235);
+$secondaryHover: rgb(239, 239, 242);
 $secondaryBorder: rgb(186 191 195);
 
 $whiteHover: rgba(246, 246, 247, 1);
@@ -42,6 +42,7 @@ $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   inputBorderFocused: $inputBorderFocused;
   disabledColor: $disabledColor;
   shopifyGreen: $shopifyGreen;
+  primaryColor: $primaryColor;
   primaryHover: $primaryHover;
   secondaryHover: $secondaryHover;
   secondaryBorder: $secondaryBorder;

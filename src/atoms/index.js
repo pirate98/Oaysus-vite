@@ -1,5 +1,5 @@
 export * from "./badge/Badge";
-export * from "./select/CustomSelect";
+export * from "./select/selectBaseUnstyled/SelectBaseUnstyled";
 export * from "./select/SelectForBuilder";
 export * from "./button/HiddenWrapper";
 export * from "../molecules/buttonGroup/ButtonGroup";

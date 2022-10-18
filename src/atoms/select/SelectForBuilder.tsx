@@ -1,14 +1,11 @@
 import { forwardRef } from "react";
 
-import { CustomSelect } from "./CustomSelect";
+import { SelectBaseUnstyled } from "./selectBaseUnstyled/SelectBaseUnstyled";
 import variables from "@/assets/css/_variables.module.scss";
 
-export const SelectForBuilder = forwardRef((props, ref) => {
-  const propsUpdated = { ...props };
-  delete propsUpdated.children;
-
+export const SelectForBuilder = forwardRef(({ children, ...props }, ref) => {
   return (
-    <CustomSelect
+    <SelectBaseUnstyled
       sx={{
         minWidth: variables.inputWidth,
         "+ .MuiPopperUnstyled-root": {
@@ -19,9 +16,9 @@ export const SelectForBuilder = forwardRef((props, ref) => {
         },
       }}
       ref={ref}
-      {...propsUpdated}
+      {...props}
     >
-      {props.children}
-    </CustomSelect>
+      {children}
+    </SelectBaseUnstyled>
   );
 });

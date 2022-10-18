@@ -6,4 +6,5 @@ export const CONSTANT = {
   COLOR_GRAY: "#F2F2F2",
   COLOR_DARK_GRAY: "#BDBDBD",
   GRAPH_LINE_COLOR: variables.shopifyGreen,
+  BORDER_RADIUS: "4px",
 };

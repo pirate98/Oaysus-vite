@@ -9,11 +9,9 @@ type Props = {
 } & ButtonBaseProps;
 
 export const Primary = styled(({ children, ...rest }: Props) => (
-  <ButtonBase variant="contained" {...rest}>
-    {children}
-  </ButtonBase>
+  <ButtonBase {...rest}>{children}</ButtonBase>
 ))({
-  backgroundColor: variables.shopifyGreen,
+  backgroundColor: variables.primaryColor,
   color: "white",
   // width: "100%",
   "&:hover": {

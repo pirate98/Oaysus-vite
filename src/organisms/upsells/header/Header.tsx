@@ -5,7 +5,7 @@ import classes from "./Header.module.scss";
 import svgSearch from "@/assets/svg/search.svg";
 import { Button } from "@/atoms/button";
 import { AddPlus } from "@/assets/svg";
-import { DateSelector } from "@/molecules";
+import { CustomDateRangePickerDay } from "@/molecules";
 
 export function Header() {
   return (
@@ -24,7 +24,7 @@ export function Header() {
           <input placeholder="Search" className={classes.input} />
         </section>
         <section className={classes.filterContainer}>
-          <DateSelector />
+          <CustomDateRangePickerDay />
           <NavLink to="/upsells/new">
             <Button.Primary small>
               <>

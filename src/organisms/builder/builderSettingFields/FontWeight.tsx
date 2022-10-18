@@ -8,7 +8,7 @@ import { useGetSelectedPageComponent } from "@/hooks";
 import { useDispatch } from "react-redux";
 import { updatePageComponents } from "@/pages/builder/builderSlice";
 import { BuilderModule } from "@/types/BuilderModule.type";
-import { Option } from "@/atoms/select/select.types";
+import { Option } from "@/atoms/select/types/select.types";
 
 interface Props {
   module: BuilderModule;

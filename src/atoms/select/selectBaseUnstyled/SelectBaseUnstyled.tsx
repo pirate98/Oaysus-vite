@@ -1,7 +1,13 @@
-import { forwardRef } from "react";
+import {
+  ForwardedRef,
+  forwardRef,
+  ForwardRefRenderFunction,
+  RefObject,
+} from "react";
 
 import SelectUnstyled, {
   selectUnstyledClasses,
+  SelectUnstyledProps,
 } from "@mui/base/SelectUnstyled";
 import OptionUnstyled, {
   optionUnstyledClasses,
@@ -9,7 +15,7 @@ import OptionUnstyled, {
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled } from "@mui/system";
 
-import styles from "./CustomSelect.module.scss";
+import styles from "./SelectBaseUnstyled.module.scss";
 import cssVariables from "@/assets/css/_variables.module.scss";
 
 const blue = {
@@ -143,7 +149,10 @@ const StyledPopper = styled(PopperUnstyled)`
   cursor: pointer;
 `;
 
-export const CustomSelect = forwardRef(function CustomSelect(props, ref) {
+export const SelectBaseUnstyled = forwardRef(function CustomSelect(
+  props: SelectUnstyledProps<any>,
+  ref: ForwardedRef<any>
+) {
   const components = {
     Root: StyledButton,
     Listbox: StyledListbox,

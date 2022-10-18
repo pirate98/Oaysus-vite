@@ -19,11 +19,13 @@ export const store = configureStore({
         ignoredActions: [
           // "builder/setHoveredComponent",
           "navigation/setPageButtons",
+          "upsells/setDateSelectionRange",
         ],
         // Ignore these paths in the state
         ignoredPaths: [
           // "builder.hoveredComponent",
           "navigation.pageButtons",
+          "upsells.dateSelectionRange",
         ],
       },
     })

@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 
 import classNames from "classnames";
 
-import { UpsellsBase } from "../../../atoms/cards/upsellsBase/UpsellsBase";
+import { UpsellsBase } from "@/atoms/cards/upsellsBase/UpsellsBase";
 import classes from "./Settings.module.scss";
 
 type Props = {

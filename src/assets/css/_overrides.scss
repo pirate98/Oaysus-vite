@@ -21,6 +21,9 @@ p {
     text-align: left;
   }
 }
+.MuiPopperUnstyled-root {
+  z-index: 2;
+}
 
 .MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
   box-shadow: $selectShadow;
