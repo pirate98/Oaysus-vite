@@ -2,11 +2,6 @@ import { default as MuiSwitch } from "@mui/material/Switch";
 import { styled } from "@mui/system";
 
 export const Switch = styled(MuiSwitch)({
-  color: "red",
-  position: "absolute",
-  left: "0.5rem",
-  top: "0.5rem",
-
   ".MuiButtonBase-root": {
     overflow: "visible",
     padding: "5px",

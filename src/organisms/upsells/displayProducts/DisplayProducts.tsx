@@ -1,5 +1,5 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { DataGrid } from "@/molecules";
+import { DataGrid, Table } from "@/molecules";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -47,13 +47,14 @@ const rows = [
 export function DisplayProducts() {
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
+      {/* <DataGrid
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-      />
+      /> */}
+      <Table />
     </div>
   );
 }
