@@ -40,7 +40,7 @@ export function CustomDateRangePickerDay() {
           ranges={[dateSelectionRange]}
           // showMonthAndYearPickers={false}
           staticRanges={defaultStaticRanges}
-          inputRanges={defaultInputRanges}
+          inputRanges={[]}
           onChange={handleChange}
         />
       </Popper.Unstyled>
