@@ -21,7 +21,7 @@ export function CustomDateRangePickerDay() {
 
   const handleChange = (e: RangeKeyDict) => {
     // return;
-    // console.log(e);
+    console.log(e);
     const { selection } = e;
     dispatch(setDateSelectionRange(selection));
   };
@@ -31,7 +31,10 @@ export function CustomDateRangePickerDay() {
       <Popper.Unstyled
         button={useCallback(
           (props: any) => (
-            <Button.Date small {...props} />
+            <Button.Date small {...props}>
+              {dateSelectionRange.startDate?.toLocaleDateString()} -{" "}
+              {dateSelectionRange.endDate?.toLocaleDateString()}
+            </Button.Date>
           ),
           []
         )}
