@@ -30,9 +30,9 @@ export function Unstyled({ children, button }) {
 
   return (
     <div>
-      <Button aria-describedby={id} type="button" onClick={handleClick}>
-        Toggle Popper
-      </Button>
+      <section aria-describedby={id} onClick={handleClick}>
+        <Button type="button">Toggle Popper</Button>
+      </section>
       <PopperUnstyled id={id} open={open} anchorEl={anchorEl}>
         <StyledPopperDiv>{children}</StyledPopperDiv>
         {/* <Box sx={{ ...styles.contentDiv }}>{children}</Box> */}

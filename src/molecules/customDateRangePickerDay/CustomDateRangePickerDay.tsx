@@ -36,7 +36,7 @@ export function CustomDateRangePickerDay() {
               {dateSelectionRange.endDate?.toLocaleDateString()}
             </Button.Date>
           ),
-          []
+          [dateSelectionRange]
         )}
         // button={Button.Date}
       >
