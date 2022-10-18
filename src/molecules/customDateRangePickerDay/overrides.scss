@@ -6,10 +6,11 @@
 //   color: $primaryColor !important;
 // }
 
-.rdrStaticRange,
-.rdrStaticRangeLabel {
-  &:hover {
-    background: $primaryActive;
+button {
+  span {
+    &:after {
+      background: $primaryColor !important;
+    }
   }
 }
 
@@ -23,11 +24,10 @@
   }
 }
 
-.rdrStaticRange:hover,
-.rdrStaticRange:focus .rdrStaticRangeLabel:hover {
-  background: $primaryLight;
-
+.rdrStaticRange {
   .rdrStaticRangeLabel {
-    background: $primaryLight;
+    &:hover {
+      background: $primaryLight;
+    }
   }
 }
