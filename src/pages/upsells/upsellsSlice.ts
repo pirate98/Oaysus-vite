@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Range } from "react-date-range";
 
+import { defineds } from "@/molecules/customDateRangePickerDay/defaultRanges";
+
 type Trigger = Record<any, any>;
 type TypeTriggers = Trigger[];
 
@@ -15,8 +17,8 @@ const initialState: State = {
   triggers: [[{}]],
   upsells: [],
   dateSelectionRange: {
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: defineds.startOf30DaysAgo,
+    endDate: defineds.endOfToday,
     key: "selection",
   },
 };

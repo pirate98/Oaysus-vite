@@ -4,6 +4,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
+import "./overrides.css";
 import { defaultStaticRanges, defaultInputRanges } from "./defaultRanges";
 import { Button } from "../button";
 import { Popper } from "@/atoms/popper";

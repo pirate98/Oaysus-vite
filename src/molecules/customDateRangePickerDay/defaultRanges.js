@@ -15,7 +15,7 @@ import {
   startOfQuarter,
 } from "date-fns";
 
-const defineds = {
+export const defineds = {
   startOfToday: startOfDay(new Date()),
   endOfToday: endOfDay(new Date()),
   startOfYesterday: startOfDay(addDays(new Date(), -1)),
