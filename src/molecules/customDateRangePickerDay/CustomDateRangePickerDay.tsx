@@ -1,22 +1,14 @@
-import { useState, forwardRef, useCallback } from "react";
-
-import { SelectBaseUnstyled } from "@/atoms";
-
-// import { Select } from "@/atoms";
-
-// export function DateSelector() {
-//   return <Select.Primary options={options} value={""} />;
-// }
+import { useCallback } from "react";
 
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
+import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
 import { defaultStaticRanges, defaultInputRanges } from "./defaultRanges";
 import { Button } from "../button";
-import { Popper } from "../../atoms/popper";
+import { Popper } from "@/atoms/popper";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../data/store";
+import { RootState } from "@/data/store";
 import { setDateSelectionRange } from "../../pages/upsells/upsellsSlice";
 
 export function CustomDateRangePickerDay() {
@@ -26,7 +18,7 @@ export function CustomDateRangePickerDay() {
     upsells: { dateSelectionRange },
   } = useSelector((state: RootState) => state);
 
-  const handleChange = (e) => {
+  const handleChange = (e: RangeKeyDict) => {
     // return;
     console.log(e);
     const { selection } = e;
@@ -46,7 +38,6 @@ export function CustomDateRangePickerDay() {
       >
         <DateRangePicker
           ranges={[dateSelectionRange]}
-          showSelectionPreview
           // showMonthAndYearPickers={false}
           staticRanges={defaultStaticRanges}
           inputRanges={defaultInputRanges}

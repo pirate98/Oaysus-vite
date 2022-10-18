@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DateSelectionRange } from "@/types/DateSelectionRange.type";
+import { Range } from "react-date-range";
 
 type Trigger = Record<any, any>;
 type TypeTriggers = Trigger[];
@@ -8,7 +8,7 @@ type State = {
   triggers: TypeTriggers[];
   upsells: Record<any, any>[][];
   testTrigger?: TypeTriggers;
-  dateSelectionRange?: DateSelectionRange;
+  dateSelectionRange: Range;
 };
 
 const initialState: State = {
