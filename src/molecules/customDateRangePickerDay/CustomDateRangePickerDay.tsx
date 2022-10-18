@@ -4,7 +4,8 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
-import "./overrides.css";
+import { CONSTANT } from "../../data/constants";
+import "./overrides.scss";
 import { defaultStaticRanges, defaultInputRanges } from "./defaultRanges";
 import { Button } from "../button";
 import { Popper } from "@/atoms/popper";
@@ -46,6 +47,8 @@ export function CustomDateRangePickerDay() {
           staticRanges={defaultStaticRanges}
           inputRanges={[]}
           onChange={handleChange}
+          // color={CONSTANT.COLOR_MAIN}
+          rangeColors={[CONSTANT.COLOR_MAIN]}
         />
       </Popper.Unstyled>
     </>

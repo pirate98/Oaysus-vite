@@ -1,0 +1,24 @@
+@import "@/assets/css/variables.module";
+
+// .rdrInRange,
+// .rdrStartEdge,
+// .rdrEndEdge {
+//   color: $primaryColor !important;
+// }
+
+.rdrStaticRange,
+.rdrStaticRangeLabel {
+  &:hover {
+    background: $primaryActive;
+  }
+}
+
+.rdrDateDisplayWrapper,
+.rdrNextPrevButton,
+.rdrNextButton {
+  background: $primaryLight;
+
+  &:hover {
+    background: $primaryActive;
+  }
+}
