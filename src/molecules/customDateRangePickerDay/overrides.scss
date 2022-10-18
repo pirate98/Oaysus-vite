@@ -22,3 +22,12 @@
     background: $primaryActive;
   }
 }
+
+.rdrStaticRange:hover,
+.rdrStaticRange:focus .rdrStaticRangeLabel:hover {
+  background: $primaryLight;
+
+  .rdrStaticRangeLabel {
+    background: $primaryLight;
+  }
+}

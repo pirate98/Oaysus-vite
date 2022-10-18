@@ -75,20 +75,20 @@ export const defaultStaticRanges = createStaticRanges([
       endDate: defineds.endOfToday,
     }),
   },
-  {
-    label: "Month to date",
-    range: () => ({
-      startDate: defineds.startOfMonth,
-      endDate: defineds.endOfToday,
-    }),
-  },
-  {
-    label: "Quarter to date",
-    range: () => ({
-      startDate: defineds.startOfQuarter,
-      endDate: defineds.endOfToday,
-    }),
-  },
+  // {
+  //   label: "Month to date",
+  //   range: () => ({
+  //     startDate: defineds.startOfMonth,
+  //     endDate: defineds.endOfToday,
+  //   }),
+  // },
+  // {
+  //   label: "Quarter to date",
+  //   range: () => ({
+  //     startDate: defineds.startOfQuarter,
+  //     endDate: defineds.endOfToday,
+  //   }),
+  // },
   {
     label: "Year to date",
     range: () => ({
