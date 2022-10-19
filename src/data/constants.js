@@ -7,4 +7,5 @@ export const CONSTANT = {
   COLOR_DARK_GRAY: "#BDBDBD",
   GRAPH_LINE_COLOR: variables.primaryColor,
   BORDER_RADIUS: "4px",
+  IMAGE_PLACEHOLDER: "/image/empty-image.svg",
 };

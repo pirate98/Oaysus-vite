@@ -13,12 +13,14 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 // import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
-import { Select, Switch } from "@/atoms";
+import { H5, Select, Switch } from "@/atoms";
 
 import variables from "@/assets/css/_variables.module.scss";
+import { CONSTANT } from "@/data/constants";
 
 interface Data {
   priority: number;
+  image: string;
   name: string;
   status: string;
   views: number;
@@ -29,6 +31,7 @@ interface Data {
 
 function createData(
   priority: number,
+  image: string,
   name: string,
   status: string,
   views: number,
@@ -38,6 +41,7 @@ function createData(
 ): Data {
   return {
     priority,
+    image: image ? image : CONSTANT.IMAGE_PLACEHOLDER,
     name,
     status,
     views,
@@ -48,16 +52,52 @@ function createData(
 }
 
 const rows = [
-  createData(1, "Cupcake", "Active", 3.7, 67, 4.3, 5.67),
-  createData(2, "Donut", "Inactive", 25.0, 51, 4.9, 5.67),
-  createData(3, "Eclair", "Active", 16.0, 24, 6.0, 5.67),
-  createData(4, "Frozen yoghurt", "Active", 6.0, 24, 4.0, 5.67),
-  createData(5, "Gingerbread", "Active", 16.0, 49, 3.9, 5.67),
-  createData(6, "Honeycomb", "Inactive", 3.2, 87, 6.5, 5.67),
-  createData(7, "Ice cream sandwich", "Inactive", 9.0, 37, 4.3, 5.67),
-  createData(8, "Jelly Bean", "Inactive", 0.0, 94, 0.0, 5.67),
-  createData(9, "KitKat", "Active", 26.0, 65, 7.0, 5.67),
-  createData(10, "Lollipop", "Active", 0.2, 98, 0.0, 5.67),
+  createData(1, "/image/guy_1.jpg", "Cupcake", "Active", 3.7, 67, 4.3, 5.67),
+  createData(2, "/image/guy_2.webp", "Donut", "Inactive", 25.0, 51, 4.9, 5.67),
+  createData(3, "", "Eclair", "Active", 16.0, 24, 6.0, 5.67),
+  createData(4, "", "Frozen yoghurt", "Active", 6.0, 24, 4.0, 5.67),
+  createData(
+    5,
+    "/image/guy_1.jpg",
+    "Gingerbread",
+    "Active",
+    16.0,
+    49,
+    3.9,
+    5.67
+  ),
+  createData(
+    6,
+    "/image/guy_2.webp",
+    "Honeycomb",
+    "Inactive",
+    3.2,
+    87,
+    6.5,
+    5.67
+  ),
+  createData(
+    7,
+    "/image/guy_2.webp",
+    "Ice cream sandwich",
+    "Inactive",
+    9.0,
+    37,
+    4.3,
+    5.67
+  ),
+  createData(
+    8,
+    "/image/guy_1.jpg",
+    "Jelly Bean",
+    "Inactive",
+    0.0,
+    94,
+    0.0,
+    5.67
+  ),
+  createData(9, "", "KitKat", "Active", 26.0, 65, 7.0, 5.67),
+  createData(10, "", "Lollipop", "Active", 0.2, 98, 0.0, 5.67),
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -375,10 +415,28 @@ export function Table({ enhancedToolbar }) {
                         scope="row"
                         padding="none"
                         align="center"
+                        x
                       >
                         {row.priority}
                       </TableCell>
-                      <TableCell align="left">{row.name}</TableCell>
+                      <TableCell
+                        align="left"
+                        sx={{ display: "flex", alignItems: "center" }}
+                      >
+                        <Box
+                          // className={styles.imageDiv}
+                          sx={{
+                            backgroundImage: `url("${row.image}")`,
+                            backgroundSize: row.image ? "contain" : "unset",
+                            height: "40px",
+                            width: "40px",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            margin: "8px 16px",
+                          }}
+                        ></Box>
+                        <H5 weight={500}>{row.name}</H5>
+                      </TableCell>
                       <TableCell align="right">{row.status}</TableCell>
                       <TableCell align="right">{row.views}</TableCell>
                       <TableCell align="right">{row.conversion}</TableCell>
