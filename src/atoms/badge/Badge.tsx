@@ -1,12 +1,20 @@
 import styles from "./Badge.module.scss";
 import { SvgDot } from "./SvgDot";
 
+type Variant = "blue" | "green" | "gray";
+
+interface Props {
+  children?: string;
+  dot?: boolean;
+  variant: Variant;
+}
+
 export function Badge({
-  children = "badge",
+  children,
   dot = true,
   variant = "blue",
   ...props
-}) {
+}: Props) {
   let color;
 
   switch (variant) {

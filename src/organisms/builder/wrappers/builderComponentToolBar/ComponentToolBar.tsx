@@ -165,12 +165,12 @@ export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
     setIsModalOpen(false);
   }, [selectedPageComponentName, memoPageComponents]);
 
-  const onDrag = useCallback(
-    () => setIsComponentVisible(false),
+  const onDrag = useCallback(() =>
+    //setIsComponentVisible(false),
     [setIsComponentVisible]
   );
-  const onDragEnd = useCallback(
-    () => setIsComponentVisible(true),
+  const onDragEnd = useCallback(() =>
+    //setIsComponentVisible(true),
     [setIsComponentVisible]
   );
 

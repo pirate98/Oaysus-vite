@@ -50,18 +50,21 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
   const moveComponent = (componentName: string) => {
     if (!componentName) return;
 
-    const { componentIndex, blankComponentIndex } = getIndexes(
+    let { componentIndex, blankComponentIndex } = getIndexes(
       pageComponents,
       componentName,
       componentsData.BLANK_COMPONENT_NAME
     );
-
+    console.log({ componentIndex, blankComponentIndex });
     if (componentIndex === undefined || blankComponentIndex === undefined)
       return;
 
-    const mutablePageComponents = [...pageComponents];
+    const mutablePageComponents = structuredClone(pageComponents);
+    console.log({ mutablePageComponents });
 
     const component = mutablePageComponents.splice(componentIndex, 1);
+
+    if (componentIndex < blankComponentIndex) blankComponentIndex--;
 
     mutablePageComponents.splice(blankComponentIndex, 1, component[0]);
 
@@ -139,7 +142,7 @@ export function DropZoneWrapper({ moduleContent, children, className }: Props) {
       }
 
       if (canDropTop) dropIndex = componentIndex;
-      // console.log({ dropIndex });
+      console.log({ dropIndex });
 
       newPage.splice(dropIndex, 0, {
         name: componentsData.BLANK_COMPONENT_NAME,

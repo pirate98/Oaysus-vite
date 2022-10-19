@@ -31,3 +31,4 @@ export { ReactComponent as MenuHorizontalDotSvg } from "./menuHorizontalDot.svg"
 export { ReactComponent as ScreenDesktopSvg } from "./screenDesktop.svg";
 export { ReactComponent as ScreenTabletSvg } from "./screenTablet.svg";
 export { ReactComponent as ScreenMobileSvg } from "./screenMobile.svg";
+export { ReactComponent as DragHandleSvg } from "./dragHandle.svg";

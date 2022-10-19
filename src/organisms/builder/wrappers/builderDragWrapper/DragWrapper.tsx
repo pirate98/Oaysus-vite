@@ -60,14 +60,14 @@ export const DragWrapper = forwardRef(
         dispatch(setDraggedComponent(selectedPageComponentName));
     }, [isDragging]);
 
-    // useEffect(() => {
-    //   if (isDragging) {
-    //     onDrag();
-    //     return;
-    //   }
+    useEffect(() => {
+      if (isDragging) {
+        onDrag();
+        return;
+      }
 
-    //   onDragEnd();
-    // }, [isDragging]);
+      onDragEnd();
+    }, [isDragging]);
 
     return (
       <>

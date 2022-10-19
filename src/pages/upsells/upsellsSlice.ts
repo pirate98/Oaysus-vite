@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Range } from "react-date-range";
 
 import { defineds } from "@/molecules/customDateRangePickerDay/defaultRanges";
+import { UpsellsData, rows } from "@/mockData/defaultUpsells";
 
 type Trigger = Record<any, any>;
 type TypeTriggers = Trigger[];
@@ -9,6 +10,7 @@ type TypeTriggers = Trigger[];
 type State = {
   triggers: TypeTriggers[];
   upsells: Record<any, any>[][];
+  upsellsData: UpsellsData[];
   testTrigger?: TypeTriggers;
   dateSelectionRange: Range;
 };
@@ -21,6 +23,7 @@ const initialState: State = {
     endDate: defineds.endOfToday,
     key: "selection",
   },
+  upsellsData: rows,
 };
 
 export const upsellsSlice = createSlice({
@@ -55,6 +58,9 @@ export const upsellsSlice = createSlice({
     setDateSelectionRange: (state, action) => {
       state.dateSelectionRange = action.payload;
     },
+    setUpsellsData: (state, action) => {
+      state.upsellsData = action.payload;
+    },
   },
 });
 
@@ -66,6 +72,7 @@ export const {
   testTrigger,
   addUpsell,
   setDateSelectionRange,
+  setUpsellsData,
 } = upsellsSlice.actions;
 
 export default upsellsSlice.reducer;
