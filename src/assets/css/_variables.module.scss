@@ -36,6 +36,8 @@ $inputBorderFocused: $shopifyGreen;
 $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
+$muiSuccess: rgb(46 125 50 / 12%);
+
 :export {
   inputWidth: $inputWidth;
   inputPadding: $inputPadding;
@@ -45,6 +47,7 @@ $selectShadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
   shopifyGreen: $shopifyGreen;
   primaryColor: $primaryColor;
   primaryHover: $primaryHover;
+  primaryLight: $primaryLight;
   secondaryHover: $secondaryHover;
   secondaryBorder: $secondaryBorder;
   primaryActive: $primaryActive;
