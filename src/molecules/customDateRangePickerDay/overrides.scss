@@ -24,7 +24,7 @@ button {
 
 .rdrNextPrevButton,
 .rdrNextButton {
-  background: $primaryLight;
+  background: rgb(235, 235, 235);
 
   &:hover {
     background: $primaryActive;
@@ -73,4 +73,14 @@ button {
 
 .rdrDefinedRangesWrapper {
   width: 160px;
+}
+
+.rdrDayActive {
+  .rdrDayNumber {
+    font-weight: 500;
+  }
+}
+
+.rdrStaticRanges button:last-child {
+  border: none;
 }
