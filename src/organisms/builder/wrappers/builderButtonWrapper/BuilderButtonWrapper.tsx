@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 
 import { useDrag } from "react-dnd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./.module.scss";
 import componentsData from "@/data/componentsData";
-import { removeComponentFromPage } from "@/pages/builder/builderSlice";
+import {
+  removeComponentFromPage,
+  setPageComponents,
+} from "@/pages/builder/builderSlice";
+import { RootState } from "../../../../data/store";
 
 interface Props {
   children?: React.ReactNode;
@@ -19,6 +23,10 @@ export function BuilderButtonWrapper({
   hover = false,
 }: Props) {
   const dispatch = useDispatch();
+
+  const {
+    builder: { pageComponents },
+  } = useSelector((state: RootState) => state);
   // console.log({ title: title.text });
   const [{ isDragging }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
@@ -31,9 +39,16 @@ export function BuilderButtonWrapper({
         isDragging: !!monitor.isDragging(),
       };
     },
-    end: (monitor) => {
-      // console.log({ monitor });
-      dispatch(removeComponentFromPage(componentsData.BLANK_COMPONENT_NAME));
+    end: (item, monitor) => {
+      const didDrop = monitor.didDrop();
+
+      if (didDrop) return;
+
+      const contentWithoutPlaceHolder = pageComponents?.filter(
+        (item: Item) => item.id !== PLACEHOLDER_ID
+      );
+
+      dispatch(setPageComponents(contentWithoutPlaceHolder));
     },
   }));
 

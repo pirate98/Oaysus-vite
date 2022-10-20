@@ -37,10 +37,15 @@ import { getIndexes, numerateTheName } from "@/helpers";
 interface Props {
   children: ReactElement<any, string | JSXElementConstructor<any>>;
   onMouseDownCapture?: MouseEventHandler<HTMLElement> | undefined;
+  dragRef?: React.RefObject;
 }
 
-export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
-  const componentRef = useRef<HTMLDivElement>(null);
+export function ComponentToolBar({
+  children,
+  onMouseDownCapture,
+  dragRef,
+}: Props) {
+  // const componentRef = useRef<HTMLDivElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isComponentVisible, setIsComponentVisible] = useState(true);
@@ -52,7 +57,7 @@ export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
     builder: { pageComponents, selectedPageComponentName },
   } = useSelector((state: RootState) => state);
 
-  const componentIsOnTop = pageComponents[0].name === selectedPageComponentName;
+  const componentIsOnTop = pageComponents[0].id === selectedPageComponentName;
 
   const memoPageComponents = useMemo(() => pageComponents, [pageComponents]);
 
@@ -184,14 +189,15 @@ export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
         >
           {isComponentVisible && (
             <div
-              ref={componentRef}
+              // ref={componentRef}
               className={
                 isFocused ? classes.borderFocused : classes.focusContainer
               }
             >
-              {cloneElement(children, {
+              {/* {cloneElement(children, {
                 // className: isFocused && classes.borderFocused,
-              })}
+              })} */}
+              {children}
             </div>
           )}
           {isFocused && (
@@ -209,15 +215,15 @@ export function ComponentToolBar({ children, onMouseDownCapture }: Props) {
                 <ToolbarArrowDown onClick={moveDown} />
               </HiddenWrapper>
               <HiddenWrapper>
-                <DragWrapper
-                  ref={componentRef}
+                {/* <DragWrapper
+                  // ref={componentRef}
                   onDrag={onDrag}
                   onDragEnd={onDragEnd}
-                >
-                  <RefWrapper>
-                    <ToolbarDrag />
-                  </RefWrapper>
-                </DragWrapper>
+                > */}
+                <RefWrapper ref={dragRef}>
+                  <ToolbarDrag />
+                </RefWrapper>
+                {/* </DragWrapper> */}
               </HiddenWrapper>
               <HiddenWrapper>
                 <ToolBarCopy onClick={copy} />

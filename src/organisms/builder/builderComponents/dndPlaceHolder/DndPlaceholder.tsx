@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 
-import classes from "./.module.scss";
+import classes from "./DndPlaceholder.module.scss";
 import componentsData from "@/data/componentsData";
 import { ReactComponent as CirclePlus } from "@/assets/svg/circlePlus.svg";
 
-export const Blank = forwardRef((props, ref) => {
+export const DndPlaceholder = forwardRef((props, ref) => {
   return (
     <div
       // this classname is used to return from drop zone hover method

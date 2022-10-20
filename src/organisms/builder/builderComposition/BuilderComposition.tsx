@@ -2,7 +2,6 @@ import { Fragment, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { DropZoneWrapper } from "@/organisms/builder/builderComponents";
 import {
   builderComponentMaker,
   removeDigitsAndReturnComponentName,
@@ -15,6 +14,8 @@ import {
 import classes from "./BuilderComposition.module.scss";
 import * as builderComponents from "@/organisms/builder/builderComponents";
 import { RootState } from "@/data/store";
+import { Wrapper } from "../../wrappers";
+import componentsData from "../../../data/componentsData";
 
 interface Props {
   pageContent?: Record<any, any>[];
@@ -50,26 +51,39 @@ export function BuilderComposition({ pageContent }: Props) {
   return (
     // <Grid container spacing={2} columnSpacing={4}>
     <>
-      {pageComponents &&
-        pageComponents.length &&
+      {pageComponents?.length &&
         pageComponents.map((component, idx) => {
           const componentName = removeDigitsAndReturnComponentName(
-            component.name
+            component.id
           ) as keyof typeof builderComponents | undefined;
 
           const DynamicComponent =
             componentName && builderComponents[componentName];
 
+          if (!DynamicComponent) return;
+
           return (
-            <Fragment key={`${component.name}-idx`}>
-              <ComponentToolBar
-                onMouseDownCapture={() =>
-                  handleClickOnComponent(component.name)
-                }
+            <Fragment key={`${component.id}-idx`}>
+              <Wrapper.DragAndDrop
+                id={component.id}
+                type={componentsData.types.BUILDER_COMPONENT_TOOLBAR}
+                extraDropTypes={[componentsData.types.BUILDER_COMPONENT]}
+                content={pageComponents}
+                contentUpdateAction={setPageComponents}
               >
-                <DropZoneWrapper moduleContent={component}>
-                  {DynamicComponent && (
+                {(drag, drop, dropRefForArea) => (
+                  <ComponentToolBar
+                    onMouseDownCapture={() =>
+                      handleClickOnComponent(component.id)
+                    }
+                    dragRef={drag}
+                  >
+                    {/* <DropZoneWrapper moduleContent={component}> */}
                     <DynamicComponent
+                      ref={(el: HTMLElement) => {
+                        drop(el);
+                        dropRefForArea.current = el;
+                      }}
                       content={component}
                       className={
                         draggedComponent === component.name
@@ -77,9 +91,10 @@ export function BuilderComposition({ pageContent }: Props) {
                           : ""
                       }
                     />
-                  )}
-                </DropZoneWrapper>
-              </ComponentToolBar>
+                    {/* </DropZoneWrapper> */}
+                  </ComponentToolBar>
+                )}
+              </Wrapper.DragAndDrop>
             </Fragment>
           );
         })}
