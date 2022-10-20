@@ -10,6 +10,7 @@ import {
   setPageComponents,
 } from "@/pages/builder/builderSlice";
 import { RootState } from "../../../../data/store";
+import { CONSTANT } from "@/data/constants";
 
 interface Props {
   children?: React.ReactNode;
@@ -32,7 +33,7 @@ export function BuilderButtonWrapper({
     // what type of item this to determine if a drop target accepts it
     type: componentsData.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods
-    item: { name: title.text },
+    item: { id: title.text, type: componentsData.types.BUILDER_COMPONENT },
     // method to collect additional data for drop handling like whether is currently being dragged
     collect: (monitor) => {
       return {
@@ -45,7 +46,7 @@ export function BuilderButtonWrapper({
       if (didDrop) return;
 
       const contentWithoutPlaceHolder = pageComponents?.filter(
-        (item: Item) => item.id !== PLACEHOLDER_ID
+        (item: any) => item.id !== CONSTANT.DND_PLACEHOLDER_ID
       );
 
       dispatch(setPageComponents(contentWithoutPlaceHolder));

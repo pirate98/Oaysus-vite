@@ -16,6 +16,7 @@ import * as builderComponents from "@/organisms/builder/builderComponents";
 import { RootState } from "@/data/store";
 import { Wrapper } from "../../wrappers";
 import componentsData from "../../../data/componentsData";
+import { addComponentToBuilder } from "../../wrappers/dragAndDrop/helpers";
 
 interface Props {
   pageContent?: Record<any, any>[];
@@ -48,6 +49,13 @@ export function BuilderComposition({ pageContent }: Props) {
     dispatch(setPageComponents(defaultComponents));
   }, [componentList]);
 
+  const handleExtraDropTypes = (content: any, id: any) => {
+    const updatedContent = addComponentToBuilder(content, id);
+    if (!updatedContent) return;
+
+    dispatch(setPageComponents(updatedContent));
+  };
+
   return (
     // <Grid container spacing={2} columnSpacing={4}>
     <>
@@ -68,6 +76,7 @@ export function BuilderComposition({ pageContent }: Props) {
                 id={component.id}
                 type={componentsData.types.BUILDER_COMPONENT_TOOLBAR}
                 extraDropTypes={[componentsData.types.BUILDER_COMPONENT]}
+                extraDropTypesHandle={handleExtraDropTypes}
                 content={pageComponents}
                 contentUpdateAction={setPageComponents}
               >

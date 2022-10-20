@@ -15,8 +15,8 @@ import {
 } from "react-dnd";
 import { useDispatch } from "react-redux";
 
-import { getIndex, isPointerAboveHalf } from "./helpers";
-import { CONSTANT } from "../../../data/constants";
+import { addComponentToBuilder, getIndex, isPointerAboveHalf } from "./helpers";
+import { CONSTANT } from "@/data/constants";
 
 const PLACEHOLDER_ID = CONSTANT.DND_PLACEHOLDER_ID;
 
@@ -29,6 +29,7 @@ interface Props {
   id: number | string;
   type: string;
   extraDropTypes: string[];
+  extraDropTypesHandle: (content: any, id: any) => void;
   content: any[];
   contentUpdateAction: (arr: any[]) => AnyAction;
 }
@@ -42,6 +43,7 @@ export function DragAndDrop({
   content,
   contentUpdateAction,
   extraDropTypes,
+  extraDropTypesHandle,
 }: // onDrop,
 Props) {
   const dispatch = useDispatch();
@@ -110,6 +112,11 @@ Props) {
         dispatch(contentUpdateAction(updatedContent));
       },
       drop: (item, monitor) => {
+        if (extraDropTypes.includes(item.type)) {
+          extraDropTypesHandle(content, item.id);
+          return;
+        }
+
         const draggedItemIndex = getIndex(content, item?.id);
         let placeHolderIndex = getIndex(content, PLACEHOLDER_ID);
 

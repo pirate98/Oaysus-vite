@@ -38,7 +38,7 @@ export const builderSlice = createSlice({
       state.selectedPageComponentName = action.payload;
     },
     setPageComponents: (state, action) => {
-      console.log("setPageComponents", action.payload);
+      // console.log("setPageComponents", action.payload);
       state.pageComponents = action.payload;
     },
 
