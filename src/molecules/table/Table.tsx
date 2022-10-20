@@ -25,6 +25,7 @@ import { DragHandleSvg } from "@/assets/svg";
 import { UpsellsData } from "@/organisms/upsells";
 import { Wrapper } from "../../organisms/wrappers";
 import { setUpsellsData } from "../../pages/upsells/upsellsSlice";
+import { RefWrapper } from "../../organisms/builder/wrappers";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -331,7 +332,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                       >
                         {(drag, drop, dropRefForArea) =>
                           row.id === CONSTANT.DND_PLACEHOLDER_ID ? (
-                            <TableRow>
+                            <TableRow ref={drop}>
                               <TableCell
                                 colSpan={headCells.length}
                                 align="center"

@@ -61,7 +61,7 @@ Props) {
           (item: Item) => item.id !== PLACEHOLDER_ID
         );
 
-        dispatch(contentUpdateAction(contentWithoutPlaceHolder));
+        // dispatch(contentUpdateAction(contentWithoutPlaceHolder));
       },
     }),
     [content]
