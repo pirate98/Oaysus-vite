@@ -1,10 +1,11 @@
 import { styled } from "@mui/system";
 
 import { Secondary } from "./Secondary";
+import { ButtonBaseProps } from "./buttonBase/ButtonBase";
 
 type Props = {
-  children: React.ReactNode;
-} & typeof Secondary;
+  children: React.ReactNode | string;
+} & ButtonBaseProps;
 
 export const Gray = styled(({ children, ...rest }: Props) => (
   <Secondary {...rest}>{children}</Secondary>

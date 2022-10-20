@@ -1,7 +1,7 @@
 import { Button, Card, Input, Select } from "@/atoms";
 import classes from "./.module.scss";
 import { DeleteConditionSvg } from "@/assets/svg";
-import { Option } from "@/atoms/select/select.types";
+import { Option } from "@/atoms/select/types/select.types";
 import { ChangeEvent } from "react";
 
 interface Props {

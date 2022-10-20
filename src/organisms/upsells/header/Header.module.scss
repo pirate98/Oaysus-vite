@@ -1,8 +1,13 @@
 @import "@/assets/css/type", "@/assets/css/classes.module";
 
+.customH1 {
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
 .infoContainer {
   display: flex;
-  align-items: end;
+  align-items: center;
 }
 
 .badgeContainer {

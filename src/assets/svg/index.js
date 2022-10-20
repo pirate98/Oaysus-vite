@@ -23,7 +23,7 @@ export { ReactComponent as SwiperPrev } from "./swiperPrev.svg";
 export { ReactComponent as SwiperNext } from "./swiperNext.svg";
 export { ReactComponent as AddPlus } from "./addPlus.svg";
 export { ReactComponent as Delete } from "./delete.svg";
-export { ReactComponent as Calendar } from "./calendar.svg";
+export { ReactComponent as CalendarSvg } from "./calendar.svg";
 export { ReactComponent as EditPen } from "./editPen.svg";
 export { ReactComponent as CategoryTrigger } from "./categoryTrigger.svg";
 export { ReactComponent as DeleteConditionSvg } from "./deleteCondition.svg";
@@ -31,3 +31,4 @@ export { ReactComponent as MenuHorizontalDotSvg } from "./menuHorizontalDot.svg"
 export { ReactComponent as ScreenDesktopSvg } from "./screenDesktop.svg";
 export { ReactComponent as ScreenTabletSvg } from "./screenTablet.svg";
 export { ReactComponent as ScreenMobileSvg } from "./screenMobile.svg";
+export { ReactComponent as DragHandleSvg } from "./dragHandle.svg";

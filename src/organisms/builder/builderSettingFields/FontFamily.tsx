@@ -17,22 +17,22 @@ export function FontFamily({ defaultValue, module }: Props) {
   const dispatch = useDispatch();
 
   const { data, error } = useGetFontsQuery(null);
-  const textFieldRef = useRef();
   // console.log({ data, error });
 
-  const [value, setValue] = useState<Record<any, any>>();
+  const [value, setValue] = useState<Record<any, any> | null>(null);
 
-  const _defaultValue =
-    defaultValue && defaultValue.split(",") && defaultValue.split(",")[0];
-
+  const _defaultValue = defaultValue?.split(",") && defaultValue.split(",")[0];
   const [inputValue, setInputValue] = useState<string | undefined>(
     _defaultValue
   );
 
+  useEffect(() => {
+    // console.log({ _defaultValue });
+    setInputValue(_defaultValue);
+  }, []);
+
   // This enables handlers in field wrapper to catch the changes
   useEffect(() => {
-    // console.log({ valueUpdatedTo: value });
-    // textFieldRef.current.blur();
     if (!value) return;
     dispatch(
       updatePageComponents({ module, key: "fontFamily", value: inputValue })
@@ -43,25 +43,17 @@ export function FontFamily({ defaultValue, module }: Props) {
     <div className={classes.singleAttribute}>
       <p>Font Family</p>
       <Autocomplete
-        reference={textFieldRef}
-        placeholder="Choose a font"
+        // placeholder="Choose a font"
         value={value}
         onChange={(_event: any, newValue: any) => {
-          // console.log({ autoCompleteChange: newValue });
-          // console.log(textFieldRef);
           setValue(newValue);
-          // event.target.blur();
         }}
         inputValue={inputValue}
         onInputChange={(_event: any, newInputValue: string) => {
-          // console.log({ newInput: newInputValue });
-          if (!event) return; //  prevent update on page load
-          // if (newInputValue.length === 0) setValue(null);
+          if (!_event) return; //  prevent update on page load
           setInputValue(newInputValue);
         }}
-        name={"fontFamily"}
-        // id="controllable-states-demo"
-        options={data || []}
+        options={data}
         getOptionLabel={(option: Option) => option.family}
       />
     </div>

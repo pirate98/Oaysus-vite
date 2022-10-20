@@ -7,7 +7,7 @@ import {
   inputFontSize,
   inputBorderFocused,
 } from "@/assets/css/_variables.module.scss";
-import { Option } from "./select.types";
+import { Option } from "../types/select.types";
 
 type Props = {
   options?: Option[];

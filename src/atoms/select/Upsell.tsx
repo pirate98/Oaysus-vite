@@ -87,18 +87,19 @@ const StyledListbox = styled("ul")(({ theme }) => ({
   border: "1px solid #BABFC3",
   boxShadow: "0px 30px 45px rgba(0, 0, 0, 0.12)",
   borderRadius: "8px",
-  padding: "16px",
+  padding: "10px",
 }));
 
 export const StyledOption = styled((props: any) => {
   return <li {...props} />;
 })(({ theme }) => ({
   listStyle: "none",
-  padding: "8px",
+  padding: "8px 12px",
   borderRadius: "8px",
   cursor: "pointer",
   width: "100%",
   whiteSpace: "nowrap",
+  textAlign: "start",
 
   "&:last-of-type": {
     borderBottom: "none",

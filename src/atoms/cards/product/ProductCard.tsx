@@ -20,9 +20,9 @@ export function ProductCard({ imageSource }: Props) {
       footerActionAlignment="left"
       secondaryFooterActions={[{ content: "View Upsell" }]}
     >
-      <div
+      <Box
         className={styles.imageDiv}
-        style={{
+        sx={{
           backgroundImage: imageSource
             ? imageSource
             : 'url("/image/empty-image.svg")',
@@ -30,7 +30,7 @@ export function ProductCard({ imageSource }: Props) {
         }}
       >
         <Switch className={styles.switch} />
-      </div>
+      </Box>
       <Card.Section>
         <Stack vertical spacing="tight">
           <Stack wrap={false} distribution="fill">

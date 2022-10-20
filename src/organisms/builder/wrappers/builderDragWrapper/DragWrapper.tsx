@@ -20,13 +20,15 @@ import { RootState } from "@/data/store";
 
 interface Props {
   children: ReactElement<any, any>;
-  componentRef: RefObject<HTMLElement>;
   onDrag: () => void;
   onDragEnd: () => void;
 }
 
 export const DragWrapper = forwardRef(
-  ({ children, componentRef, onDrag, onDragEnd }: Props, ref: any) => {
+  (
+    { children, onDrag, onDragEnd }: Props,
+    ref: React.ForwardedRef<HTMLElement>
+  ) => {
     const dispatch = useDispatch();
 
     const {
@@ -58,14 +60,14 @@ export const DragWrapper = forwardRef(
         dispatch(setDraggedComponent(selectedPageComponentName));
     }, [isDragging]);
 
-    // useEffect(() => {
-    //   if (isDragging) {
-    //     onDrag();
-    //     return;
-    //   }
+    useEffect(() => {
+      if (isDragging) {
+        onDrag();
+        return;
+      }
 
-    //   onDragEnd();
-    // }, [isDragging]);
+      onDragEnd();
+    }, [isDragging]);
 
     return (
       <>
@@ -73,7 +75,7 @@ export const DragWrapper = forwardRef(
         {cloneElement(children, {
           ref: (el: any) => {
             drag(el);
-            ref(el);
+            // ref?.current = el;
           },
         })}
       </>

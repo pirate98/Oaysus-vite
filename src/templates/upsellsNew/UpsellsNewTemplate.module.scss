@@ -8,4 +8,7 @@
 .middle {
   flex-grow: 1;
   margin: 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -21,12 +21,19 @@ p {
     text-align: left;
   }
 }
+.MuiPopperUnstyled-root {
+  z-index: 2;
+}
 
 .MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
   box-shadow: $selectShadow;
   .MuiButtonBase-root.MuiMenuItem-root.Mui-selected {
     background: $primaryActive;
   }
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 // swiper
