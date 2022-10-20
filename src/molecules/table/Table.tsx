@@ -57,6 +57,7 @@ function stableSort<T>(
   array: readonly T[],
   comparator: (a: T, b: T) => number
 ) {
+  return array;
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -152,7 +153,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox"></TableCell>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -162,7 +163,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               "aria-label": "select all desserts",
             }}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -370,7 +371,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                               >
                                 <DragHandleSvg />
                               </TableCell>
-                              <TableCell padding="checkbox">
+                              {/* <TableCell padding="checkbox">
                                 <Checkbox
                                   color="primary"
                                   checked={isItemSelected}
@@ -378,7 +379,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                     "aria-labelledby": labelId,
                                   }}
                                 />
-                              </TableCell>
+                              </TableCell> */}
                               <TableCell
                                 component="th"
                                 id={labelId}
