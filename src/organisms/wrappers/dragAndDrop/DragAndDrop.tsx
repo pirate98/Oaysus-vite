@@ -28,8 +28,8 @@ interface Props {
   ) => JSX.Element;
   id: number | string;
   type: string;
-  extraDropTypes: string[];
-  extraDropTypesHandle: (content: any, id: any) => void;
+  extraDropTypes?: string[];
+  extraDropTypesHandle?: (content: any, id: any) => void;
   content: any[];
   contentUpdateAction: (arr: any[]) => AnyAction;
 }
@@ -42,7 +42,7 @@ export function DragAndDrop({
   type,
   content,
   contentUpdateAction,
-  extraDropTypes,
+  extraDropTypes = [],
   extraDropTypesHandle,
 }: // onDrop,
 Props) {
@@ -73,11 +73,13 @@ Props) {
       accept: [type, ...extraDropTypes],
       hover: (item: Item, monitor) => {
         // return if hovering over placeholder or itself
-        // console.log(id);
         if (item?.id === id || id === PLACEHOLDER_ID) return;
-
+        // console.log(item, id);
+        // console.log({ content });
         // return if placeholder is at the correct position
         const hoveredItemIndex = getIndex(content, id);
+        // console.log({ hoveredItemIndex });
+
         if (hoveredItemIndex === undefined) return;
 
         const placeHolderIndex = getIndex(content, PLACEHOLDER_ID);
@@ -92,8 +94,8 @@ Props) {
           (!elementShouldDropTop && placeHolderIndex === hoveredItemIndex + 1)
         )
           return;
-
         // console.log({ hoveredItemIndex, placeHolderIndex });
+
         // put placeholder into correct position
         let updatedContent = [...content];
         let dropIndex = hoveredItemIndex + (elementShouldDropTop ? 0 : 1);
@@ -108,7 +110,7 @@ Props) {
         const placeHolderContent = { id: PLACEHOLDER_ID };
 
         updatedContent.splice(dropIndex, 0, placeHolderContent);
-
+        console.log({ updatedContent });
         dispatch(contentUpdateAction(updatedContent));
       },
       drop: (item, monitor) => {
@@ -130,7 +132,7 @@ Props) {
         if (draggedItemIndex < placeHolderIndex) placeHolderIndex--;
 
         updatedContent.splice(placeHolderIndex, 1, component[0]);
-
+        console.log({ updatedContentDrop: updatedContent });
         dispatch(contentUpdateAction(updatedContent));
       },
       collect: (monitor) => {

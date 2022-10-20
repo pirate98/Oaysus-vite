@@ -1,3 +1,3 @@
 export * from "./isPointerAboveHalf";
-export * from "./getIndexes";
+export * from "./getIndex";
 export * from "./addComponentToBuilder";

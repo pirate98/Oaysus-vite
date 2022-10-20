@@ -1,6 +1,6 @@
 import { CONSTANT } from "@/data/constants";
 import { numerateTheName } from "../../../../helpers";
-import { getIndex } from "./getIndexes";
+import { getIndex } from "./getIndex";
 import * as builderComponents from "../../../builder/builderComponents";
 const _builderComponents: Record<any, any> = builderComponents;
 

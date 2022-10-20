@@ -23,6 +23,8 @@ import { CONSTANT } from "@/data/constants";
 import { Wrappers } from "@/organisms/upsells";
 import { DragHandleSvg } from "@/assets/svg";
 import { UpsellsData } from "@/organisms/upsells";
+import { Wrapper } from "../../organisms/wrappers";
+import { setUpsellsData } from "../../pages/upsells/upsellsSlice";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -74,7 +76,7 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "priority",
+    id: "id",
     numeric: false,
     disablePadding: true,
     label: "Priority",
@@ -195,10 +197,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 interface Props {
   enhancedToolbar: any;
   rows: UpsellsData[];
-  onDrop: () => void;
 }
 
-export function Table({ enhancedToolbar, rows, onDrop }: Props) {
+export function Table({ enhancedToolbar, rows }: Props) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof UpsellsData>("name");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
@@ -321,98 +322,118 @@ export function Table({ enhancedToolbar, rows, onDrop }: Props) {
                     const labelId = `enhanced-table-checkbox-${index}`;
 
                     return (
-                      <Wrappers.DragAndDrop id={row.priority} onDrop={onDrop}>
-                        {(dragRef, dropRef) => (
-                          <TableRow
-                            hover
-                            onClick={(event) => handleClick(event, row.name)}
-                            role="checkbox"
-                            aria-checked={isItemSelected}
-                            tabIndex={-1}
-                            key={row.name}
-                            selected={isItemSelected}
-                            sx={{
-                              "&.Mui-selected": {
-                                backgroundColor: variables.primaryLight,
-                                "&:hover": {
-                                  backgroundColor: variables.primaryActive,
-                                  // color: "white",
+                      <Wrapper.DragAndDrop
+                        id={row.id}
+                        content={rows}
+                        contentUpdateAction={setUpsellsData}
+                        key={row.id}
+                        type={"upsellsTable"}
+                      >
+                        {(drag, drop, dropRefForArea) =>
+                          row.id === CONSTANT.DND_PLACEHOLDER_ID ? (
+                            <TableRow>
+                              <TableCell
+                                colSpan={headCells.length}
+                                align="center"
+                              >
+                                DROP HERE
+                              </TableCell>
+                            </TableRow>
+                          ) : (
+                            <TableRow
+                              hover
+                              onClick={(event) => handleClick(event, row.name)}
+                              role="checkbox"
+                              aria-checked={isItemSelected}
+                              tabIndex={-1}
+                              key={row.name}
+                              selected={isItemSelected}
+                              sx={{
+                                "&.Mui-selected": {
+                                  backgroundColor: variables.primaryLight,
+                                  "&:hover": {
+                                    backgroundColor: variables.primaryActive,
+                                    // color: "white",
+                                  },
                                 },
-                              },
-                            }}
-                            ref={dropRef}
-                          >
-                            <TableCell
-                              padding="checkbox"
-                              sx={{ paddingLeft: "19px !important" }}
-                              ref={dragRef}
+                              }}
+                              ref={(el) => {
+                                drop(el);
+                                dropRefForArea.current = el;
+                              }}
                             >
-                              <DragHandleSvg />
-                            </TableCell>
-                            <TableCell padding="checkbox">
-                              <Checkbox
-                                color="primary"
-                                checked={isItemSelected}
-                                inputProps={{
-                                  "aria-labelledby": labelId,
-                                }}
-                              />
-                            </TableCell>
-                            <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
-                              align="center"
-                            >
-                              {row.priority}
-                            </TableCell>
-                            <TableCell
-                              align="left"
-                              sx={{ display: "flex", alignItems: "center" }}
-                            >
-                              <Box
-                                // className={styles.imageDiv}
-                                sx={{
-                                  backgroundImage: `url("${row.image}")`,
-                                  backgroundSize: row.image
-                                    ? "contain"
-                                    : "unset",
-                                  height: "40px",
-                                  width: "40px",
-                                  backgroundRepeat: "no-repeat",
-                                  backgroundPosition: "center",
-                                  margin: "8px 16px 8px 0",
-                                }}
-                              ></Box>
-                              <H5 weight={500}>{row.name}</H5>
-                            </TableCell>
-                            <TableCell align="left">
-                              {row.status ? (
-                                <Badge variant="green" dot={false}>
-                                  Active
-                                </Badge>
-                              ) : (
-                                <Badge variant="gray" dot={false}>
-                                  Inactive
-                                </Badge>
-                              )}
-                            </TableCell>
-                            <TableCell align="right">{row.views}</TableCell>
-                            <TableCell align="right">
-                              {row.conversion}
-                            </TableCell>
-                            <TableCell align="right">{row.total}</TableCell>
-                            <TableCell align="right">{row.visit}</TableCell>
-                            <TableCell align="right">
-                              <Switch />
-                            </TableCell>
-                            <TableCell align="right">
-                              <Select.Upsell options={options} />
-                            </TableCell>
-                          </TableRow>
-                        )}
-                      </Wrappers.DragAndDrop>
+                              <TableCell
+                                padding="checkbox"
+                                sx={{ paddingLeft: "19px !important" }}
+                                ref={drag}
+                              >
+                                <DragHandleSvg />
+                              </TableCell>
+                              <TableCell padding="checkbox">
+                                <Checkbox
+                                  color="primary"
+                                  checked={isItemSelected}
+                                  inputProps={{
+                                    "aria-labelledby": labelId,
+                                  }}
+                                />
+                              </TableCell>
+                              <TableCell
+                                component="th"
+                                id={labelId}
+                                scope="row"
+                                padding="none"
+                                align="center"
+                              >
+                                {row.id}
+                              </TableCell>
+                              <TableCell
+                                align="left"
+                                sx={{ display: "flex", alignItems: "center" }}
+                              >
+                                <Box
+                                  // className={styles.imageDiv}
+                                  sx={{
+                                    backgroundImage: `url("${row.image}")`,
+                                    backgroundSize: row.image
+                                      ? "contain"
+                                      : "unset",
+                                    height: "40px",
+                                    width: "40px",
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundPosition: "center",
+                                    margin: "8px 16px 8px 0",
+                                  }}
+                                ></Box>
+                                <H5 weight={500}>{row.name}</H5>
+                              </TableCell>
+                              <TableCell align="left">
+                                {row.status ? (
+                                  <Badge variant="green" dot={false}>
+                                    Active
+                                  </Badge>
+                                ) : (
+                                  <Badge variant="gray" dot={false}>
+                                    Inactive
+                                  </Badge>
+                                )}
+                              </TableCell>
+                              <TableCell align="right">{row.views}</TableCell>
+                              <TableCell align="right">
+                                {row.conversion}
+                              </TableCell>
+                              <TableCell align="right">{row.total}</TableCell>
+                              <TableCell align="right">{row.visit}</TableCell>
+                              <TableCell align="right">
+                                <Switch />
+                              </TableCell>
+                              <TableCell align="right">
+                                <Select.Upsell options={options} />
+                              </TableCell>
+                            </TableRow>
+                          )
+                        }
+                      </Wrapper.DragAndDrop>
                     );
                   })}
                 {emptyRows > 0 && (
