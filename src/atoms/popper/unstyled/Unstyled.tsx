@@ -29,8 +29,10 @@ export function Unstyled({ children, button }) {
 
   const Button = button;
 
+  const handleClickAway = () => setAnchorEl(null);
+
   return (
-    <ClickAwayListener onClickAway={handleClick}>
+    <ClickAwayListener onClickAway={handleClickAway}>
       <div>
         <section aria-describedby={id} onClick={handleClick}>
           <Button type="button">Toggle Popper</Button>
