@@ -78,7 +78,7 @@ Props) {
   );
 
   useEffect(() => {
-    if (isDragging && !isOverProvider) removePlaceholder();
+    if (!isOverProvider) removePlaceholder();
   }, [isOverProvider]);
 
   const dropRefForArea = useRef<HTMLElement | undefined>();
