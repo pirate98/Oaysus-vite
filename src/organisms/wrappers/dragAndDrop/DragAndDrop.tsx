@@ -5,6 +5,7 @@ import {
   RefObject,
   MutableRefObject,
   useCallback,
+  useContext,
 } from "react";
 
 import { AnyAction } from "@reduxjs/toolkit";
@@ -19,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { addComponentToBuilder, getIndex, isPointerAboveHalf } from "./helpers";
 import { CONSTANT } from "@/data/constants";
 import { useDebounceHandler } from "../../../hooks";
+import { DndContext } from "../DropZoneDetectionProvider/DropZoneDetectionProvider";
 
 const PLACEHOLDER_ID = CONSTANT.DND_PLACEHOLDER_ID;
 
@@ -29,8 +31,6 @@ interface Props {
     dropRefForArea: MutableRefObject<HTMLElement | undefined>
   ) => JSX.Element;
   id: number | string;
-  type: string;
-  extraDropTypes?: string[];
   extraDropTypesHandle?: (content: any, id: any) => void;
   content: any[];
   contentUpdateAction: (arr: any[]) => AnyAction;
@@ -41,17 +41,19 @@ type Item = Record<any, any>;
 export function DragAndDrop({
   children,
   id,
-  type,
   content,
   contentUpdateAction,
-  extraDropTypes = [],
   extraDropTypesHandle,
 }: // onDrop,
 Props) {
+  const context = useContext(DndContext);
+
+  const { isOver: isOverProvider, type, extraDropTypes } = context;
+
   const dispatch = useDispatch();
 
   const removePlaceholder = () => {
-    console.log("removing placeholder");
+    // console.log("removing placeholder");
     const contentWithoutPlaceHolder = content?.filter(
       (item: Item) => item.id !== PLACEHOLDER_ID
     );
@@ -75,18 +77,9 @@ Props) {
     [content]
   );
 
-  // const [hoveringOnCorrectZone, setHoveringOnCorrectZone] = useState(true);
-
-  // useEffect(() => {
-  // console.log("zone update", id, hoveringOnCorrectZone);
-  //   if (!hoveringOnCorrectZone) {
-  //     removePlaceholder();
-  //     debouncerForPlaceholder(true);
-  //   }
-  // }, [hoveringOnCorrectZone]);
-
-  // const debouncerForPlaceholder = useDebounceHandler(setHoveringOnCorrectZone);
-  // const memoDebouncer = useCallback(debouncerForPlaceholder, []);
+  useEffect(() => {
+    if (isDragging && !isOverProvider) removePlaceholder();
+  }, [isOverProvider]);
 
   const dropRefForArea = useRef<HTMLElement | undefined>();
   const [{ isOver }, drop] = useDrop(
@@ -118,7 +111,7 @@ Props) {
         )
           return;
         // console.log({ hoveredItemIndex, placeHolderIndex });
-        console.log("placeholder is not correct");
+        // console.log("placeholder is not correct");
 
         // put placeholder into correct position
         let updatedContent = [...content];
