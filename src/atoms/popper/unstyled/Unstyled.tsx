@@ -2,6 +2,7 @@ import * as React from "react";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled, Theme } from "@mui/system";
 import Box from "@mui/material/Box";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import { CONSTANT } from "@/data/constants";
 
@@ -29,15 +30,17 @@ export function Unstyled({ children, button }) {
   const Button = button;
 
   return (
-    <div>
-      <section aria-describedby={id} onClick={handleClick}>
-        <Button type="button">Toggle Popper</Button>
-      </section>
-      <PopperUnstyled id={id} open={open} anchorEl={anchorEl}>
-        <StyledPopperDiv>{children}</StyledPopperDiv>
-        {/* <Box sx={{ ...styles.contentDiv }}>{children}</Box> */}
-      </PopperUnstyled>
-    </div>
+    <ClickAwayListener onClickAway={handleClick}>
+      <div>
+        <section aria-describedby={id} onClick={handleClick}>
+          <Button type="button">Toggle Popper</Button>
+        </section>
+        <PopperUnstyled id={id} open={open} anchorEl={anchorEl}>
+          <StyledPopperDiv>{children}</StyledPopperDiv>
+          {/* <Box sx={{ ...styles.contentDiv }}>{children}</Box> */}
+        </PopperUnstyled>
+      </div>
+    </ClickAwayListener>
   );
 }
 
