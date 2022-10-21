@@ -10,4 +10,4 @@ export * from "./input";
 export * from "./customDateRangePickerDay/CustomDateRangePickerDay";
 export * from "./card";
 export * from "./dataGrid/DataGrid";
-export * from "./table/Table";
+export * from "../organisms/upsells/table/Table";

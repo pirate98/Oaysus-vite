@@ -44,7 +44,7 @@ export const upsellsSlice = createSlice({
     },
     deleteTrigger: (state, action) => {
       const { groupId, conditionId } = action.payload;
-      console.log({ groupId, conditionId });
+      // console.log({ groupId, conditionId });
       state.triggers[groupId] = state.triggers[groupId].filter(
         (undefined, idx: number) => idx !== conditionId
       );
@@ -59,7 +59,7 @@ export const upsellsSlice = createSlice({
       state.dateSelectionRange = action.payload;
     },
     setUpsellsData: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.upsellsData = action.payload;
     },
   },

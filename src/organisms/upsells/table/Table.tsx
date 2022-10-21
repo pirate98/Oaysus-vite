@@ -23,10 +23,11 @@ import { CONSTANT } from "@/data/constants";
 import { Wrappers } from "@/organisms/upsells";
 import { DragHandleSvg } from "@/assets/svg";
 import { UpsellsData } from "@/organisms/upsells";
-import { Wrapper } from "../../organisms/wrappers";
-import { setUpsellsData } from "../../pages/upsells/upsellsSlice";
-import { RefWrapper } from "../../organisms/builder/wrappers";
-import { DropZoneDetectionProvider } from "../../organisms/wrappers/DropZoneDetectionProvider/DropZoneDetectionProvider";
+import { Wrapper } from "../../wrappers";
+import { setUpsellsData } from "../../../pages/upsells/upsellsSlice";
+import { RefWrapper } from "../../builder/wrappers";
+import { DropZoneDetectionProvider } from "../../wrappers/DropZoneDetectionProvider/DropZoneDetectionProvider";
+import { TableEditMenu } from "../tableEditMenu/TableEditMenu";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -120,8 +121,8 @@ const headCells: readonly HeadCell[] = [
     disablePadding: false,
     label: "$ / Visit",
   },
-  { id: "key1" },
-  { id: "key2" },
+  {},
+  {},
 ];
 
 interface EnhancedTableProps {
@@ -168,27 +169,42 @@ function EnhancedTableHead(props: EnhancedTableProps) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align={headCell.numeric ? "right" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             {headCell.id && (
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : "asc"}
-                onClick={createSortHandler(headCell.id)}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: headCell.numeric ? "auto" : "fit-content",
+                  margin: "auto",
+                }}
               >
                 <H5 weight={500} height={20}>
                   {headCell.label}
                 </H5>
-                {orderBy === headCell.id ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === "desc"
-                      ? "sorted descending"
-                      : "sorted ascending"}
-                  </Box>
-                ) : null}
-              </TableSortLabel>
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? order : "asc"}
+                  onClick={createSortHandler(headCell.id)}
+                  sx={{
+                    position: "absolute",
+                    right: "-25px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    // background: "black",
+                  }}
+                >
+                  {orderBy === headCell.id ? (
+                    <Box component="span" sx={visuallyHidden}>
+                      {order === "desc"
+                        ? "sorted descending"
+                        : "sorted ascending"}
+                    </Box>
+                  ) : null}
+                </TableSortLabel>
+              </Box>
             )}
           </TableCell>
         ))}
@@ -269,21 +285,6 @@ export function Table({ enhancedToolbar, rows }: Props) {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const options = [
-    {
-      label: "Edit",
-    },
-    {
-      label: "Edit priority",
-    },
-    {
-      label: "Duplicate",
-    },
-    {
-      label: "Delete",
-    },
-  ];
-
   const EnhancedToolbar = enhancedToolbar;
 
   return (
@@ -345,9 +346,9 @@ export function Table({ enhancedToolbar, rows }: Props) {
                             ) : (
                               <TableRow
                                 hover
-                                onClick={(event) =>
-                                  handleClick(event, row.name)
-                                }
+                                // onClick={(event) =>
+                                //   handleClick(event, row.name)
+                                // }
                                 role="checkbox"
                                 aria-checked={isItemSelected}
                                 tabIndex={-1}
@@ -393,7 +394,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                   padding="none"
                                   align="center"
                                 >
-                                  {row.id}
+                                  {index}
                                 </TableCell>
                                 <TableCell
                                   align="left"
@@ -415,16 +416,23 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                   ></Box>
                                   <H5 weight={500}>{row.name}</H5>
                                 </TableCell>
-                                <TableCell align="left">
-                                  {row.status ? (
-                                    <Badge variant="green" dot={false}>
-                                      Active
-                                    </Badge>
-                                  ) : (
-                                    <Badge variant="gray" dot={false}>
-                                      Inactive
-                                    </Badge>
-                                  )}
+                                <TableCell align="center">
+                                  <Box
+                                    sx={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    {row.status ? (
+                                      <Badge variant="green" dot={false}>
+                                        Active
+                                      </Badge>
+                                    ) : (
+                                      <Badge variant="gray" dot={false}>
+                                        Inactive
+                                      </Badge>
+                                    )}
+                                  </Box>
                                 </TableCell>
                                 <TableCell align="right">{row.views}</TableCell>
                                 <TableCell align="right">
@@ -436,7 +444,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                   <Switch />
                                 </TableCell>
                                 <TableCell align="right">
-                                  <Select.Upsell options={options} />
+                                  <TableEditMenu />
                                 </TableCell>
                               </TableRow>
                             )

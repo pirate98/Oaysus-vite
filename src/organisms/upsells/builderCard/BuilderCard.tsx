@@ -139,6 +139,6 @@ const selectOptions = () => {
     { label: "Edit offer page", value: "" },
     { label: "Create split test", value: "" },
     { label: "Change product", value: "" },
-    { label: "Delete offer", value: "", className: classes.textRed },
+    { label: "Delete offer", value: "", className: "textRed" },
   ];
 };
