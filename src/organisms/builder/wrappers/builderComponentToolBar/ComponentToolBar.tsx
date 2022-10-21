@@ -221,7 +221,7 @@ export function ComponentToolBar({
                   onDragEnd={onDragEnd}
                 > */}
                 <RefWrapper ref={dragRef}>
-                  <ToolbarDrag />
+                  <ToolbarDrag className={classes.dragIcon} />
                 </RefWrapper>
                 {/* </DragWrapper> */}
               </HiddenWrapper>

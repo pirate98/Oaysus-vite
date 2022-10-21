@@ -4,6 +4,7 @@ import {
   useRef,
   RefObject,
   MutableRefObject,
+  useCallback,
 } from "react";
 
 import { AnyAction } from "@reduxjs/toolkit";
@@ -17,6 +18,7 @@ import { useDispatch } from "react-redux";
 
 import { addComponentToBuilder, getIndex, isPointerAboveHalf } from "./helpers";
 import { CONSTANT } from "@/data/constants";
+import { useDebounceHandler } from "../../../hooks";
 
 const PLACEHOLDER_ID = CONSTANT.DND_PLACEHOLDER_ID;
 
@@ -48,30 +50,51 @@ export function DragAndDrop({
 Props) {
   const dispatch = useDispatch();
 
-  const [collected, drag, dragPreview] = useDrag(
+  const removePlaceholder = () => {
+    console.log("removing placeholder");
+    const contentWithoutPlaceHolder = content?.filter(
+      (item: Item) => item.id !== PLACEHOLDER_ID
+    );
+
+    dispatch(contentUpdateAction(contentWithoutPlaceHolder));
+  };
+
+  const [{ isDragging }, drag, dragPreview] = useDrag(
     () => ({
       type,
       item: { id, type },
       end: (item, monitor) => {
         const didDrop = monitor.didDrop();
 
-        if (didDrop) return;
-
-        const contentWithoutPlaceHolder = content?.filter(
-          (item: Item) => item.id !== PLACEHOLDER_ID
-        );
-
-        // dispatch(contentUpdateAction(contentWithoutPlaceHolder));
+        if (!didDrop) removePlaceholder();
       },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
     }),
     [content]
   );
+
+  const [hoveringOnCorrectZone, setHoveringOnCorrectZone] = useState(true);
+
+  // useEffect(() => {
+  //   console.log("removing placeholder", id, hoveringOnCorrectZone);
+  //   if (!hoveringOnCorrectZone) {
+  //     removePlaceholder();
+  //     debouncerForPlaceholder(true);
+  //   }
+  // }, [hoveringOnCorrectZone]);
+
+  // const debouncerForPlaceholder = useDebounceHandler(removePlaceholder);
+  // const memoDebouncer = useCallback(debouncerForPlaceholder, []);
 
   const dropRefForArea = useRef<HTMLElement | undefined>();
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: [type, ...extraDropTypes],
       hover: (item: Item, monitor) => {
+        // console.log("hovering", id);
+        // debouncerForPlaceholder();
         // return if hovering over placeholder or itself
         if (item?.id === id || id === PLACEHOLDER_ID) return;
         // console.log(item, id);
@@ -88,13 +111,14 @@ Props) {
           dropRefForArea.current,
           monitor?.getClientOffset()?.y
         );
-
+        // console.log({ placeHolderIndex });
         if (
           (elementShouldDropTop && placeHolderIndex === hoveredItemIndex - 1) ||
           (!elementShouldDropTop && placeHolderIndex === hoveredItemIndex + 1)
         )
           return;
         // console.log({ hoveredItemIndex, placeHolderIndex });
+        console.log("placeholder is not correct");
 
         // put placeholder into correct position
         let updatedContent = [...content];
@@ -110,12 +134,13 @@ Props) {
         const placeHolderContent = { id: PLACEHOLDER_ID };
 
         updatedContent.splice(dropIndex, 0, placeHolderContent);
-        console.log({ updatedContent });
+        // console.log({ updatedContent });
         dispatch(contentUpdateAction(updatedContent));
+        // debouncerForPlaceholder();
       },
       drop: (item, monitor) => {
         if (extraDropTypes.includes(item.type)) {
-          extraDropTypesHandle(content, item.id);
+          extraDropTypesHandle && extraDropTypesHandle(content, item.id);
           return;
         }
 
@@ -145,16 +170,17 @@ Props) {
     [content]
   );
 
-  useEffect(() => {
-    // if (isOver)
-    // remove place holder
-    // return () => {
-    //   const contentWithoutPlaceHolder = content?.filter(
-    //     (item: Item) => item.id !== PLACEHOLDER_ID
-    //   );
-    //   dispatch(contentUpdateAction(contentWithoutPlaceHolder));
-    // };
-  }, [isOver]);
+  // useEffect(() => {
+  // isDragging && memoDebouncer();
+  // if (isOver)
+  // remove place holder
+  // return () => {
+  //   const contentWithoutPlaceHolder = content?.filter(
+  //     (item: Item) => item.id !== PLACEHOLDER_ID
+  //   );
+  //   dispatch(contentUpdateAction(contentWithoutPlaceHolder));
+  // };
+  // }, [isOver, memoDebouncer]);
 
   return children(drag, drop, dropRefForArea);
 }

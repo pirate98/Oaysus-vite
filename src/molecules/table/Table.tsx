@@ -366,7 +366,10 @@ export function Table({ enhancedToolbar, rows }: Props) {
                             >
                               <TableCell
                                 padding="checkbox"
-                                sx={{ paddingLeft: "19px !important" }}
+                                sx={{
+                                  paddingLeft: "19px !important",
+                                  cursor: "move",
+                                }}
                                 ref={drag}
                               >
                                 <DragHandleSvg />

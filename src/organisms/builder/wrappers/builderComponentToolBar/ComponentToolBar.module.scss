@@ -43,5 +43,9 @@
       opacity: 1;
       // background: antiquewhite;
     }
+
+    &.dragIcon {
+      cursor: move;
+    }
   }
 }
