@@ -1,7 +1,7 @@
 import { CONSTANT } from "@/data/constants";
 
 export type UpsellsData = {
-  priority: number;
+  id: number;
   image: string;
   name: string;
   status: boolean;
@@ -12,7 +12,7 @@ export type UpsellsData = {
 };
 
 function createData(
-  priority: number,
+  id: number,
   image: string,
   name: string,
   status: boolean,
@@ -22,7 +22,7 @@ function createData(
   visit: number
 ): UpsellsData {
   return {
-    priority,
+    id,
     image: image ? image : CONSTANT.IMAGE_PLACEHOLDER,
     name,
     status,

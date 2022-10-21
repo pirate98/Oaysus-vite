@@ -6,7 +6,10 @@ export const useDebounceHandler = (func) => {
   return (...args) => {
     clearTimeout(intervalId);
 
-    const _intervalId = setTimeout(() => func.apply(this, args), 500);
+    const _intervalId = setTimeout(() => {
+      // console.log("apply debounce handler");
+      func.apply(this, args);
+    }, 1000);
     setIntervalId(_intervalId);
   };
 };

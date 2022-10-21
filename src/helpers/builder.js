@@ -122,15 +122,15 @@ export const removeDigitsAndReturnComponentName = (name, nameSuffix = "") => {
 };
 
 // Return Incentive1_xx from Exclusive
-export const numerateTheName = (pageComponents = [{ name: "" }], name = "") => {
+export const numerateTheName = (pageComponents = [{ id: "" }], id = "") => {
   const biggestNumeratorFromNames = pageComponents.reduce((prev, cur) => {
-    if (!cur.name.includes(name)) return prev;
-    const nameNumerator = parseInt(cur.name.split("_")[1]);
+    if (!cur.id.includes(id)) return prev;
+    const nameNumerator = parseInt(cur.id.split("_")[1]);
     return nameNumerator > prev ? nameNumerator : prev;
   }, 0);
 
   // console.log({ biggestNumeratorFromNames });
-  return name + "_" + (biggestNumeratorFromNames + 1);
+  return id + "_" + (biggestNumeratorFromNames + 1);
 };
 
 export const removePx = (value) => {
@@ -165,7 +165,7 @@ export const builderComponentMaker = (componentsToAddOnInitialLoad) => {
 
     const component = {
       ...json,
-      name: numericalComponentName,
+      id: numericalComponentName,
     };
 
     // Detect component names like this: `Feature-switchAlignment` to swtich image position

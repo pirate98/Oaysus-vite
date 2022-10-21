@@ -1,11 +1,16 @@
 import { useEffect } from "react";
 
 import { useDrag } from "react-dnd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./.module.scss";
 import componentsData from "@/data/componentsData";
-import { removeComponentFromPage } from "@/pages/builder/builderSlice";
+import {
+  removeComponentFromPage,
+  setPageComponents,
+} from "@/pages/builder/builderSlice";
+import { RootState } from "../../../../data/store";
+import { CONSTANT } from "@/data/constants";
 
 interface Props {
   children?: React.ReactNode;
@@ -19,21 +24,32 @@ export function BuilderButtonWrapper({
   hover = false,
 }: Props) {
   const dispatch = useDispatch();
+
+  const {
+    builder: { pageComponents },
+  } = useSelector((state: RootState) => state);
   // console.log({ title: title.text });
   const [{ isDragging }, drag] = useDrag(() => ({
     // what type of item this to determine if a drop target accepts it
     type: componentsData.types.BUILDER_COMPONENT,
     // data of the item to be available to the drop methods
-    item: { name: title.text },
+    item: { id: title.text, type: componentsData.types.BUILDER_COMPONENT },
     // method to collect additional data for drop handling like whether is currently being dragged
     collect: (monitor) => {
       return {
         isDragging: !!monitor.isDragging(),
       };
     },
-    end: (monitor) => {
-      // console.log({ monitor });
-      dispatch(removeComponentFromPage(componentsData.BLANK_COMPONENT_NAME));
+    end: (item, monitor) => {
+      const didDrop = monitor.didDrop();
+
+      if (didDrop) return;
+
+      const contentWithoutPlaceHolder = pageComponents?.filter(
+        (item: any) => item.id !== CONSTANT.DND_PLACEHOLDER_ID
+      );
+
+      dispatch(setPageComponents(contentWithoutPlaceHolder));
     },
   }));
 

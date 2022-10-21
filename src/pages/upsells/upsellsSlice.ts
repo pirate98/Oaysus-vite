@@ -59,6 +59,7 @@ export const upsellsSlice = createSlice({
       state.dateSelectionRange = action.payload;
     },
     setUpsellsData: (state, action) => {
+      console.log(action.payload);
       state.upsellsData = action.payload;
     },
   },

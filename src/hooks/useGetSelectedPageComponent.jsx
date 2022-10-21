@@ -6,7 +6,7 @@ export function useGetSelectedPageComponent() {
   } = useSelector((state) => state);
 
   let component = pageComponents.filter(
-    (comp) => comp.name === selectedPageComponentName
+    (comp) => comp.id === selectedPageComponentName
   );
 
   // console.log(component[0].name);

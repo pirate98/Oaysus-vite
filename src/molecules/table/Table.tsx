@@ -23,6 +23,10 @@ import { CONSTANT } from "@/data/constants";
 import { Wrappers } from "@/organisms/upsells";
 import { DragHandleSvg } from "@/assets/svg";
 import { UpsellsData } from "@/organisms/upsells";
+import { Wrapper } from "../../organisms/wrappers";
+import { setUpsellsData } from "../../pages/upsells/upsellsSlice";
+import { RefWrapper } from "../../organisms/builder/wrappers";
+import { DropZoneDetectionProvider } from "../../organisms/wrappers/DropZoneDetectionProvider/DropZoneDetectionProvider";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -54,6 +58,7 @@ function stableSort<T>(
   array: readonly T[],
   comparator: (a: T, b: T) => number
 ) {
+  return array;
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -74,7 +79,7 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "priority",
+    id: "id",
     numeric: false,
     disablePadding: true,
     label: "Priority",
@@ -115,8 +120,8 @@ const headCells: readonly HeadCell[] = [
     disablePadding: false,
     label: "$ / Visit",
   },
-  {},
-  {},
+  { id: "key1" },
+  { id: "key2" },
 ];
 
 interface EnhancedTableProps {
@@ -149,7 +154,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox"></TableCell>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -159,7 +164,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               "aria-label": "select all desserts",
             }}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -195,10 +200,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 interface Props {
   enhancedToolbar: any;
   rows: UpsellsData[];
-  onDrop: () => void;
 }
 
-export function Table({ enhancedToolbar, rows, onDrop }: Props) {
+export function Table({ enhancedToolbar, rows }: Props) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof UpsellsData>("name");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
@@ -291,142 +295,168 @@ export function Table({ enhancedToolbar, rows, onDrop }: Props) {
       >
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedToolbar numSelected={selected.length} />
-          <TableContainer>
-            <MuiTable
-              sx={{
-                minWidth: 750,
-                ".MuiCheckbox-root.MuiCheckbox-indeterminate, .MuiCheckbox-root.Mui-checked":
-                  {
-                    color: variables.primaryColor,
-                  },
-              }}
-              aria-labelledby="tableTitle"
-              size={dense ? "small" : "medium"}
-            >
-              <EnhancedTableHead
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onSelectAllClick={handleSelectAllClick}
-                onRequestSort={handleRequestSort}
-                rowCount={rows.length}
-              />
-              <TableBody>
-                {/* if you don't need to support IE11, you can replace the `stableSort` call with:
+          <DropZoneDetectionProvider type={"upsellsTable"}>
+            <TableContainer>
+              <MuiTable
+                sx={{
+                  minWidth: 750,
+                  ".MuiCheckbox-root.MuiCheckbox-indeterminate, .MuiCheckbox-root.Mui-checked":
+                    {
+                      color: variables.primaryColor,
+                    },
+                }}
+                aria-labelledby="tableTitle"
+                size={dense ? "small" : "medium"}
+              >
+                <EnhancedTableHead
+                  numSelected={selected.length}
+                  order={order}
+                  orderBy={orderBy}
+                  onSelectAllClick={handleSelectAllClick}
+                  onRequestSort={handleRequestSort}
+                  rowCount={rows.length}
+                />
+                <TableBody>
+                  {/* if you don't need to support IE11, you can replace the `stableSort` call with:
               rows.slice().sort(getComparator(order, orderBy)) */}
-                {stableSort<UpsellsData>(rows, getComparator(order, orderBy))
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    const isItemSelected = isSelected(row.name);
-                    const labelId = `enhanced-table-checkbox-${index}`;
+                  {stableSort<UpsellsData>(rows, getComparator(order, orderBy))
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      const isItemSelected = isSelected(row.name);
+                      const labelId = `enhanced-table-checkbox-${index}`;
 
-                    return (
-                      <Wrappers.DragAndDrop id={row.priority} onDrop={onDrop}>
-                        {(dragRef, dropRef) => (
-                          <TableRow
-                            hover
-                            onClick={(event) => handleClick(event, row.name)}
-                            role="checkbox"
-                            aria-checked={isItemSelected}
-                            tabIndex={-1}
-                            key={row.name}
-                            selected={isItemSelected}
-                            sx={{
-                              "&.Mui-selected": {
-                                backgroundColor: variables.primaryLight,
-                                "&:hover": {
-                                  backgroundColor: variables.primaryActive,
-                                  // color: "white",
-                                },
-                              },
-                            }}
-                            ref={dropRef}
-                          >
-                            <TableCell
-                              padding="checkbox"
-                              sx={{ paddingLeft: "19px !important" }}
-                              ref={dragRef}
-                            >
-                              <DragHandleSvg />
-                            </TableCell>
-                            <TableCell padding="checkbox">
-                              <Checkbox
-                                color="primary"
-                                checked={isItemSelected}
-                                inputProps={{
-                                  "aria-labelledby": labelId,
-                                }}
-                              />
-                            </TableCell>
-                            <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
-                              align="center"
-                            >
-                              {row.priority}
-                            </TableCell>
-                            <TableCell
-                              align="left"
-                              sx={{ display: "flex", alignItems: "center" }}
-                            >
-                              <Box
-                                // className={styles.imageDiv}
+                      return (
+                        <Wrapper.DragAndDrop
+                          id={row.id}
+                          content={rows}
+                          contentUpdateAction={setUpsellsData}
+                          key={row.id}
+                        >
+                          {(drag, drop, dropRefForArea) =>
+                            row.id === CONSTANT.DND_PLACEHOLDER_ID ? (
+                              <TableRow ref={drop}>
+                                <TableCell
+                                  colSpan={headCells.length}
+                                  align="center"
+                                >
+                                  DROP HERE
+                                </TableCell>
+                              </TableRow>
+                            ) : (
+                              <TableRow
+                                hover
+                                onClick={(event) =>
+                                  handleClick(event, row.name)
+                                }
+                                role="checkbox"
+                                aria-checked={isItemSelected}
+                                tabIndex={-1}
+                                key={row.name}
+                                selected={isItemSelected}
                                 sx={{
-                                  backgroundImage: `url("${row.image}")`,
-                                  backgroundSize: row.image
-                                    ? "contain"
-                                    : "unset",
-                                  height: "40px",
-                                  width: "40px",
-                                  backgroundRepeat: "no-repeat",
-                                  backgroundPosition: "center",
-                                  margin: "8px 16px 8px 0",
+                                  "&.Mui-selected": {
+                                    backgroundColor: variables.primaryLight,
+                                    "&:hover": {
+                                      backgroundColor: variables.primaryActive,
+                                      // color: "white",
+                                    },
+                                  },
                                 }}
-                              ></Box>
-                              <H5 weight={500}>{row.name}</H5>
-                            </TableCell>
-                            <TableCell align="left">
-                              {row.status ? (
-                                <Badge variant="green" dot={false}>
-                                  Active
-                                </Badge>
-                              ) : (
-                                <Badge variant="gray" dot={false}>
-                                  Inactive
-                                </Badge>
-                              )}
-                            </TableCell>
-                            <TableCell align="right">{row.views}</TableCell>
-                            <TableCell align="right">
-                              {row.conversion}
-                            </TableCell>
-                            <TableCell align="right">{row.total}</TableCell>
-                            <TableCell align="right">{row.visit}</TableCell>
-                            <TableCell align="right">
-                              <Switch />
-                            </TableCell>
-                            <TableCell align="right">
-                              <Select.Upsell options={options} />
-                            </TableCell>
-                          </TableRow>
-                        )}
-                      </Wrappers.DragAndDrop>
-                    );
-                  })}
-                {emptyRows > 0 && (
-                  <TableRow
-                    style={{
-                      height: (dense ? 33 : 53) * emptyRows,
-                    }}
-                  >
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
-            </MuiTable>
-          </TableContainer>
+                                ref={(el) => {
+                                  drop(el);
+                                  dropRefForArea.current = el;
+                                }}
+                              >
+                                <TableCell
+                                  padding="checkbox"
+                                  sx={{
+                                    paddingLeft: "19px !important",
+                                    cursor: "move",
+                                  }}
+                                  ref={drag}
+                                >
+                                  <DragHandleSvg />
+                                </TableCell>
+                                {/* <TableCell padding="checkbox">
+                                <Checkbox
+                                  color="primary"
+                                  checked={isItemSelected}
+                                  inputProps={{
+                                    "aria-labelledby": labelId,
+                                  }}
+                                />
+                              </TableCell> */}
+                                <TableCell
+                                  component="th"
+                                  id={labelId}
+                                  scope="row"
+                                  padding="none"
+                                  align="center"
+                                >
+                                  {row.id}
+                                </TableCell>
+                                <TableCell
+                                  align="left"
+                                  sx={{ display: "flex", alignItems: "center" }}
+                                >
+                                  <Box
+                                    // className={styles.imageDiv}
+                                    sx={{
+                                      backgroundImage: `url("${row.image}")`,
+                                      backgroundSize: row.image
+                                        ? "contain"
+                                        : "unset",
+                                      height: "40px",
+                                      width: "40px",
+                                      backgroundRepeat: "no-repeat",
+                                      backgroundPosition: "center",
+                                      margin: "8px 16px 8px 0",
+                                    }}
+                                  ></Box>
+                                  <H5 weight={500}>{row.name}</H5>
+                                </TableCell>
+                                <TableCell align="left">
+                                  {row.status ? (
+                                    <Badge variant="green" dot={false}>
+                                      Active
+                                    </Badge>
+                                  ) : (
+                                    <Badge variant="gray" dot={false}>
+                                      Inactive
+                                    </Badge>
+                                  )}
+                                </TableCell>
+                                <TableCell align="right">{row.views}</TableCell>
+                                <TableCell align="right">
+                                  {row.conversion}
+                                </TableCell>
+                                <TableCell align="right">{row.total}</TableCell>
+                                <TableCell align="right">{row.visit}</TableCell>
+                                <TableCell align="right">
+                                  <Switch />
+                                </TableCell>
+                                <TableCell align="right">
+                                  <Select.Upsell options={options} />
+                                </TableCell>
+                              </TableRow>
+                            )
+                          }
+                        </Wrapper.DragAndDrop>
+                      );
+                    })}
+                  {emptyRows > 0 && (
+                    <TableRow
+                      style={{
+                        height: (dense ? 33 : 53) * emptyRows,
+                      }}
+                    >
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+              </MuiTable>
+            </TableContainer>
+          </DropZoneDetectionProvider>
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
