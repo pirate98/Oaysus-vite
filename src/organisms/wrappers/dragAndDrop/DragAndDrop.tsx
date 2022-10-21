@@ -75,17 +75,17 @@ Props) {
     [content]
   );
 
-  const [hoveringOnCorrectZone, setHoveringOnCorrectZone] = useState(true);
+  // const [hoveringOnCorrectZone, setHoveringOnCorrectZone] = useState(true);
 
   // useEffect(() => {
-  //   console.log("removing placeholder", id, hoveringOnCorrectZone);
+  // console.log("zone update", id, hoveringOnCorrectZone);
   //   if (!hoveringOnCorrectZone) {
   //     removePlaceholder();
   //     debouncerForPlaceholder(true);
   //   }
   // }, [hoveringOnCorrectZone]);
 
-  // const debouncerForPlaceholder = useDebounceHandler(removePlaceholder);
+  // const debouncerForPlaceholder = useDebounceHandler(setHoveringOnCorrectZone);
   // const memoDebouncer = useCallback(debouncerForPlaceholder, []);
 
   const dropRefForArea = useRef<HTMLElement | undefined>();

@@ -5,12 +5,13 @@ import classes from "./HorizontalDrop.module.scss";
 
 type Props = {
   className?: string;
+  ownerState?: boolean; // to remove mui error
 } & typeof Button;
 
 export const HorizontalDrop = forwardRef(
   // remove props passed from mui
   (
-    { className = "", ...args }: Props,
+    { className = "", ownerState, ...args }: Props,
     ref: React.ForwardedRef<HTMLButtonElement>
   ) => {
     return (

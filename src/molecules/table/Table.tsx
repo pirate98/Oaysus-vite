@@ -119,8 +119,8 @@ const headCells: readonly HeadCell[] = [
     disablePadding: false,
     label: "$ / Visit",
   },
-  {},
-  {},
+  { id: "key1" },
+  { id: "key2" },
 ];
 
 interface EnhancedTableProps {
