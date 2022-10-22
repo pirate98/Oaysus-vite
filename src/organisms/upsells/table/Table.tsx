@@ -24,10 +24,14 @@ import { Wrappers } from "@/organisms/upsells";
 import { DragHandleSvg } from "@/assets/svg";
 import { UpsellsData } from "@/organisms/upsells";
 import { Wrapper } from "../../wrappers";
-import { setUpsellsData } from "../../../pages/upsells/upsellsSlice";
+import { setUpsellsData, switchStatus } from "@/pages/upsells/upsellsSlice";
 import { RefWrapper } from "../../builder/wrappers";
-import { DropZoneDetectionProvider } from "../../wrappers/DropZoneDetectionProvider/DropZoneDetectionProvider";
+import {
+  DndContext,
+  DropZoneDetectionProvider,
+} from "../../wrappers/DropZoneDetectionProvider/DropZoneDetectionProvider";
 import { TableEditMenu } from "../tableEditMenu/TableEditMenu";
+import { useDispatch } from "react-redux";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -168,7 +172,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
         </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
-            key={headCell.id}
+            key={headCell.id || Math.random()}
             align={headCell.numeric ? "right" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
@@ -287,6 +291,32 @@ export function Table({ enhancedToolbar, rows }: Props) {
 
   const EnhancedToolbar = enhancedToolbar;
 
+  Object.defineProperty(Array.prototype, "oaysusSliceWithoutPlaceholder", {
+    value: function (begin, end, placeholderId) {
+      // console.log(begin, end, placeholderId);
+      return this;
+    },
+    configurable: true,
+  });
+
+  const rowPlaceholderIndex = rows.reduce(
+    (prev, cur, idx) => (cur.id === CONSTANT.DND_PLACEHOLDER_ID ? idx : prev),
+    undefined
+  );
+
+  console.log({ rowPlaceholderIndex });
+
+  const mutableRows = structuredClone(rows);
+  console.log({ mutableRows });
+
+  rowPlaceholderIndex && mutableRows.splice(rowPlaceholderIndex, 1);
+
+  const dispatch = useDispatch();
+
+  const handleSwitch = (id: number) => {
+    dispatch(switchStatus(id));
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <Box
@@ -320,9 +350,18 @@ export function Table({ enhancedToolbar, rows }: Props) {
                 <TableBody>
                   {/* if you don't need to support IE11, you can replace the `stableSort` call with:
               rows.slice().sort(getComparator(order, orderBy)) */}
-                  {stableSort<UpsellsData>(rows, getComparator(order, orderBy))
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row, index) => {
+                  {stableSort<UpsellsData>(
+                    mutableRows,
+                    getComparator(order, orderBy)
+                  )
+                    // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    // .oaysusSliceWithoutPlaceholder(
+                    //   page * rowsPerPage,
+                    //   page * rowsPerPage + rowsPerPage,
+                    //   CONSTANT.DND_PLACEHOLDER_ID
+                    // )
+                    .map((row: UpsellsData, index: number) => {
+                      // console.log(row.id);
                       const isItemSelected = isSelected(row.name);
                       const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -333,17 +372,29 @@ export function Table({ enhancedToolbar, rows }: Props) {
                           contentUpdateAction={setUpsellsData}
                           key={row.id}
                         >
-                          {(drag, drop, dropRefForArea) =>
-                            row.id === CONSTANT.DND_PLACEHOLDER_ID ? (
-                              <TableRow ref={drop}>
-                                <TableCell
-                                  colSpan={headCells.length}
-                                  align="center"
+                          {(drag, drop, dropRefForArea) => (
+                            <>
+                              {index === rowPlaceholderIndex && (
+                                <Wrapper.DragAndDrop
+                                  id={CONSTANT.DND_PLACEHOLDER_ID}
+                                  content={rows}
+                                  contentUpdateAction={setUpsellsData}
+                                  key={row.id}
                                 >
-                                  DROP HERE
-                                </TableCell>
-                              </TableRow>
-                            ) : (
+                                  {(drag, drop, dorpRefForArea) => {
+                                    return (
+                                      <TableRow ref={drop}>
+                                        <TableCell
+                                          colSpan={headCells.length + 1}
+                                          align="center"
+                                        >
+                                          DROP HERE
+                                        </TableCell>
+                                      </TableRow>
+                                    );
+                                  }}
+                                </Wrapper.DragAndDrop>
+                              )}
                               <TableRow
                                 hover
                                 // onClick={(event) =>
@@ -394,24 +445,32 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                   padding="none"
                                   align="center"
                                 >
-                                  {index}
+                                  {index + 1}
                                 </TableCell>
                                 <TableCell
                                   align="left"
-                                  sx={{ display: "flex", alignItems: "center" }}
+                                  sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    paddingLeft: "24px",
+                                  }}
                                 >
                                   <Box
                                     // className={styles.imageDiv}
                                     sx={{
-                                      backgroundImage: `url("${row.image}")`,
+                                      backgroundImage: `url("${
+                                        row.image || CONSTANT.IMAGE_PLACEHOLDER
+                                      }")`,
                                       backgroundSize: row.image
                                         ? "contain"
-                                        : "unset",
+                                        : "50%",
                                       height: "40px",
                                       width: "40px",
                                       backgroundRepeat: "no-repeat",
                                       backgroundPosition: "center",
                                       margin: "8px 16px 8px 0",
+                                      border: "1px solid lightgray",
+                                      borderRadius: "4px",
                                     }}
                                   ></Box>
                                   <H5 weight={500}>{row.name}</H5>
@@ -441,14 +500,17 @@ export function Table({ enhancedToolbar, rows }: Props) {
                                 <TableCell align="right">{row.total}</TableCell>
                                 <TableCell align="right">{row.visit}</TableCell>
                                 <TableCell align="right">
-                                  <Switch />
+                                  <Switch
+                                    onClick={() => handleSwitch(index)}
+                                    checked={row.status}
+                                  />
                                 </TableCell>
                                 <TableCell align="right">
                                   <TableEditMenu />
                                 </TableCell>
                               </TableRow>
-                            )
-                          }
+                            </>
+                          )}
                         </Wrapper.DragAndDrop>
                       );
                     })}

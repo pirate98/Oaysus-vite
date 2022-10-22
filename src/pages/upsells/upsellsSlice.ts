@@ -62,6 +62,11 @@ export const upsellsSlice = createSlice({
       // console.log(action.payload);
       state.upsellsData = action.payload;
     },
+    switchStatus: (state, action) => {
+      const id = action.payload;
+      console.log({ id });
+      state.upsellsData[id]["status"] = !state.upsellsData[id]["status"];
+    },
   },
 });
 
@@ -74,6 +79,7 @@ export const {
   addUpsell,
   setDateSelectionRange,
   setUpsellsData,
+  switchStatus,
 } = upsellsSlice.actions;
 
 export default upsellsSlice.reducer;

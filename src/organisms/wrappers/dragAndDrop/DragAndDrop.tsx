@@ -6,6 +6,7 @@ import {
   MutableRefObject,
   useCallback,
   useContext,
+  cloneElement,
 } from "react";
 
 import { AnyAction } from "@reduxjs/toolkit";
@@ -21,6 +22,7 @@ import { addComponentToBuilder, getIndex, isPointerAboveHalf } from "./helpers";
 import { CONSTANT } from "@/data/constants";
 import { useDebounceHandler } from "../../../hooks";
 import { DndContext } from "../DropZoneDetectionProvider/DropZoneDetectionProvider";
+import classes from "./DragAndDrop.module.scss";
 
 const PLACEHOLDER_ID = CONSTANT.DND_PLACEHOLDER_ID;
 
@@ -86,7 +88,7 @@ Props) {
     () => ({
       accept: [type, ...extraDropTypes],
       hover: (item: Item, monitor) => {
-        // console.log("hovering", id);
+        console.log("hovering", id);
         // debouncerForPlaceholder();
         // return if hovering over placeholder or itself
         if (item?.id === id || id === PLACEHOLDER_ID) return;
@@ -132,6 +134,7 @@ Props) {
         // debouncerForPlaceholder();
       },
       drop: (item, monitor) => {
+        console.log("dropped");
         if (extraDropTypes.includes(item.type)) {
           extraDropTypesHandle && extraDropTypesHandle(content, item.id);
           return;
@@ -175,5 +178,7 @@ Props) {
   // };
   // }, [isOver, memoDebouncer]);
 
-  return children(drag, drop, dropRefForArea);
+  return cloneElement(children(drag, drop, dropRefForArea), {
+    // className: isDragging ? classes.opacity0 : "",
+  });
 }
