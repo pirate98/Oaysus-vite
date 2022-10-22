@@ -354,7 +354,7 @@ export function Table({ enhancedToolbar, rows }: Props) {
                     mutableRows,
                     getComparator(order, orderBy)
                   )
-                    // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     // .oaysusSliceWithoutPlaceholder(
                     //   page * rowsPerPage,
                     //   page * rowsPerPage + rowsPerPage,
