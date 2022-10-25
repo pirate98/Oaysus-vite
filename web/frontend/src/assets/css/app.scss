@@ -1,0 +1,21 @@
+@import "type", "overrides", "classes.module";
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+body {
+  @extend .defaultFont;
+  // overflow-x: hidden;
+}
+
+.editor-text-bold {
+  font-weight: bold;
+}
+.editor-text-italic {
+  font-style: italic;
+}
+.editor-text-underline {
+  text-decoration: underline;
+}

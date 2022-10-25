@@ -1,0 +1,21 @@
+@import "@/assets/css/classes.module";
+
+.clean {
+  border: 0;
+  background: none;
+  color: unset;
+  margin: unset;
+  padding: unset;
+  outline: unset;
+  // display: inherit !important;
+  // text-align: center;
+  justify-content: center;
+  // width: fit-content;
+  position: relative;
+
+  // Inherit font properties because style is applied through parent element,
+  // to prevent content editing wrapper from being effected by style
+  font-weight: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}

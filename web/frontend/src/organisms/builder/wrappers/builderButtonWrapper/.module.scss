@@ -1,0 +1,27 @@
+@import "@/assets/css/type", "@/assets/css/variables.module";
+
+.componentCard {
+  height: 136px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hover {
+  filter: drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.33));
+  background: $shopifyGreen;
+  border: $shopifyGreen;
+  scale: 103%;
+  // transition: "all 0.1s ease 0s",
+}
+
+.drag {
+  @extend .hover;
+  opacity: 0.5;
+}

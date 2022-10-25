@@ -1,0 +1,89 @@
+@import "variables.module";
+
+.border1 {
+  border: 1px solid rgba(201, 204, 207, 1) !important;
+  border-radius: 4px !important;
+  padding: 8px 12px 8px 12px;
+}
+
+.btnClean {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.zIndex2 {
+  z-index: 2;
+}
+
+.zIndex3000 {
+  z-index: 3000;
+}
+
+.zIndex1200 {
+  z-index: 1200;
+}
+
+.defaultFont {
+  font-family: $fontFamily;
+}
+
+.defaultLineHeight {
+  line-height: $lineHeight;
+}
+
+.defaultFontWeight {
+  font-weight: 400;
+}
+
+$colors: (
+  "primary": $primaryColor,
+  "green": #008060,
+  "muted": #6d7175,
+  "red": red,
+);
+
+@each $name, $color in $colors {
+  .text_#{$name} {
+    color: $color;
+  }
+}
+
+$lineHeights: (18, 24, 29);
+
+@each $height in $lineHeights {
+  .line_height_#{$height} {
+    line-height: #{$height}px;
+  }
+}
+
+@mixin font_attribute_x($attribute, $begin, $count, $multiplier, $unit) {
+  @for $i from $begin through $count {
+    $value: $i * $multiplier;
+
+    .font_#{$attribute}_#{$value} {
+      font-#{$attribute}: #{$value}#{$unit};
+    }
+  }
+}
+
+@include font_attribute_x(weight, 4, 10, 100, "");
+
+@include font_attribute_x(size, 12, 24, 1, px);
+
+@mixin margin_side_x($side, $count) {
+  @for $i from 1 through $count {
+    $value: $i * 2;
+
+    .margin_#{$side}_#{$value} {
+      margin-#{$side}: #{$value}px;
+    }
+  }
+}
+
+@include margin_side_x(bottom, 12);

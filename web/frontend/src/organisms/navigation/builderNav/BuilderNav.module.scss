@@ -1,0 +1,11 @@
+@import "../Navigation.module.scss";
+
+.leftSection {
+  display: flex;
+  align-items: center;
+}
+
+.screenButtons {
+  display: flex;
+  gap: 17px;
+}
