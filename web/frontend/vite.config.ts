@@ -61,6 +61,9 @@ export default defineConfig({
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
     preserveSymlinks: true,
   },
+  esbuild: {
+    logOverride: { "this-is-undefined-in-esm": "silent" },
+  },
   server: process?.env?.VITE_FOR_SHOPIFY && {
     host: "localhost",
     port: process.env.FRONTEND_PORT,

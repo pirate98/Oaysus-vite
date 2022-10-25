@@ -44,7 +44,7 @@ export const builderSlice = createSlice({
 
     removeComponentFromPage: (state, action) => {
       const pageComponentsWithoutGivenName = state.pageComponents?.filter(
-        (comp: Record<any, any>) => comp.name !== action.payload
+        (comp: Record<any, any>) => comp.id !== action.payload
       );
 
       state.pageComponents = pageComponentsWithoutGivenName;
@@ -64,12 +64,12 @@ export const builderSlice = createSlice({
         value = { [key2]: value };
       }
 
-      // console.log({ component, module, key, value });
+      console.log({ component, module, key, value });
 
       const _pageComponents = [...state.pageComponents];
 
       const componentToUpdate = _pageComponents.find(
-        (comp) => comp.name === component
+        (comp) => comp.id === component
       );
 
       if (!componentToUpdate) return;
