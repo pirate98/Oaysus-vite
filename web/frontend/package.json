@@ -5,7 +5,9 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "emptyDevBucket": "aws s3 rm s3://oaysus-dev --recursive",
+    "deployDev": "yarn emptyDevBucket && aws s3 sync './dist' s3://oaysus-dev --acl public-read --cache-control max-age=31536000"
   },
   "type": "module",
   "engines": {

@@ -7,9 +7,10 @@ import {
   AppBridgeProvider,
   QueryProvider,
   PolarisProvider,
-} from "./components";
+} from "./src/services/providers";
 import App from "./src/App";
 import { store } from "./src/data/store";
+import { ShopifyInit } from "./src/organisms/wrappers/shopifyInit/ShopifyInit";
 
 ReactDOM.render(
   <PolarisProvider>
@@ -17,7 +18,9 @@ ReactDOM.render(
       <Provider store={store}>
         {process.env.VITE_FOR_SHOPIFY ? (
           <AppBridgeProvider>
-            <App />
+            <ShopifyInit>
+              <App />
+            </ShopifyInit>
           </AppBridgeProvider>
         ) : (
           <App />

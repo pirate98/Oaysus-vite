@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import builderReducer from "@/pages/builder/builderSlice";
 import upsellsReducer from "@/pages/upsells/upsellsSlice";
+import appReducer from "@/data/appSlice";
 import { googleApi } from "./googleApi";
 import { backendApi } from "./backendApi";
 
 export const store = configureStore({
   reducer: {
+    app: appReducer,
     builder: builderReducer,
     upsells: upsellsReducer,
     [googleApi.reducerPath]: googleApi.reducer,

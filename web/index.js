@@ -1,7 +1,7 @@
 // @ts-check
 import { join } from "path";
 import { readFileSync } from "fs";
-import express from "express";
+import express, { response } from "express";
 import cookieParser from "cookie-parser";
 import { Shopify, LATEST_API_VERSION } from "@shopify/shopify-api";
 
@@ -186,7 +186,7 @@ export async function createServer(
 
     const shop = Shopify.Utils.sanitizeShop(req.query.shop);
     const appInstalled = await AppInstallations.includes(shop);
-
+    console.log({ shop, appInstalled });
     if (!appInstalled && !req.originalUrl.match(/^\/exitiframe/i)) {
       return redirectToAuth(req, res, app);
     }
@@ -206,6 +206,18 @@ export async function createServer(
       .status(200)
       .set("Content-Type", "text/html")
       .send(readFileSync(htmlFile));
+  });
+
+  app.post("/api/decode-token", async (req, res) => {
+    const { token } = req.body;
+    let payload;
+    try {
+      payload = Shopify.Utils.decodeSessionToken(token);
+      // console.log("/decode-token -> token", payload);
+      res.status(200).json(JSON.stringify(payload));
+    } catch (error) {
+      console.log({ error });
+    }
   });
 
   return { app };

@@ -16,15 +16,6 @@ export default function App() {
 
   return (
     <>
-      {/* <QueryProvider> */}
-      {/* <NavigationMenu
-            navigationLinks={[
-              {
-                label: "Page name",
-                destination: "/pagename",
-              },
-            ]}
-          /> */}
       <Navigation />
       <Routes pages={pages} mainPage={"/upsells"}>
         <Route path="/settings/*" element={<Settings />} />
@@ -32,13 +23,6 @@ export default function App() {
         <Route path="/upsells/trigger" element={<Trigger />} />
       </Routes>
       <GoogleFonts />
-      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-          <link
-            href={`https://fonts.googleapis.com/css2?${"fonts"}&display=swap`}
-            rel="stylesheet"
-          /> */}
-      {/* </QueryProvider> */}
     </>
   );
 }
