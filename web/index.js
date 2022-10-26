@@ -1,7 +1,7 @@
 // @ts-check
 import { join } from "path";
 import { readFileSync } from "fs";
-import express from "express";
+import express, { response } from "express";
 import cookieParser from "cookie-parser";
 import { Shopify, LATEST_API_VERSION } from "@shopify/shopify-api";
 
@@ -86,9 +86,22 @@ export async function createServer(
 
   app.set("use-online-tokens", USE_ONLINE_TOKENS);
   app.use(cookieParser(Shopify.Context.API_SECRET_KEY));
+  app.use(express.json());
 
   applyAuthMiddleware(app, {
     billing: billingSettings,
+  });
+
+  app.post("/api/decode-token", async (req, res) => {
+    const { token } = req.body;
+    let payload;
+    try {
+      payload = Shopify.Utils.decodeSessionToken(token);
+      // console.log("/decode-token -> token", payload);
+      res.status(200).json(JSON.stringify(payload));
+    } catch (error) {
+      console.log({ error });
+    }
   });
 
   // Do not call app.use(express.json()) before processing webhooks with
