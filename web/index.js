@@ -86,22 +86,9 @@ export async function createServer(
 
   app.set("use-online-tokens", USE_ONLINE_TOKENS);
   app.use(cookieParser(Shopify.Context.API_SECRET_KEY));
-  app.use(express.json());
 
   applyAuthMiddleware(app, {
     billing: billingSettings,
-  });
-
-  app.post("/api/decode-token", async (req, res) => {
-    const { token } = req.body;
-    let payload;
-    try {
-      payload = Shopify.Utils.decodeSessionToken(token);
-      // console.log("/decode-token -> token", payload);
-      res.status(200).json(JSON.stringify(payload));
-    } catch (error) {
-      console.log({ error });
-    }
   });
 
   // Do not call app.use(express.json()) before processing webhooks with
@@ -199,7 +186,7 @@ export async function createServer(
 
     const shop = Shopify.Utils.sanitizeShop(req.query.shop);
     const appInstalled = await AppInstallations.includes(shop);
-
+    console.log({ shop, appInstalled });
     if (!appInstalled && !req.originalUrl.match(/^\/exitiframe/i)) {
       return redirectToAuth(req, res, app);
     }
@@ -219,6 +206,18 @@ export async function createServer(
       .status(200)
       .set("Content-Type", "text/html")
       .send(readFileSync(htmlFile));
+  });
+
+  app.post("/api/decode-token", async (req, res) => {
+    const { token } = req.body;
+    let payload;
+    try {
+      payload = Shopify.Utils.decodeSessionToken(token);
+      // console.log("/decode-token -> token", payload);
+      res.status(200).json(JSON.stringify(payload));
+    } catch (error) {
+      console.log({ error });
+    }
   });
 
   return { app };
