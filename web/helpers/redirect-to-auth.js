@@ -5,7 +5,7 @@ export default async function redirectToAuth(req, res, app) {
     res.status(500);
     return res.send("No shop provided");
   }
-
+  console.log("embedded:", req.query.embedded);
   if (req.query.embedded === "1") {
     return clientSideRedirect(req, res);
   }
@@ -36,6 +36,6 @@ async function serverSideRedirect(req, res, app) {
     "/api/auth/callback",
     app.get("use-online-tokens")
   );
-
+  console.log({ redirectUrl });
   return res.redirect(redirectUrl);
 }

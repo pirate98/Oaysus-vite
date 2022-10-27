@@ -15,8 +15,10 @@ import { AppInstallations } from "./app_installations.js";
 import {
   storeCallback,
   loadCallback,
+  deleteCallback,
   deleteSessionsCallback,
-} from "./services/database.ts";
+  findSessionsByShopCallback,
+} from "./services/database.js";
 
 const USE_ONLINE_TOKENS = false;
 
@@ -47,14 +49,14 @@ Shopify.Context.initialize({
   SESSION_STORAGE: new Shopify.Session.CustomSessionStorage(
     storeCallback,
     loadCallback,
-    deleteSessionsCallback
+    deleteCallback,
+    deleteSessionsCallback,
+    findSessionsByShopCallback
   ),
   ...(process.env.SHOP_CUSTOM_DOMAIN && {
     CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN],
   }),
 });
-
-// Misleading docs! Instead of findSessionsByShopCallback; loadCallback is supposed to be used.
 
 // NOTE: If you choose to implement your own storage strategy using
 // Shopify.Session.CustomSessionStorage, you MUST implement the optional

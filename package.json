@@ -4,10 +4,12 @@
   "main": "web/index.js",
   "license": "UNLICENSED",
   "scripts": {
+    "prisma:migrate": "cd web && yarn prisma:migrate",
+    "prisma:generate": "cd web && yarn prisma:generate && cd..",
     "shopify": "shopify",
     "shopify:env": "yarn shopify app env show",
     "build": "shopify app build",
-    "dev": "dotenv -e .env -- shopify app dev",
+    "dev": "yarn prisma:generate && dotenv -e .env -- shopify app dev",
     "dev:vite": "cd web/frontend && yarn dev",
     "info": "shopify app info",
     "generate": "shopify app generate",
