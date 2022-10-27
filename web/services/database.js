@@ -30,17 +30,7 @@ export const loadCallback = async (shop) => {
     .then((data) => {
       if (!data) return;
 
-      const { isActive, id, shop, state, isOnline, ...rest } = data;
-
-      const session = new Session(id, shop, state, isOnline);
-
-      for (const each in rest) {
-        session[each] = rest[each];
-      }
-
-      console.log({ session });
-
-      return session;
+      return getSessionFromPayload(data.payload);
     })
     .catch((error) => {
       console.log({ error });
@@ -68,9 +58,25 @@ export const deleteSessionsCallback = async (arr) => {
 export const findSessionsByShopCallback = async (shop) => {
   console.log("findSessionsByShop", shop);
 
-  return prisma.storeSession.findMany({
+  const sessions = await prisma.storeSession.findMany({
     where: {
       shop,
     },
   });
+
+  return sessions.map((data) => getSessionFromPayload(data.payload));
 };
+
+function getSessionFromPayload(payload) {
+  const { isActive, id, shop, state, isOnline, ...rest } = payload;
+
+  const session = new Session(id, shop, state, isOnline);
+
+  for (const each in rest) {
+    session[each] = payload[each];
+  }
+
+  console.log({ session });
+
+  return session;
+}
