@@ -12,6 +12,11 @@ import productCreator from "./helpers/product-creator.js";
 import redirectToAuth from "./helpers/redirect-to-auth.js";
 import { BillingInterval } from "./helpers/ensure-billing.js";
 import { AppInstallations } from "./app_installations.js";
+import {
+  storeCallback,
+  loadCallback,
+  deleteSessionsCallback,
+} from "./services/database.ts";
 
 const USE_ONLINE_TOKENS = false;
 
@@ -38,11 +43,18 @@ Shopify.Context.initialize({
   IS_EMBEDDED_APP: true,
   // This should be replaced with your preferred storage strategy
   // See note below regarding using CustomSessionStorage with this template.
-  SESSION_STORAGE: new Shopify.Session.SQLiteSessionStorage(DB_PATH),
+  // SESSION_STORAGE: new Shopify.Session.SQLiteSessionStorage(DB_PATH),
+  SESSION_STORAGE: new Shopify.Session.CustomSessionStorage(
+    storeCallback,
+    loadCallback,
+    deleteSessionsCallback
+  ),
   ...(process.env.SHOP_CUSTOM_DOMAIN && {
     CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN],
   }),
 });
+
+// Misleading docs! Instead of findSessionsByShopCallback; loadCallback is supposed to be used.
 
 // NOTE: If you choose to implement your own storage strategy using
 // Shopify.Session.CustomSessionStorage, you MUST implement the optional
@@ -183,7 +195,7 @@ export async function createServer(
       res.status(500);
       return res.send("No shop provided");
     }
-
+    console.log(req.query);
     const shop = Shopify.Utils.sanitizeShop(req.query.shop);
     const appInstalled = await AppInstallations.includes(shop);
     console.log({ shop, appInstalled });
@@ -193,7 +205,7 @@ export async function createServer(
 
     if (Shopify.Context.IS_EMBEDDED_APP && req.query.embedded !== "1") {
       const embeddedUrl = Shopify.Utils.getEmbeddedAppUrl(req);
-
+      console.log("app installed", embeddedUrl + req.path);
       return res.redirect(embeddedUrl + req.path);
     }
 
@@ -201,7 +213,7 @@ export async function createServer(
       isProd ? PROD_INDEX_PATH : DEV_INDEX_PATH,
       "index.html"
     );
-
+    console.log("responding with html");
     return res
       .status(200)
       .set("Content-Type", "text/html")
