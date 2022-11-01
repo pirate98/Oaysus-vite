@@ -15,8 +15,10 @@ import { AppInstallations } from "./app_installations.js";
 import {
   storeCallback,
   loadCallback,
+  deleteCallback,
   deleteSessionsCallback,
-} from "./services/database.ts";
+  findSessionsByShopCallback,
+} from "./services/database.js";
 
 const USE_ONLINE_TOKENS = false;
 
@@ -47,7 +49,9 @@ Shopify.Context.initialize({
   SESSION_STORAGE: new Shopify.Session.CustomSessionStorage(
     storeCallback,
     loadCallback,
-    deleteSessionsCallback
+    deleteCallback,
+    deleteSessionsCallback,
+    findSessionsByShopCallback
   ),
   ...(process.env.SHOP_CUSTOM_DOMAIN && {
     CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN],
@@ -195,6 +199,7 @@ export async function createServer(
       res.status(500);
       return res.send("No shop provided");
     }
+    console.log({ originalUrl: req.originalUrl });
     console.log(req.query);
     const shop = Shopify.Utils.sanitizeShop(req.query.shop);
     const appInstalled = await AppInstallations.includes(shop);

@@ -19,13 +19,14 @@ export default function applyAuthMiddleware(
         res,
         req.query
       );
-      // console.log({ session });
+      console.log({ session });
+
       const responses = await Shopify.Webhooks.Registry.registerAll({
         shop: session.shop,
         accessToken: session.accessToken,
       });
 
-      // console.log({ responses });
+      console.log({ responses });
 
       Object.entries(responses).map(([topic, response]) => {
         // The response from registerAll will include errors for the GDPR topics.  These can be safely ignored.
@@ -64,7 +65,7 @@ export default function applyAuthMiddleware(
       const redirectUrl = Shopify.Context.IS_EMBEDDED_APP
         ? Shopify.Utils.getEmbeddedAppUrl(req)
         : `/?shop=${session.shop}&host=${encodeURIComponent(host)}`;
-
+      console.log({ redirectUrl });
       res.redirect(redirectUrl);
     } catch (e) {
       console.warn(e);

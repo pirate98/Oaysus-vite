@@ -36,6 +36,7 @@ async function serverSideRedirect(req, res, app) {
     "/api/auth/callback",
     app.get("use-online-tokens")
   );
-
+  // console.log(res?.req?.cookies, res?.req?.signedCookies);
+  console.log({ redirectUrl });
   return res.redirect(redirectUrl);
 }

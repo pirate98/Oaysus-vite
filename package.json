@@ -4,6 +4,7 @@
   "main": "web/index.js",
   "license": "UNLICENSED",
   "scripts": {
+    "prisma": "cd web && yarn prisma:generate",
     "shopify": "shopify",
     "shopify:env": "yarn shopify app env show",
     "build": "shopify app build",

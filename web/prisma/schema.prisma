@@ -12,20 +12,26 @@ datasource db {
 }
 
 model StoreSession {
-  id      String @id
+  id      String      @id
   shop    String
   payload Json
-
-  upsells     Upsell[]
-  billings    Billing[]
+  // It might be necessary to add a relation with Shop table here
   
   @@map("store_session")
 }
 
+model Shop {
+  // id          Int           @id @default(autoincrement())
+  id          String         @id @db.VarChar(255)
+  email       String         @unique @db.VarChar(255)
+  upsells     Upsell[]
+  billings    Billing[]
+}
+
 model Upsell {
-  id          Int             @id @default(autoincrement())
-  Store       StoreSession    @relation(fields: [storeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  storeId     String
+  id          Int            @id @default(autoincrement())
+  Shop        Shop           @relation(fields: [shopId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  shopId      String
   status      Boolean
   views       Int
   conversion  Int
@@ -35,9 +41,9 @@ model Upsell {
 }
 
 model Billing {
-  id          Int      @id @default(autoincrement())
-  Store       StoreSession    @relation(fields: [storeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  storeId     String
+  id          Int          @id @default(autoincrement())
+  Shop        Shop         @relation(fields: [shopId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  shopId      String
 }
 
 // model User {
