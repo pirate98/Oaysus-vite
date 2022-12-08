@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.verticalDivider {
+  height: 20px;
+  width: 4px;
+  background: rgba(186, 191, 195, 1);
+}
+
+.text {
+  text-align: center;
+  margin: 6px 0;
+}

@@ -1,0 +1,18 @@
+@import "@/assets/css/type";
+
+.titleContainer {
+  padding: 8px;
+  padding-left: 10px;
+  background: rgba(249, 247, 250, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  @extend .defaultFont;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+}

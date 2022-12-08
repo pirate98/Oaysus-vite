@@ -1,0 +1,49 @@
+@import "variables.module";
+
+:root {
+  --p-interactive: black !important;
+  --p-interactive-hovered: black !important;
+}
+
+p {
+  font-weight: inherit;
+  font-size: inerit;
+}
+
+// for autocomplete popper
+.MuiPopper-root.MuiAutocomplete-popper,
+.MuiAutocomplete-popper {
+  * {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+}
+.MuiPopperUnstyled-root {
+  z-index: 2;
+}
+
+.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
+  box-shadow: $selectShadow;
+  .MuiButtonBase-root.MuiMenuItem-root.Mui-selected {
+    background: $primaryActive;
+  }
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+// swiper
+// .swiper-wrapper {
+//   position: relative;
+//   // width: 100%;
+//   height: 100%;
+//   z-index: 1;
+//   display: flex;
+//   transition-property: transform;
+//   box-sizing: content-box;
+//   width: min-content;
+// }

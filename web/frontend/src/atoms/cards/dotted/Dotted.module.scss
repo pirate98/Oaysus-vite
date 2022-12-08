@@ -1,0 +1,30 @@
+@import "@/assets/css/variables.module";
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 6px;
+  background-color: #fcfbff;
+  cursor: pointer;
+
+  // border: 5px dashed #cbcbcb;
+  // border-image: url(@/assets/svg/cardBorder.svg);
+
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    content: "";
+    border-radius: 9px;
+    position: absolute;
+    border: 5px dashed #cbcbcb;
+    top: -3px;
+    bottom: -3px;
+    left: -3px;
+    right: -3px;
+  }
+}
